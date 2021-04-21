@@ -1,0 +1,4 @@
+cmd_output/Release/obj.target/base/third_party/superfasthash/superfasthash.o := cc '-D_FILE_OFFSET_BITS=64' '-D__STDC_CONSTANT_MACROS' '-D__STDC_FORMAT_MACROS' '-DNDEBUG' -I.  -fPIC -fno-exceptions -fno-strict-aliasing -fstack-protector-all -fvisibility=hidden -g -pipe -pthread -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -mfpmath=sse -O3 -fdata-sections -ffunction-sections -fno-ident  -MMD -MF output/Release/.deps/output/Release/obj.target/base/third_party/superfasthash/superfasthash.o.d.raw  -c -o output/Release/obj.target/base/third_party/superfasthash/superfasthash.o third_party/superfasthash/superfasthash.c
+output/Release/obj.target/base/third_party/superfasthash/superfasthash.o: \
+ third_party/superfasthash/superfasthash.c
+third_party/superfasthash/superfasthash.c:

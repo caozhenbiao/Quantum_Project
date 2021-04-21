@@ -1,0 +1,17 @@
+
+This is Lua 5.3.4, released on 12 Jan 2017.
+
+For installation instructions, license details, and
+further information about Lua, see doc/readme.html.
+
+
+
+
+svn v107版本以后新了lua5.3,并去除了luaL_glock, luaL_glock
+去除后可能会有问题，待测.
+
+
+添加 -lncurse
+
+linux:
+	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_LINUX" SYSLIBS="-Wl,-E -ldl -lreadline -lncurse"
