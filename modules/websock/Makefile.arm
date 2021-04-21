@@ -1,0 +1,23 @@
+CC = arm-linux-gcc
+XX = arm-linux-g++
+TARGET = ./bin/websock.so
+CFLAGS = -Wall -O -g -I../../smartx/include -I../../libs/lua/src -Wall -Wno-unknown-pragmas -Wno-format -O3 -fPIC
+LIBS = -lpthread -lrt -ldl ../../smartx/libs/lua/src/liblua.a 
+SHARED := --shared  
+
+%.o: %.c                                 
+	$(CC) $(CFLAGS) -c $< -o $@          
+
+%.o:%.cpp
+	$(XX) $(CFLAGS) -c $< -o $@
+
+SOURCES = $(wildcard ../../smartx/include/event.cpp ../../smartx/include/define.cpp interface.cpp sha1.cpp websock.cpp)
+OBJS = $(patsubst %.c,%.o,$(patsubst %.cpp,%.o,$(SOURCES)))  
+
+$(TARGET) : $(OBJS)
+	$(XX) $(SHARED) $(OBJS) -o $(TARGET) $(LIBS)
+	chmod a+x $(TARGET)
+clean:
+	rm -rf $(OBJS) $(TARGET)
+
+

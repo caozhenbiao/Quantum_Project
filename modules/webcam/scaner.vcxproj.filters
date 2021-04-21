@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="snapc.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="define.cpp">
+      <Filter>include</Filter>
+    </ClCompile>
+    <ClCompile Include="event.cpp">
+      <Filter>include</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="snapc.h" />
+    <ClInclude Include="define.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="event.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{46962216-29f7-48ff-9929-6864617009f4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

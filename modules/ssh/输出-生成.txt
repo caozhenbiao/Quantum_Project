@@ -1,0 +1,124 @@
+﻿1>------ 已启动全部重新生成: 项目: ssh, 配置: Debug Win32 ------
+1>C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: 中间目录(D:\Quantum Project 1.0\modules\ssh\output\.Debug\)包含从另一个项目(issh.vcxproj, new_project.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+1>interface.cpp
+1>d:\quantum project 1.0\modules\ssh\interface.cpp(13): warning C4244: “初始化”: 从“lua_Integer”转换到“unsigned short”，可能丢失数据
+1>d:\quantum project 1.0\modules\ssh\interface.cpp(23): warning C4244: “初始化”: 从“lua_Integer”转换到“unsigned short”，可能丢失数据
+1>d:\quantum project 1.0\modules\ssh\interface.cpp(33): warning C4244: “初始化”: 从“lua_Integer”转换到“int”，可能丢失数据
+1>d:\quantum project 1.0\modules\ssh\interface.cpp(40): warning C4244: “初始化”: 从“lua_Integer”转换到“int”，可能丢失数据
+1>scp.cpp
+1>d:\quantum project 1.0\modules\ssh\scp.cpp(48): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+1>c:\program files (x86)\windows kits\10\include\10.0.19041.0\um\winsock2.h(1831): note: 参见“inet_addr”的声明
+1>d:\quantum project 1.0\modules\ssh\scp.cpp(104): warning C4996: 'write': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _write. See online help for details.
+1>c:\program files (x86)\windows kits\10\include\10.0.19041.0\ucrt\corecrt_io.h(560): note: 参见“write”的声明
+1>ssh.cpp
+1>d:\quantum project 1.0\modules\ssh\ssh.cpp(49): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+1>c:\program files (x86)\windows kits\10\include\10.0.19041.0\um\winsock2.h(1831): note: 参见“inet_addr”的声明
+1>d:\quantum project 1.0\modules\ssh\ssh.cpp(98): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+1>c:\program files (x86)\windows kits\10\include\10.0.19041.0\um\winsock2.h(1831): note: 参见“inet_addr”的声明
+1>sftp.cpp
+1>正在生成代码...
+1>  正在创建库 D:\Quantum Project 1.0\modules\ssh\output\ssh.lib 和对象 D:\Quantum Project 1.0\modules\ssh\output\ssh.exp
+1>LINK : warning LNK4098: 默认库“LIBCMTD”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+1>lualibD.lib(lapi.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(lapi.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(lauxlib.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(lauxlib.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(lcode.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(lcode.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(lctype.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(lctype.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(ldebug.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(ldebug.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(ldo.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(ldo.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(ldump.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(ldump.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(lfunc.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(lfunc.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(lgc.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(lgc.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(llex.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(llex.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(lmem.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(lmem.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(lobject.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(lobject.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(lopcodes.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(lopcodes.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(lparser.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(lparser.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(lstate.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(lstate.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(lstring.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(lstring.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(ltable.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(ltable.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(ltm.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(ltm.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(lundump.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(lundump.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(lvm.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(lvm.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>lualibD.lib(lzio.obj) : warning LNK4099: 未找到 PDB“luaLib.pdb”(使用“lualibD.lib(lzio.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\luaLib.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(at_exit.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(at_exit.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(base_switches.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(base_switches.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(callback_internal.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(callback_internal.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(command_line.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(command_line.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(cpu.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(cpu.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(alias.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(alias.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(debugger.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(debugger.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(debugger_win.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(debugger_win.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(profiler.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(profiler.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(task_annotator.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(task_annotator.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(trace_event_impl.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(trace_event_impl.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(trace_event_impl_constants.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(trace_event_impl_constants.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(trace_event_synthetic_delay.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(trace_event_synthetic_delay.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(trace_event_win.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(trace_event_win.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(file_path.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(file_path.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(file_path_constants.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(file_path_constants.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(hash.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(hash.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(string_escape.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(string_escape.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(lazy_instance.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(lazy_instance.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(location.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(location.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(logging.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(logging.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(ref_counted.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(ref_counted.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(ref_counted_memory.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(ref_counted_memory.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(singleton.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(singleton.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(weak_ptr.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(weak_ptr.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(incoming_task_queue.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(incoming_task_queue.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(message_loop.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(message_loop.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(message_loop_proxy.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(message_loop_proxy.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(message_loop_proxy_impl.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(message_loop_proxy_impl.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(message_pump.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(message_pump.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(message_pump_default.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(message_pump_default.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(message_pump_win.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(message_pump_win.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(pending_task.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(pending_task.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(pickle.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(pickle.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(memory_win.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(memory_win.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(process_handle_win.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(process_handle_win.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(alternate_timer.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(alternate_timer.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(scoped_profile.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(scoped_profile.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(scoped_tracker.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(scoped_tracker.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(tracked_time.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(tracked_time.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(run_loop.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(run_loop.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(string_number_conversions.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(string_number_conversions.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(string_piece.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(string_piece.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(string_split.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(string_split.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(string_util.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(string_util.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(string_util_constants.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(string_util_constants.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(stringprintf.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(stringprintf.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(utf_string_conversion_utils.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(utf_string_conversion_utils.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(utf_string_conversions.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(utf_string_conversions.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(cancellation_flag.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(cancellation_flag.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(lock_impl_win.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(lock_impl_win.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(waitable_event_win.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(waitable_event_win.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(sys_info_win.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(sys_info_win.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(task_runner.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(task_runner.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(dtoa_wrapper.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(dtoa_wrapper.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(g_fmt.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(g_fmt.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(icu_utf.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(icu_utf.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(prtime.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(prtime.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(thread_task_runner_handle.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(thread_task_runner_handle.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(platform_thread_win.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(platform_thread_win.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(post_task_and_reply_impl.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(post_task_and_reply_impl.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(thread.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(thread.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(thread_id_name_manager.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(thread_id_name_manager.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(thread_local_storage.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(thread_local_storage.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(thread_local_storage_win.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(thread_local_storage_win.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(thread_local_win.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(thread_local_win.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(time.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(time.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(time_win.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(time_win.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(tracked_objects.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(tracked_objects.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(tracking_info.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(tracking_info.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(vlog.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(vlog.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(event_trace_provider.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(event_trace_provider.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(object_watcher.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(object_watcher.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(pe_image.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(pe_image.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(registry.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(registry.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(scoped_handle.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(scoped_handle.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(windows_version.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(windows_version.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(wrapped_window_proc.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(wrapped_window_proc.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>base.lib(superfasthash.obj) : warning LNK4099: 未找到 PDB“base.pdb”(使用“base.lib(superfasthash.obj)”或在“D:\Quantum Project 1.0\modules\ssh\output\base.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+1>ssh.vcxproj -> D:\Quantum Project 1.0\modules\ssh\output\ssh.dll
+1>已完成生成项目“ssh.vcxproj”的操作。
+========== 全部重新生成: 成功 1 个，失败 0 个，跳过 0 个 ==========

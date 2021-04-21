@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="module">
+      <UniqueIdentifier>{20b9bf18-e429-4f15-b61c-cb2fa0c4abce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="kernel">
+      <UniqueIdentifier>{b93b7369-f9ad-48ef-8072-914798ed6d13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{5a67ce0f-30c6-4803-a23a-065c97a9681f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="module\cssp.cpp">
+      <Filter>module</Filter>
+    </ClCompile>
+    <ClCompile Include="module\tcpc.cpp">
+      <Filter>module</Filter>
+    </ClCompile>
+    <ClCompile Include="interface.cpp" />
+    <ClCompile Include="machine.cpp" />
+    <ClCompile Include="module\udpc.cpp">
+      <Filter>module</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\serial.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\xbase.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\platform\smartx\include\define.cpp">
+      <Filter>include</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="module\cssp.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="module\tcpc.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="machine.h" />
+    <ClInclude Include="module\udpc.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\serial.h">
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\xbase.h">
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\platform\smartx\include\define.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{637bd9ce-b17f-4d58-8d1c-04e29e123150}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{faa3f976-e740-483c-ac30-3301b37f609f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="db">
+      <UniqueIdentifier>{980501ed-4aee-477f-b289-075d07f6fc0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="kernel">
+      <UniqueIdentifier>{b93b7369-f9ad-48ef-8072-914798ed6d13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="module">
+      <UniqueIdentifier>{20b9bf18-e429-4f15-b61c-cb2fa0c4abce}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="interface.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="common\gpiox.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="common\serial.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="db\CSQLite.cpp">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="db\RawDataDB.cpp">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="db\sqlite3.c">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="module\cssp.cpp">
+      <Filter>module</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\Log.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\xbase.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="disksvr.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="machine.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\taskdef.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\datamgr.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="module\cdsp.cpp">
+      <Filter>module</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel\comm.cpp">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="module\csnp.cpp">
+      <Filter>module</Filter>
+    </ClCompile>
+    <ClCompile Include="module\icmp.cpp">
+      <Filter>module</Filter>
+    </ClCompile>
+    <ClCompile Include="define.cpp">
+      <Filter>include</Filter>
+    </ClCompile>
+    <ClCompile Include="event.cpp">
+      <Filter>include</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="common\gpiox.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\serial.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="db\CSQLite.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="db\RawDataDB.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="db\sqlite3.h">
+      <Filter>db</Filter>
+    </ClInclude>
+    <ClInclude Include="module\cssp.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\Log.h">
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\xbase.h">
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="disksvr.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="machine.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\taskdef.h">
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\datamgr.h">
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="module\cdsp.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="kernel\comm.h">
+      <Filter>kernel</Filter>
+    </ClInclude>
+    <ClInclude Include="module\csnp.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="module\icmp.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="define.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="event.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+  </ItemGroup>
+</Project>

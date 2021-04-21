@@ -1,0 +1,8 @@
+linux 要先安装
+apt-get install -y flex
+apt-get install -y byacc
+
+./configure
+make
+
+

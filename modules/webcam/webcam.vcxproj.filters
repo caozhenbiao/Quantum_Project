@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="devices">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{637bd9ce-b17f-4d58-8d1c-04e29e123150}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="interface.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="camera.cpp">
+      <Filter>devices</Filter>
+    </ClCompile>
+    <ClCompile Include="cammgr.cpp">
+      <Filter>devices</Filter>
+    </ClCompile>
+    <ClCompile Include="onvifpr.cpp">
+      <Filter>devices</Filter>
+    </ClCompile>
+    <ClCompile Include="pnppr.cpp">
+      <Filter>devices</Filter>
+    </ClCompile>
+    <ClCompile Include="snaps.cpp">
+      <Filter>devices</Filter>
+    </ClCompile>
+    <ClCompile Include="event.cpp">
+      <Filter>include</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pnppr.h">
+      <Filter>devices</Filter>
+    </ClInclude>
+    <ClInclude Include="cammgr.h">
+      <Filter>devices</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>devices</Filter>
+    </ClInclude>
+    <ClInclude Include="onvifpr.h">
+      <Filter>devices</Filter>
+    </ClInclude>
+    <ClInclude Include="snaps.h">
+      <Filter>devices</Filter>
+    </ClInclude>
+    <ClInclude Include="event.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+  </ItemGroup>
+</Project>
