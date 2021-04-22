@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>用户信息管理</title>
+<link href="css/sermon.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.min.js"></script>
+</head>
+<body>
+<table width="100%" cellspacing="3" cellpadding="3">
+	<tr>
+		<td width="129">用户信息列表</td>
+		<td width="165">
+		<a href='#' onclick="showtab('myuserinfodiv'); setmyinfo();">修改我的个人信息</a></td>
+		<td width="99"><a id = "useinfolist" href='#' onclick="showtab('userlistdiv');" style="display:none;">用户列表</a></td>
+		<td width="167"><a id = "adduserinfo" href='#' onclick="showtab('addaccountdiv');" style="display:none;">用户新增</a></td>
+		<td width="120"></td>
+		<td width="*"></td>
+	</tr>
+</table>
+
+<div id="myuserinfodiv" >
+<table border="0" width="598" cellpadding="2">
+	<tr>
+		<td width="80" align="right"></td>
+		<td width="157"></td>
+		<td width="*"></td>
+	</tr>
+	
+	<tr>
+		<td align="right">姓名</td>
+		<td><input type="text" id="myusername"  size="64" name="T3"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="right">密码</td>
+		<td><input type="password" id="mypassword"  size="64" name="T1"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="right">核对密码</td>
+		<td><input type="password" id="mypassword2"  size="64" name="T8"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="right">地址</td>
+		<td><input type="text" id="myaddress"  size="64" name="T4"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="right">电话</td>
+		<td><input type="text" id="mytelphone"  size="64" name="T5"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="right">邮箱</td>
+		<td><input type="text" id="myemail"  size="64" name="T6"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="justify"></td>
+		<td><input type='button' name='optionbtn' value='提交修改' onclick="updateUserinfo();" /></td>
+		<td></td>
+	</tr>
+</table>
+</div>
+			
+<div id="userlistdiv" style="display:none;">
+<table class="tablelv"  width="100%" cellspacing="0" cellpadding="0">
+	<thead>
+	<tr class="header">
+		<td width="60" align="center">序号</td>
+		<td width="140">用户帐号</td>
+		<td width="153">用户名</td>
+		<td width="109">权限</td>
+		<td width="196">电话</td>
+		<td width="235">邮箱</td>
+		<td width="150">最后登陆时间</td>
+		<td width="98">状态</td>
+		<td width="*">操作</td>
+	</tr>
+	</thead>
+	<tbody id="userlist">
+	</tbody>	
+</table>
+</div>
+
+<div id="addaccountdiv" style="display:none;">
+<table border="0" cellpadding="2" width="600">
+	<tr>
+		<td width="80" align="right">&nbsp;</td>
+		<td width="403"><b>新增帐户信息</b></td>
+		<td width="*">&nbsp;</td>
+	</tr>
+	<tr>
+		<td align="right">帐号</td>
+		<td><input type="text" id="newaccount"  size="27">
+		<font size="2" color="#000080">*帐号生成后不能修改</font></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="right">工号 </td>
+		<td><input type="text" id="newworkno"  size="27" name="T7"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="right">权限</td>
+		<td><select id="newauthority" name="authority" size="1">
+		<option value="1">一般用户</option>
+		<option value="3">管理员</option>
+		<option value="7">超级管理员</option>
+		</select></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><input type='button' name='registerdefinebtn' value='下一步' onclick="checkUserAccount();"/></td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+</div>
+
+<div id="newuserinfodiv" style="display:none;" >
+<table border="0" width="598" cellpadding="2">
+	<tr>
+		<td width="80" align="right">&nbsp;</td>
+		<td width="157"><b>新增用户信息</b></td>
+		<td width="*"></td>
+	</tr>
+	
+	<tr>
+		<td align="right">姓名</td>
+		<td><input type="text" id="newusername"  size="64" name="T3"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="right">性别</td>
+		<td><input type="radio" value="1" checked id="newsex" name="newsex"><label style="padding-right:20px;">男</label><input type="radio" value="0" name="newsex">女</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="right">地址</td>
+		<td><input type="text" id="newaddress"  size="64" name="T4"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="right">电话</td>
+		<td><input type="text" id="newtelphone"  size="64" name="T5"></td>
+		<td>;</td>
+	</tr>
+	<tr>
+		<td align="right">邮箱</td>
+		<td><input type="text" id="newemail"  size="64" name="T6"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="justify"></td>
+		<td><input type='button' name='optionbtn' value='提交' onclick="registeUserinfo();" /></td>
+		<td></td>
+	</tr>
+</table>
+</div>
+</body>
+</html>
+ 
+<script>
+//GetXmlHttpObject
+function GetXmlHttpObject() {   
+	var xmlHttp=null;   
+	try{xmlHttp=new XMLHttpRequest();}
+	catch(e){ 
+		try{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+		catch(e){xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}     
+	}
+	return xmlHttp; 
+}
+
+function formatAuthority( authority ){
+	switch( authority ){
+		case 1 : return "管理员";
+		case 3 : return "超级管理员";
+	}
+	return "一般用户";
+}
+	
+function loadUserList(){
+	var xhr = GetXmlHttpObject();   
+	var userlst = document.getElementById("userlist"); 
+	xhr.open("LUA","main.lua?getuserlist" ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			for( var i = userlst.rows.length; i > 0; i--){
+				userlst.deleteRow( -1 );
+			}		
+			var rsp = eval('(' + xhr.responseText + ')');
+			for( var v = 0; v < rsp.users.length; v++ ){
+				var useritem = userlst.insertRow( -1 );
+				var td1 = useritem .insertCell(0);
+				td1.innerHTML = v+1;
+				td1.setAttribute('align','center');
+				useritem.insertCell(1).innerHTML = rsp.users[v].account;
+				useritem.insertCell(2).innerHTML = rsp.users[v].name;
+				useritem.insertCell(3).innerHTML = formatAuthority( rsp.users[v].authority );
+				useritem.insertCell(4).innerHTML = rsp.users[v].telphone;
+				useritem.insertCell(5).innerHTML = rsp.users[v].email;
+				useritem.insertCell(6).innerHTML = rsp.users[v].endtime;
+				useritem.insertCell(7).innerHTML = "正常";
+				if( g_authority & 0x02 )
+					useritem.insertCell(8).innerHTML = "<a href='#' onclick='deleteUserinfo(\""+rsp.users[v].account+"\",this);'>删除</a>";
+				else
+					useritem.insertCell(8).innerHTML = "";
+			}
+		}
+	}	
+	xhr.send(null); 
+}
+
+var userlastdiv="myuserinfodiv";
+function showtab( divname ){
+	if( divname == userlastdiv )
+		return;
+	document.getElementById(userlastdiv).style.display = 'none';	
+	document.getElementById(divname).style.display = 'block';
+	userlastdiv = divname;
+}
+
+function checkinput( name, pwd, pwd2 ){
+	if( pwd.length < 8 || name.length<4 ){
+		alert("输入信息不完整\n密码必须大于8位字符，用户名大于3位字符。")
+		return false;
+	}
+	if( pwd != pwd2 ){
+		alert("两次输入密码不正确，请重新输入");
+		return false;
+	}
+	return true;
+}
+
+//更新用户信息
+function updateUserinfo(){
+	var password  = $("#mypassword").val();
+	var password2 = $("#mypassword2").val();
+	var name      = $("#myusername").val();
+	var address   = $("#myaddress").val();
+	var telphone  = $("#mytelphone").val();
+	var email     = $("#myemail").val();
+ 	if( !checkinput( name, password, password2 ) ){
+ 		return;
+ 	}
+	var authority = $("#myauthority option:selected").val();
+	var xhr = GetXmlHttpObject();
+	xhr.open("LUA","main.lua?updateuserinfo="+g_account+','+name+','+password+','+telphone+","+email+","+address,true);  
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			if( rsp.result == 0 ){
+				alert("用户信息更新成功!");
+			}else{
+				alert("用户信息更新失败!");
+			}
+		}
+	}	
+	xhr.send(null); 
+}
+
+//核对用户帐号
+function checkUserAccount(){
+	var account = document.getElementById("newaccount").value;
+	if( account.length < 5 ){
+		alert("用户帐号不能小于5个字符!")
+		return;
+	}
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUA","main.lua?checkuseraccount=" + account,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			if( rsp.result == 0 ){ 
+				showtab('newuserinfodiv');
+			}else{
+				alert("用户名已存在,请重新输入!");
+			}
+		}
+	}	
+	xhr.send(null); 
+}
+
+//注册新用户
+function registeUserinfo(){
+	var account   = $("#newaccount").val();
+	var name      = $("#newusername").val();
+	var address   = $("#newaddress").val();
+	var telphone  = $("#newtelphone").val();
+	var email     = $("#newemail").val();
+	var sex       = $("input[name='newsex']:checked").val();
+	var authority = $("#newauthority option:selected").val();
+	if( !checkinput( name, "20101204", "20101204" ) )
+ 		return;	
+	var xhr = GetXmlHttpObject();
+	xhr.open("LUA","main.lua?createuser="+account+','+name+','+sex+','+authority+','+address+','+telphone+','+email,true);  
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			if( rsp.result == 0 ){
+				showtab('userlistdiv');
+				document.getElementById("newusername").value = "";
+				document.getElementById("newtelphone").value = "";
+				document.getElementById("newemail").value = "";
+				document.getElementById("newaddress").value = "";
+				window.onload();
+			}else{
+				alert("用户注册失败！");
+			}
+		}
+	}	
+	xhr.send(null); 
+}
+
+function deleteUserinfo( account, obj ){
+	if(!window.confirm('你确定要删除通道' + account + "?" ))
+		return false;
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUA","main.lua?removeUser=" + account ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			if( rsp.result == 0 ){
+				 var tr = obj.parentNode.parentNode;
+				 tr.parentNode.removeChild(tr);
+			}
+		}
+	}	
+	xhr.send(null); 
+}
+
+function setmyinfo(){
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUA","main.lua?getuserinfo=" + g_account,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			if( rsp.result == 0 ){
+				document.getElementById("myusername").value = rsp.name;
+				document.getElementById("mytelphone").value = rsp.telphone;
+				document.getElementById("myemail").value = rsp.email;
+				document.getElementById("myaddress").value = rsp.address;
+			}
+		}
+	}	
+	xhr.send(null); 
+}
+
+window.onload = function(){
+	if( g_authority & 0x04 ){
+		document.getElementById('useinfolist').style.display = 'block';
+		document.getElementById('adduserinfo').style.display = 'block';
+	}
+	loadUserList();
+	setmyinfo();
+}
+window.onload();
+</script>

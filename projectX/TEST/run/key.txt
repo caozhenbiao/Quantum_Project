@@ -1,0 +1,5 @@
+smartx identify
+freq:2
+expir:2021
+mac:zhhg
+key:7C121F1ED19C26EF6EB64B7B090A162D497BF8B7

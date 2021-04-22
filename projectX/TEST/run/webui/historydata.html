@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>历史数据查询</title>
+<link href="css/sermon.css" rel="stylesheet" type="text/css" />
+<link href="css/zane-calendar.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.min.js"></script>
+<link rel="stylesheet"  type ="text/css" href="./css/zane-calendar.css">
+<script src="./js/zane-calendar.js"></script>
+</head>
+<body>
+<table width="100%" cellspacing="2" cellpadding="2">
+	<tr>
+		<td>
+		<label style="padding-right:20px;">历史数据</label>
+		<label style="padding-right:0px;">通道</label>
+		<select class="realchn" id="historychannels" style="width:180px;" size="1" name="historychannels"></select>
+		<label style="padding-left:20px;">开始时间：<input id="begintime" name="begintime" size="20" ></label>
+		<label style="padding-left:20px;">结束时间：<input id="endtime" name="endtime" size="20" ></label>
+ 		<input type="button" value="开始" id="history_runbtn" onclick="onPrintHistoryData();"> 
+ 		<input type="button" value="清除" id="history_clrbtn" onclick="onClearHistoryList();"> 
+ 		<a id="downloadlnk" href="tmp/history.txt" download="" >下载</a></td>
+	</tr>
+</table>
+<div id="historytablediv" style="overflow-x: auto; overflow-y: auto; height:580px; width:100%;">
+	<table width="100%" class="csoptlist" cellspacing="0" cellpadding="0">
+		<thead>
+			<tr class="header"><th width="80">序号</th>
+				<th width="140">时间</th>
+				<th width="60">方向</th>
+				<th width="*">数据</th>
+				<th width="260">描述</th>
+			</tr>
+		</thead>
+		<tbody id="historydatalist"></tbody>
+	</table>
+</div>
+<div class="enmovediv" style="position: absolute;display: none;background:white;border:1px solid #cad9ea;width:485px;height:473px;left:284px;top:562px" id="historytoast">     
+  <div id="historydlgTest" class="dialog" style="position: absolute; margin-left: -1px; margin-top: -1px">
+        <div style="color:#fff;background-color:#404040;font-size:12pt;font-weight:bold;padding:4px 6px;cursor:move;">
+			<table border="0" width="100%" cellspacing="0" cellpadding="0" class="sss">
+				<tr>
+					<td><b><font size="4">报文解析</font></b></td>
+					<td align="right"><button type="button" id="hisdivclose">关闭</button></td>
+				</tr>
+			</table>
+		</div>
+        <div style="padding:4px">
+			<table width="100%">
+				<tr><td><textarea rows="8" id="historyS1" cols="72"></textarea></td></tr>
+				<tr><td><textarea rows="11" id="historyS2" cols="72" name="S2"></textarea></td></tr>
+			</table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+$(".enmovediv").mousedown(function(e){
+	var left= parseInt($(".enmovediv").css("left"));
+	var top = parseInt($(".enmovediv").css("top"));
+	//获取鼠标按下时的坐标，区别于下面的es.pageX,es.pageY
+	var downx=e.pageX;
+	var downy=e.pageY;   //pageY的y要大写，必须大写！！
+	if( downy - top > 30 ) return;
+	//  鼠标按下时给div挂事件
+	$(".enmovediv").bind("mousemove",function(es){
+		//es.pageX,es.pageY:获取鼠标移动后的坐标
+		var endx= es.pageX-downx+left;   //计算div的最终位置
+		var endy=es.pageY-downy+top;
+		$(".enmovediv").css("left",endx+"px").css("top",endy+"px")
+	});  
+})
+$(".enmovediv").mouseup(function(){
+	$(".enmovediv").unbind("mousemove")
+})
+document.getElementById("hisdivclose").onclick = function(e){ 
+	document.getElementById("historytoast").style.display = "none";
+}
+function historyshowdesc( chn, data ){
+  	var toast = document.getElementById("historytoast");
+    toast.style.display = "block";
+    toast.style.position = "fixed";
+    var winWidth = window.innerWidth;
+    var winHeight = window.innerHeight;
+    var targetWidth = toast.offsetWidth;
+    var targetHeight = toast.offsetHeight;
+    toast.style.top = (winHeight - targetHeight) / 2 + "px";
+    toast.style.left = (winWidth - targetWidth) / 2 + "px";
+    document.getElementById("historyS1").value = data ;
+    document.getElementById("historyS2").value ="";
+    var xhr = GetXmlHttpObject();
+	xhr.open("GET","main.lua?frameExplain=" + chn + "," + data ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			document.getElementById("historyS2").value = rsp.pntdesc + ";\n" + rsp.explain.replace(/\;/g,";\n") ;	
+		}
+	}	
+	xhr.send(null); 
+}
+</script>
+
+<script type="text/javascript">
+var objSelectet = document.getElementById("historychannels");
+for( var v = 0; v < g_devchnlist.length; v++ ){
+	var objOption   = document.createElement("OPTION");
+	objOption.text  = g_devchnlist[v].caption;
+	objOption.value = g_devchnlist[v].name;
+	objSelectet.options.add(objOption); 
+}
+
+zaneDate({
+	elem:'#begintime',
+	format:'yyyy-MM-dd HH:mm:ss',
+	leng:'en',
+	//begintime:'2017-09-20 12:10:10',
+	showtime:true
+});
+
+zaneDate({
+	elem:'#endtime',
+	format:'yyyy-MM-dd HH:mm:ss',
+	leng:'en',
+	//begintime:'2017-09-20 12:10:10',
+	showtime:true
+});
+
+//httprequest
+function GetXmlHttpObject() {   
+	var xmlHttp=null;   
+	try{xmlHttp=new XMLHttpRequest();}
+	catch(e){ 
+		try{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+		catch(e){xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}     
+	}
+	return xmlHttp; 
+}
+
+//
+var rowno=0;
+function historydataframe( obj ){
+	var devlst  = document.getElementById("historydatalist");
+	var devitem = devlst.insertRow( 0 );
+	devitem.setAttribute( "onclick", "historyshowdesc('"+ obj.chn + "','" + obj.data + "')"); 
+	var td1 = devitem.insertCell(0);
+	td1.innerHTML = ++rowno;
+	td1.setAttribute('align','center');
+	devitem.insertCell(1).innerHTML = obj.time;
+	var cel3 = devitem.insertCell(2); 
+	cel3.align="center"; 
+	cel3.innerHTML = obj.dir;	
+	devitem.insertCell(3).innerHTML = obj.data;
+	devitem.insertCell(4).innerHTML = obj.resume;
+	if(v>2000){devlst.deleteRow(-1);}
+}
+
+function onClearHistoryList(){
+	var devlst  = document.getElementById("historydatalist");
+	for( var i = devlst.rows.length; i > 0; i--){
+		devlst.deleteRow( 0 );
+	}
+}
+
+function onPrintHistoryData(){
+	var xhr  = GetXmlHttpObject();   
+	var name = $("#historychannels option:selected").val();
+	var strStart = $("#begintime").val();
+	var strEnd   = $("#endtime").val();
+	xhr.open("LUA","main.lua?PrintHistoryData=" + name + "," + strStart + ";" + strEnd ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			document.getElementById("history_runbtn").value="停止";
+			document.getElementById("history_runbtn").onclick=function(){StopHistoryData();};
+			document.getElementById("downloadlnk").removeAttribute("disabled");
+			document.getElementById("historytablediv").style.height = window.innerHeight-185+"px";
+			rowno = 0;
+		}
+	}	
+	xhr.send(null); 
+}
+
+function StopHistoryData(){
+	var xhr  = GetXmlHttpObject();  
+	xhr.open("LUA","main.lua?PrintHistoryData",true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			document.getElementById("history_runbtn").value="开始";
+			document.getElementById("history_runbtn").onclick=function(){
+				onPrintHistoryData();
+			};
+		}
+	}	
+	xhr.send(null); 
+}
+
+//clean
+function onclean(){
+	var devlst = document.getElementById("historydatalist");
+	for( var i=devlst.rows.length; i > 1; i--){
+		devlst.deleteRow( -1 );
+	}
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+ 

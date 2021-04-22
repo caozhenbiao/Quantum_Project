@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>串口调试</title>
+<script src="./js/jquery.min.js"></script>
+<link href="css/sermon.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<table border="0" width="100%">
+	<tr>
+		<td valign="top" width="220">
+		<table border="0" cellspacing="3" cellpadding="3" width="100%">
+			<tr>
+				<td  colspan="2"><b>串口调试</b></td>
+			</tr>	
+			<tr>
+				<td width="77" align="right">串口号</td>
+				<td><select id="testcomname" style="width:100px;" name="D1"></select></td>
+			</tr>
+			<tr>
+				<td width="77" align="right">波特率</td>
+				<td>
+				<select id="testbaudrate" style="width:100px;" size="1" name="testbaudrate">
+				<option value="600">600</option>
+				<option value="1200">1200</option>
+				<option value="4800">4800</option>
+				<option value="9600" selected>9600</option>
+				<option value="19200">19200</option>
+				<option value="57600">57600</option>
+				<option value="115200">115200</option></select></td>
+			</tr>
+			<tr>
+				<td width="77" align="right">数据位</td>
+				<td><select id="testdatabit" style="width:100px;" size="1"><option disabled="" selected="" value="8">8</option><option value="7">7</option> <option value="6">6</option></select></td>
+			</tr>
+			<tr>
+				<td width="77" align="right">校验位</td>
+				<td><select id="testcheckbit" style="width:100px;" size="1"><option disabled="" selected="" value="N">无校验</option> <option value="E">偶校验</option><option value="O">奇校验</option></select></td>
+			</tr>
+			<tr>
+				<td width="77" align="right">停止位</td>
+				<td><select id="teststopbit" style="width:100px;" size="1"><option disabled="" selected="" value="1">1</option><option value="2">2</option></select></td>
+			</tr>
+			<tr>
+				<td width="77"></td>
+				<td><input type='button' id='rundebugbtn' value='开始测试' onclick="onStartDebug();"/></td>
+			</tr>
+		</table>
+		</td>
+		<td  width="*" valign="top">
+		<table border="0" width="100%">
+			<tr>
+				<td width="80" >&nbsp;</td>
+				<td>
+					<table border="0" width="100%">
+						<tr>
+							<td>
+							<label style="padding-right:20px;">数据格式:</label>
+							<label style="padding-right:20px;">
+							<input type="radio" value="0" checked id="textdata" name="datatype">文本数据</label>
+							<label style="padding-right:20px;">
+							<input type="radio" value="1" checked name="datatype">十六进制格式</label>&nbsp;
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" valign="top"><label style="padding-left:20px;">发送数据</label></td>
+				<td><textarea rows="6" id="senddata" cols="120" name="S1"></textarea></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<label style="padding-right:50px;"><input type="checkbox" name="timemark" value="true">显示时间</label>
+		 			<label style="padding-right:50px;"><input type="button" value="发送" id="runbtn0" onclick="onSendData();" name="sendbtn"></label>
+		 			<input type="button" value="清除" id="clearbtn" onclick="onCleanData();" name="clearbtn">
+				</td>
+			</tr>
+			<tr>
+				<td align="right" valign="top"><label style="padding-left:20px;">接收数据</label></td>
+				<td><textarea rows="18" id="recvdata" cols="120" name="S2"></textarea></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>
+<script type="text/javascript">
+//httprequest
+function GetXmlHttpObject() {   
+	var xmlHttp=null;   
+	try{xmlHttp=new XMLHttpRequest();}
+	catch(e){ 
+		try{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+		catch(e){xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}     
+	}
+	return xmlHttp; 
+}
+function getNowFormatDate() {
+    var date = new Date();
+    var month = date.getMonth()+1;
+    var strDate = date.getDate();
+    if(month >= 1 && month <= 9) {month = "0" + month;}
+    if(strDate >= 0 && strDate <= 9) {strDate = "0" + strDate;}
+    return month + "-" + strDate + " " + date.getHours() + ":"+ date.getMinutes() + ":"+ date.getSeconds();
+} 
+var debugtimeout = null;
+function updatedebugstatus( working ){
+	if( working ){
+		document.getElementById("rundebugbtn").value="停止";
+		document.getElementById("rundebugbtn").onclick=function(){onStopDebug();};
+		debugtimeout = self.setInterval("onAutoRecv()",1000);	
+	}else{
+		document.getElementById("rundebugbtn").value="开始";
+		document.getElementById("rundebugbtn").onclick=function(){onStartDebug();};
+		self.clearInterval(debugtimeout);
+	}
+}
+function onStartDebug(){
+	var n = $("#testcomname").val();
+	var b = $("#testbaudrate option:selected").text();
+	var d = $("#testdatabit option:selected").text();
+	var e = $("#testcheckbit option:selected").val();
+	var s = $("#teststopbit option:selected").text();
+	var xhr  = GetXmlHttpObject();  
+	xhr.open("LUA","main.lua?debugcomopen="+n+'|'+b +'|'+d+e+s,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			updatedebugstatus( true );
+		}
+	}	
+	xhr.send(null); 
+}
+function onStopDebug(){
+	var xhr  = GetXmlHttpObject();   
+	xhr.open("LUA","main.lua?debugcomclose",true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			updatedebugstatus( false );
+		}
+	}	
+	xhr.send(null); 
+}
+function onSendData(){
+	var xhr  = GetXmlHttpObject();   
+	var data = document.getElementById("senddata").value;
+	var type = $("input[name='datatype']:checked").val();
+ 	xhr.open("LUA","main.lua?debugcomwrite=" + data + "," + type,true);  
+ 	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+ 	xhr.onreadystatechange = function(){
+ 		if(xhr.readyState==4 && xhr.status==200){
+ 			var obj = eval('(' + xhr.responseText + ')');
+ 	 
+ 		}
+ 	}	
+ 	xhr.send(null); 
+}
+function onAutoRecv(){
+	var xhr  = GetXmlHttpObject();   
+	var type = $("input[name='datatype']:checked").val();
+ 	xhr.open("LUA","main.lua?debugcomread="+type,true);  
+ 	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+ 	xhr.onreadystatechange = function(){
+ 		if(xhr.readyState==4 && xhr.status==200){
+ 			var obj = eval('(' + xhr.responseText + ')');
+ 			var recvobj = document.getElementById("recvdata");
+			if( $("input[name='timemark']:checked").val() == "true" ){
+				recvobj.value += "[ ";
+				recvobj.value += getNowFormatDate();
+				recvobj.value += "] ";
+				recvobj.value += obj.recv;
+				recvobj.value += "\n\n";
+			}
+			else{
+				recvobj.value += obj.recv;
+			}
+ 		}
+ 	}
+ 	xhr.send(null);
+}
+function onCleanData(){
+	var recvobj = document.getElementById("recvdata");
+	recvobj.value ="";
+}
+//onload
+window.onload = function(){
+	var objSelectet = document.getElementById("testcomname");
+	for( var v = 0; v < g_comdeflist.length; v++ ){
+		if( g_comparams.indexOf(g_comdeflist[v])==-1){
+			var objOption   = document.createElement("OPTION");
+			objOption.text  = g_comdeflist[v];
+			objOption.value = g_comdeflist[v];
+			objSelectet.options.add(objOption); 
+		}
+	}
+}
+window.onload();
+</script>

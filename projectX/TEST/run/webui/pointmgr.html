@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<title>点表管理</title>
+<link href="css/sermon.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.min.js"></script>
+</head>
+<body>
+<table width="100%" cellspacing="2" cellpadding="2">
+	<tr>
+	<td width="100"><b>信息点表</b></td>
+	<td width="100"><select class="realchn"  id="pointchannel" style="width:180px;" size="1" name="pointchannel" onchange='onChangeChannel();'></select></td>
+	<td width="100"><select class="realchn"  id="pointcontrol" style="width:80px" size="1" name="pointcontrol" onchange='onChangeChannel();'>
+	<option value="yc">遥测</option>
+	<option value="yx">遥信</option>
+	<option value="yk">遥控</option>
+	<option value="yt">遥调</option>
+	</select></td>
+	<td width="54"><input type="button" value="打印" onclick="printpagew('pointdiv');"/></td>
+	<td><input id="addpntbtn" style="display:none;" type="button" value="新增" onclick="showpntedit();"/></td>
+	</tr>
+</table>
+<div id="pointtablediv">
+<table class="tablelv"  width="100%" cellspacing="0" cellpadding="0">
+	<thead>
+	<tr class="header">
+		<td width="60" align="center">序号</td>
+		<td width="60">点号</td>
+		<td width="400">描述</td>
+		<td width="250">操作</td>
+	</tr>
+	</thead>
+	<tbody id="pointlist">
+	</tbody>	
+</table>
+</div>
+
+<div class="enmovediv" style="position: absolute;display: none;background:white;border:0px solid #cad9ea;width:413px;height:164px;left:284px;top:562px" id="pointeditdiv">     
+  <div id="pntdlgTest" class="dialog" style="position: absolute; margin-left: -1px; margin-top: -1px">
+        <div style="color:#fff;background-color:#404040;font-size:12pt;font-weight:bold;padding:4px 6px;cursor:move;">
+			<table border="0" width="100%" cellspacing="0" cellpadding="0" class="sss">
+				<tr>
+					<td width="150"><b><font size="4">点表信息编辑</font></b></td>
+					<td align="right"><button type="button" id="pointdivclose">关闭</button></td>
+				</tr>
+			</table>
+		</div>
+        <div style="padding:4px">
+			<table width="100%">
+				<tr><td align="right" width="60">点号</td><td><input type="text" size="40" id="pointid"></td></tr>
+				<tr><td align="right" valign="top">描述</td><td width="317"><textarea rows="5" id="pointdesc" cols="37" name="S2"></textarea></td></tr>
+				<tr><td></td><td><input type="button" value="提交" name="B1" onclick="insertPoint();"></td></tr>
+			</table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+	
+<!--协议解析窗体相关处理-->
+<script type="text/javascript">
+$(".enmovediv").mousedown(function(e){
+	var left= parseInt($(".enmovediv").css("left"));
+	var top = parseInt($(".enmovediv").css("top"));
+	var downx=e.pageX;
+	var downy=e.pageY;   //pageY的y要大写，必须大写！！
+	if( downy - top > 30 ) return;
+	$(".enmovediv").bind("mousemove",function(es){
+		//es.pageX,es.pageY:获取鼠标移动后的坐标
+		var endx= es.pageX-downx+left;   //计算div的最终位置
+		var endy=es.pageY-downy+top;
+		$(".enmovediv").css("left",endx+"px").css("top",endy+"px")
+	});  
+})
+$(".enmovediv").mouseup(function(){
+	$(".enmovediv").unbind("mousemove")
+})
+document.getElementById("pointdivclose").onclick = function(e){ 
+	document.getElementById("pointeditdiv").style.display = "none";
+}
+function showpntedit(data, desc, text){
+  	var toast = document.getElementById("pointeditdiv");
+    toast.style.display = "block";
+    toast.style.position = "fixed";
+    var winWidth = window.innerWidth;
+    var winHeight = window.innerHeight;
+    var targetWidth = toast.offsetWidth;
+    var targetHeight = toast.offsetHeight;
+    toast.style.top = (winHeight - targetHeight) / 2 + "px";
+    toast.style.left = (winWidth - targetWidth) / 2 + "px";
+    document.getElementById("realS1").value = data ;
+    document.getElementById("realS2").value = desc.replace(/\;/g,";\n") ;
+}
+</script>
+
+<!--协议解析窗体相关处理-->
+<script type="text/javascript">
+function GetXmlHttpObject() {   
+	var xmlHttp=null;   
+	try{xmlHttp=new XMLHttpRequest();}
+	catch(e){ 
+		try{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+		catch(e){xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}     
+	}
+	return xmlHttp; 
+}
+
+//打开网页初始设置
+window.onload = function(){
+	if( g_authority&0x01){
+		document.getElementById('addpntbtn').style.display = 'block';
+	}
+	var objSelectet = document.getElementById("pointchannel");	
+	for( var v = 0; v < g_devchnlist.length; v++ ){
+		var objOption   = document.createElement("OPTION");
+		objOption.text  = g_devchnlist[v].caption;
+		objOption.value = g_devchnlist[v].name;
+		objSelectet.options.add(objOption); 
+	}
+	onChangeChannel();
+	document.getElementById("pointtablediv").style.height = window.innerHeight-185+"px";
+}
+
+//更改select事件
+function onChangeChannel(){
+	var chn  = $("#pointchannel option:selected").val();
+	var ctl  = $("#pointcontrol option:selected").val();
+	var xhr  = GetXmlHttpObject();   
+	var plst = document.getElementById("pointlist");  
+	for( var i = plst.rows.length; i > 0; i--) plst.deleteRow( -1 );
+	xhr.open("LUA","main.lua?getpointlist=" + chn + "," + ctl ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			for( var v = 0; v < rsp.points.length; v++ ){
+				var devitem = plst.insertRow( -1 );
+				var td1 = devitem.insertCell(0);
+				td1.innerHTML = v+1;
+				td1.setAttribute('align','center');
+				devitem.insertCell(1).innerHTML = rsp.points[v].id;
+				devitem.insertCell(2).innerHTML = rsp.points[v].desc;
+				devitem.insertCell(3).innerHTML = ( g_authority&0x01)?"<a href='#' onclick='removePoint(" + rsp.points[v].id + ",this);'>删除</a>":"";
+			}
+		}
+	}	
+	xhr.send(null);
+}
+
+//add point no
+function insertPoint(){
+	document.getElementById("pointeditdiv").style.display = "none";
+	var chn  = $("#pointchannel option:selected").val();
+	var ctl  = $("#pointcontrol option:selected").val();
+	var id   = document.getElementById("pointid").value;
+	var desc = document.getElementById("pointdesc").value;
+	var plst = document.getElementById("pointlist");  
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUA","main.lua?insertpoint=" + chn + "," + ctl + "," + id + ","+desc ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			if( rsp.result == 0 ){
+				var devitem = plst.insertRow( -1 );
+				var td1 = devitem.insertCell(0);
+				td1.innerHTML = plst.rows.length;
+				td1.setAttribute('align','center');
+				devitem.insertCell(1).innerHTML = id;
+				devitem.insertCell(2).innerHTML = desc;			
+				devitem.insertCell(3).innerHTML = "<a href='#' onclick='removePoint(" + id + ",this);'>删除</a>";
+			}else{
+				alert("通道已称已存在");
+			}
+		}
+	}	
+	xhr.send(null); 
+}
+
+//delete point no
+function removePoint( id, obj ){
+	if(!window.confirm('你确定要删除通道' + id + "?" ))
+		return false;
+	var chn  = $("#pointchannel option:selected").val();
+	var ctl  = $("#pointcontrol option:selected").val();
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUA","main.lua?removepoint=" + chn + "," + ctl + "," + id ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			if( rsp.result == 0 ){
+				 var tr = obj.parentNode.parentNode;
+				 tr.parentNode.removeChild(tr);
+			}
+		}
+	}	
+	xhr.send(null); 
+}
+
+function editpoint( id, desc ){
+	var id   = document.getElementById("pointid").value;
+	var desc = document.getElementById("pointdesc").value;
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUA","main.lua?addpointinfo=" + id + ","+desc ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			if( rsp.result == 0 ){
+				showtab('finishdiv');
+			}else{
+				alert("通首创建失败！！");
+			}
+		}
+	}	
+	xhr.send(null); 
+}
+
+function printpagew(myDiv){
+	var printHtml = document.getElementById(myDiv).innerHTML;
+	var wind = window.open("",'newwindow', 'height=300, width=700, top=100, left=100, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no');
+	wind.document.body.innerHTML = printHtml;
+	wind.print();
+	return false;
+}
+
+window.onload();
+</script></p>

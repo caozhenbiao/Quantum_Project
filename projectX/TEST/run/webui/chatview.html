@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>通信状态统计图</title> 
+<meta http-equiv="Content-Language" content="zh-cn">
+ <link href="css/sermon.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet"  type ="text/css" href="./css/zane-calendar.css">
+<script type="text/javascript" src="./js/jquery.min2.js"></script>
+<script type="text/javascript" src="./js/highcharts.js"></script>
+<script src="./js/zane-calendar.js"></script>
+</head>
+<body >
+<table cellspacing="2" cellpadding="2">
+<tr>
+	<td>
+		<label style="padding-right:20px;">监听通道</label>
+		<select class="realchn" id="chatchannels" style="width:180px;" size="1" name="chatchannels" onchange="getChnInfomation();"></select>
+ 		<label style="padding-left:20px;">日期分析</label>
+		<input type="" id="chattime" name="chattime" size="20" >
+		<input type="button" value="查看" id="chat_runbtn" onclick="onHourChatReview();">
+		<input type="button" value="打印" id="chat_pntbtn" onclick="printreport();"></td>
+	</tr>
+</table>
+<table id="chnchatdiv" border="0" width="98%" cellspacing="0" cellpadding="0" >
+	<tr><td align="center" colspan="2"><font size="4"><div id="chtitle" /></font></td></tr>
+	<tr>
+		<td colspan="2">
+		<table border="0" width="100%" cellspacing="4" cellpadding="4">
+			<tr>
+				<td width="120"></td>
+				<td width="120"><b>监听时长</b></td>
+				<td width="120"><b>通信协议</b></td>
+				<td width="140"><b>通道参数</b></td>
+				<td width="140"><b>报文字节数</b></td>
+				<td width="140"><b>报文帧数</b></td>
+				<td width="130"><b>有效报文</b></td>
+				<td width="100"><b>报文准确率</b></td>
+				<td width="*"><b>结论</b></td>
+			</tr>
+			<tr>
+				<td align="center"><b>　上行通道：</b></td>
+				<td><div id="ontms1" /></td>
+				<td><div id="protocal1" /></td>
+				<td><div id="uparg" /></td>
+				<td><div id="upbytes" /></td>
+				<td><div id="upframes" /></td>
+				<td><div id="upvalid" /></td>
+				<td><div id="upvf" /></td>
+				<td><div id="uprpt" /></td>
+			</tr>
+			<tr>
+				<td align="center"><b>　下行通道：</b><div id="upvalid" /></td>
+				<td><div id="ontms2" /></td>
+				<td><div id="protocal2" /></td>
+				<td><div id="dnarg" /></td>
+				<td><div id="dnbytes" /></td>
+				<td><div id="dnframes" /></td>
+				<td><div id="dnvalid" /></td>
+				<td><div id="dnvf" /></td>
+				<td><div id="dnrpt" /></td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+	<tr><td width="19%" align="right"></td><td width="81%"> </td></tr>
+	<tr><td colspan="2"> 
+		<table  class="nodordertbl" width="100%" height="250px">
+			<tr>
+				<td><div id="container" style="margin:0"></div></td>
+			</tr>
+		</table>	
+ 	</td></tr>
+ 	<tr><td colspan="2"><font size="2" color="#808080">*通信参数说明：N=None无校验 E=Even偶校验 O=Odd奇校验	 
+		</font>	</td></tr>
+</table>
+
+</body>
+</html>
+
+<script type="text/javascript">
+var objSelectet = document.getElementById("chatchannels");
+for( var v = 0; v < g_devchnlist.length; v++ ){
+	var objOption   = document.createElement("OPTION");
+	objOption.text  = g_devchnlist[v].caption;
+	objOption.value = g_devchnlist[v].name;
+	objSelectet.options.add(objOption); 
+}
+
+zaneDate({
+	elem:'#chattime',
+	format:'yyyy-MM-dd',
+	leng:'en',
+	//begintime:'2017-09-20 12:10:10',
+	showtime:true
+})
+
+function analysestatus( frms, bytes, valid ){
+	var fb = bytes/frms;
+	var vf = valid/frms;
+	if( fb < 5 )
+		return "<font color='#FF0000'>通道异常</font>";
+	else if (  vf < 0.60 )
+		return "<font color='#888800'>报文异常</font>";
+	return "<font color='#00FF00'>正常</font>";
+}
+
+//httprequest
+function GetXmlHttpObject() {   
+	var xmlHttp=null;   
+	try{xmlHttp=new XMLHttpRequest();}
+	catch(e){ 
+		try{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+		catch(e){xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}     
+	}
+	return xmlHttp; 
+}
+
+function onHourChatReview(){
+	var xhr  = GetXmlHttpObject();   
+	var name = $("#chatchannels option:selected").val();
+	var time = $("#chattime").val();
+	xhr.open("LUA","main.lua?getdetecthourchat=" + name + "," + time,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var objResults = eval('(' + xhr.responseText + ')'); 
+			var chart = new Highcharts.Chart( objResults  );
+		}
+	}	
+	xhr.send(null); 
+}
+
+function onMinChatReview( min ){
+	var xhr  = GetXmlHttpObject();   
+	var name = $("#chatchannels option:selected").val();
+	var time = $("#chattime").val();
+	xhr.open("LUA","main.lua?getdetectminchat=" + name + "," + time + " " + min,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var objResults = eval('(' + xhr.responseText + ')'); 
+			var chart = new Highcharts.Chart( objResults  );
+		}
+	}	
+	xhr.send(null); 
+}
+
+function getChnInfomation(){
+	var name = $("#chatchannels option:selected").val();
+	var caption = $("#chatchannels option:selected").text();
+	var xhr  = GetXmlHttpObject();   
+	xhr.open("LUA","main.lua?getchninfomation=" + name,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var obj = eval('(' + xhr.responseText + ')');
+ 			 document.getElementById("chtitle").innerText = caption + "通道监听统计分析";
+			 document.getElementById("ontms1").innerText = transmintime(obj.ontms);
+			 document.getElementById("protocal1").innerText = transprotocal(obj.protocal);
+			 document.getElementById("upbytes").innerText = transbytes(obj.upbytes);
+			 document.getElementById("upframes").innerText = obj.upframes;
+			 document.getElementById("upvalid").innerText = obj.upvalid;
+			 document.getElementById("upvf").innerText = (obj.upvalid/obj.upframes).toFixed(2);
+			 document.getElementById("uprpt").innerHTML = analysestatus(obj.upframes,obj.upbytes,obj.upvalid);
+			var arg = obj.params.split(";");
+			if( arg.length == 2 ){
+				document.getElementById("ontms2").innerText = transmintime(obj.ontms);
+				document.getElementById("uparg").innerText = arg[0];
+				document.getElementById("dnarg").innerText = arg[1];
+				document.getElementById("protocal2").innerText = transprotocal(obj.protocal);
+			 	document.getElementById("dnbytes").innerText = transbytes(obj.dnbytes);
+			 	document.getElementById("dnframes").innerText = obj.dnframes;
+			 	document.getElementById("dnvalid").innerText = obj.dnvalid;
+			 	document.getElementById("dnvf").innerText = (obj.dnvalid/obj.dnframes).toFixed(2);
+			 	document.getElementById("dnrpt").innerHTML = analysestatus(obj.dnframes,obj.dnbytes,obj.dnvalid);
+			}else{
+				document.getElementById("uparg").innerText = arg[0];
+			}
+		}
+	}	
+	xhr.send(null); 
+}
+
+function printreport(){   
+	var printHtml = document.getElementById("chnchatdiv").innerHTML;
+	var wind = window.open("",'newwindow', 'height=300, width=700, top=100, left=100, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no');
+	wind.document.body.innerHTML = printHtml;
+	wind.print();
+	return false;
+}
+
+window.onload = function(){
+	getChnInfomation();
+    var date = new Date();
+    var seperator1 = "-";
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var currentdate = year + seperator1 + month + seperator1 + strDate;
+    document.getElementById("chattime").value=currentdate;
+    onHourChatReview();
+}
+window.onload();
+</script>

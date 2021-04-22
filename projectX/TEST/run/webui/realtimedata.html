@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>实时数据</title>
+<link href="css/sermon.css" rel="stylesheet" type="text/css" />
+<script src="js/FileSaver.min.js" charset="utf-8"></script>
+<script src="js/jquery.min.js"></script>
+</head>
+<body>
+<table width="100%" cellspacing="2" cellpadding="2">
+	<tr>
+		<td valign="center">
+		<label style="padding-right:20px;">实时数据</label>
+		<label style="padding-right:0px;">通道:</label>
+		<select class="realchn"  id="workchannel_realtime" style="width:180px;" size="1" name="workchannel_realtime"></select>
+ 		<input type="button" value="开始" id="realdatabtn" onclick="onStartRealdata();">
+ 		<input type="button" value="清除" id="clrbtn0" onclick="onClearDataList();"> 
+ 		<input type="button" value="导出" id="exportreal" onclick="onExportData();"> 
+ 		</td>
+	</tr>
+</table>
+<div id="realtablediv" style="overflow-x: auto; overflow-y: auto; width:100%;">
+	<table width="100%" class="csoptlist" id="data-table" cellspacing="0" cellpadding="0">
+		<thead>
+			<tr class="header"><th width="80">序号</th>
+				<th width="120">通道</th>
+				<th width="140">时间</th>
+				<th width="60">方向</th>
+				<th width="*">数据</th>
+				<th width="260">描述</th>
+			</tr>
+		</thead>
+		<tbody id="realdatalist"></tbody>
+	</table>
+</div>
+<div class="enmovediv" style="position: absolute;display: none;background:white;border:1px solid #cad9ea;width:485px;height:473px;left:284px;top:562px" id="realtoast">     
+  <div id="realdlgTest" class="dialog" style="position: absolute; margin-left: -1px; margin-top: -1px">
+        <div style="color:#fff;background-color:#404040;font-size:12pt;font-weight:bold;padding:4px 6px;cursor:move;">
+			<table border="0" width="100%" cellspacing="0" cellpadding="0" class="sss">
+				<tr>
+					<td><b><font size="4">报文解析</font></b></td>
+					<td align="right"><button type="button" id="realdivclose">关闭</button></td>
+				</tr>
+			</table>
+		</div>
+        <div style="padding:4px">
+			<table width="100%">
+				<tr><td><textarea rows="8" id="realS1" cols="72"></textarea></td></tr>
+				<tr><td><textarea rows="11" id="realS2" cols="72" name="S2"></textarea></td></tr>
+			</table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<!--协议解析窗体相关处理-->
+<script type="text/javascript">
+$(".enmovediv").mousedown(function(e){
+	var left= parseInt($(".enmovediv").css("left"));
+	var top = parseInt($(".enmovediv").css("top"));
+	var downx=e.pageX;
+	var downy=e.pageY;   //pageY的y要大写，必须大写！！
+	if( downy - top > 30 ) return;
+	$(".enmovediv").bind("mousemove",function(es){
+		//es.pageX,es.pageY:获取鼠标移动后的坐标
+		var endx= es.pageX-downx+left;   //计算div的最终位置
+		var endy=es.pageY-downy+top;
+		$(".enmovediv").css("left",endx+"px").css("top",endy+"px")
+	});  
+})
+$(".enmovediv").mouseup(function(){
+	$(".enmovediv").unbind("mousemove")
+})
+document.getElementById("realdivclose").onclick = function(e){ 
+	document.getElementById("realtoast").style.display = "none";
+}
+
+function realshowdesc( chn, data ){
+  	var toast = document.getElementById("realtoast");
+    toast.style.display = "block";
+    toast.style.position = "fixed";
+    var winWidth = window.innerWidth;
+    var winHeight = window.innerHeight;
+    var targetWidth = toast.offsetWidth;
+    var targetHeight = toast.offsetHeight;
+    toast.style.top = (winHeight - targetHeight) / 2 + "px";
+    toast.style.left = (winWidth - targetWidth) / 2 + "px";
+    document.getElementById("realS1").value = data ;
+    document.getElementById("realS2").value="";
+	var xhr = GetXmlHttpObject();
+	xhr.open("GET","main.lua?frameExplain=" + chn + "," + data ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			document.getElementById("realS2").value = rsp.pntdesc + ";\n" + rsp.explain.replace(/\;/g,";\n") ;
+		}
+	}	
+	xhr.send(null); 
+}
+</script>
+
+<!--页表脚本处理-->
+<script type="text/javascript">
+function GetXmlHttpObject() {   
+	var xmlHttp=null;   
+	try{xmlHttp=new XMLHttpRequest();}
+	catch(e){ 
+		try{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+		catch(e){xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}     
+	}
+	return xmlHttp; 
+}
+
+//打开网页相关初始设置
+window.onload = function(){
+	var objSelectet = document.getElementById("workchannel_realtime");
+	var optall   = document.createElement("OPTION");
+	optall.text  = "所有通道";
+	optall.value = "*";
+	objSelectet.options.add(optall); 	
+	for( var v = 0; v < g_devchnlist.length; v++ ){
+		var objOption   = document.createElement("OPTION");
+		objOption.text  = g_devchnlist[v].caption;
+		objOption.value = g_devchnlist[v].name;
+		objSelectet.options.add(objOption); 
+	}
+} 
+
+function getcaption( name ){
+	for( var v = 0; v < g_devchnlist.length; v++ ){
+		if( g_devchnlist[v].name == name )
+			return g_devchnlist[v].caption;
+	}
+	return name;
+}
+	
+//实时数据websock返回
+var rowno = 0;
+function realtimeframe( obj ){
+	var name = $("#workchannel_realtime option:selected").val();
+	if( name == "*" || name == obj.chn ){
+		var devlst  = document.getElementById("realdatalist");
+		var devitem = devlst.insertRow( 0 );
+		devitem.setAttribute( "onclick", "realshowdesc('"+ obj.chn + "','" + obj.data + "')"); 
+		var td1 = devitem.insertCell(0);
+		td1.innerHTML = ++rowno;
+		td1.setAttribute('align','center');
+		devitem.insertCell(1).innerHTML = getcaption(obj.chn);
+		devitem.insertCell(2).innerHTML = obj.time;
+		var cel3 = devitem.insertCell(3); 
+		cel3.align="center"; 
+		cel3.innerHTML = obj.dir; 
+		devitem.insertCell(4).innerHTML = obj.data;
+		devitem.insertCell(5).innerHTML = obj.resume;
+	}
+	if(devlst.rows.length>1000){devlst.deleteRow(-1);}
+}
+
+var trantimeout = null;
+function onStartRealdata(){
+	var xhr = GetXmlHttpObject();
+	var chn = $("#workchannel_realtime option:selected").val();
+	xhr.open("LUA","main.lua?printRealData=" + chn ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			if( rsp.result == 0 ){
+				document.getElementById("realdatabtn").value="停止";
+				document.getElementById("realdatabtn").onclick=function(){onStopRealdata();};
+				trantimeout = self.setTimeout("onStartRealdata()",20000);
+				document.getElementById("realtablediv").style.height = window.innerHeight-185+"px";
+			}
+		}
+	}	
+	xhr.send(null); 	
+}
+
+function onStopRealdata(){
+	var xhr = GetXmlHttpObject();
+	xhr.open("LUA","main.lua?printRealData=none" ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			if( rsp.result == 0 ){
+				document.getElementById("realdatabtn").value="开始";
+				document.getElementById("realdatabtn").onclick=function(){onStartRealdata();};
+				self.clearTimeout(trantimeout);
+			}
+		}
+	}	
+	xhr.send(null); 	
+}
+
+//清除列表
+function onClearDataList(){
+	var devlst  = document.getElementById("realdatalist");
+	for( var i = devlst.rows.length; i > 0; i--){
+		devlst.deleteRow( -1 );
+	}
+}
+
+
+//导出当前列表数据至文件
+function onExportData(){
+	var tableInfo="";
+	var name   = $("#workchannel_realtime option:selected").val();
+	var devlst = document.getElementById("realdatalist");
+	for (var i = 0; i < devlst.rows.length; i++) {
+		tableInfo += devlst.rows[i].cells[2].innerText + "	";
+		tableInfo += devlst.rows[i].cells[3].innerText + "	";
+		tableInfo += devlst.rows[i].cells[4].innerText + "\r\n";
+	}
+	var blob = new Blob([tableInfo], {type: "text/plain;charset=utf-8"});
+	saveAs(blob, name + "实时数据.txt");
+}
+
+function toRefresh(){
+	window.onload();
+}
+
+window.onload();
+</script>

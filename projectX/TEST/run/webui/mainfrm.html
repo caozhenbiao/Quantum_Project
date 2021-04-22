@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<meta http-equiv="Expires" content="0"> 
+<title>变电站智能装置串口监听诊断系统 - smartx</title>
+<link rel="icon" href="images/smartx.ico" type="image/x-icon">
+<link rel="shortcut icon" href="images/smartx.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<style type="text/css">
+#footer {height: 40px;line-height: 40px; position: fixed; bottom: 0;width: 100%;text-align: center;color: #000;font-family: Arial;font-size: 12px;}
+</style>
+</head>
+<body>
+<table border="0" width="100%" height="45">
+	<tr>
+		<td width="86" align="center">
+		<img border="0" src="images/en.png" width="69" height="52"></td>
+		<td width="328">
+		<table border="0" width="98%" cellspacing="0">
+			<tr><td><b><font size="4" color="#006699">变电站智能装置串口监听诊断系统</font></b></td></tr>
+			<tr><td><b><span lang="zh-cn"><font>广东电网有限责任公司</font></span></b></td></tr>
+		</table>
+		</td>
+		<td width="*"></td>
+		<td align=right width="467">
+			<table border="0">
+			<tr>
+				<td width="40"><img border="0" src="images/login_logo.png" width="38" height="34"></td>
+				<td width="120">
+				<table border="0" width="100%">
+					<tr><td id="username"></td></tr>
+					<tr><td><span lang="zh-cn">
+						<a href="#" onclick="onlogout();">logout</a></span></td></tr>
+				</table>
+				</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<ul id="myTab" class="nav nav-tabs">
+	<li><label style="padding-right:100px;"></label></li>
+	<li class="active"><a href="#home" data-toggle="tab" url="device.html"><img border="0" src="images/house.png" width="16" height="16"> 系统信息 </a></li>
+	<li class="dropdown">
+		<a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown"><img border="0" src="images/database.png" width="16" height="16"> 设备监听 <b class="caret"></b></a>
+		<ul id="cnn_list" class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+		<li><a href="#realtime" tabindex="1" data-toggle="tab" url="realtimedata.html"><img border="0" src="images/database_go.png" width="16" height="16"> 实时数据 </a><li>
+		<li><a href="#history" tabindex="2" data-toggle="tab"  url="historydata.html"><img border="0" src="images/date_go.png" width="16" height="16"> 历史数据 </a><li>
+		<li><a href="#chatview" tabindex="4" data-toggle="tab"  url="chatview.html"><img border="0" src="images/chat.png" width="16" height="16"> 统计分析 </a><li>
+		<li><a href="#pointview" tabindex="5" data-toggle="tab" url="pointmgr.html"><img border="0" src="images/user.png" width="16" height="16"> 点表配置 </a></li>	
+		</ul>
+	</li>
+	<li id="debugtab"  class="dropdown" style="display:none;">
+		<a href="#" id="myTabDrop2" class="dropdown-toggle" data-toggle="dropdown"><img border="0" src="images/database.png" width="16" height="16"> 检测调试 <b class="caret"></b></a>
+		<ul id="cnn_list" class="dropdown-menu" role="menu" aria-labelledby="myTabDrop2">
+		<li><a href="#debugview" tabindex="3" data-toggle="tab"  url="debugview.html"><img border="0" src="images/next.gif" width="16" height="16"> 串口调试 </a><li>
+		<li><a href="#botechk"   tabindex="3" data-toggle="tab"  url="botechk.html"><img border="0" src="images/cog.png" width="16" height="16">  波特率检测 </a></li>	
+		</ul>
+	</li>
+	<li id="optionview"  style="display:none;"><a href="#options" data-toggle="tab" url="options.html"><img border="0" src="images/cog.png" width="16" height="16">  监听配置 </a></li>
+	<li id="usermgrview" style="display:none;"><a href="#usermgr" data-toggle="tab" url="usermgr.html"><img border="0" src="images/user.png" width="16" height="16"> 用户管理 </a></li>	
+	<li id="devoptview"  style="display:none;"><a href="#devopts" data-toggle="tab" url="devopts.html"><img border="0" src="images/user.png" width="16" height="16"> 系统配置 </a></li>
+	<li id="aboutview" ><a href="#about" data-toggle="tab" url="about.html"><img border="0" src="images/user.png" width="16" height="16"> 关于 </a></li>
+</ul>
+		
+<div id="myTabContent" class="tab-content">
+	<div class="tab-pane fade in active" id="home"></div>
+	<div class="tab-pane fade" id="realtime"></div>
+	<div class="tab-pane fade" id="history"></div>
+	<div class="tab-pane fade" id="chatview"></div>
+	<div class="tab-pane fade" id="pointview"></div>
+	<div class="tab-pane fade" id="debugview"></div>
+	<div class="tab-pane fade" id="botechk"></div>
+	<div class="tab-pane fade" id="options"></div>
+	<div class="tab-pane fade" id="devopts"></div>
+	<div class="tab-pane fade" id="usermgr"></div>
+	<div class="tab-pane fade" id="about"></div>
+</div>
+<div id="footer">software license@广东电网有限责任公司 </div>
+</body>
+</html>
+<script>
+var g_comdeflist = null;
+var g_devchnlist = null;
+var realtimeworking = false;
+var g_currentworkchn = "";
+var g_localhost = "0.0.0.0";
+var g_authority = 0;
+var g_username = "";
+var g_account = "";
+var g_comparams="";
+var g_privatekey="";
+
+//jquery function
+$(function(){
+	var mytabObj = {};
+	var lasttab = "";
+	$('a[data-toggle="tab"],#cnn_list,#opt_list').on('shown.bs.tab', function (e) {
+		var activeTab = $(e.target).text(); 
+		$(".active-tab span").html(activeTab);
+		if( mytabObj[activeTab] ){
+		    $(lasttab).style="display:none;";
+			$(mytabObj[activeTab]).style="display:block;";
+		}else{
+			$(lasttab).style="display:none;"
+			var activeName = $(e.target).attr('href');
+			$(activeName).load( $(e.target).attr('url'));
+			mytabObj[activeTab] = activeName;
+			lasttab = activeName;
+		}
+	});
+});
+
+//GetXmlHttpObject
+function GetXmlHttpObject() {   
+	var xmlHttp=null;   
+	try{xmlHttp=new XMLHttpRequest();}
+	catch(e){ 
+		try{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+		catch(e){xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}     
+	}
+	return xmlHttp; 
+}
+
+function transprotocal( protocal ){
+	if( protocal == "DLTZGXH" )
+		return "智光消弧";
+	else if ( protocal == "JKQ011")
+		return "奥特迅JKQ011";
+	else if ( protocal == "CDT91")
+		return "瓦特CDT91";
+	return protocal;
+}
+
+function transmintime( min ){
+	if( min > 1440 ){
+		var day  = parseInt(min/1440);
+		var hour = parseInt((min%1440)/60);
+		var nmin = min%60;
+		return day +"天" + hour + "时" + nmin +"分";
+	}else if( min > 60 ){
+		var hour = parseInt(min/60);
+		var nmin = min%60;
+		return hour + "时" + nmin +"分";
+	}
+	return min + "分"
+}
+
+function transbytes( bytes ){
+	if( bytes > 1073741824 ){
+		var gb = bytes/1073741824;
+		return gb.toFixed(3) +"GB";
+	}else if( bytes > 1048576 ){
+		var kb = bytes/1048576;
+		return kb.toFixed(3) + "MB";
+	}else if( bytes > 1024 ){
+		var kb = bytes/1024;
+		return kb.toFixed(3) + "KB";
+	}
+	return bytes + "B"
+}
+
+function setCookie(c_name,value,expiredays){
+	var exdate=new Date()
+	exdate.setDate(exdate.getDate()+expiredays)
+	document.cookie=c_name+ "=" +escape(value)+
+	((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+}
+
+function getCookie(c_name){
+	if (document.cookie.length>0){
+		var c_start=document.cookie.indexOf(c_name + "=");
+		if (c_start!=-1){ 
+			c_start=c_start + c_name.length+1 
+			c_end=document.cookie.indexOf(";",c_start)
+			if (c_end==-1) c_end=document.cookie.length
+			return unescape(document.cookie.substring(c_start,c_end))
+		} 
+	}
+	return ""
+}
+
+//onload
+window.onload = function(){
+	g_authority = parseInt(getCookie("authority"));
+	g_username  = getCookie("username");
+	g_account  = getCookie("account");
+	document.getElementById("username").innerText = g_username;
+	if( g_authority & 0x01 ) document.getElementById("optionview").style.display = "block";
+	if( g_authority & 0x02 ) document.getElementById("debugtab").style.display = "block";
+	if( g_authority & 0x01 ) document.getElementById("usermgrview").style.display = "block";
+	if( g_authority & 0x08 ) document.getElementById("devoptview").style.display = "block";
+	$('#home').load('device.html'); 
+	lasttab = "#home";
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUA","main.lua?onload" ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			g_comdeflist = rsp.comdefs;
+			g_devchnlist = rsp.modules;
+			g_localhost  = rsp.svrip;
+			wsstart( rsp.svrip ); 
+		}
+	}	
+	xhr.send(null); 
+}
+
+//onbeforeunload 
+window.onbeforeunload = function(){
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUA","main.lua?unload" ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){}	
+	xhr.send(null); 
+	websocket.close();
+}
+
+function writeToScreen( msg ){
+	//alert("error:" + msg);
+}
+
+//logout
+function onlogout(){
+	setCookie("account", "", 0);
+	setCookie("username", "", 0);
+	setCookie("authority", "", 0);
+ 	if( getCookie("neviage")== "1" ){
+ 		window.location.href= "client_index.html";
+ 	}else{
+ 		window.location.href="index.html";
+ 	}
+}
+
+//start websocket
+var websocket;
+function wsstart( svrip ){
+    websocket = new WebSocket("ws://" + svrip + ":2980"); 
+    websocket.onopen  = function (evt) { writeToScreen(evt.message); };  
+    websocket.onclose = function (evt) { writeToScreen(evt.message); };  
+    websocket.onerror = function (evt) { writeToScreen(evt.message); };          
+    websocket.onmessage = function (evt) { 
+	   var obj = eval('(' + evt.data + ')');
+	   if( obj.type == 1 ){
+	   		if($("#realtime").is(":visible")) realtimeframe(obj);
+ 	   }else if(obj.type ==2 ){
+ 	   		if($("#history").is(":visible")) historydataframe(obj);
+ 	   }
+    };
+}
+//start work
+function startwork() {  
+    if (websocket.readyState == websocket.OPEN) {
+    	websocket.send( "{\"action\":\"start\",\"target\":\"" + value +"\"}");  
+    } 
+    return false;   
+}
+
+window.onbeforeunload = function(event) {
+    console.log("关闭WebSocket连接！");
+    websocket.close();
+}
+window.onload();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

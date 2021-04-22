@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<title>通信配置信息</title>
+<link href="css/sermon.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.min.js"></script>
+<script src="js/md5.js"></script>
+</head>
+<body>
+<table width="100%" cellspacing="3" cellpadding="3">
+	<tr>
+		<td width="119">通道配置信息</td>
+		<td width="*">
+		<div id='chnoptdiv' style="display:none;">
+		<table border="0"" width="240">
+			<tr>
+				<td width="120"><a id = "cnnlist1" href='#' onclick="showtab('chnlistdiv');">通道列表</a></td>
+				<td><a id = "cnnlist2" href='#' onclick="showtab('definediv');">通道创建</a></td>
+			</tr>
+		</table>
+		</div>
+		</td>
+	</tr>
+</table>
+<div id="chnlistdiv" name="chnlistdiv" style="display:block;">
+<table class="tablelv"  width="100%" cellspacing="0" cellpadding="0">
+	<thead>
+	<tr class="header">
+		<td width="60" align="center">序号</td>
+		<td width="120">设备名称</td>
+		<td width="200">监听通道参数</td>
+		<td width="130">通信规约</td>
+		<td width="200">存储路径</td>
+		<td width="80" align="center">状态</td>
+		<td width="*">操作</td>
+	</tr>
+	</thead>
+	<tbody id="optiondevlist">
+	</tbody>	
+</table>
+<p align="left"><font size="2" color="#808080">*通信参数说明：N=None无校验 E=Even偶校验 O=Odd奇校验 
+</font> 
+</div>
+
+<div id="definediv" name="definediv" style="display:none;">
+<table border="0" cellspacing="3" cellpadding="3" width=800">
+	<tr>
+		<td width="80" align="right"></td>
+		<td width="400"><b>通道定义</b></td>
+		<td width="*"></td>
+	</tr>
+	<tr>
+		<td align="right">名称 </td>
+		<td><input type="text" id="chncaption"  size="32"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="right">规约</td>
+		<td>
+		<select  id="cmbprotocal" name="cmbprotocal" style="width:220px;"  size="1">
+                        <option value="DLTZGXH">智光消弧</option>
+                        <option value="JKQ011">奥特迅JKQ011</option>
+                        <option value="CDT91">瓦特CDT91</option>
+                    </select></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="right">类型</td>
+		<td><select id="chnstyle" style="width:220px;" >
+                        <option value="0" selected>单串口</option>
+                        <option value="1">双串口</option>
+                    </select></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="right" valign="top">说明</td>
+		<td><textarea rows="5" id="context" cols="29" name="context"></textarea></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input type='button' name='definebtn' value='下一步' onclick="defineCHN();"/></td>
+		<td></td>
+	</tr>
+</table>
+</div>
+
+<div id="optiondiv" name="optiondiv" style="display:none;">
+<table border="0" width="598" cellspacing="3" cellpadding="3">
+	<tr>
+		<td width="80" align="right"></td>
+		<td width="157"><b>参数配置</b></td>
+		<td width="*"></td>
+	</tr>
+	
+	<tr>
+		<td align="right">通道名称</td>
+		<td><select id="chnname" style="width:100px;"></select></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="right">波特率</td>
+		<td><select id="baudrate" size="1" style="width:100px;">
+				<option value="600">600</option>
+				<option value="1200">1200</option>
+				<option value="4800">4800</option>
+				<option value="9600" selected>9600</option>
+				<option value="19200">19200</option>
+				<option value="57600">57600</option>
+				<option value="115200">115200</option>
+	        </select></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="right">数据位</td>
+		<td><select id="databit" size="1" style="width:100px;">
+                        <option disabled="" selected="" value="8">8</option>
+                        <option value="7">7</option>
+                        <option value="6">6</option>
+                    </select></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="right">校验位</td>
+		<td><select id="checkbit" size="1" style="width:100px;">
+                        <option disabled="" selected="" value="N">无校验</option>
+                        <option value="E">偶校验</option>
+                        <option value="O">奇校验</option>
+                    </select></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="right">停止位</td>
+		<td><select id="stopbit" size="1" style="width:100px;">
+                        <option disabled="" selected="" value="1">1</option>
+                        <option value="2">2</option>
+                    </select></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="justify"></td>
+		<td><input type='button' name='prevbtn' value='上一步' onclick="showtab('definediv');"/><input type='button' name='optionbtn' value='提交' onclick="optionCHN();" /></td>
+		<td></td>
+	</tr>
+</table>
+</div>
+
+
+<div id="optiondiv2" name="optiondiv2" style="display:none;">
+<table border="0" width="598" cellspacing="3" cellpadding="3">
+	<tr>
+		<td width="80" align="right"></td>
+		<td width="157"><b>参数配置</b></td>
+		<td width="*"></td>
+	</tr>
+	
+	<tr>
+		<td align="right"></td>
+		<td>上行通道</td>
+		<td>下行通道</td>
+	</tr>
+	<tr>
+		<td align="right">通道名称</td>
+		<td><select id="chnname1" style="width:100px;"></select></td>
+		<td><select id="chnname2" style="width:100px;"></select></td>
+	</tr>
+	<tr>
+		<td align="right">波特率</td>
+		<td><select id="baudrate1" size="1" style="width:100px;">
+				<option value="600">600</option>
+				<option value="1200">1200</option>
+				<option value="4800">4800</option>
+				<option value="9600" selected>9600</option>
+				<option value="19200">19200</option>
+				<option value="57600">57600</option>
+				<option value="115200">115200</option>
+         	</select></td>
+		<td><select id="baudrate2" size="1" style="width:100px;">
+				<option value="600">600</option>
+				<option value="1200">1200</option>
+				<option value="4800">4800</option>
+				<option value="9600" selected>9600</option>
+				<option value="19200">19200</option>
+				<option value="57600">57600</option>
+				<option value="115200">115200</option>
+          </select></td>
+	</tr>
+	<tr>
+		<td align="right">数据位</td>
+		<td><select id="databit1" size="1" style="width:100px;">
+                        <option disabled="" selected="" value="8">8</option>
+                        <option value="7">7</option>
+                        <option value="6">6</option>
+                    </select></td>
+		<td><select id="databit2" size="1" style="width:100px;">
+                        <option disabled="" selected="" value="8">8</option>
+                        <option value="7">7</option>
+                        <option value="6">6</option>
+                    </select></td>
+	</tr>
+	<tr>
+		<td align="right">校验位</td>
+		<td><select id="checkbit1" size="1" style="width:100px;">
+                        <option disabled="" selected="" value="N">无校验</option>
+                        <option value="E">偶校验</option>
+                        <option value="O">奇校验</option>
+                    </select></td>
+		<td><select id="checkbit2" size="1" style="width:100px;">
+                        <option disabled="" selected="" value="N">无校验</option>
+                        <option value="E">偶校验</option>
+                        <option value="O">奇校验</option>
+                    </select></td>
+	</tr>
+	<tr>
+		<td align="right">停止位</td>
+		<td><select id="stopbit1" size="1" style="width:100px;">
+                        <option disabled="" selected="" value="1">1</option>
+                        <option value="2">2</option>
+                    </select></td>
+		<td><select id="stopbit2" size="1" style="width:100px;">
+                        <option disabled="" selected="" value="1">1</option>
+                        <option value="2">2</option>
+                    </select></td>
+	</tr>
+	<tr>
+		<td align="justify"></td>
+		<td colspan="2">
+		<input type='button' name='prevbtn' value='上一步' onclick="showtab('definediv');"/><input type='button' name='optionbtn' value='提交' onclick="optionCHN2();" /></td>
+	</tr>
+</table>
+</div>
+<div id="finishdiv" name="finishdiv" style="display:none;" >
+通道创建成功!
+</div>
+</body>
+</html>
+
+<script>
+//GetXmlHttpObject
+function GetXmlHttpObject() {   
+	var xmlHttp=null;   
+	try{xmlHttp=new XMLHttpRequest();}
+	catch(e){ 
+		try{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+		catch(e){xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}     
+	}
+	return xmlHttp; 
+}
+
+function insert2optionlist( name,caption,params,protocal,storage,recvcnt,sendcnt,lasttick,status){
+	var devlst = document.getElementById("optiondevlist"); 
+	var devitem = devlst.insertRow( -1 );
+	var td1 = devitem.insertCell(0);
+	td1.innerHTML = devlst.rows.length;
+	td1.setAttribute('align','center');
+	devitem.insertCell(1).innerHTML = caption;
+	var stroutparams= params;
+	var arg = params.split(";");
+	if( arg.length == 2 ){
+		stroutparams = "上行:" + arg[0] +"<br>";
+		stroutparams += "下行:" + arg[1];	
+	}
+	devitem.insertCell(2).innerHTML = stroutparams ;
+	devitem.insertCell(3).innerHTML = transprotocal(protocal);
+	devitem.insertCell(4).innerHTML = storage;
+	var cel5 = devitem.insertCell(5); cel5.align="center"; cel5.innerHTML = transtatus(status);
+	if(  g_authority&0x02 )
+		devitem.insertCell(6).innerHTML = "<a href='#' onclick='deleteCHN(\""+name+"\",\""+caption +"\",this);'>删除</a>";
+	else
+		devitem.insertCell(6).innerHTML = "";	
+}
+
+window.onload = function(){
+	if( g_authority&0x02 ){
+		document.getElementById('chnoptdiv').style.display = 'block';
+	}
+	var objSelectet0 = document.getElementById("chnname");
+	var objSelectet1 = document.getElementById("chnname1");
+	var objSelectet2 = document.getElementById("chnname2");
+	for( var v = 0; v < g_comdeflist.length; v++ ){
+		if( g_comparams.indexOf(g_comdeflist[v])==-1){
+			var objOption   = document.createElement("OPTION");
+			objOption.text  = g_comdeflist[v];
+			objOption.value = g_comdeflist[v];
+			objSelectet0.options.add(objOption); 
+			var objOption1   = document.createElement("OPTION");
+			objOption1.text  = g_comdeflist[v];
+			objOption1.value = g_comdeflist[v];
+			objSelectet1.options.add(objOption1); 
+			var objOption2   = document.createElement("OPTION");
+			objOption2.text  = g_comdeflist[v];
+			objOption2.value = g_comdeflist[v];
+			objSelectet2.options.add(objOption2); 
+		}
+	}
+	refreshchnstatus();
+}
+
+var lastdiv="chnlistdiv";
+function showtab( divname ){
+	if( divname == lastdiv )
+		return;
+ 	document.getElementById(lastdiv).style.display="none";
+  	document.getElementById(divname).style.display="block";
+	lastdiv = divname;
+}
+
+function defineCHN(){
+	var chnname = document.getElementById("chncaption").value;
+	var chntype = $("#chnstyle option:selected").val();
+	if( chnname.length == 0 ){
+		alert("通道名称定义不能为空，请输入！");
+		return;
+	}
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUA","main.lua?checkCHNname=" + chnname ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			if( rsp.result == 0 ){
+				if( chntype == 0  ) 
+					showtab('optiondiv');
+				else 
+					showtab('optiondiv2');
+			}else{
+				alert("通道已称已存在");
+			}
+		}
+	}
+	xhr.send(null); 
+}
+
+function deleteCHN( name,caption,obj ){
+	if(!window.confirm('你确定要删除通道' + caption + "?" ))
+		return false;
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUA","main.lua?removeCHN=" + name ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			if( rsp.result == 0 ){
+				 var tr = obj.parentNode.parentNode;
+				 tr.parentNode.removeChild(tr);
+				 g_devchnlist.remove( name );
+				 //g_comparams.replace();
+			}
+		}
+	}	
+	xhr.send(null); 
+}
+
+function optionCHN(){
+	var capt  = $("#chncaption").val();
+	var proto = $("#cmbprotocal option:selected").val();
+	var style = $("#chnstyle option:selected").val();
+ 	var context = $("#context").val();
+	var n = $("#chnname option:selected").val();
+	var b = $("#baudrate option:selected").text();
+	var d = $("#databit option:selected").text();
+	var e = $("#checkbit option:selected").val();
+	var s = $("#stopbit option:selected").text();
+	var name = hex_md5(capt + Date.now());
+	var params = n +'|' + b + '|' + d + e + s;
+	var xhr = GetXmlHttpObject();
+	xhr.open("LUA","main.lua?createCHN="+name+','+capt+','+proto+','+style+','+params+","+context,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			if( rsp.result == 0 ){
+				var args = n +',' + b + ',' + d + e + s;
+				insert2optionlist(name,capt,args,proto,rsp.storage,0,0,"-",0);
+				//g_devchnlist.push(name);
+				g_comparams += n;
+				alert("通道创建成功！");
+			}else{
+				alert("通首创建失败！！");
+			}
+		}
+	}	
+	xhr.send(null); 
+}
+
+function optionCHN2(){
+	var capt  = $("#chncaption").val();
+	var proto = $("#cmbprotocal option:selected").val();
+	var style = $("#chnstyle option:selected").val();
+ 	var context = $("#context").val();
+	var n1 = $("#chnname1 option:selected").text();
+	var b1 = $("#baudrate1 option:selected").text();
+	var d1 = $("#databit1 option:selected").text();
+	var e1 = $("#checkbit1 option:selected").val();
+	var s1 = $("#stopbit1 option:selected").text();
+	var n2 = $("#chnname2 option:selected").text();
+	var b2 = $("#baudrate2 option:selected").text();
+	var d2 = $("#databit2 option:selected").text();
+	var e2 = $("#checkbit2 option:selected").val();
+	var s2 = $("#stopbit2 option:selected").text();
+	var name = hex_md5(capt + Date.now());
+	var params = n1 +'|' + b1 + '|' + d1 + e1 + s1 + ";" + n2 +'|' + b2 + '|' + d2 + e2 + s2;
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUA","main.lua?createCHN="+name+','+capt+','+proto+','+style+','+params +","+context,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			if( rsp.result == 0 ){
+				var args = n1 +',' + b1 + ',' + d1 + e1 + s1 + ";" + n2 +',' + b2 + ',' + d2 + e2 + s2;
+				insert2optionlist( name,capt,args,proto,rsp.storage,0,0,"-",0);
+				g_devchnlist.push(name);
+				alert("通道创建成功！");
+			}else{
+				alert("通首创建失败！！");
+			}
+		}
+	}	
+	xhr.send(null); 
+}
+
+function printpage(myDiv){   
+	var printHtml = document.getElementById(myDiv).innerHTML;
+	var wind = window.open("",'newwindow', 'height=300, width=700, top=100, left=100, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no');
+	wind.document.body.innerHTML = printHtml;
+	wind.print();
+	return false;
+}
+
+//解析通道参数
+function commArgumentPaser( args, type ){
+	var argv = string.split(args,";");
+}
+
+//更新通道显示
+function refreshchnstatus(){
+	if($("#optiondevlist").is(":hidden"))
+		return;
+	var xhr = GetXmlHttpObject();   
+	var devlst = document.getElementById("optiondevlist");  
+	xhr.open("LUA","main.lua?getchnlist" ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			for( var i = devlst.rows.length; i > 0; i--){
+				devlst.deleteRow( -1 );
+			}
+			for( var v = 0; v < rsp.channels.length; v++ ){
+				insert2optionlist( rsp.channels[v].name,rsp.channels[v].caption,rsp.channels[v].params,rsp.channels[v].protocal,rsp.channels[v].storage,
+								   rsp.channels[v].recvcnt,rsp.channels[v].sendcnt,rsp.channels[v].lasttick,rsp.channels[v].status);
+			}
+		}
+	}	
+	xhr.send(null);
+}
+
+window.onload();
+</script>

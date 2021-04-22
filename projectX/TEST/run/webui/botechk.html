@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<title>波特率检测</title> 
+<link href="css/sermon.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.min.js"></script>
+</head>
+<body>
+<table border="0" width="100%">
+	<tr>
+		<td width="308" valign="top">
+		<table border="0" width="92%" cellspacing="5" cellpadding="5">
+			<tr>
+				<td width="86"></td>
+				<td width="206" colspan="2"><b>波特率检测</b></td>
+			</tr>	
+			<tr>
+				<td width="86" align="right">串口</td>
+				<td width="93"><select id="botertestname" style="width:130px;" name="D1"></select></td>
+				<td width="61"></td>
+			</tr>
+			<tr>
+				<td width="86" align="right">规约</td>
+				<td width="93"><select id="ctprotocal" name="ctprotocal" style="width:130px;"  size="1">
+		                        <option value="DLTZGXH">智光消弧</option>
+		                        <option value="JKQ011">奥特迅JKQ011</option>
+		                        <option value="CDT91">瓦特CDT91</option>
+		                    </select></td>
+				<td width="61"></td>
+			</tr>
+			<tr>
+				<td width="86"></td>
+				<td width="93"><input type='button' id='boarttestbtn' value='开始测试' onclick="onStartBoardtest();"/></td>
+				<td width="61"></td>
+			</tr>
+		</table>
+		<br>
+		<table>
+			<thead>
+				<tr><th width="60" align="right">序号</th>
+					<th width="100" align="center">波特率</th>
+					<th width="80" align="center">有效回应</th>
+				</tr>
+			</thead>
+			<tbody id="testretdiv"></tbody>
+		</table>
+		</td>
+		<td valign="top">
+			<table class="tablelv"   width="100%" cellspacing="0" cellpadding="0">
+				<thead>
+				<tr class="header">
+					<td width="60" align="center">序号</td>
+					<td width="86">波特率</td>
+					<td width="*">接收数据</td>
+					<td width="94">状态</td>
+				</tr>
+				</thead>
+				<tbody id="boardlist">
+				</tbody>	
+			</table>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
+
+<script>
+var objSelectet = document.getElementById("botertestname");
+for( var v = 0; v < g_comdeflist.length; v++ ){
+	if( g_comparams.indexOf(g_comdeflist[v])==-1){
+		var objOption   = document.createElement("OPTION");
+		objOption.text  = g_comdeflist[v];
+		objOption.value = g_comdeflist[v];
+		objSelectet.options.add(objOption); 
+	}
+}
+
+window.onload = function(){
+	loadchnstatus();
+	self.setInterval("loadchnstatus()",2000);
+} 
+
+//GetXmlHttpObject
+function GetXmlHttpObject() {   
+	var xmlHttp=null;   
+	try{xmlHttp=new XMLHttpRequest();}
+	catch(e){ 
+		try{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+		catch(e){xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}     
+	}
+	return xmlHttp; 
+}
+
+var v = 0;
+function boardtestframe( obj ){
+	var devlst  = document.getElementById("boardlist");
+	var devitem = devlst.insertRow( 0 );
+	var td1 = devitem.insertCell(0);
+	td1.innerHTML = v++;
+	td1.setAttribute('align','center');
+	devitem.insertCell(1).innerHTML = obj.boart;
+	devitem.insertCell(2).innerHTML = obj.data;
+	devitem.insertCell(3).innerHTML = obj.vaild;
+}			
+
+var m_testboard;
+var m_testindex = 0;
+var m_runindex  = 0;
+var m_timerid = 0;
+function onStartBoardtest(){
+	m_testindex = 0;
+	m_runindex = 0;
+	m_testboard = eval("({'comm':[{'borate':600,'valid':0},{'borate':1200,'valid':0},{'borate':4800,'valid':0},{'borate':9600,'valid':0},{'borate':19200,'valid':0},{'borate':57600,'valid':0},{'borate':115200,'valid':0}]})");
+	m_timerid = self.setInterval("runboardtest()",500);
+ 	var devlst  = document.getElementById("boardlist");
+ 	var tstlst  = document.getElementById("testretdiv")
+	for( var i = devlst.rows.length; i > 0; i--)
+		devlst.deleteRow( -1 );
+	for( var i = tstlst.rows.length; i > 0; i--)
+		tstlst.deleteRow( -1 );	
+	document.getElementById("boarttestbtn").value="停止测试";
+	document.getElementById("boarttestbtn").onclick=function(){onStopBoardtest();};
+}
+
+function onStopBoardtest(){
+	document.getElementById("boarttestbtn").value="开始测试";
+	document.getElementById("boarttestbtn").onclick=function(){onStartBoardtest();};
+	self.clearInterval( m_timerid );
+}
+
+//board test
+function runboardtest(){
+	var addr = $("#ctaddress").val();
+	var name = $("#botertestname option:selected").val();
+	var prot = $("#ctprotocal option:selected").val();
+ 	var borate = m_testboard.comm[m_testindex ].borate;
+ 	var devlst  = document.getElementById("boardlist");
+ 	var tstlst  = document.getElementById("testretdiv");
+	var xhr = GetXmlHttpObject();  
+	xhr.open("LUA","main.lua?doboardtest="+name+"|"+borate+"|8N1," + prot,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var obj = eval('(' + xhr.responseText + ')');
+			var devitem = devlst.insertRow( 0 );
+			var td1 = devitem.insertCell(0);
+			td1.innerHTML = devlst.rows.length;
+			td1.setAttribute('align','center');
+			devitem.insertCell(1).innerHTML = borate;
+			devitem.insertCell(2).innerHTML = "->" + obj.send + "<br><-" + obj.recv;
+			devitem.insertCell(3).innerHTML = obj.result;
+			if( obj.result ==0 ){
+				m_testboard.comm[m_testindex ].valid++;
+			}
+			if( (++m_runindex)%10 == 0 ){
+				var tstitem = tstlst.insertRow( -1 );
+				var td1 = tstitem.insertCell(0);
+				td1.innerHTML = tstlst.rows.length;
+				td1.setAttribute('align','center');
+				tstitem.insertCell(1).innerHTML = borate;
+				tstitem.insertCell(2).innerHTML = m_testboard.comm[m_testindex].valid;
+				if( ++m_testindex == m_testboard.comm.length ){
+					onStopBoardtest();
+					return;
+				}
+			}
+		}
+	}	
+	xhr.send(null); 
+}
+
+window.onload();
+</script>

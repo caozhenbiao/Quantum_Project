@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>设备信息状态</title>
+<link href="css/sermon.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.min.js"></script>
+</head>
+<body topmargin="8" leftmargin="8" rightmargin="8" bottommargin="8">
+ <table border="0" width="78%" cellpadding="2">
+	<tr>
+		<td colspan="4">
+		<p align="left"><font color="#3366CC"><b>监听装置信息</b></font></td>
+	</tr>
+	<tr>
+		<td width="13%" align="right">操作系统：</td>
+		<td width="27%"><div id="osdesc" /></td>
+		<td width="12%" align="right">CPU频率：</td>
+		<td width="46%"><div id="cpufreq" /></td>
+	</tr>
+	<tr>
+		<td width="13%" align="right">CPUID：</td>
+		<td width="27%"><div id="cpumid" /></td>
+		<td width="12%" align="right">CPU类型：</td>
+		<td width="46%"><div id="cputype" /></td>
+	</tr>
+	<tr>
+		<td width="13%" align="right">装置IP：</td>
+		<td width="27%"><div id="hostIP" /></td>
+		<td width="12%" align="right">装置启动时间：</td>
+		<td width="46%"><div id="onstime" /></td>
+	</tr>
+	<tr>
+		<td width="13%" align="right">总存储空间：</td>
+		<td width="27%"><div id="dsktotal" /></td>
+		<td width="12%" align="right">剩余存储空间：</td>
+		<td width="46%"><div id="dskval" /></td>
+	</tr>
+	<tr>
+		<td width="13%" align="right">已使用内存：</td>
+		<td width="27%"><div id="memtotal" /></td>
+		<td width="12%" align="right">剩余内存：</td>
+		<td width="46%"><div id="memval" /></td>
+	</tr>
+</table>
+<br>
+<div id="chnlist">
+<table border="0" width="78%">
+	<tr>
+		<td width="389"><font color="#3366CC"><b>通道信息</b></font></td>
+		<td></td>
+	</tr>
+</table>
+<table cellspacing="0" cellpadding="0">
+	<thead>
+	<tr style="font-weight: bold;">
+		<td width="100" align="center">序号</td>
+		<td width="150" >通道名称</td>
+		<td width="120" >通信规约</td>
+		<td width="150" align="center">接收字节数</td>
+		<td width="150" align="center">发送字节数</td>
+		<td width="170" align="center">最后通信时间</td>
+		<td width="80" align="center">状态</td>
+	</tr>
+	</thead>
+	<tbody id="devlist">
+	</tbody>	
+</table>
+</div>
+</body>
+</html>
+
+<script>
+//httprequest
+function GetXmlHttpObject() {   
+	var xmlHttp=null;   
+	try{xmlHttp=new XMLHttpRequest();}
+	catch(e){ 
+		try{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+		catch(e){xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}     
+	}
+	return xmlHttp; 
+}
+ 
+var loadonce=true;
+var mytimeout = null;
+var devtime = 0;
+window.onload = function(){
+	if( !loadonce )
+		return;
+	loadonce = false;
+	window.clearInterval(mytimeout);
+	mytimeout = window.setInterval("loadchnstatus()",3000);
+	document.getElementById("hostIP").innerText =  g_localhost;
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUA","main.lua?macinfo" ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var obj = eval('(' + xhr.responseText + ')');
+			document.getElementById("osdesc").innerText = obj.osname + " - " + obj.osversion;
+			document.getElementById("cpufreq").innerText = obj.cpufreq / 1000 + "GHZ";
+			document.getElementById("cpumid").innerText = obj.cpumid;
+			document.getElementById("cputype").innerText =  obj.cputype;
+			document.getElementById("memtotal").innerText =  (obj.memtotal/1024).toFixed(2)+ "GB";
+			document.getElementById("memval").innerText =  (obj.memval/1024).toFixed(2)+ "GB";
+			document.getElementById("dsktotal").innerText = (obj.dsktotal/1024).toFixed(2)+ "GB";
+			document.getElementById("dskval").innerText =  (obj.dskval/1024).toFixed(2)+ "GB";	
+			document.getElementById("onstime").innerText =  obj.ontime;	
+			g_privatekey = obj.prikey;
+		}
+	}	
+	xhr.send(null); 
+	loadchnstatus();
+}
+
+var CHNNORMAL = 0;
+var CHNDISCONNECT = 1;
+var CHNOVERLATE = 2;
+function transtatus( status ){
+	if( status == CHNOVERLATE )
+		return "<font color='#FF0000'>超时</font>";
+	else if ( status == CHNDISCONNECT )
+		return "<font color='#000000'>断开</font>";
+	return "<font color='#00FF00'>正常</font>";
+}
+
+function loadchnstatus(){
+	if($("#devlist").is(":hidden") || Date.now()-devtime<2000 )
+		return;
+	devtime = Date.now();
+	var xhr = GetXmlHttpObject();   
+	var devlst = document.getElementById("devlist");  
+	xhr.open("LUA","main.lua?getchnlist" ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			g_comparams = "";
+			for( var i = devlst.rows.length; i > 0; i--){
+				devlst.deleteRow( -1 );
+			}
+			var rsp = eval('(' + xhr.responseText + ')');
+			for( var v = 0; v < rsp.channels.length; v++ ){
+				var devitem = devlst.insertRow( -1 );
+				var td1 = devitem.insertCell(0);
+				td1.innerHTML = v+1;
+				td1.setAttribute('align','center');
+				devitem.insertCell(1).innerHTML = rsp.channels[v].caption;
+				devitem.insertCell(2).innerHTML = transprotocal(rsp.channels[v].protocal);
+				var cel5 = devitem.insertCell(3);
+				cel5.align="center"; 
+				cel5.innerHTML = transbytes(rsp.channels[v].recvcnt);
+				var cel6 = devitem.insertCell(4);
+				cel6.align="center"; 
+				cel6.innerHTML = transbytes(rsp.channels[v].sendcnt);
+				var cel7 = devitem.insertCell(5);
+				cel7.align="center";
+				cel7.innerHTML = rsp.channels[v].lasttick;
+				var cel8 = devitem.insertCell(6);
+				cel8.align="center"; 
+				cel8.innerHTML = transtatus(rsp.channels[v].status);
+				g_comparams += rsp.channels[v].params;
+			}
+		}
+	}	
+	xhr.send(null);
+}
+window.onload();
+</script>
