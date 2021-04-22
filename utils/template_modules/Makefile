@@ -1,0 +1,22 @@
+CC = gcc
+XX = g++
+TARGET = ./bin/system.so
+CFLAGS =  -Wall -O -g  -I../../platform/smartx/libs/lua/src -fPIC
+LIBS = -lpthread -lrt -ldl  ../../platform/smartx/libs/libLua.a 
+SHARED := --shared  
+
+%.o: %.c                                 
+	$(CC) $(CFLAGS) -c $< -o $@          
+
+%.o:%.cpp
+	$(XX) $(CFLAGS) -c $< -o $@
+
+SOURCES = $(wildcard *.c *.cpp)
+OBJS = $(patsubst %.c,%.o,$(patsubst %.cpp,%.o,$(SOURCES)))  
+
+$(TARGET) : $(OBJS)
+	$(XX) $(SHARED) $(OBJS) -o $(TARGET) $(LIBS)
+	chmod a+x $(TARGET)
+clean:
+	rm -rf $(OBJS) $(TARGET)
+
