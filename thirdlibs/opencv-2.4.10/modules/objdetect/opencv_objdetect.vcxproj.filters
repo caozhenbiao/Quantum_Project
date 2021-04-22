@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\cascadedetect.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\datamatrix.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\distancetransform.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\featurepyramid.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\fft.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\haar.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\hog.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\latentsvm.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\latentsvmdetector.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\linemod.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\lsvmparser.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\lsvmtbbversion.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\matching.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\objdetect_init.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\resizeimg.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\routine.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\opencv_objdetect_pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\include\opencv2\objdetect\objdetect.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\_latentsvm.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\_lsvm_distancetransform.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\_lsvm_error.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\_lsvm_fft.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\_lsvm_matching.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\_lsvm_resizeimg.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\_lsvm_routine.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\_lsvm_tbbversion.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\_lsvm_types.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\_lsvmparser.h">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\cascadedetect.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\src\precomp.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\cvconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\opencv2\opencv_modules.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{E6428E4B-3832-39C3-A390-FDABC1B5AC00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{A280D851-AF3D-383F-8C95-26A3EC1C1ED0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{26CE975A-5610-31AA-9A8D-5F5FF54B625A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{697B5E73-F8D9-3BB0-A0DB-5B0B33B621EE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

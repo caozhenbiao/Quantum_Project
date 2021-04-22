@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A730D35F-322B-35A0-8AB6-D3333EB9FD4C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>opencv_imgproc</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">opencv_imgproc.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">opencv_imgproc2410d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">opencv_imgproc.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">opencv_imgproc2410</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\perf;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <ForcedIncludeFiles>C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/imgproc/src/precomp.hpp</ForcedIncludeFiles>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/imgproc/src/precomp.hpp</PrecompiledHeaderFile>
+      <ProcessorNumber>4</ProcessorNumber>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;_VARIADIC_MAX=10;CMAKE_INTDIR="Debug";CVAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;_VARIADIC_MAX=10;CMAKE_INTDIR=\"Debug\";CVAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\perf;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\perf;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\lib\Debug\opencv_core2410d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>libc;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/smartx1.0/modules/opencv/opencv-2.4.10/lib/Debug/opencv_imgproc2410d.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/smartx1.0/modules/opencv/opencv-2.4.10/bin/Debug/opencv_imgproc2410d.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\perf;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <ForcedIncludeFiles>C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/imgproc/src/precomp.hpp</ForcedIncludeFiles>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/imgproc/src/precomp.hpp</PrecompiledHeaderFile>
+      <ProcessorNumber>4</ProcessorNumber>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;NDEBUG;_VARIADIC_MAX=10;CMAKE_INTDIR="Release";CVAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;NDEBUG;_VARIADIC_MAX=10;CMAKE_INTDIR=\"Release\";CVAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\perf;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\perf;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\lib\Release\opencv_core2410.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>libc;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/smartx1.0/modules/opencv/opencv-2.4.10/lib/Release/opencv_imgproc2410.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/smartx1.0/modules/opencv/opencv-2.4.10/bin/Release/opencv_imgproc2410.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/imgproc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+C:\myprograms\cmake-3.12.0-win64\bin\cmake.exe -HC:/smartx1.0/modules/opencv/opencv-2.4.10 -BC:/smartx1.0/modules/opencv/opencv-2.4.10 --check-stamp-file C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/imgproc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/imgproc/CMakeLists.txt;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\CMakeLists.txt;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/imgproc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+C:\myprograms\cmake-3.12.0-win64\bin\cmake.exe -HC:/smartx1.0/modules/opencv/opencv-2.4.10 -BC:/smartx1.0/modules/opencv/opencv-2.4.10 --check-stamp-file C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/imgproc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/imgproc/CMakeLists.txt;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\CMakeLists.txt;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include\opencv2\imgproc\imgproc.hpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include\opencv2\imgproc\imgproc_c.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include\opencv2\imgproc\types_c.h" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\accum.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\approx.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\avx\imgwarp_avx.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\avx2\imgwarp_avx2.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\canny.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\clahe.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\color.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\contours.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\convhull.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\corner.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\cornersubpix.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\deriv.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\distransform.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\emd.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\featureselect.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\filter.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\floodfill.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\gabor.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\generalized_hough.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\geometry.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\grabcut.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\histogram.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\hough.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\imgwarp.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\linefit.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\matchcontours.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\moments.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\morph.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\phasecorr.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\pyramids.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\rotcalipers.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\samplers.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\segmentation.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\shapedescr.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\smooth.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\subdivision2d.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\sumpixels.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\tables.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\templmatch.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\thresh.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\undistort.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\utils.cpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\_geom.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\_list.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\avx\imgwarp_avx.hpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\avx2\imgwarp_avx2.hpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\gcgraph.hpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\src\precomp.hpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\cvconfig.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\opencv2\opencv_modules.hpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\opencv_imgproc_pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/imgproc/src/precomp.hpp</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/imgproc/src/precomp.hpp</PrecompiledHeaderFile>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\ZERO_CHECK.vcxproj">
+      <Project>{C252B718-CA1E-3457-A4B3-037DF60D3E9D}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\opencv_core.vcxproj">
+      <Project>{E3E1CF2E-C097-3EF6-BCE8-C30B9334EA1B}</Project>
+      <Name>opencv_core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

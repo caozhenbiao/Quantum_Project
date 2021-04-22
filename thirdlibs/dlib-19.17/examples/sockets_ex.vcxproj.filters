@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\sockets_ex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A0E9F7AC-EBE8-3B5E-96E2-D55EDE9FC94F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

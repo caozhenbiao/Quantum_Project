@@ -1,0 +1,200 @@
+Determining if the system is big endian passed with the following output:
+Change Dir: /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp'
+gmake[1]: Warning: File `CMakeFiles/cmTryCompileExec.dir/progress.make' has modification time 0.0088 s in the future
+/usr/bin/cmake -E cmake_progress_report /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/TestEndianess.c.o
+/usr/bin/gcc   -fsigned-char -W -Wall -Werror=return-type -Werror=address -Werror=sequence-point -Wformat -Werror=format-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -fdiagnostics-show-option -Wno-long-long -pthread -fomit-frame-pointer -msse -msse2 -msse3 -ffunction-sections     -o CMakeFiles/cmTryCompileExec.dir/TestEndianess.c.o   -c /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/TestEndianess.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/gcc      -fsigned-char -W -Wall -Werror=return-type -Werror=address -Werror=sequence-point -Wformat -Werror=format-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -fdiagnostics-show-option -Wno-long-long -pthread -fomit-frame-pointer -msse -msse2 -msse3 -ffunction-sections    -fPIC CMakeFiles/cmTryCompileExec.dir/TestEndianess.c.o  -o cmTryCompileExec -rdynamic 
+gmake[1]: Leaving directory `/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp'
+gmake[1]: warning:  Clock skew detected.  Your build may be incomplete.
+
+TestEndianess.c:
+/* A 16 bit integer is required. */
+typedef unsigned short cmakeint16;
+
+/* On a little endian machine, these 16bit ints will give "THIS IS LITTLE ENDIAN."
+   On a big endian machine the characters will be exchanged pairwise. */
+const cmakeint16 info_little[] =  {0x4854, 0x5349, 0x4920, 0x2053, 0x494c, 0x5454, 0x454c, 0x4520, 0x444e, 0x4149, 0x2e4e, 0x0000};
+
+/* on a big endian machine, these 16bit ints will give "THIS IS BIG ENDIAN."
+   On a little endian machine the characters will be exchanged pairwise. */
+const cmakeint16 info_big[] =     {0x5448, 0x4953, 0x2049, 0x5320, 0x4249, 0x4720, 0x454e, 0x4449, 0x414e, 0x2e2e, 0x0000};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_little[argc];
+  require += info_big[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining size of off64_t failed with the following output:
+Change Dir: /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+gmake: Warning: File `Makefile' has modification time 0.023 s in the future
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp'
+gmake[1]: Warning: File `CMakeFiles/cmTryCompileExec.dir/flags.make' has modification time 0.0048 s in the future
+/usr/bin/cmake -E cmake_progress_report /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckTypeSizeC.c.o
+/usr/bin/gcc   -fsigned-char -W -Wall -Werror=return-type -Werror=address -Werror=sequence-point -Wformat -Werror=format-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -fdiagnostics-show-option -Wno-long-long -pthread -fomit-frame-pointer -msse -msse2 -msse3 -ffunction-sections   -DHAVE_SYS_TYPES_H -DHAVE_STDINT_H -DHAVE_STDDEF_H   -o CMakeFiles/cmTryCompileExec.dir/CheckTypeSizeC.c.o   -c /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/CheckTypeSizeC.c
+/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/CheckTypeSizeC.c:25: error: ‘off64_t’ undeclared here (not in a function)
+gmake[1]: Leaving directory `/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp'
+gmake[1]: *** [CMakeFiles/cmTryCompileExec.dir/CheckTypeSizeC.c.o] Error 1
+gmake: *** [cmTryCompileExec/fast] Error 2
+
+CheckTypeSizeC.c:
+#define CHECK_TYPE_SIZE_TYPE off64_t
+#ifdef CHECK_TYPE_SIZE_TYPE
+
+
+#ifdef HAVE_SYS_TYPES_H
+#  include <sys/types.h>
+#endif /* HAVE_SYS_TYPES_H */
+
+#ifdef HAVE_STDINT_H
+#  include <stdint.h>
+#endif /* HAVE_STDINT_H */
+
+#ifdef HAVE_STDDEF_H
+#  include <stddef.h>
+#endif /* HAVE_STDDEF_H */
+
+
+
+#ifdef __CLASSIC_C__
+# define const
+#endif
+
+#define SIZE (sizeof(off64_t))
+const char info_sizeof[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','o','f','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)), 
+  ']','\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_sizeof[argc];
+  (void)argv;
+  return require;
+}
+
+#else  /* CHECK_TYPE_SIZE_TYPE */
+
+#  error "CHECK_TYPE_SIZE_TYPE has to specify the type"
+
+#endif /* CHECK_TYPE_SIZE_TYPE */
+
+
+Determining if the include file io.h exists failed with the following output:
+Change Dir: /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+gmake: Warning: File `Makefile' has modification time 0.018 s in the future
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp'
+gmake[1]: Warning: File `CMakeFiles/cmTryCompileExec.dir/progress.make' has modification time 0.028 s in the future
+/usr/bin/cmake -E cmake_progress_report /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.c.o
+/usr/bin/gcc   -fsigned-char -W -Wall -Werror=return-type -Werror=address -Werror=sequence-point -Wformat -Werror=format-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -fdiagnostics-show-option -Wno-long-long -pthread -fomit-frame-pointer -msse -msse2 -msse3 -ffunction-sections     -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.c.o   -c /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:16: error: io.h: No such file or directory
+gmake[1]: Leaving directory `/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp'
+gmake[1]: *** [CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.c.o] Error 1
+gmake: *** [cmTryCompileExec/fast] Error 2
+
+
+Determining if the function jbg_newlen exists failed with the following output:
+Change Dir: /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+gmake: Warning: File `Makefile' has modification time 0.021 s in the future
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp'
+gmake[1]: Warning: File `CMakeFiles/cmTryCompileExec.dir/flags.make' has modification time 0.0025 s in the future
+/usr/bin/cmake -E cmake_progress_report /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.c.o
+/usr/bin/gcc   -fsigned-char -W -Wall -Werror=return-type -Werror=address -Werror=sequence-point -Wformat -Werror=format-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -fdiagnostics-show-option -Wno-long-long -pthread -fomit-frame-pointer -msse -msse2 -msse3 -ffunction-sections  -DCHECK_FUNCTION_EXISTS=jbg_newlen   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+/usr/share/cmake/Modules/CheckFunctionExists.c:3: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/gcc      -fsigned-char -W -Wall -Werror=return-type -Werror=address -Werror=sequence-point -Wformat -Werror=format-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -fdiagnostics-show-option -Wno-long-long -pthread -fomit-frame-pointer -msse -msse2 -msse3 -ffunction-sections  -DCHECK_FUNCTION_EXISTS=jbg_newlen  -fPIC CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.c.o  -o cmTryCompileExec -rdynamic 
+CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text.main+0x12): undefined reference to `jbg_newlen'
+collect2: ld returned 1 exit status
+gmake[1]: Leaving directory `/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp'
+gmake[1]: *** [cmTryCompileExec] Error 1
+gmake: *** [cmTryCompileExec/fast] Error 2
+
+
+Determining if the include file sys/videoio.h exists failed with the following output:
+Change Dir: /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+gmake: Warning: File `Makefile' has modification time 0.013 s in the future
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp'
+gmake[1]: Warning: File `CMakeFiles/cmTryCompileExec.dir/progress.make' has modification time 0.032 s in the future
+/usr/bin/cmake -E cmake_progress_report /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.c.o
+/usr/bin/gcc   -fsigned-char -W -Wall -Werror=return-type -Werror=address -Werror=sequence-point -Wformat -Werror=format-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -fdiagnostics-show-option -Wno-long-long -pthread -fomit-frame-pointer -msse -msse2 -msse3 -ffunction-sections     -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.c.o   -c /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:25: error: sys/videoio.h: No such file or directory
+gmake[1]: Leaving directory `/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp'
+gmake[1]: *** [CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.c.o] Error 1
+gmake: *** [cmTryCompileExec/fast] Error 2
+
+
+Determining if the include file libavformat/avformat.h exists failed with the following output:
+Change Dir: /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+gmake: Warning: File `Makefile' has modification time 0.02 s in the future
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp'
+gmake[1]: Warning: File `CMakeFiles/cmTryCompileExec.dir/progress.make' has modification time 0.033 s in the future
+/usr/bin/cmake -E cmake_progress_report /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.c.o
+/usr/bin/gcc   -fsigned-char -W -Wall -Werror=return-type -Werror=address -Werror=sequence-point -Wformat -Werror=format-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -fdiagnostics-show-option -Wno-long-long -pthread -fomit-frame-pointer -msse -msse2 -msse3 -ffunction-sections     -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.c.o   -c /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:34: error: libavformat/avformat.h: No such file or directory
+gmake[1]: *** [CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.c.o] Error 1
+gmake[1]: Leaving directory `/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp'
+gmake: *** [cmTryCompileExec/fast] Error 2
+
+
+Determining if the include file ffmpeg/avformat.h exists failed with the following output:
+Change Dir: /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+gmake: Warning: File `Makefile' has modification time 0.0061 s in the future
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp'
+gmake[1]: Warning: File `CMakeFiles/cmTryCompileExec.dir/progress.make' has modification time 0.017 s in the future
+/usr/bin/cmake -E cmake_progress_report /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.c.o
+/usr/bin/gcc   -fsigned-char -W -Wall -Werror=return-type -Werror=address -Werror=sequence-point -Wformat -Werror=format-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -fdiagnostics-show-option -Wno-long-long -pthread -fomit-frame-pointer -msse -msse2 -msse3 -ffunction-sections     -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.c.o   -c /mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:29: error: ffmpeg/avformat.h: No such file or directory
+gmake[1]: Leaving directory `/mnt/hgfs/smartx/soft/libs/opencv-2.4.10/build/CMakeFiles/CMakeTmp'
+gmake[1]: *** [CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.c.o] Error 1
+gmake: *** [cmTryCompileExec/fast] Error 2
+
+

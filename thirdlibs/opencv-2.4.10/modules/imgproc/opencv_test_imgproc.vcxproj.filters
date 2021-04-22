@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_approxpoly.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_bilateral_filter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_boundingrect.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_canny.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_color.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_contours.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_convhull.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_cvtyuv.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_distancetransform.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_emd.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_filter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_floodfill.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_grabcut.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_histograms.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_houghLines.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_imgwarp.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_imgwarp_strict.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_main.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_moments.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_pc.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_templmatch.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_thresh.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_watershed.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\opencv_test_imgproc_pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\test\test_precomp.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Include">
+      <UniqueIdentifier>{A280D851-AF3D-383F-8C95-26A3EC1C1ED0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{26CE975A-5610-31AA-9A8D-5F5FF54B625A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{697B5E73-F8D9-3BB0-A0DB-5B0B33B621EE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\adaptiveskindetector.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\ba.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\basicretinafilter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\bowmsctrainer.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\chamfermatching.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\chowliutree.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\colormap.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\colortracker.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\contrib_init.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\detection_based_tracker.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\facerec.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\featuretracker.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\fuzzymeanshifttracker.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\gencolors.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\hybridtracker.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\imagelogpolprojection.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\inputoutput.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\lda.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\logpolar_bsm.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\magnoretinafilter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\octree.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\openfabmap.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\parvoretinafilter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\polyfit.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\retina.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\retinacolor.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\retinafilter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\rgbdodometry.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\selfsimilarity.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\spinimages.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\stereovar.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\opencv_contrib_pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\include\opencv2\contrib\contrib.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\include\opencv2\contrib\detection_based_tracker.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\include\opencv2\contrib\hybridtracker.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\include\opencv2\contrib\openfabmap.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\include\opencv2\contrib\retina.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\basicretinafilter.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\imagelogpolprojection.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\magnoretinafilter.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\parvoretinafilter.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\precomp.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\retinacolor.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\retinafilter.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\src\templatebuffer.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\cvconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\opencv2\opencv_modules.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{E6428E4B-3832-39C3-A390-FDABC1B5AC00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{A280D851-AF3D-383F-8C95-26A3EC1C1ED0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{26CE975A-5610-31AA-9A8D-5F5FF54B625A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{697B5E73-F8D9-3BB0-A0DB-5B0B33B621EE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

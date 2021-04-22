@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6B202E1D-4715-3FFA-9E46-32D6D7440A7C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>opencv_flann</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">opencv_flann.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">opencv_flann2410d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">opencv_flann.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">opencv_flann2410</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\test;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\src;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <ForcedIncludeFiles>C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/flann/src/precomp.hpp</ForcedIncludeFiles>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/flann/src/precomp.hpp</PrecompiledHeaderFile>
+      <ProcessorNumber>4</ProcessorNumber>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;_VARIADIC_MAX=10;CMAKE_INTDIR="Debug";CVAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;_VARIADIC_MAX=10;CMAKE_INTDIR=\"Debug\";CVAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\test;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\src;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\test;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\src;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\lib\Debug\opencv_core2410d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>libc;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/smartx1.0/modules/opencv/opencv-2.4.10/lib/Debug/opencv_flann2410d.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/smartx1.0/modules/opencv/opencv-2.4.10/bin/Debug/opencv_flann2410d.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\test;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\src;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <ForcedIncludeFiles>C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/flann/src/precomp.hpp</ForcedIncludeFiles>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/flann/src/precomp.hpp</PrecompiledHeaderFile>
+      <ProcessorNumber>4</ProcessorNumber>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;NDEBUG;_VARIADIC_MAX=10;CMAKE_INTDIR="Release";CVAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;NDEBUG;_VARIADIC_MAX=10;CMAKE_INTDIR=\"Release\";CVAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\test;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\src;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\test;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\src;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\lib\Release\opencv_core2410.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>libc;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/smartx1.0/modules/opencv/opencv-2.4.10/lib/Release/opencv_flann2410.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/smartx1.0/modules/opencv/opencv-2.4.10/bin/Release/opencv_flann2410.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/flann/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+C:\myprograms\cmake-3.12.0-win64\bin\cmake.exe -HC:/smartx1.0/modules/opencv/opencv-2.4.10 -BC:/smartx1.0/modules/opencv/opencv-2.4.10 --check-stamp-file C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/flann/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/flann/CMakeLists.txt;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\CMakeLists.txt;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/flann/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+C:\myprograms\cmake-3.12.0-win64\bin\cmake.exe -HC:/smartx1.0/modules/opencv/opencv-2.4.10 -BC:/smartx1.0/modules/opencv/opencv-2.4.10 --check-stamp-file C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/flann/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/flann/CMakeLists.txt;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\CMakeLists.txt;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\all_indices.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\allocator.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\any.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\autotuned_index.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\composite_index.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\config.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\defines.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\dist.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\dummy.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\dynamic_bitset.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\flann.hpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\flann_base.hpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\general.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\ground_truth.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\hdf5.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\heap.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\hierarchical_clustering_index.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\index_testing.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\kdtree_index.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\kdtree_single_index.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\kmeans_index.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\linear_index.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\logger.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\lsh_index.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\lsh_table.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\matrix.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\miniflann.hpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\nn_index.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\object_factory.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\params.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\random.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\result_set.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\sampling.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\saving.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\simplex_downhill.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\timer.h" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\src\flann.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\src\miniflann.cpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\src\precomp.hpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\cvconfig.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\opencv2\opencv_modules.hpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\opencv_flann_pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/flann/src/precomp.hpp</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/flann/src/precomp.hpp</PrecompiledHeaderFile>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\ZERO_CHECK.vcxproj">
+      <Project>{C252B718-CA1E-3457-A4B3-037DF60D3E9D}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\opencv_core.vcxproj">
+      <Project>{E3E1CF2E-C097-3EF6-BCE8-C30B9334EA1B}</Project>
+      <Name>opencv_core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

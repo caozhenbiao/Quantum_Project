@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{58A7F20B-9D3C-368A-8166-F506FB8F5045}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>opencv_ocl</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">opencv_ocl.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">opencv_ocl2410d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">opencv_ocl.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">opencv_ocl2410</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\perf;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ml\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test;C:\smartx1.0\modules\opencv\opencv-2.4.10\3rdparty\include\opencl\1.2;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <ForcedIncludeFiles>C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/ocl/src/precomp.hpp</ForcedIncludeFiles>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/ocl/src/precomp.hpp</PrecompiledHeaderFile>
+      <ProcessorNumber>4</ProcessorNumber>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;_VARIADIC_MAX=10;CMAKE_INTDIR="Debug";CVAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;_VARIADIC_MAX=10;CMAKE_INTDIR=\"Debug\";CVAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\perf;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ml\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test;C:\smartx1.0\modules\opencv\opencv-2.4.10\3rdparty\include\opencl\1.2;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\perf;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ml\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test;C:\smartx1.0\modules\opencv\opencv-2.4.10\3rdparty\include\opencl\1.2;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\lib\Debug\opencv_calib3d2410d.lib;..\..\lib\Debug\opencv_ml2410d.lib;..\..\lib\Debug\opencv_objdetect2410d.lib;..\..\lib\Debug\opencv_video2410d.lib;..\..\lib\Debug\opencv_features2d2410d.lib;..\..\lib\Debug\opencv_flann2410d.lib;..\..\lib\Debug\opencv_highgui2410d.lib;..\..\lib\Debug\opencv_imgproc2410d.lib;..\..\lib\Debug\opencv_core2410d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>libc;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/smartx1.0/modules/opencv/opencv-2.4.10/lib/Debug/opencv_ocl2410d.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/smartx1.0/modules/opencv/opencv-2.4.10/bin/Debug/opencv_ocl2410d.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\perf;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ml\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test;C:\smartx1.0\modules\opencv\opencv-2.4.10\3rdparty\include\opencl\1.2;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <ForcedIncludeFiles>C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/ocl/src/precomp.hpp</ForcedIncludeFiles>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/ocl/src/precomp.hpp</PrecompiledHeaderFile>
+      <ProcessorNumber>4</ProcessorNumber>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;NDEBUG;_VARIADIC_MAX=10;CMAKE_INTDIR="Release";CVAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;NDEBUG;_VARIADIC_MAX=10;CMAKE_INTDIR=\"Release\";CVAPI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\perf;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ml\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test;C:\smartx1.0\modules\opencv\opencv-2.4.10\3rdparty\include\opencl\1.2;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\perf;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ml\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test;C:\smartx1.0\modules\opencv\opencv-2.4.10\3rdparty\include\opencl\1.2;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\lib\Release\opencv_calib3d2410.lib;..\..\lib\Release\opencv_ml2410.lib;..\..\lib\Release\opencv_objdetect2410.lib;..\..\lib\Release\opencv_video2410.lib;..\..\lib\Release\opencv_features2d2410.lib;..\..\lib\Release\opencv_flann2410.lib;..\..\lib\Release\opencv_highgui2410.lib;..\..\lib\Release\opencv_imgproc2410.lib;..\..\lib\Release\opencv_core2410.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>libc;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/smartx1.0/modules/opencv/opencv-2.4.10/lib/Release/opencv_ocl2410.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/smartx1.0/modules/opencv/opencv-2.4.10/bin/Release/opencv_ocl2410.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\CMakeFiles\c3021652c2d15c5ebc1e49c9ef703a27\opencl_kernels.cpp.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating opencl_kernels.cpp, opencl_kernels.hpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+C:\myprograms\cmake-3.12.0-win64\bin\cmake.exe -DCL_DIR="C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/ocl/src/opencl" -DOUTPUT="C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/ocl/opencl_kernels.cpp" -P C:/smartx1.0/modules/opencv/opencv-2.4.10/cmake/cl2cpp.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/smartx1.0/modules/opencv/opencv-2.4.10/CMakeFiles/c3021652c2d15c5ebc1e49c9ef703a27/opencl_kernels.cpp.rule;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_LUT.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_absdiff_nonsaturate.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_add.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_addWeighted.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_add_mask.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_add_scalar.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_add_scalar_mask.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_bitwise.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_cartToPolar.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_compare.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_exp.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_flip.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_log.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_magnitude.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_minMax.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_minMaxLoc.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_minMaxLoc_mask.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_nonzero.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_phase.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_polarToCart.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_pow.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_setidentity.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_sum.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_transpose.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\bgfg_mog.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\blend_linear.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\brute_force_match.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\build_warps.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\convertC3C4.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\cvt_color.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filter_sep_col.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filter_sep_row.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filtering_adaptive_bilateral.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filtering_boxFilter.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filtering_filter2D.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filtering_morph.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filtering_sep_filter_singlepass.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\haarobjectdetect.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\haarobjectdetect_scaled2.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_bilateral.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_calcHarris.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_calcMinEigenVal.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_canny.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_clahe.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_columnsum.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_convolve.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_copymakeboder.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_gftt.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_histogram.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_integral.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_integral_sum.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_median.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_remap.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_resize.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_sobel3.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_threshold.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_warpAffine.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_warpPerspective.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\interpolate_frames.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\kernel_radix_sort_by_key.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\kernel_sort_by_key.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\kernel_stablesort_by_key.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\kmeans_kernel.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\knearest.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\match_template.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\meanShift.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\merge_mat.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\moments.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\objdetect_hog.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\operator_convertTo.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\operator_copyToM.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\operator_setTo.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\operator_setToM.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\optical_flow_farneback.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\pyr_down.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\pyr_up.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\pyrlk.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\split_mat.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\stereobm.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\stereobp.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\stereocsbp.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\svm.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\tvl1flow.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\cmake\cl2cpp.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\opencl_kernels.cpp;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\opencl_kernels.hpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating opencl_kernels.cpp, opencl_kernels.hpp</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+C:\myprograms\cmake-3.12.0-win64\bin\cmake.exe -DCL_DIR="C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/ocl/src/opencl" -DOUTPUT="C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/ocl/opencl_kernels.cpp" -P C:/smartx1.0/modules/opencv/opencv-2.4.10/cmake/cl2cpp.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/smartx1.0/modules/opencv/opencv-2.4.10/CMakeFiles/c3021652c2d15c5ebc1e49c9ef703a27/opencl_kernels.cpp.rule;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_LUT.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_absdiff_nonsaturate.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_add.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_addWeighted.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_add_mask.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_add_scalar.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_add_scalar_mask.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_bitwise.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_cartToPolar.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_compare.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_exp.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_flip.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_log.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_magnitude.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_minMax.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_minMaxLoc.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_minMaxLoc_mask.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_nonzero.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_phase.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_polarToCart.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_pow.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_setidentity.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_sum.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_transpose.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\bgfg_mog.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\blend_linear.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\brute_force_match.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\build_warps.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\convertC3C4.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\cvt_color.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filter_sep_col.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filter_sep_row.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filtering_adaptive_bilateral.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filtering_boxFilter.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filtering_filter2D.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filtering_morph.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filtering_sep_filter_singlepass.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\haarobjectdetect.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\haarobjectdetect_scaled2.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_bilateral.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_calcHarris.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_calcMinEigenVal.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_canny.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_clahe.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_columnsum.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_convolve.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_copymakeboder.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_gftt.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_histogram.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_integral.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_integral_sum.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_median.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_remap.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_resize.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_sobel3.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_threshold.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_warpAffine.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_warpPerspective.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\interpolate_frames.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\kernel_radix_sort_by_key.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\kernel_sort_by_key.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\kernel_stablesort_by_key.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\kmeans_kernel.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\knearest.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\match_template.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\meanShift.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\merge_mat.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\moments.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\objdetect_hog.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\operator_convertTo.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\operator_copyToM.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\operator_setTo.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\operator_setToM.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\optical_flow_farneback.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\pyr_down.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\pyr_up.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\pyrlk.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\split_mat.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\stereobm.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\stereobp.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\stereocsbp.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\svm.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\tvl1flow.cl;C:\smartx1.0\modules\opencv\opencv-2.4.10\cmake\cl2cpp.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\opencl_kernels.cpp;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\opencl_kernels.hpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/ocl/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+C:\myprograms\cmake-3.12.0-win64\bin\cmake.exe -HC:/smartx1.0/modules/opencv/opencv-2.4.10 -BC:/smartx1.0/modules/opencv/opencv-2.4.10 --check-stamp-file C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/ocl/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/ocl/CMakeLists.txt;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\CMakeLists.txt;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/ocl/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+C:\myprograms\cmake-3.12.0-win64\bin\cmake.exe -HC:/smartx1.0/modules/opencv/opencv-2.4.10 -BC:/smartx1.0/modules/opencv/opencv-2.4.10 --check-stamp-file C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/ocl/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/ocl/CMakeLists.txt;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\CMakeLists.txt;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\include\opencv2\ocl\matrix_operations.hpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\include\opencv2\ocl\ocl.hpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\arithm.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\bgfg_mog.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\blend.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\brute_force_matcher.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\build_warps.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\canny.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\cl_context.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\cl_operations.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\cl_programcache.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\cl_runtime\cl_runtime.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\cl_runtime\clamdblas_runtime.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\cl_runtime\clamdfft_runtime.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\color.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\columnsum.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\error.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\fft.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\filtering.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\gemm.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\gftt.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\haar.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\hog.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\imgproc.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\interpolate_frames.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\kalman.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\kmeans.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\knearest.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\match_template.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\matrix_operations.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\mcwutil.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\moments.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\mssegmentation.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\optical_flow_farneback.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\pyrdown.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\pyrlk.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\pyrup.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\sort_by_key.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\split_merge.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\stereo_csbp.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\stereobm.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\stereobp.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\svm.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\tvl1flow.cpp" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_LUT.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_absdiff_nonsaturate.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_add.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_addWeighted.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_add_mask.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_add_scalar.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_add_scalar_mask.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_bitwise.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_cartToPolar.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_compare.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_exp.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_flip.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_log.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_magnitude.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_minMax.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_minMaxLoc.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_minMaxLoc_mask.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_nonzero.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_phase.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_polarToCart.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_pow.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_setidentity.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_sum.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\arithm_transpose.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\bgfg_mog.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\blend_linear.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\brute_force_match.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\build_warps.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\convertC3C4.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\cvt_color.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filter_sep_col.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filter_sep_row.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filtering_adaptive_bilateral.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filtering_boxFilter.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filtering_filter2D.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filtering_morph.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\filtering_sep_filter_singlepass.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\haarobjectdetect.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\haarobjectdetect_scaled2.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_bilateral.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_calcHarris.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_calcMinEigenVal.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_canny.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_clahe.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_columnsum.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_convolve.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_copymakeboder.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_gftt.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_histogram.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_integral.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_integral_sum.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_median.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_remap.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_resize.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_sobel3.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_threshold.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_warpAffine.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\imgproc_warpPerspective.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\interpolate_frames.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\kernel_radix_sort_by_key.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\kernel_sort_by_key.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\kernel_stablesort_by_key.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\kmeans_kernel.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\knearest.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\match_template.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\meanShift.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\merge_mat.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\moments.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\objdetect_hog.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\operator_convertTo.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\operator_copyToM.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\operator_setTo.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\operator_setToM.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\optical_flow_farneback.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\pyr_down.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\pyr_up.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\pyrlk.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\split_mat.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\stereobm.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\stereobp.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\stereocsbp.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\svm.cl" />
+    <None Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\opencl\tvl1flow.cl" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\opencl_kernels.cpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\opencl_kernels.hpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\cl_programcache.hpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\cl_runtime\cl_runtime_opencl_impl.hpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\precomp.hpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\src\safe_call.hpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\cvconfig.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\opencv2\opencv_modules.hpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\opencv_ocl_pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/ocl/src/precomp.hpp</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/smartx1.0/modules/opencv/opencv-2.4.10/modules/ocl/src/precomp.hpp</PrecompiledHeaderFile>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\ZERO_CHECK.vcxproj">
+      <Project>{C252B718-CA1E-3457-A4B3-037DF60D3E9D}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\opencv_calib3d.vcxproj">
+      <Project>{0A1D240E-675B-328C-83B0-2CD67E64C760}</Project>
+      <Name>opencv_calib3d</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\opencv_core.vcxproj">
+      <Project>{E3E1CF2E-C097-3EF6-BCE8-C30B9334EA1B}</Project>
+      <Name>opencv_core</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\opencv_features2d.vcxproj">
+      <Project>{DDDDDDC2-6F08-34DF-A079-482032820311}</Project>
+      <Name>opencv_features2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\opencv_flann.vcxproj">
+      <Project>{6B202E1D-4715-3FFA-9E46-32D6D7440A7C}</Project>
+      <Name>opencv_flann</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\opencv_highgui.vcxproj">
+      <Project>{1EFD348F-61C2-39CD-AE1B-3C5D6B9B79C9}</Project>
+      <Name>opencv_highgui</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\opencv_imgproc.vcxproj">
+      <Project>{A730D35F-322B-35A0-8AB6-D3333EB9FD4C}</Project>
+      <Name>opencv_imgproc</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ml\opencv_ml.vcxproj">
+      <Project>{26921F0D-452D-3064-80CE-D3B80BC1C427}</Project>
+      <Name>opencv_ml</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\opencv_objdetect.vcxproj">
+      <Project>{6F3A68EC-3EEB-3725-B823-4CD08D773C8A}</Project>
+      <Name>opencv_objdetect</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\opencv_video.vcxproj">
+      <Project>{85EF2A83-D574-3044-880D-580C0D96EE00}</Project>
+      <Name>opencv_video</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

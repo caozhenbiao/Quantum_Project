@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\smartx1.0\modules\dlib\dlib-19.17\tools\imglab\dlib_build\neon_test_build\CMakeFiles\d2d05011234fba7cc3d974660ee6b01d\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{4DAD6632-C065-3F9A-B7AD-CB4556AAF31B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

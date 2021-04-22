@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\src\flann.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\src\miniflann.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\opencv_flann_pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\all_indices.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\allocator.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\any.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\autotuned_index.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\composite_index.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\config.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\defines.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\dist.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\dummy.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\dynamic_bitset.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\flann.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\flann_base.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\general.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\ground_truth.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\hdf5.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\heap.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\hierarchical_clustering_index.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\index_testing.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\kdtree_index.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\kdtree_single_index.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\kmeans_index.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\linear_index.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\logger.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\lsh_index.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\lsh_table.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\matrix.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\miniflann.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\nn_index.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\object_factory.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\params.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\random.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\result_set.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\sampling.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\saving.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\simplex_downhill.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include\opencv2\flann\timer.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\src\precomp.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\cvconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\opencv2\opencv_modules.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{E6428E4B-3832-39C3-A390-FDABC1B5AC00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{A280D851-AF3D-383F-8C95-26A3EC1C1ED0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{26CE975A-5610-31AA-9A8D-5F5FF54B625A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{697B5E73-F8D9-3BB0-A0DB-5B0B33B621EE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

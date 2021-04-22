@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1DFF9DDB-4C8F-37F2-9FF9-7AA2E54CE436}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\perf;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\src;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\test;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\perf;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\src;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\test;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\ZERO_CHECK.vcxproj">
+      <Project>{C252B718-CA1E-3457-A4B3-037DF60D3E9D}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\opencv_calib3d.vcxproj">
+      <Project>{0A1D240E-675B-328C-83B0-2CD67E64C760}</Project>
+      <Name>opencv_calib3d</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\opencv_perf_calib3d.vcxproj">
+      <Project>{E965F89C-CBE5-3263-B277-CE748DEC2C65}</Project>
+      <Name>opencv_perf_calib3d</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\opencv_test_calib3d.vcxproj">
+      <Project>{15F10FE2-2878-3268-863F-9D82293BDAE0}</Project>
+      <Name>opencv_test_calib3d</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

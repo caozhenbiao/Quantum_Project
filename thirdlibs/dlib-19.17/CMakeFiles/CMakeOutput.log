@@ -1,0 +1,1382 @@
+The system is: Windows - 10.0.17763 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R) ��������汾 14.0.25420.1
+��Ȩ����(C) Microsoft Corporation����������Ȩ����
+
+��������ʱ��Ϊ 2019/9/25 23:15:11��
+�ڵ� 1 �ϵ���Ŀ��C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\3.12.0-rc3\CompilerIdC\CompilerIdC.vcxproj��(Ĭ��Ŀ��)��
+PrepareForBuild:
+  ���ڴ���Ŀ¼��Debug\����
+  ���ڴ���Ŀ¼��Debug\CompilerIdC.tlog\����
+InitializeBuildStatus:
+  ���ڴ�����Debug\CompilerIdC.tlog\unsuccessfulbuild������Ϊ��ָ����AlwaysCreate����
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /nologo /W0 /WX- /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue CMakeCCompilerId.c
+  CMakeCCompilerId.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCCompilerId.obj
+  CompilerIdC.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\3.12.0-rc3\CompilerIdC\.\CompilerIdC.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_C_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\cl.exe
+FinalizeBuildStatus:
+  ����ɾ���ļ���Debug\CompilerIdC.tlog\unsuccessfulbuild����
+  ���ڶԡ�Debug\CompilerIdC.tlog\CompilerIdC.lastbuildstate��ִ�� Touch ����
+�����������Ŀ��C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\3.12.0-rc3\CompilerIdC\CompilerIdC.vcxproj��(Ĭ��Ŀ��)�Ĳ�����
+
+�ѳɹ����ɡ�
+    0 ������
+    0 ������
+
+����ʱ�� 00:00:00.81
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+
+The C compiler identification is MSVC, found in "C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/3.12.0-rc3/CompilerIdC/CompilerIdC.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R) ��������汾 14.0.25420.1
+��Ȩ����(C) Microsoft Corporation����������Ȩ����
+
+��������ʱ��Ϊ 2019/9/25 23:15:12��
+�ڵ� 1 �ϵ���Ŀ��C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\3.12.0-rc3\CompilerIdCXX\CompilerIdCXX.vcxproj��(Ĭ��Ŀ��)��
+PrepareForBuild:
+  ���ڴ���Ŀ¼��Debug\����
+  ���ڴ���Ŀ¼��Debug\CompilerIdCXX.tlog\����
+InitializeBuildStatus:
+  ���ڴ�����Debug\CompilerIdCXX.tlog\unsuccessfulbuild������Ϊ��ָ����AlwaysCreate����
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /nologo /W0 /WX- /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue CMakeCXXCompilerId.cpp
+  CMakeCXXCompilerId.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdCXX.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCXXCompilerId.obj
+  CompilerIdCXX.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\3.12.0-rc3\CompilerIdCXX\.\CompilerIdCXX.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_CXX_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\cl.exe
+FinalizeBuildStatus:
+  ����ɾ���ļ���Debug\CompilerIdCXX.tlog\unsuccessfulbuild����
+  ���ڶԡ�Debug\CompilerIdCXX.tlog\CompilerIdCXX.lastbuildstate��ִ�� Touch ����
+�����������Ŀ��C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\3.12.0-rc3\CompilerIdCXX\CompilerIdCXX.vcxproj��(Ĭ��Ŀ��)�Ĳ�����
+
+�ѳɹ����ɡ�
+    0 ������
+    0 ������
+
+����ʱ�� 00:00:00.73
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+
+The CXX compiler identification is MSVC, found in "C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/3.12.0-rc3/CompilerIdCXX/CompilerIdCXX.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_15f11.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/25 23:15:13。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_15f11.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_15f11.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_15f11.dir\Debug\cmTC_15f11.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_15f11.dir\Debug\cmTC_15f11.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_15f11.dir\Debug\\" /Fd"cmTC_15f11.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\testCCompiler.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_15f11.dir\Debug\\" /Fd"cmTC_15f11.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\testCCompiler.c"
+  
+  testCCompiler.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_15f11.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_15f11.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_15f11.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_15f11.dir\Debug\testCCompiler.obj
+  cmTC_15f11.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_15f11.exe
+  cmTC_15f11.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_15f11.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_15f11.dir\Debug\cmTC_15f11.tlog\unsuccessfulbuild”。
+  正在对“cmTC_15f11.dir\Debug\cmTC_15f11.tlog\cmTC_15f11.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_15f11.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.18
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_be7e3.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/25 23:15:14。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_be7e3.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_be7e3.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_be7e3.dir\Debug\cmTC_be7e3.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_be7e3.dir\Debug\cmTC_be7e3.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_be7e3.dir\Debug\\" /Fd"cmTC_be7e3.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\myprograms\cmake-3.12.0-win64\share\cmake-3.12\Modules\CMakeCCompilerABI.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_be7e3.dir\Debug\\" /Fd"cmTC_be7e3.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\myprograms\cmake-3.12.0-win64\share\cmake-3.12\Modules\CMakeCCompilerABI.c"
+  
+  CMakeCCompilerABI.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_be7e3.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_be7e3.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_be7e3.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_be7e3.dir\Debug\CMakeCCompilerABI.obj
+  cmTC_be7e3.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_be7e3.exe
+  cmTC_be7e3.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_be7e3.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_be7e3.dir\Debug\cmTC_be7e3.tlog\unsuccessfulbuild”。
+  正在对“cmTC_be7e3.dir\Debug\cmTC_be7e3.tlog\cmTC_be7e3.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_be7e3.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.99
+
+
+
+
+Detecting C [] compiler features compiled with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_9d139.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/25 23:15:15。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_9d139.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_9d139.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_9d139.dir\Debug\cmTC_9d139.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_9d139.dir\Debug\cmTC_9d139.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9d139.dir\Debug\\" /Fd"cmTC_9d139.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\feature_tests.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9d139.dir\Debug\\" /Fd"cmTC_9d139.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\feature_tests.c"
+  
+  feature_tests.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_9d139.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_9d139.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_9d139.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_9d139.dir\Debug\feature_tests.obj
+  cmTC_9d139.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_9d139.exe
+  cmTC_9d139.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_9d139.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_9d139.dir\Debug\cmTC_9d139.tlog\unsuccessfulbuild”。
+  正在对“cmTC_9d139.dir\Debug\cmTC_9d139.tlog\cmTC_9d139.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_9d139.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.96
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_variadic_macros
+Determining if the CXX compiler works passed with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_538fb.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/25 23:15:16。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_538fb.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_538fb.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_538fb.dir\Debug\cmTC_538fb.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_538fb.dir\Debug\cmTC_538fb.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_538fb.dir\Debug\\" /Fd"cmTC_538fb.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_538fb.dir\Debug\\" /Fd"cmTC_538fb.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  
+  testCXXCompiler.cxx
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_538fb.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_538fb.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_538fb.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_538fb.dir\Debug\testCXXCompiler.obj
+  cmTC_538fb.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_538fb.exe
+  cmTC_538fb.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_538fb.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_538fb.dir\Debug\cmTC_538fb.tlog\unsuccessfulbuild”。
+  正在对“cmTC_538fb.dir\Debug\cmTC_538fb.tlog\cmTC_538fb.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_538fb.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.89
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_61c5a.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/25 23:15:17。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_61c5a.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_61c5a.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_61c5a.dir\Debug\cmTC_61c5a.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_61c5a.dir\Debug\cmTC_61c5a.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_61c5a.dir\Debug\\" /Fd"cmTC_61c5a.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\myprograms\cmake-3.12.0-win64\share\cmake-3.12\Modules\CMakeCXXCompilerABI.cpp"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_61c5a.dir\Debug\\" /Fd"cmTC_61c5a.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\myprograms\cmake-3.12.0-win64\share\cmake-3.12\Modules\CMakeCXXCompilerABI.cpp"
+  
+  CMakeCXXCompilerABI.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_61c5a.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_61c5a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_61c5a.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_61c5a.dir\Debug\CMakeCXXCompilerABI.obj
+  cmTC_61c5a.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_61c5a.exe
+  cmTC_61c5a.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_61c5a.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_61c5a.dir\Debug\cmTC_61c5a.tlog\unsuccessfulbuild”。
+  正在对“cmTC_61c5a.dir\Debug\cmTC_61c5a.tlog\cmTC_61c5a.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_61c5a.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.95
+
+
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_1a9fe.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/25 23:15:19。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_1a9fe.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_1a9fe.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_1a9fe.dir\Debug\cmTC_1a9fe.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_1a9fe.dir\Debug\cmTC_1a9fe.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_1a9fe.dir\Debug\\" /Fd"cmTC_1a9fe.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\feature_tests.cxx"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_1a9fe.dir\Debug\\" /Fd"cmTC_1a9fe.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\feature_tests.cxx"
+  
+  feature_tests.cxx
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_1a9fe.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_1a9fe.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_1a9fe.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_1a9fe.dir\Debug\feature_tests.obj
+  cmTC_1a9fe.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_1a9fe.exe
+  cmTC_1a9fe.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_1a9fe.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_1a9fe.dir\Debug\cmTC_1a9fe.tlog\unsuccessfulbuild”。
+  正在对“cmTC_1a9fe.dir\Debug\cmTC_1a9fe.tlog\cmTC_1a9fe.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_1a9fe.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.98
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:0cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_6f9bf.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/25 23:15:20。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_6f9bf.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_6f9bf.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_6f9bf.dir\Debug\cmTC_6f9bf.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_6f9bf.dir\Debug\cmTC_6f9bf.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6f9bf.dir\Debug\\" /Fd"cmTC_6f9bf.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6f9bf.dir\Debug\\" /Fd"cmTC_6f9bf.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  
+  CheckIncludeFile.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_6f9bf.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_6f9bf.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_6f9bf.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_6f9bf.dir\Debug\CheckIncludeFile.obj
+  cmTC_6f9bf.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_6f9bf.exe
+  cmTC_6f9bf.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_6f9bf.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_6f9bf.dir\Debug\cmTC_6f9bf.tlog\unsuccessfulbuild”。
+  正在对“cmTC_6f9bf.dir\Debug\cmTC_6f9bf.tlog\cmTC_6f9bf.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_6f9bf.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.96
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_ae51f.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/25 23:15:21。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_ae51f.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_ae51f.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_ae51f.dir\Debug\cmTC_ae51f.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_ae51f.dir\Debug\cmTC_ae51f.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ae51f.dir\Debug\\" /Fd"cmTC_ae51f.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ae51f.dir\Debug\\" /Fd"cmTC_ae51f.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  
+  CheckIncludeFile.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_ae51f.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_ae51f.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_ae51f.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_ae51f.dir\Debug\CheckIncludeFile.obj
+  cmTC_ae51f.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_ae51f.exe
+  cmTC_ae51f.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_ae51f.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_ae51f.dir\Debug\cmTC_ae51f.tlog\unsuccessfulbuild”。
+  正在对“cmTC_ae51f.dir\Debug\cmTC_ae51f.tlog\cmTC_ae51f.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_ae51f.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.87
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_f3ad1.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/25 23:15:22。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_f3ad1.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_f3ad1.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_f3ad1.dir\Debug\cmTC_f3ad1.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_f3ad1.dir\Debug\cmTC_f3ad1.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_f3ad1.dir\Debug\\" /Fd"cmTC_f3ad1.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_f3ad1.dir\Debug\\" /Fd"cmTC_f3ad1.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  
+  CheckIncludeFile.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_f3ad1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_f3ad1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_f3ad1.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_f3ad1.dir\Debug\CheckIncludeFile.obj
+  cmTC_f3ad1.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_f3ad1.exe
+  cmTC_f3ad1.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_f3ad1.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_f3ad1.dir\Debug\cmTC_f3ad1.tlog\unsuccessfulbuild”。
+  正在对“cmTC_f3ad1.dir\Debug\cmTC_f3ad1.tlog\cmTC_f3ad1.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_f3ad1.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.94
+
+
+Determining size of void* passed with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_0ebd7.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/25 23:15:23。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_0ebd7.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_0ebd7.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_0ebd7.dir\Debug\cmTC_0ebd7.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_0ebd7.dir\Debug\cmTC_0ebd7.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0ebd7.dir\Debug\\" /Fd"cmTC_0ebd7.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CheckTypeSize\SIZE_OF_VOID_PTR.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0ebd7.dir\Debug\\" /Fd"cmTC_0ebd7.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CheckTypeSize\SIZE_OF_VOID_PTR.c"
+  
+  SIZE_OF_VOID_PTR.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_0ebd7.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_0ebd7.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_0ebd7.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_0ebd7.dir\Debug\SIZE_OF_VOID_PTR.obj
+  cmTC_0ebd7.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\Debug\cmTC_0ebd7.exe
+  cmTC_0ebd7.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/Debug/cmTC_0ebd7.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_0ebd7.dir\Debug\cmTC_0ebd7.tlog\unsuccessfulbuild”。
+  正在对“cmTC_0ebd7.dir\Debug\cmTC_0ebd7.tlog\cmTC_0ebd7.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\CMakeFiles\CMakeTmp\cmTC_0ebd7.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.93
+
+
+The system is: Linux - 2.6.32-431.el6.x86_64 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/gcc 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+CMakeCXXCompilerId.cpp:67: 警告：不建议使用从字符串常量到‘char*’的转换
+CMakeCXXCompilerId.cpp:157: 警告：不建议使用从字符串常量到‘char*’的转换
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o
+/usr/bin/gcc    -o CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o   -c /mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/gcc       -fPIC CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o  -o cmTryCompileExec -rdynamic 
+gmake[1]: Leaving directory `/mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o
+/usr/bin/gcc    -o CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/gcc       -fPIC CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec -rdynamic 
+gmake[1]: Leaving directory `/mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.cxx.o -c /mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/c++        -fPIC CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec -rdynamic 
+gmake[1]: Leaving directory `/mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+gmake[1]: Entering directory `/mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/c++        -fPIC CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec -rdynamic 
+gmake[1]: Leaving directory `/mnt/hgfs/smartx1.0/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+The system is: Linux - 4.10.0-28-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/3.5.1/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/3.5.1/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d74b1/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d74b1.dir/build.make CMakeFiles/cmTC_d74b1.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d74b1.dir/testCCompiler.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_d74b1.dir/testCCompiler.c.o   -c /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_d74b1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d74b1.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_d74b1.dir/testCCompiler.c.o  -o cmTC_d74b1 -rdynamic 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_6c8e1/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6c8e1.dir/build.make CMakeFiles/cmTC_6c8e1.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6c8e1.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_6c8e1.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_6c8e1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6c8e1.dir/link.txt --verbose=1
+/usr/bin/cc      -v CMakeFiles/cmTC_6c8e1.dir/CMakeCCompilerABI.c.o  -o cmTC_6c8e1 -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/bin/cc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.4' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.4) 
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6c8e1' '-rdynamic' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/cc6HV7P7.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_6c8e1 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_6c8e1.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_6c8e1/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_6c8e1.dir/build.make CMakeFiles/cmTC_6c8e1.dir/build]
+  ignore line: [make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_6c8e1.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_6c8e1.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_6c8e1]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6c8e1.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_6c8e1.dir/CMakeCCompilerABI.c.o  -o cmTC_6c8e1 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper]
+  ignore line: [Target: x86_64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.4' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.4) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6c8e1' '-rdynamic' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/cc6HV7P7.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_6c8e1 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_6c8e1.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cc6HV7P7.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--sysroot=/] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_6c8e1] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib] ==> dir [/lib/../lib]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..]
+    arg [CMakeFiles/cmTC_6c8e1.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5] ==> [/usr/lib/gcc/x86_64-linux-gnu/5]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib] ==> [/lib]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> [/usr/lib]
+  implicit libs: [c]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/5;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+  implicit fwks: []
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b53f1/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b53f1.dir/build.make CMakeFiles/cmTC_b53f1.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b53f1.dir/feature_tests.c.o
+/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_b53f1.dir/feature_tests.c.o   -c /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/feature_tests.c
+Linking C executable cmTC_b53f1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b53f1.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_b53f1.dir/feature_tests.c.o  -o cmTC_b53f1 -rdynamic 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:1c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_8768b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8768b.dir/build.make CMakeFiles/cmTC_8768b.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8768b.dir/feature_tests.c.o
+/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_8768b.dir/feature_tests.c.o   -c /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/feature_tests.c
+Linking C executable cmTC_8768b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8768b.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_8768b.dir/feature_tests.c.o  -o cmTC_8768b -rdynamic 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_95b05/fast"
+/usr/bin/make -f CMakeFiles/cmTC_95b05.dir/build.make CMakeFiles/cmTC_95b05.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_95b05.dir/feature_tests.c.o
+/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_95b05.dir/feature_tests.c.o   -c /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/feature_tests.c
+Linking C executable cmTC_95b05
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_95b05.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_95b05.dir/feature_tests.c.o  -o cmTC_95b05 -rdynamic 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:0c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:0c_variadic_macros
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_65e8c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_65e8c.dir/build.make CMakeFiles/cmTC_65e8c.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_65e8c.dir/testCXXCompiler.cxx.o
+/usr/bin/c++      -o CMakeFiles/cmTC_65e8c.dir/testCXXCompiler.cxx.o -c /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_65e8c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_65e8c.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_65e8c.dir/testCXXCompiler.cxx.o  -o cmTC_65e8c -rdynamic 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_348ad/fast"
+/usr/bin/make -f CMakeFiles/cmTC_348ad.dir/build.make CMakeFiles/cmTC_348ad.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_348ad.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++      -o CMakeFiles/cmTC_348ad.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_348ad
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_348ad.dir/link.txt --verbose=1
+/usr/bin/c++       -v CMakeFiles/cmTC_348ad.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_348ad -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/bin/c++
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.4' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.4) 
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_348ad' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccWTIpwa.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_348ad /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_348ad.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_348ad/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_348ad.dir/build.make CMakeFiles/cmTC_348ad.dir/build]
+  ignore line: [make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_348ad.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_348ad.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_348ad]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_348ad.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_348ad.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_348ad -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper]
+  ignore line: [Target: x86_64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 5.4.0-6ubuntu1~16.04.4' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-vtable-verify --enable-libmpx --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --enable-multilib --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.4) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/5/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/5/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_348ad' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccWTIpwa.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTC_348ad /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. CMakeFiles/cmTC_348ad.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccWTIpwa.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [--sysroot=/] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_348ad] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib] ==> dir [/lib/../lib]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..]
+    arg [CMakeFiles/cmTC_348ad.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o] ==> ignore
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5] ==> [/usr/lib/gcc/x86_64-linux-gnu/5]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib] ==> [/lib]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/5/../../..] ==> [/usr/lib]
+  implicit libs: [stdc++;m;c]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/5;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+  implicit fwks: []
+
+
+
+
+Detecting CXX [-std=c++14] compiler features compiled with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_4fcf9/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4fcf9.dir/build.make CMakeFiles/cmTC_4fcf9.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_4fcf9.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++14 -o CMakeFiles/cmTC_4fcf9.dir/feature_tests.cxx.o -c /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_4fcf9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4fcf9.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_4fcf9.dir/feature_tests.cxx.o  -o cmTC_4fcf9 -rdynamic 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++11] compiler features compiled with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9f96b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9f96b.dir/build.make CMakeFiles/cmTC_9f96b.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_9f96b.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_9f96b.dir/feature_tests.cxx.o -c /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_9f96b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9f96b.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_9f96b.dir/feature_tests.cxx.o  -o cmTC_9f96b -rdynamic 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:0cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:0cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:0cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:0cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:0cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:0cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:0cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:0cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:0cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:0cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [-std=c++98] compiler features compiled with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1e406/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1e406.dir/build.make CMakeFiles/cmTC_1e406.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_1e406.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_1e406.dir/feature_tests.cxx.o -c /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_1e406
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1e406.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_1e406.dir/feature_tests.cxx.o  -o cmTC_1e406 -rdynamic 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:0cxx_alias_templates
+    Feature record: CXX_FEATURE:0cxx_alignas
+    Feature record: CXX_FEATURE:0cxx_alignof
+    Feature record: CXX_FEATURE:0cxx_attributes
+    Feature record: CXX_FEATURE:0cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:0cxx_auto_type
+    Feature record: CXX_FEATURE:0cxx_binary_literals
+    Feature record: CXX_FEATURE:0cxx_constexpr
+    Feature record: CXX_FEATURE:0cxx_contextual_conversions
+    Feature record: CXX_FEATURE:0cxx_decltype
+    Feature record: CXX_FEATURE:0cxx_decltype_auto
+    Feature record: CXX_FEATURE:0cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:0cxx_default_function_template_args
+    Feature record: CXX_FEATURE:0cxx_defaulted_functions
+    Feature record: CXX_FEATURE:0cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:0cxx_delegating_constructors
+    Feature record: CXX_FEATURE:0cxx_deleted_functions
+    Feature record: CXX_FEATURE:0cxx_digit_separators
+    Feature record: CXX_FEATURE:0cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:0cxx_explicit_conversions
+    Feature record: CXX_FEATURE:0cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:0cxx_extern_templates
+    Feature record: CXX_FEATURE:0cxx_final
+    Feature record: CXX_FEATURE:0cxx_func_identifier
+    Feature record: CXX_FEATURE:0cxx_generalized_initializers
+    Feature record: CXX_FEATURE:0cxx_generic_lambdas
+    Feature record: CXX_FEATURE:0cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:0cxx_inline_namespaces
+    Feature record: CXX_FEATURE:0cxx_lambdas
+    Feature record: CXX_FEATURE:0cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:0cxx_local_type_template_args
+    Feature record: CXX_FEATURE:0cxx_long_long_type
+    Feature record: CXX_FEATURE:0cxx_noexcept
+    Feature record: CXX_FEATURE:0cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:0cxx_nullptr
+    Feature record: CXX_FEATURE:0cxx_override
+    Feature record: CXX_FEATURE:0cxx_range_for
+    Feature record: CXX_FEATURE:0cxx_raw_string_literals
+    Feature record: CXX_FEATURE:0cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:0cxx_relaxed_constexpr
+    Feature record: CXX_FEATURE:0cxx_return_type_deduction
+    Feature record: CXX_FEATURE:0cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:0cxx_rvalue_references
+    Feature record: CXX_FEATURE:0cxx_sizeof_member
+    Feature record: CXX_FEATURE:0cxx_static_assert
+    Feature record: CXX_FEATURE:0cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:0cxx_thread_local
+    Feature record: CXX_FEATURE:0cxx_trailing_return_types
+    Feature record: CXX_FEATURE:0cxx_unicode_literals
+    Feature record: CXX_FEATURE:0cxx_uniform_initialization
+    Feature record: CXX_FEATURE:0cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:0cxx_user_literals
+    Feature record: CXX_FEATURE:0cxx_variable_templates
+    Feature record: CXX_FEATURE:0cxx_variadic_macros
+    Feature record: CXX_FEATURE:0cxx_variadic_templates
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_4cbba/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4cbba.dir/build.make CMakeFiles/cmTC_4cbba.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4cbba.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_4cbba.dir/CheckIncludeFile.c.o   -c /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_4cbba
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4cbba.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_4cbba.dir/CheckIncludeFile.c.o  -o cmTC_4cbba -rdynamic 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1c276/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1c276.dir/build.make CMakeFiles/cmTC_1c276.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1c276.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_1c276.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_1c276
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1c276.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_1c276.dir/CheckFunctionExists.c.o  -o cmTC_1c276 -rdynamic -lpthread 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Determining if the function XOpenDisplay exists in the /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so passed with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5f1d9/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5f1d9.dir/build.make CMakeFiles/cmTC_5f1d9.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5f1d9.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=XOpenDisplay   -o CMakeFiles/cmTC_5f1d9.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_5f1d9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5f1d9.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=XOpenDisplay    CMakeFiles/cmTC_5f1d9.dir/CheckFunctionExists.c.o  -o cmTC_5f1d9 -rdynamic /usr/lib/x86_64-linux-gnu/libX11.so /usr/lib/x86_64-linux-gnu/libXext.so 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Determining if the function gethostbyname exists passed with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5068a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5068a.dir/build.make CMakeFiles/cmTC_5068a.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5068a.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=gethostbyname   -o CMakeFiles/cmTC_5068a.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_5068a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5068a.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname    CMakeFiles/cmTC_5068a.dir/CheckFunctionExists.c.o  -o cmTC_5068a -rdynamic 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Determining if the function connect exists passed with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_93ae4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_93ae4.dir/build.make CMakeFiles/cmTC_93ae4.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_93ae4.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=connect   -o CMakeFiles/cmTC_93ae4.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_93ae4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_93ae4.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=connect    CMakeFiles/cmTC_93ae4.dir/CheckFunctionExists.c.o  -o cmTC_93ae4 -rdynamic 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Determining if the function remove exists passed with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_4b36d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4b36d.dir/build.make CMakeFiles/cmTC_4b36d.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4b36d.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=remove   -o CMakeFiles/cmTC_4b36d.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_4b36d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4b36d.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=remove    CMakeFiles/cmTC_4b36d.dir/CheckFunctionExists.c.o  -o cmTC_4b36d -rdynamic 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Determining if the function shmat exists passed with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_dc736/fast"
+/usr/bin/make -f CMakeFiles/cmTC_dc736.dir/build.make CMakeFiles/cmTC_dc736.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_dc736.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=shmat   -o CMakeFiles/cmTC_dc736.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_dc736
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dc736.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=shmat    CMakeFiles/cmTC_dc736.dir/CheckFunctionExists.c.o  -o cmTC_dc736 -rdynamic 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Determining if the function IceConnectionNumber exists in the ICE passed with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d5053/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d5053.dir/build.make CMakeFiles/cmTC_d5053.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d5053.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=IceConnectionNumber   -o CMakeFiles/cmTC_d5053.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_d5053
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d5053.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber    CMakeFiles/cmTC_d5053.dir/CheckFunctionExists.c.o  -o cmTC_d5053 -rdynamic -lICE 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Determining if the function png_create_read_struct exists passed with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_8c6e2/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8c6e2.dir/build.make CMakeFiles/cmTC_8c6e2.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8c6e2.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=png_create_read_struct   -o CMakeFiles/cmTC_8c6e2.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_8c6e2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8c6e2.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=png_create_read_struct    CMakeFiles/cmTC_8c6e2.dir/CheckFunctionExists.c.o  -o cmTC_8c6e2 -rdynamic /usr/lib/x86_64-linux-gnu/libpng.so /usr/lib/x86_64-linux-gnu/libz.so 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Determining if the function jpeg_read_header exists passed with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_4014e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4014e.dir/build.make CMakeFiles/cmTC_4014e.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4014e.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=jpeg_read_header   -o CMakeFiles/cmTC_4014e.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_4014e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4014e.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=jpeg_read_header    CMakeFiles/cmTC_4014e.dir/CheckFunctionExists.c.o  -o cmTC_4014e -rdynamic /usr/lib/x86_64-linux-gnu/libjpeg.so 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_4fc83/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4fc83.dir/build.make CMakeFiles/cmTC_4fc83.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4fc83.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_4fc83.dir/CheckIncludeFile.c.o   -c /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_4fc83
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4fc83.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_4fc83.dir/CheckIncludeFile.c.o  -o cmTC_4fc83 -rdynamic 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b06c9/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b06c9.dir/build.make CMakeFiles/cmTC_b06c9.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b06c9.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_b06c9.dir/CheckIncludeFile.c.o   -c /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_b06c9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b06c9.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_b06c9.dir/CheckIncludeFile.c.o  -o cmTC_b06c9 -rdynamic 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_44c8b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_44c8b.dir/build.make CMakeFiles/cmTC_44c8b.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_44c8b.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_44c8b.dir/CheckIncludeFile.c.o   -c /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_44c8b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_44c8b.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_44c8b.dir/CheckIncludeFile.c.o  -o cmTC_44c8b -rdynamic 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+
+Determining size of void* passed with the following output:
+Change Dir: /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a4178/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a4178.dir/build.make CMakeFiles/cmTC_a4178.dir/build
+make[1]: Entering directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a4178.dir/SIZE_OF_VOID_PTR.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_a4178.dir/SIZE_OF_VOID_PTR.c.o   -c /mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CheckTypeSize/SIZE_OF_VOID_PTR.c
+Linking C executable cmTC_a4178
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a4178.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_a4178.dir/SIZE_OF_VOID_PTR.c.o  -o cmTC_a4178 -rdynamic /usr/lib/x86_64-linux-gnu/libjpeg.so 
+make[1]: Leaving directory '/mnt/hgfs/smartx/modules/dlib/dlib-19.17/CMakeFiles/CMakeTmp'
+
+

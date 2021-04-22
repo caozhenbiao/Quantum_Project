@@ -1,0 +1,5 @@
+# CMake generation dependency list for this directory.
+C:/myprograms/cmake-3.12.0-win64/share/cmake-3.12/Modules/CheckFunctionExists.cmake
+C:/myprograms/cmake-3.12.0-win64/share/cmake-3.12/Modules/CheckIncludeFile.cmake
+C:/smartx1.0/modules/opencv/opencv-2.4.10/3rdparty/libtiff/CMakeLists.txt
+C:/smartx1.0/modules/opencv/opencv-2.4.10/3rdparty/libtiff/tif_config.h.cmakein

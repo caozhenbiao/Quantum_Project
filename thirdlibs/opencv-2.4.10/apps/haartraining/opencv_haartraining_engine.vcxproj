@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{936F2762-E889-3051-8E75-C1CDBEDE931A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>opencv_haartraining_engine</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\lib\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">opencv_haartraining_engine.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">opencv_haartraining_engined</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\lib\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">opencv_haartraining_engine.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">opencv_haartraining_engine</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\legacy\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\include\opencv;C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ProcessorNumber>4</ProcessorNumber>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;_VARIADIC_MAX=10;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;_VARIADIC_MAX=10;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\legacy\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\include\opencv;C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\legacy\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\include\opencv;C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\legacy\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\include\opencv;C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ProcessorNumber>4</ProcessorNumber>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;NDEBUG;_VARIADIC_MAX=10;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;NDEBUG;_VARIADIC_MAX=10;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\legacy\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\include\opencv;C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\legacy\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;C:\smartx1.0\modules\opencv\opencv-2.4.10\include\opencv;C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining;C:\smartx1.0\modules\opencv\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/smartx1.0/modules/opencv/opencv-2.4.10/apps/haartraining/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+C:\myprograms\cmake-3.12.0-win64\bin\cmake.exe -HC:/smartx1.0/modules/opencv/opencv-2.4.10 -BC:/smartx1.0/modules/opencv/opencv-2.4.10 --check-stamp-file C:/smartx1.0/modules/opencv/opencv-2.4.10/apps/haartraining/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/smartx1.0/modules/opencv/opencv-2.4.10/apps/haartraining/CMakeLists.txt;C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\CMakeLists.txt;C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/smartx1.0/modules/opencv/opencv-2.4.10/apps/haartraining/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+C:\myprograms\cmake-3.12.0-win64\bin\cmake.exe -HC:/smartx1.0/modules/opencv/opencv-2.4.10 -BC:/smartx1.0/modules/opencv/opencv-2.4.10 --check-stamp-file C:/smartx1.0/modules/opencv/opencv-2.4.10/apps/haartraining/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/smartx1.0/modules/opencv/opencv-2.4.10/apps/haartraining/CMakeLists.txt;C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\CMakeLists.txt;C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\_cvcommon.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\cvclassifier.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\_cvhaartraining.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\cvhaartraining.h" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\cvboost.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\cvcommon.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\cvhaarclassifier.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\cvhaartraining.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\cvsamples.cpp" />
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\cvsamplesoutput.cpp" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\cvsamplesoutput.h" />
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\apps\haartraining\ioutput.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\ZERO_CHECK.vcxproj">
+      <Project>{C252B718-CA1E-3457-A4B3-037DF60D3E9D}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\opencv_calib3d.vcxproj">
+      <Project>{0A1D240E-675B-328C-83B0-2CD67E64C760}</Project>
+      <Name>opencv_calib3d</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\opencv_core.vcxproj">
+      <Project>{E3E1CF2E-C097-3EF6-BCE8-C30B9334EA1B}</Project>
+      <Name>opencv_core</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\opencv_features2d.vcxproj">
+      <Project>{DDDDDDC2-6F08-34DF-A079-482032820311}</Project>
+      <Name>opencv_features2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\opencv_flann.vcxproj">
+      <Project>{6B202E1D-4715-3FFA-9E46-32D6D7440A7C}</Project>
+      <Name>opencv_flann</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\opencv_highgui.vcxproj">
+      <Project>{1EFD348F-61C2-39CD-AE1B-3C5D6B9B79C9}</Project>
+      <Name>opencv_highgui</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\opencv_imgproc.vcxproj">
+      <Project>{A730D35F-322B-35A0-8AB6-D3333EB9FD4C}</Project>
+      <Name>opencv_imgproc</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\legacy\opencv_legacy.vcxproj">
+      <Project>{BC02C6E1-5BBE-3E68-8D26-59C24E871003}</Project>
+      <Name>opencv_legacy</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ml\opencv_ml.vcxproj">
+      <Project>{26921F0D-452D-3064-80CE-D3B80BC1C427}</Project>
+      <Name>opencv_ml</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\opencv_objdetect.vcxproj">
+      <Project>{6F3A68EC-3EEB-3725-B823-4CD08D773C8A}</Project>
+      <Name>opencv_objdetect</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\opencv_video.vcxproj">
+      <Project>{85EF2A83-D574-3044-880D-580C0D96EE00}</Project>
+      <Name>opencv_video</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

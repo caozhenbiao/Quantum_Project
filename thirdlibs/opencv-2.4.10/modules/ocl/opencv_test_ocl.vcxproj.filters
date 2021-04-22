@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\main.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_api.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_arithm.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_bgfg.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_blend.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_brute_force_matcher.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_calib3d.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_canny.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_color.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_fft.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_filters.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_gemm.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_imgproc.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_kalman.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_kmeans.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_match_template.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_matrix_operation.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_mean_shift.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_ml.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_moments.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_objdetect.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_optflow.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_pyramids.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_sort.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_split_merge.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_warp.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\utility.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\opencv_test_ocl_pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\test_precomp.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\smartx1.0\modules\opencv\opencv-2.4.10\modules\ocl\test\utility.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Include">
+      <UniqueIdentifier>{A280D851-AF3D-383F-8C95-26A3EC1C1ED0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{26CE975A-5610-31AA-9A8D-5F5FF54B625A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{697B5E73-F8D9-3BB0-A0DB-5B0B33B621EE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

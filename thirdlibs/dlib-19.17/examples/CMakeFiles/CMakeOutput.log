@@ -1,0 +1,543 @@
+The system is: Windows - 10.0.17763 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R) ��������汾 14.0.25420.1
+��Ȩ����(C) Microsoft Corporation����������Ȩ����
+
+��������ʱ��Ϊ 2019/9/18 23:47:46��
+�ڵ� 1 �ϵ���Ŀ��C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\3.12.0-rc3\CompilerIdC\CompilerIdC.vcxproj��(Ĭ��Ŀ��)��
+PrepareForBuild:
+  ���ڴ���Ŀ¼��Debug\����
+  ���ڴ���Ŀ¼��Debug\CompilerIdC.tlog\����
+InitializeBuildStatus:
+  ���ڴ�����Debug\CompilerIdC.tlog\unsuccessfulbuild������Ϊ��ָ����AlwaysCreate����
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /nologo /W0 /WX- /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue CMakeCCompilerId.c
+  CMakeCCompilerId.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCCompilerId.obj
+  CompilerIdC.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\3.12.0-rc3\CompilerIdC\.\CompilerIdC.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_C_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\cl.exe
+FinalizeBuildStatus:
+  ����ɾ���ļ���Debug\CompilerIdC.tlog\unsuccessfulbuild����
+  ���ڶԡ�Debug\CompilerIdC.tlog\CompilerIdC.lastbuildstate��ִ�� Touch ����
+�����������Ŀ��C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\3.12.0-rc3\CompilerIdC\CompilerIdC.vcxproj��(Ĭ��Ŀ��)�Ĳ�����
+
+�ѳɹ����ɡ�
+    0 ������
+    0 ������
+
+����ʱ�� 00:00:00.89
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+
+The C compiler identification is MSVC, found in "C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/3.12.0-rc3/CompilerIdC/CompilerIdC.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R) ��������汾 14.0.25420.1
+��Ȩ����(C) Microsoft Corporation����������Ȩ����
+
+��������ʱ��Ϊ 2019/9/18 23:47:47��
+�ڵ� 1 �ϵ���Ŀ��C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\3.12.0-rc3\CompilerIdCXX\CompilerIdCXX.vcxproj��(Ĭ��Ŀ��)��
+PrepareForBuild:
+  ���ڴ���Ŀ¼��Debug\����
+  ���ڴ���Ŀ¼��Debug\CompilerIdCXX.tlog\����
+InitializeBuildStatus:
+  ���ڴ�����Debug\CompilerIdCXX.tlog\unsuccessfulbuild������Ϊ��ָ����AlwaysCreate����
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /nologo /W0 /WX- /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue CMakeCXXCompilerId.cpp
+  CMakeCXXCompilerId.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdCXX.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCXXCompilerId.obj
+  CompilerIdCXX.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\3.12.0-rc3\CompilerIdCXX\.\CompilerIdCXX.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_CXX_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\cl.exe
+FinalizeBuildStatus:
+  ����ɾ���ļ���Debug\CompilerIdCXX.tlog\unsuccessfulbuild����
+  ���ڶԡ�Debug\CompilerIdCXX.tlog\CompilerIdCXX.lastbuildstate��ִ�� Touch ����
+�����������Ŀ��C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\3.12.0-rc3\CompilerIdCXX\CompilerIdCXX.vcxproj��(Ĭ��Ŀ��)�Ĳ�����
+
+�ѳɹ����ɡ�
+    0 ������
+    0 ������
+
+����ʱ�� 00:00:00.73
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+
+The CXX compiler identification is MSVC, found in "C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/3.12.0-rc3/CompilerIdCXX/CompilerIdCXX.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_49c05.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/18 23:47:48。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_49c05.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_49c05.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_49c05.dir\Debug\cmTC_49c05.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_49c05.dir\Debug\cmTC_49c05.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_49c05.dir\Debug\\" /Fd"cmTC_49c05.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\testCCompiler.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_49c05.dir\Debug\\" /Fd"cmTC_49c05.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\testCCompiler.c"
+  
+  testCCompiler.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_49c05.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_49c05.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_49c05.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_49c05.dir\Debug\testCCompiler.obj
+  cmTC_49c05.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_49c05.exe
+  cmTC_49c05.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_49c05.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_49c05.dir\Debug\cmTC_49c05.tlog\unsuccessfulbuild”。
+  正在对“cmTC_49c05.dir\Debug\cmTC_49c05.tlog\cmTC_49c05.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_49c05.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.46
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_36838.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/18 23:47:50。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_36838.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_36838.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_36838.dir\Debug\cmTC_36838.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_36838.dir\Debug\cmTC_36838.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_36838.dir\Debug\\" /Fd"cmTC_36838.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\myprograms\cmake-3.12.0-win64\share\cmake-3.12\Modules\CMakeCCompilerABI.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_36838.dir\Debug\\" /Fd"cmTC_36838.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\myprograms\cmake-3.12.0-win64\share\cmake-3.12\Modules\CMakeCCompilerABI.c"
+  
+  CMakeCCompilerABI.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_36838.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_36838.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_36838.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_36838.dir\Debug\CMakeCCompilerABI.obj
+  cmTC_36838.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_36838.exe
+  cmTC_36838.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_36838.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_36838.dir\Debug\cmTC_36838.tlog\unsuccessfulbuild”。
+  正在对“cmTC_36838.dir\Debug\cmTC_36838.tlog\cmTC_36838.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_36838.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.23
+
+
+
+
+Detecting C [] compiler features compiled with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_5fe24.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/18 23:47:52。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_5fe24.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_5fe24.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_5fe24.dir\Debug\cmTC_5fe24.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_5fe24.dir\Debug\cmTC_5fe24.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5fe24.dir\Debug\\" /Fd"cmTC_5fe24.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\feature_tests.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5fe24.dir\Debug\\" /Fd"cmTC_5fe24.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\feature_tests.c"
+  
+  feature_tests.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_5fe24.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_5fe24.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_5fe24.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_5fe24.dir\Debug\feature_tests.obj
+  cmTC_5fe24.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_5fe24.exe
+  cmTC_5fe24.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_5fe24.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_5fe24.dir\Debug\cmTC_5fe24.tlog\unsuccessfulbuild”。
+  正在对“cmTC_5fe24.dir\Debug\cmTC_5fe24.tlog\cmTC_5fe24.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_5fe24.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.20
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_variadic_macros
+Determining if the CXX compiler works passed with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_bc9f3.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/18 23:47:53。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_bc9f3.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_bc9f3.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_bc9f3.dir\Debug\cmTC_bc9f3.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_bc9f3.dir\Debug\cmTC_bc9f3.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_bc9f3.dir\Debug\\" /Fd"cmTC_bc9f3.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_bc9f3.dir\Debug\\" /Fd"cmTC_bc9f3.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  
+  testCXXCompiler.cxx
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_bc9f3.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_bc9f3.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_bc9f3.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_bc9f3.dir\Debug\testCXXCompiler.obj
+  cmTC_bc9f3.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_bc9f3.exe
+  cmTC_bc9f3.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_bc9f3.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_bc9f3.dir\Debug\cmTC_bc9f3.tlog\unsuccessfulbuild”。
+  正在对“cmTC_bc9f3.dir\Debug\cmTC_bc9f3.tlog\cmTC_bc9f3.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_bc9f3.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.98
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_4922d.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/18 23:47:54。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_4922d.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_4922d.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_4922d.dir\Debug\cmTC_4922d.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_4922d.dir\Debug\cmTC_4922d.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_4922d.dir\Debug\\" /Fd"cmTC_4922d.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\myprograms\cmake-3.12.0-win64\share\cmake-3.12\Modules\CMakeCXXCompilerABI.cpp"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_4922d.dir\Debug\\" /Fd"cmTC_4922d.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\myprograms\cmake-3.12.0-win64\share\cmake-3.12\Modules\CMakeCXXCompilerABI.cpp"
+  
+  CMakeCXXCompilerABI.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_4922d.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_4922d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_4922d.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_4922d.dir\Debug\CMakeCXXCompilerABI.obj
+  cmTC_4922d.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_4922d.exe
+  cmTC_4922d.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_4922d.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_4922d.dir\Debug\cmTC_4922d.tlog\unsuccessfulbuild”。
+  正在对“cmTC_4922d.dir\Debug\cmTC_4922d.tlog\cmTC_4922d.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_4922d.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.21
+
+
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_6ce69.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/18 23:47:56。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_6ce69.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_6ce69.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_6ce69.dir\Debug\cmTC_6ce69.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_6ce69.dir\Debug\cmTC_6ce69.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_6ce69.dir\Debug\\" /Fd"cmTC_6ce69.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\feature_tests.cxx"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_6ce69.dir\Debug\\" /Fd"cmTC_6ce69.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\feature_tests.cxx"
+  
+  feature_tests.cxx
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_6ce69.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_6ce69.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_6ce69.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_6ce69.dir\Debug\feature_tests.obj
+  cmTC_6ce69.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_6ce69.exe
+  cmTC_6ce69.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_6ce69.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_6ce69.dir\Debug\cmTC_6ce69.tlog\unsuccessfulbuild”。
+  正在对“cmTC_6ce69.dir\Debug\cmTC_6ce69.tlog\cmTC_6ce69.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_6ce69.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.65
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:0cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_14055.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/18 23:47:58。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_14055.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_14055.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_14055.dir\Debug\cmTC_14055.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_14055.dir\Debug\cmTC_14055.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_14055.dir\Debug\\" /Fd"cmTC_14055.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_14055.dir\Debug\\" /Fd"cmTC_14055.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  
+  CheckIncludeFile.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_14055.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_14055.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_14055.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_14055.dir\Debug\CheckIncludeFile.obj
+  cmTC_14055.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_14055.exe
+  cmTC_14055.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_14055.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_14055.dir\Debug\cmTC_14055.tlog\unsuccessfulbuild”。
+  正在对“cmTC_14055.dir\Debug\cmTC_14055.tlog\cmTC_14055.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_14055.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.23
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_216f1.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/18 23:48:00。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_216f1.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_216f1.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_216f1.dir\Debug\cmTC_216f1.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_216f1.dir\Debug\cmTC_216f1.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_216f1.dir\Debug\\" /Fd"cmTC_216f1.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_216f1.dir\Debug\\" /Fd"cmTC_216f1.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  
+  CheckIncludeFile.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_216f1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_216f1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_216f1.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_216f1.dir\Debug\CheckIncludeFile.obj
+  cmTC_216f1.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_216f1.exe
+  cmTC_216f1.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_216f1.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_216f1.dir\Debug\cmTC_216f1.tlog\unsuccessfulbuild”。
+  正在对“cmTC_216f1.dir\Debug\cmTC_216f1.tlog\cmTC_216f1.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_216f1.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.60
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_ca74b.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/18 23:48:02。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_ca74b.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_ca74b.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_ca74b.dir\Debug\cmTC_ca74b.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_ca74b.dir\Debug\cmTC_ca74b.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ca74b.dir\Debug\\" /Fd"cmTC_ca74b.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ca74b.dir\Debug\\" /Fd"cmTC_ca74b.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  
+  CheckIncludeFile.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_ca74b.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_ca74b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_ca74b.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_ca74b.dir\Debug\CheckIncludeFile.obj
+  cmTC_ca74b.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_ca74b.exe
+  cmTC_ca74b.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_ca74b.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_ca74b.dir\Debug\cmTC_ca74b.tlog\unsuccessfulbuild”。
+  正在对“cmTC_ca74b.dir\Debug\cmTC_ca74b.tlog\cmTC_ca74b.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_ca74b.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.10
+
+
+Determining size of void* passed with the following output:
+Change Dir: C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_456eb.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2019/9/18 23:48:03。
+节点 1 上的项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_456eb.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_456eb.dir\Debug\”。
+  正在创建目录“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_456eb.dir\Debug\cmTC_456eb.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_456eb.dir\Debug\cmTC_456eb.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_456eb.dir\Debug\\" /Fd"cmTC_456eb.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CheckTypeSize\SIZE_OF_VOID_PTR.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24215.1 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_456eb.dir\Debug\\" /Fd"cmTC_456eb.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CheckTypeSize\SIZE_OF_VOID_PTR.c"
+  
+  SIZE_OF_VOID_PTR.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_456eb.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_456eb.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_456eb.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_456eb.dir\Debug\SIZE_OF_VOID_PTR.obj
+  cmTC_456eb.vcxproj -> C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\Debug\cmTC_456eb.exe
+  cmTC_456eb.vcxproj -> C:/smartx1.0/modules/dlib/dlib-19.17/examples/CMakeFiles/CMakeTmp/Debug/cmTC_456eb.pdb (Full PDB)
+FinalizeBuildStatus:
+  正在删除文件“cmTC_456eb.dir\Debug\cmTC_456eb.tlog\unsuccessfulbuild”。
+  正在对“cmTC_456eb.dir\Debug\cmTC_456eb.tlog\cmTC_456eb.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\smartx1.0\modules\dlib\dlib-19.17\examples\CMakeFiles\CMakeTmp\cmTC_456eb.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.12
+
+

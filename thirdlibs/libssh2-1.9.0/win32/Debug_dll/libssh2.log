@@ -1,0 +1,37 @@
+﻿cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  wincng.c
+  version.c
+  userauth.c
+  transport.c
+  sftp.c
+  session.c
+d:\quantum project 1.0\thirdlibs\libssh2-1.9.0\src\session.c(519): warning C4068: 未知的杂注
+d:\quantum project 1.0\thirdlibs\libssh2-1.9.0\src\session.c(520): warning C4068: 未知的杂注
+d:\quantum project 1.0\thirdlibs\libssh2-1.9.0\src\session.c(568): warning C4068: 未知的杂注
+  scp.c
+  publickey.c
+  pem.c
+  packet.c
+  openssl.c
+  misc.c
+  mbedtls.c
+  mac.c
+  knownhost.c
+  kex.c
+  keepalive.c
+  hostkey.c
+  global.c
+  crypt.c
+  正在生成代码...
+  正在编译...
+  comp.c
+  channel.c
+  blowfish.c
+  bcrypt_pbkdf.c
+d:\quantum project 1.0\thirdlibs\libssh2-1.9.0\src\bcrypt_pbkdf.c(72): warning C4267: “函数”: 从“size_t”转换到“uint16_t”，可能丢失数据
+d:\quantum project 1.0\thirdlibs\libssh2-1.9.0\src\bcrypt_pbkdf.c(74): warning C4267: “函数”: 从“size_t”转换到“uint16_t”，可能丢失数据
+d:\quantum project 1.0\thirdlibs\libssh2-1.9.0\src\bcrypt_pbkdf.c(75): warning C4267: “函数”: 从“size_t”转换到“uint16_t”，可能丢失数据
+  agent.c
+  正在生成代码...
+    正在创建库 .\Debug_dll\libssh2.lib 和对象 .\Debug_dll\libssh2.exp
+  libssh2.vcxproj -> D:\Quantum Project 1.0\thirdLibs\libssh2-1.9.0\win32\.\Debug_dll\libssh2.dll

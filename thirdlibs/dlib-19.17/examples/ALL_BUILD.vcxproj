@@ -1,0 +1,518 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{209C0864-1110-361E-B722-6B50DBB16D21}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\include\opencv;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\ml\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\legacy\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\photo\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\gpu\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\nonfree\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\stitching\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\superres\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\videostab\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\include\opencv;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\ml\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\legacy\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\photo\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\gpu\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\nonfree\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\stitching\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\superres\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\videostab\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\include\opencv;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\ml\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\legacy\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\photo\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\gpu\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\nonfree\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\stitching\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\superres\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\videostab\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\include\opencv;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\core\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\flann\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\imgproc\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\highgui\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\features2d\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\calib3d\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\ml\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\video\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\legacy\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\objdetect\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\photo\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\gpu\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\nonfree\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\contrib\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\stitching\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\superres\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\ts\include;\mnt\hgfs\smartx1.0\modules\opencv\opencv-2.4.10\modules\videostab\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\ZERO_CHECK.vcxproj">
+      <Project>{92C08177-0A6D-3E4F-A9F2-A4ADD7478161}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\3d_point_cloud_ex.vcxproj">
+      <Project>{75C0CA77-1033-394C-A22D-44E52CE04D9C}</Project>
+      <Name>3d_point_cloud_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\assignment_learning_ex.vcxproj">
+      <Project>{F7ED7DDC-2391-385B-8606-0A2C9731BE50}</Project>
+      <Name>assignment_learning_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\bayes_net_ex.vcxproj">
+      <Project>{667E8125-020B-353C-95A8-2F90AB94FA69}</Project>
+      <Name>bayes_net_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\bayes_net_from_disk_ex.vcxproj">
+      <Project>{DEDCADCD-9955-3F18-B804-0C8292DBF58F}</Project>
+      <Name>bayes_net_from_disk_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\bayes_net_gui_ex.vcxproj">
+      <Project>{B4248763-837B-358B-B8CA-6FE82CD6A7EB}</Project>
+      <Name>bayes_net_gui_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\bridge_ex.vcxproj">
+      <Project>{B06EF47A-2AD7-33E5-80FA-02539E45BFF2}</Project>
+      <Name>bridge_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\bsp_ex.vcxproj">
+      <Project>{F0E3717B-AB01-3762-938F-323518307CE3}</Project>
+      <Name>bsp_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\compress_stream_ex.vcxproj">
+      <Project>{CC5FB8E5-3524-31D8-9EE8-00B1A85F91B7}</Project>
+      <Name>compress_stream_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\config_reader_ex.vcxproj">
+      <Project>{F771062E-5324-3AC8-BA9A-840D16876656}</Project>
+      <Name>config_reader_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\custom_trainer_ex.vcxproj">
+      <Project>{21429EAD-D24B-3C2F-9353-056EB883166E}</Project>
+      <Name>custom_trainer_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dir_nav_ex.vcxproj">
+      <Project>{98B67477-F9F4-3E24-A6B6-680B6368CBD9}</Project>
+      <Name>dir_nav_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dlib_build\dlib.vcxproj">
+      <Project>{1AD0D70A-74A4-3597-A08F-8A487ACCC3C0}</Project>
+      <Name>dlib</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dnn_face_recognition_ex.vcxproj">
+      <Project>{97D7D521-7E44-32ED-886C-420917EBA0CF}</Project>
+      <Name>dnn_face_recognition_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dnn_imagenet_ex.vcxproj">
+      <Project>{DF787850-C960-3413-B792-2E84215E52BA}</Project>
+      <Name>dnn_imagenet_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dnn_imagenet_train_ex.vcxproj">
+      <Project>{7E118091-DFE9-398F-9721-6089E54611D2}</Project>
+      <Name>dnn_imagenet_train_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dnn_inception_ex.vcxproj">
+      <Project>{C6EF98FC-9B1D-3682-B550-A943458F75B2}</Project>
+      <Name>dnn_inception_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dnn_introduction2_ex.vcxproj">
+      <Project>{6868188C-00C0-381F-AFC8-E4DB351AF7FE}</Project>
+      <Name>dnn_introduction2_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dnn_introduction_ex.vcxproj">
+      <Project>{DF0D9F08-2576-34C5-9BEE-B7DA1C6EA33F}</Project>
+      <Name>dnn_introduction_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dnn_metric_learning_ex.vcxproj">
+      <Project>{7AD7D13F-AAFB-3FB0-B6DD-B006BFB7DA1B}</Project>
+      <Name>dnn_metric_learning_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dnn_metric_learning_on_images_ex.vcxproj">
+      <Project>{EA7478FA-93FC-38DB-930A-2AE2C0062DE3}</Project>
+      <Name>dnn_metric_learning_on_images_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dnn_mmod_dog_hipsterizer.vcxproj">
+      <Project>{003F4164-B2AB-3A50-980D-7541F0C72F06}</Project>
+      <Name>dnn_mmod_dog_hipsterizer</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dnn_mmod_ex.vcxproj">
+      <Project>{0020C70D-40E0-33EA-89BD-6C5FBB52E4E2}</Project>
+      <Name>dnn_mmod_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dnn_mmod_face_detection_ex.vcxproj">
+      <Project>{1C082829-F7E6-3A08-A61D-842B07FB918E}</Project>
+      <Name>dnn_mmod_face_detection_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dnn_mmod_find_cars2_ex.vcxproj">
+      <Project>{777EBA2B-D16C-3A0E-A2DD-B2A114710EA5}</Project>
+      <Name>dnn_mmod_find_cars2_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dnn_mmod_find_cars_ex.vcxproj">
+      <Project>{2F4B5745-1A1C-3AA3-98E9-05BAB6788D94}</Project>
+      <Name>dnn_mmod_find_cars_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dnn_mmod_train_find_cars_ex.vcxproj">
+      <Project>{3565FA2F-C663-309E-AD76-BE15EB6D8D53}</Project>
+      <Name>dnn_mmod_train_find_cars_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dnn_semantic_segmentation_ex.vcxproj">
+      <Project>{2B60A856-DCEF-3BEC-9858-89EE6B502729}</Project>
+      <Name>dnn_semantic_segmentation_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\dnn_semantic_segmentation_train_ex.vcxproj">
+      <Project>{900115BB-94F2-3A3C-9E6A-7466CF268A5C}</Project>
+      <Name>dnn_semantic_segmentation_train_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\empirical_kernel_map_ex.vcxproj">
+      <Project>{E1970FAF-300B-3B37-8CAB-66143CB1417A}</Project>
+      <Name>empirical_kernel_map_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\face_detection_ex.vcxproj">
+      <Project>{EC4CD574-622D-30B5-8B19-D5A6C6D28359}</Project>
+      <Name>face_detection_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\face_landmark_detection_ex.vcxproj">
+      <Project>{8FADE068-6385-3C51-B3B9-19F94951E11F}</Project>
+      <Name>face_landmark_detection_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\fhog_ex.vcxproj">
+      <Project>{0861A9E9-69CC-3799-9233-2D282AB7D719}</Project>
+      <Name>fhog_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\fhog_object_detector_ex.vcxproj">
+      <Project>{4E6B99F6-80ED-3CF6-95F8-41DB73DB1336}</Project>
+      <Name>fhog_object_detector_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\file_to_code_ex.vcxproj">
+      <Project>{9143145D-6688-3AA3-A660-FC4823F9130E}</Project>
+      <Name>file_to_code_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\graph_labeling_ex.vcxproj">
+      <Project>{CF07731B-91F5-3045-B414-BBDCF83B6E92}</Project>
+      <Name>graph_labeling_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\gui_api_ex.vcxproj">
+      <Project>{E4F2F505-940F-37CC-BA4A-259DE5FB373D}</Project>
+      <Name>gui_api_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\hough_transform_ex.vcxproj">
+      <Project>{40B80E38-4D10-35CE-AD4E-7837F3BE2037}</Project>
+      <Name>hough_transform_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\image_ex.vcxproj">
+      <Project>{94CD64E0-2570-3320-AB77-A4514A72AB0E}</Project>
+      <Name>image_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\integrate_function_adapt_simp_ex.vcxproj">
+      <Project>{ECB2A50C-FD9D-38EE-BBB4-F56C89A48214}</Project>
+      <Name>integrate_function_adapt_simp_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\iosockstream_ex.vcxproj">
+      <Project>{9E5870E3-46DF-3728-8307-2AF1AB103FC2}</Project>
+      <Name>iosockstream_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\kcentroid_ex.vcxproj">
+      <Project>{D810F3E0-0E2D-3AD3-944A-B6532266A2DE}</Project>
+      <Name>kcentroid_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\kkmeans_ex.vcxproj">
+      <Project>{5FED7FEF-2553-3450-8A43-FA546CD4A2A1}</Project>
+      <Name>kkmeans_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\krls_ex.vcxproj">
+      <Project>{133B169E-92A8-3D13-86FD-B22E42761768}</Project>
+      <Name>krls_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\krls_filter_ex.vcxproj">
+      <Project>{D10E9239-C45F-3FC6-8485-B0EA06171416}</Project>
+      <Name>krls_filter_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\krr_classification_ex.vcxproj">
+      <Project>{523ECAE9-C6D7-338F-AB75-B9013E27DBD2}</Project>
+      <Name>krr_classification_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\krr_regression_ex.vcxproj">
+      <Project>{0B05245C-B2BE-3996-8CC7-D6864E490163}</Project>
+      <Name>krr_regression_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\learning_to_track_ex.vcxproj">
+      <Project>{B7D0F2A1-71A1-32A7-9A1A-1B8CF9B42A5B}</Project>
+      <Name>learning_to_track_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\least_squares_ex.vcxproj">
+      <Project>{AD0CB6AA-2C77-3558-A65C-D4CF905779B6}</Project>
+      <Name>least_squares_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\linear_manifold_regularizer_ex.vcxproj">
+      <Project>{87219609-EE2B-3CBC-8630-A1D77C32049C}</Project>
+      <Name>linear_manifold_regularizer_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\logger_custom_output_ex.vcxproj">
+      <Project>{83903A8F-3D1F-3722-81E4-A9E8751D6F7B}</Project>
+      <Name>logger_custom_output_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\logger_ex.vcxproj">
+      <Project>{2FCBBDAE-A1F8-31FD-A373-536D5269EFAF}</Project>
+      <Name>logger_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\logger_ex_2.vcxproj">
+      <Project>{71CEA2B7-DAB9-3360-B225-8D912F9027A6}</Project>
+      <Name>logger_ex_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\matrix_ex.vcxproj">
+      <Project>{FCF21B3C-6A60-380B-AD5A-FC9DBE35685C}</Project>
+      <Name>matrix_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\matrix_expressions_ex.vcxproj">
+      <Project>{BB83976B-5736-3CEB-AAF4-A01EC8765895}</Project>
+      <Name>matrix_expressions_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\max_cost_assignment_ex.vcxproj">
+      <Project>{0FEE0B1B-4165-34DA-ABF1-2ACE84CEE48A}</Project>
+      <Name>max_cost_assignment_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\member_function_pointer_ex.vcxproj">
+      <Project>{0E050894-67F2-3800-82E1-7697D4194125}</Project>
+      <Name>member_function_pointer_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\mlp_ex.vcxproj">
+      <Project>{E17FDF7A-FA80-3837-A229-0F0BF8610BAD}</Project>
+      <Name>mlp_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\model_selection_ex.vcxproj">
+      <Project>{B38A5158-52E8-377A-AEBF-32FDAC1D00A7}</Project>
+      <Name>model_selection_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\mpc_ex.vcxproj">
+      <Project>{1FDDE4CB-A901-3AD6-A742-858DF424A03F}</Project>
+      <Name>mpc_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\multiclass_classification_ex.vcxproj">
+      <Project>{7399591E-6DD0-37B1-9AD1-A30D6B0A9DD5}</Project>
+      <Name>multiclass_classification_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\multithreaded_object_ex.vcxproj">
+      <Project>{D3456867-67FC-3C90-B8E5-8A4869340D92}</Project>
+      <Name>multithreaded_object_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\object_detector_advanced_ex.vcxproj">
+      <Project>{EE2B7580-C130-3D12-9ECA-3774343BDA27}</Project>
+      <Name>object_detector_advanced_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\object_detector_ex.vcxproj">
+      <Project>{D0C4F9CF-ED0D-3587-9909-2F863006956A}</Project>
+      <Name>object_detector_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\one_class_classifiers_ex.vcxproj">
+      <Project>{F744DD09-E385-3CB3-BBAE-55B53465EFDA}</Project>
+      <Name>one_class_classifiers_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\optimization_ex.vcxproj">
+      <Project>{D8A88236-0B4F-3120-A6E2-04CD8D56C985}</Project>
+      <Name>optimization_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\parallel_for_ex.vcxproj">
+      <Project>{A77A1665-3845-301D-9188-24B3D1187E62}</Project>
+      <Name>parallel_for_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\pipe_ex.vcxproj">
+      <Project>{A2A3F8EC-0683-310B-B45C-E4871D4C09E4}</Project>
+      <Name>pipe_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\pipe_ex_2.vcxproj">
+      <Project>{1FC311B8-289D-367C-8D5E-756C92B7F021}</Project>
+      <Name>pipe_ex_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\quantum_computing_ex.vcxproj">
+      <Project>{FFF9E262-7FD3-332A-9CC4-16FAF90F9517}</Project>
+      <Name>quantum_computing_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\queue_ex.vcxproj">
+      <Project>{5BCCA295-370A-38FE-8C72-7C69F9C0A30A}</Project>
+      <Name>queue_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\random_cropper_ex.vcxproj">
+      <Project>{66E66979-10E4-3AEC-8EF4-CB532FCFD906}</Project>
+      <Name>random_cropper_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\rank_features_ex.vcxproj">
+      <Project>{526EC570-E89B-396F-8714-12425E0FF45F}</Project>
+      <Name>rank_features_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\running_stats_ex.vcxproj">
+      <Project>{28293A03-1068-322F-AFD1-EB6257607D77}</Project>
+      <Name>running_stats_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\rvm_ex.vcxproj">
+      <Project>{DFFAE681-34E3-340F-8878-2FAE672231A4}</Project>
+      <Name>rvm_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\rvm_regression_ex.vcxproj">
+      <Project>{62140CD0-C470-32E4-997A-072687B8D3F5}</Project>
+      <Name>rvm_regression_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\sequence_labeler_ex.vcxproj">
+      <Project>{1B0B1C50-1D37-394E-9A16-8AE2BEFDB1B3}</Project>
+      <Name>sequence_labeler_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\sequence_segmenter_ex.vcxproj">
+      <Project>{A3806167-F30A-3C4B-BF98-10797F86467D}</Project>
+      <Name>sequence_segmenter_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\server_http_ex.vcxproj">
+      <Project>{7509C452-31DB-35C8-8D84-CFB9FD947518}</Project>
+      <Name>server_http_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\server_iostream_ex.vcxproj">
+      <Project>{21A2238A-294B-39FF-9090-E6E05A4F6A72}</Project>
+      <Name>server_iostream_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\sockets_ex.vcxproj">
+      <Project>{1D665D85-4A61-3646-B9AA-FFE57CC97566}</Project>
+      <Name>sockets_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\sockstreambuf_ex.vcxproj">
+      <Project>{AB8B535F-ECD1-3043-A7C2-F64BFEE8EC4D}</Project>
+      <Name>sockstreambuf_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\std_allocator_ex.vcxproj">
+      <Project>{87616744-6648-322A-9950-168D9C20293D}</Project>
+      <Name>std_allocator_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\surf_ex.vcxproj">
+      <Project>{45124160-70DB-3474-AAA3-31EB03F9EDA9}</Project>
+      <Name>surf_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\svm_c_ex.vcxproj">
+      <Project>{1E0676F7-5D71-3FC3-AC9C-0E87B2E90126}</Project>
+      <Name>svm_c_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\svm_ex.vcxproj">
+      <Project>{17FA104E-F195-3683-9DD7-187270B21ABB}</Project>
+      <Name>svm_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\svm_pegasos_ex.vcxproj">
+      <Project>{AD7A5873-896D-36DC-9DE8-B0B018A70142}</Project>
+      <Name>svm_pegasos_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\svm_rank_ex.vcxproj">
+      <Project>{5E0F042B-0E91-3765-9FB6-3E9DAF986BE0}</Project>
+      <Name>svm_rank_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\svm_sparse_ex.vcxproj">
+      <Project>{6021A386-7EF7-3377-B6FB-7A65F17CA207}</Project>
+      <Name>svm_sparse_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\svm_struct_ex.vcxproj">
+      <Project>{7C69AE94-11EA-3131-8E2F-434707A9E2FC}</Project>
+      <Name>svm_struct_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\svr_ex.vcxproj">
+      <Project>{964476AA-9FF7-3BE0-9A94-A01F3272C904}</Project>
+      <Name>svr_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\thread_function_ex.vcxproj">
+      <Project>{36B046FB-E4F8-38AC-99FE-851AA8739C60}</Project>
+      <Name>thread_function_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\thread_pool_ex.vcxproj">
+      <Project>{379D7416-ECE8-3B00-9376-8B43036737B7}</Project>
+      <Name>thread_pool_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\threaded_object_ex.vcxproj">
+      <Project>{441DA9E8-BF21-3D06-946F-C8A2B8D8513D}</Project>
+      <Name>threaded_object_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\threads_ex.vcxproj">
+      <Project>{A8DA342A-49E1-3556-80A5-7477599F0003}</Project>
+      <Name>threads_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\timer_ex.vcxproj">
+      <Project>{C6DAF3AC-0A2B-3E9D-B9C3-B97F7484314A}</Project>
+      <Name>timer_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\train_object_detector.vcxproj">
+      <Project>{533053B0-E1AD-3914-A3CB-333B8C438163}</Project>
+      <Name>train_object_detector</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\train_shape_predictor_ex.vcxproj">
+      <Project>{55516984-8117-3BB4-8A5D-CCA4C9AFE4F7}</Project>
+      <Name>train_shape_predictor_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\using_custom_kernels_ex.vcxproj">
+      <Project>{4F809236-6852-3880-8308-1E9C2EBF00EB}</Project>
+      <Name>using_custom_kernels_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\video_tracking_ex.vcxproj">
+      <Project>{579CFE1C-0796-3FBF-A04B-8E3C2235CF4C}</Project>
+      <Name>video_tracking_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\webcam_face_pose_ex.vcxproj">
+      <Project>{558D730E-DF8A-3B8C-BD23-CCB52456E879}</Project>
+      <Name>webcam_face_pose_ex</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\smartx1.0\modules\dlib\dlib-19.17\examples\xml_parser_ex.vcxproj">
+      <Project>{EFE302F7-66EE-3E67-9FAD-07C22B7549AE}</Project>
+      <Name>xml_parser_ex</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
