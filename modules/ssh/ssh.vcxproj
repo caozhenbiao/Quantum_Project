@@ -58,14 +58,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;SYSTEM_EXPORTS;_HAS_EXCEPTIONS=0;_CRT_SECURE_NO_WARNINGS;NOMINMAX;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\platform\quark\libbase;D:\Quantum_Project_v1.0\thirdlibs\libssh2-1.9.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\platform\quark\libbase;..\..\thirdlibs\libssh2-1.9.0\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output\;D:\Quantum_Project_v1.0\thirdlibs\libssh2-1.9.0\win32\Debug;D:\Quantum_Project_v1.0\thirdlibs\openssl-1.0.2p\out32dll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>lualibD.lib;base.lib;odbc32.lib;odbccp32.lib;libeay32.lib;ssleay32.lib;ws2_32.lib;zlib.lib;libssh2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output\;..\..\thirdlibs\libssh2-1.9.0\win32\Debug;..\..\thirdlibs\openssl-1.0.2p\out32dll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lualibD.lib;base.lib;libeay32.lib;ssleay32.lib;ws2_32.lib;zlib.lib;libssh2.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
@@ -79,16 +79,16 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SYSTEM_EXPORTS;_HAS_EXCEPTIONS=0;_CRT_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>..\..\platform\quark\libbase;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\platform\quark\libbase;..\..\thirdlibs\libssh2-1.9.0\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>advapi32.lib;ole32.lib;shell32.lib;user32.lib;ws2_32.lib;lualib.lib;base.lib</AdditionalDependencies>
+      <AdditionalDependencies>lualib.lib;base.lib;odbc32.lib;odbccp32.lib;libeay32.lib;ssleay32.lib;ws2_32.lib;zlib.lib;libssh2.lib</AdditionalDependencies>
       <PerUserRedirection>false</PerUserRedirection>
-      <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output;..\..\thirdlibs\libssh2-1.9.0\win32\Release;..\..\thirdlibs\openssl-1.0.2p\out32dll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <Profile>true</Profile>
       <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
       <IgnoreSpecificDefaultLibraries>

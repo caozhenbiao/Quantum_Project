@@ -18,7 +18,8 @@ public:
 
 public:
 	int login(const char* ip, unsigned short port, const char* user, const char* pwd);
-	int login_pubkey(const char* ip, unsigned short port, const char* user, const char* file);
+	int login_pubkey_file(const char* ip, unsigned short port, const char* user, const char* file);
+	int login_pubkey(const char* ip, unsigned short port, const char* user, const char* key);
 	int shutdown( int handle );
 	int execute(int handle, const char* command, int callback );
 
