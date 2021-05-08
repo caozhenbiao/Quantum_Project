@@ -13,29 +13,17 @@ static int connect(lua_State * L) {
 	unsigned short port = luaL_checkinteger(L, 2);
 	const char * name = luaL_checkstring(L, 3);
 	const char * pwd = luaL_checkstring(L, 4);
-	int handle = theSSH->login( ip,port,name,pwd);
+	int handle = theSSH->connect_password( ip,port,name,pwd);
 	lua_pushinteger( L, handle );
 	return 1;
 }
 
-static int connect_pubkey(lua_State * L) {
+static int connect_privatekey(lua_State * L) {
 	const char * ip = luaL_checkstring(L, 1);
 	unsigned short port = luaL_checkinteger(L, 2);
 	const char * name = luaL_checkstring(L, 3);
-	const char * file = luaL_checkstring(L, 4);
-	printf("interface connect-pubkey");
-	int handle = theSSH->login_pubkey(ip, port, name, file);
-	lua_pushinteger(L, handle);
-	return 1;
-}
-
-static int connect_keyfile(lua_State * L) {
-	const char * ip = luaL_checkstring(L, 1);
-	unsigned short port = luaL_checkinteger(L, 2);
-	const char * name = luaL_checkstring(L, 3);
-	const char * file = luaL_checkstring(L, 4);
-	printf("interface connect-pubkey");
-	int handle = theSSH->login_pubkey_file(ip, port, name, file);
+	const char * keyfile = luaL_checkstring(L, 4);
+	int handle = theSSH->connect_privatekey(ip, port, name, keyfile);
 	lua_pushinteger(L, handle);
 	return 1;
 }
@@ -67,9 +55,8 @@ static int destory(lua_State * L) {
 
 static const struct luaL_Reg myLib[]={
 	{"connect",connect },
+	{"connect_privatekey",connect_privatekey},
 	{"disconnect",disconnect },
-	{"connect_pubkey",connect_pubkey},	
-	{"connect_keyfile",connect_keyfile},
 	{"request",request },
 	{"destory",destory},
 	{NULL,NULL}

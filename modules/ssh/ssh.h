@@ -17,9 +17,8 @@ public:
 	void stop();
 
 public:
-	int login(const char* ip, unsigned short port, const char* user, const char* pwd);
-	int login_pubkey_file(const char* ip, unsigned short port, const char* user, const char* file);
-	int login_pubkey(const char* ip, unsigned short port, const char* user, const char* key);
+	int connect_password(const char* ip, unsigned short port, const char* user, const char* pwd);
+	int connect_privatekey(const char* ip, unsigned short port, const char* user, const char* file);
 	int shutdown( int handle );
 	int execute(int handle, const char* command, int callback );
 
