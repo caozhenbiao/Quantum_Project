@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClCompile Include="business.cpp" />
     <ClCompile Include="commsvr.cpp" />
+    <ClCompile Include="include\attestor.cpp" />
+    <ClCompile Include="include\sha1.cpp" />
     <ClCompile Include="machine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="taskmgr.cpp" />
@@ -30,6 +32,8 @@
   <ItemGroup>
     <ClInclude Include="business.h" />
     <ClInclude Include="commsvr.h" />
+    <ClInclude Include="include\attestor.h" />
+    <ClInclude Include="include\sha1.h" />
     <ClInclude Include="machine.h" />
     <ClInclude Include="taskmgr.h" />
     <ClInclude Include="websvr.h" />
@@ -46,14 +50,14 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>

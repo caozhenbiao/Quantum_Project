@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{fac2d072-5f31-4452-8318-63fad4d2b34d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="business.cpp">
@@ -36,6 +39,12 @@
     <ClCompile Include="winsvr.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="include\attestor.cpp">
+      <Filter>include</Filter>
+    </ClCompile>
+    <ClCompile Include="include\sha1.cpp">
+      <Filter>include</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="business.h">
@@ -52,6 +61,12 @@
     </ClInclude>
     <ClInclude Include="websvr.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\attestor.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sha1.h">
+      <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

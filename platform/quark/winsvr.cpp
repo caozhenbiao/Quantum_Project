@@ -13,8 +13,8 @@
 #include "atlcomtime.h"
 #pragma comment(lib, "advapi32.lib")
 
-//int MyMain(int argc, char * argv[]);		//Actual Main function, should be defined
-extern TCHAR SVCNAME[128];					//SVC Name, should be defined
+int MyMain(int argc, char * argv[]);		//Actual Main function, should be defined
+extern TCHAR SVCNAME[128];		    //SVC Name, should be defined
 extern TCHAR SVCDESC[128];
 SERVICE_STATUS          gSvcStatus; 
 SERVICE_STATUS_HANDLE   gSvcStatusHandle; 
@@ -30,18 +30,17 @@ VOID SvcInit( DWORD, LPTSTR * );
 VOID SvcReportEvent( LPTSTR );
 BOOL ShowMenu(void);
 VOID CALLBACK MainThread(HWND hwnd,UINT uMsg,UINT_PTR idEvent,DWORD dwTime);
-//void WriteLog( const int iMsgType, const std::string strMsg);
 HANDLE m_HThread;
 DWORD m_dwThreadID;
 BOOL g_bRun = FALSE;
 
-void __cdecl _tmain(int argc, char *argv[]) 
+void __cdecl main(int argc, char *argv[]) 
 { 
-	if( strcmp( argv[1], "install") == 0 ){
+	if( argc>1 &&  strcmp( argv[1], "install") == 0 ){
 		SvcInstall();
 		return;
 	}
-	else if(strcmp( argv[1], "delete") == 0 ){
+	else if( argc > 1 &&  strcmp( argv[1], "delete") == 0 ){
 		DoDeleteSvc();
 		return;
 	}
@@ -52,8 +51,8 @@ void __cdecl _tmain(int argc, char *argv[])
 
 	g_bRun = TRUE;
 	if (!StartServiceCtrlDispatcher( DispatchTable )) { 
-		SvcReportEvent(L"StartServiceCtrlDispatcher");
-//		MyMain(argc, argv);
+		SvcReportEvent("StartServiceCtrlDispatcher");
+		MyMain(argc, argv);
 		MSG msg;
 		while (GetMessage(&msg, 0, 0, 0))
 			DispatchMessage(&msg);
@@ -133,7 +132,7 @@ VOID WINAPI SvcMain( DWORD dwArgc, LPTSTR *lpszArgv ){
 	// Register the handler function for the service
 	gSvcStatusHandle = RegisterServiceCtrlHandler( SVCNAME, SvcCtrlHandler);
 	if( !gSvcStatusHandle ){ 
-		SvcReportEvent(L"RegisterServiceCtrlHandler"); 
+		SvcReportEvent("RegisterServiceCtrlHandler"); 
 		return; 
 	} 
 	gSvcStatus.dwServiceType = SERVICE_WIN32_OWN_PROCESS; 
@@ -300,7 +299,7 @@ BOOL ShowMenu(void){
 VOID CALLBACK MainThread(HWND hwnd,UINT uMsg,UINT_PTR idEvent,DWORD dwTime){
 	int argc = 0;
 	char * pArgv = NULL;
-	//MyMain(argc, &pArgv);
+	MyMain(argc, &pArgv);
 	printf("主线程退出成功");
 }
 #endif

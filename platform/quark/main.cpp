@@ -1,19 +1,18 @@
-// Copyright 2021 The smartx Authors. All rights reserved.
 #define _CRTDBG_MAP_ALLOC
 #include <stdio.h>
 #include "machine.h"
 
 #ifdef _WIN32
 #include<crtdbg.h>
-TCHAR SVCNAME[128] = L"quarksvr";
-TCHAR SVCDESC[128] = L"quark for quantum project";
+TCHAR SVCNAME[128] = "quarksvr";
+TCHAR SVCDESC[128]   = "quark for quantum project";
 #else
 #include <mcheck.h>
 #define TCHAR char
 #endif
 
 #ifdef _WIN32
-char *optarg;
+char *optarg = NULL;
 int getopt( int argc, char **argv, char *opts ) {
 	static int sp = 1;
 	static int opterr = 1;
@@ -65,25 +64,26 @@ int getopt( int argc, char **argv, char *opts ) {
 #endif 
 
 //smartx main
-//#ifdef _WIN32
-//int MyMain(int argc, char * argv[]) {
-//#else
+#ifdef _WIN32
+int MyMain(int argc, char * argv[]) {
+#else
 int main(int argc, char* argv[]) {
-//#endif
+#endif
 #ifdef _WIN32
 	_CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF | _CrtSetDbgFlag(_CRTDBG_REPORT_FLAG));
 	_CrtDumpMemoryLeaks();
 #else
 	mtrace();
 #endif
+	printf("[Quantum Project v1.0] \nquark start.\n");
 	base::AtExitManager exit_manager;
 	macopt opt;
 	memset(&opt, 0x00, sizeof(macopt));
 	strcpy(opt.webpath, "./webui");
 	strcpy(opt.commsvrip, "127.0.0.1");
 	strcpy(opt.websvrip, "127.0.0.1");
-	opt.commsvrport = 1230;
-	opt.websvrport = 2329;
+	opt.commsvrport = 0;
+	opt.websvrport = 0;
 	int c = 0;
 	while ((c = getopt(argc, argv, "k:s:u:w:m:n:x:y:c")) != -1) {
 		switch (c) {
@@ -106,8 +106,7 @@ int main(int argc, char* argv[]) {
 		machine.poweroff();
 	}
 	taskmgr::stop();
-#ifdef WIN32
-#else
+#ifndef _WIN32
 	muntrace();
 #endif
 	printf("\nquark exit!\n");
