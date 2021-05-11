@@ -73,11 +73,9 @@ configure:3172: result: x86_64-pc-linux-gnu
 configure:3199: autobuild project... libssh2
 configure:3205: autobuild revision... 1.9.0
 configure:3210: autobuild hostname... ubuntu
-configure:3221: autobuild timestamp... 20210417-013419
+configure:3221: autobuild timestamp... 20210506-194832
 configure:3254: checking whether make supports the include directive
 configure:3269: make -f confmf.GNU && cat confinc.out
-make: Warning: File 'confinc.mk' has modification time 0.16 s in the future
-make: warning:  Clock skew detected.  Your build may be incomplete.
 this is the am__doit target
 configure:3272: $? = 0
 configure:3291: result: yes (GNU style)
@@ -1198,7 +1196,7 @@ configure:18059: $? = 0
 configure:18059: result: yes
 configure:18059: checking for memset_s
 configure:18059: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccQSEPDq.o: In function `main':
+/tmp/ccumGC0d.o: In function `main':
 /mnt/hgfs/Quantum_Project_v1.0/thirdlibs/libssh2-1.9.0/conftest.c:81: undefined reference to `memset_s'
 collect2: error: ld returned 1 exit status
 configure:18059: $? = 1
