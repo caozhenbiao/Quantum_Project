@@ -29,6 +29,7 @@ static int connect_privatekey(lua_State * L) {
 }
 
 static int disconnect(lua_State * L) {
+	//luaL_unref(L, LUA_REGISTRYINDEX, lua_callback); //***
 	int handle = luaL_checkinteger(L, 1);
 	int ret = theSSH->shutdown( handle );
 	lua_pushinteger(L, ret);

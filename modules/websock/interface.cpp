@@ -102,8 +102,6 @@ static int sendutf8(lua_State *L) {
 	return 1;
 }
 
-
-
 static int sendstr(lua_State *L){
 	const char* str = luaL_checkstring(L,1);
 	int nsnd = theWebsock->sends(str);
