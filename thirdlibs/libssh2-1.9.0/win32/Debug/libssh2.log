@@ -1,2 +1,53 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: 中间目录(.\Debug\)包含从另一个项目(tests.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
-  libssh2.vcxproj -> D:\SSH_Projejct\libssh2-1.9.0\win32\.\Debug\libssh2.dll
+cl : 命令行 warning D9035: “Gm”选项已否决，并将在将来的版本中移除
+  wincng.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  version.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  userauth.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  transport.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  sftp.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  session.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  scp.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  publickey.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  pem.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  packet.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  openssl.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  misc.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  mbedtls.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  mac.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  knownhost.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  kex.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  keepalive.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  hostkey.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  global.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  crypt.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  正在生成代码...
+  正在编译...
+  comp.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  channel.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  bcrypt_pbkdf.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  agent.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\libssh2_priv.h(69): fatal error C1083: 无法打开包括文件: “poll.h”: No such file or directory
+  正在生成代码...

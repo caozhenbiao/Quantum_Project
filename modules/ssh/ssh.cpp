@@ -137,6 +137,9 @@ int cssh::connect_privatekey(const char* ip, unsigned short port, const char* us
 		return -1;
 	}
 
+	//int nNetTimeout = 5;
+	//setsockopt(pinfo.sock, SOL_SOCKET, SO_RCVTIMEO,(char *)&nNetTimeout, sizeof(int));
+
 	if (connect(pinfo.sock, (struct sockaddr*)(&sshserver), sizeof(struct sockaddr_in)) != 0) {
 		fprintf(stderr, "\nfailed to connect,please check your username or passwd!/n");
 #ifdef _WIN32
@@ -198,7 +201,39 @@ int cssh::connect_privatekey(const char* ip, unsigned short port, const char* us
 	libssh2_channel_read(pinfo.channel, bhead, sizeof(bhead));
 	static int handle = 0;
 	peerlists[++handle] = pinfo;
+	
 	return handle;
+}
+
+
+static int waitsocket(int socket_fd, LIBSSH2_SESSION *session)
+{
+	struct timeval timeout;
+	int rc;
+	fd_set fd;
+	fd_set *writefd = NULL;
+	fd_set *readfd = NULL;
+	int dir;
+
+	timeout.tv_sec = 10;
+	timeout.tv_usec = 0;
+
+	FD_ZERO(&fd);
+
+	FD_SET(socket_fd, &fd);
+
+	/* now make sure we wait in the correct direction */
+	dir = libssh2_session_block_directions(session);
+
+	if (dir & LIBSSH2_SESSION_BLOCK_INBOUND)
+		readfd = &fd;
+
+	if (dir & LIBSSH2_SESSION_BLOCK_OUTBOUND)
+		writefd = &fd;
+
+	rc = select(socket_fd + 1, readfd, writefd, NULL, &timeout);
+
+	return rc;
 }
 
 int cssh::execute(int handle, const char* command, int callback) {
@@ -210,14 +245,17 @@ void cssh::do_execute(int handle, const char * command, int callback ){
 	std::map<int, peerinfo>::iterator ifnd = peerlists.find(handle);
 	if (ifnd == peerlists.end())
 		return;
-  static char retbuf[10240] = { 0 };
+    static char retbuf[10240] = { 0 };
 	memset(retbuf, 0x00, sizeof(retbuf));
 	libssh2_channel_write(ifnd->second.channel, command, strlen(command));
-	libssh2_channel_read(ifnd->second.channel, retbuf, sizeof(retbuf));
-	if (0 == luaL_lock(theState)) {
+	waitsocket(ifnd->second.sock, ifnd->second.session);
+	libssh2_channel_set_blocking(ifnd->second.channel, 0);
+	int retcode = libssh2_channel_read(ifnd->second.channel, retbuf, sizeof(retbuf));
+	if ( 0 == luaL_lock(theState)) {
 		lua_rawgeti(theState, LUA_REGISTRYINDEX, callback);
+		lua_pushinteger(theState, retcode);
 		lua_pushstring(theState, retbuf);
-		lua_pcall(theState, 1, 0, 0);
+		lua_pcall(theState, 2, 0, 0);
 		luaL_unref(theState, LUA_REGISTRYINDEX, callback);
 		luaL_unlock(theState);
 	}

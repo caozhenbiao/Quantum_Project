@@ -121,7 +121,7 @@
       <SubSystem>Console</SubSystem>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
-      <AdditionalLibraryDirectories>D:\SSH_Projejct\thirdparty\lib;D:\SSH_Projejct\libssh2-1.9.0\win32\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Quantum_Project_v1.0\thirdlibs\openssl-1.0.2p\out32dll;D:\Quantum_Project_v1.0\thirdlibs\libssh2-1.9.0\win32\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;libeay32.lib;ssleay32.lib;ws2_32.lib;zlib.lib;libssh2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

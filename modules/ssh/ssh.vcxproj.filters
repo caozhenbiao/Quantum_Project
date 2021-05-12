@@ -11,10 +11,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Makefile" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="interface.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="ssh.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="scp.cpp">
@@ -23,15 +23,15 @@
     <ClCompile Include="sftp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ssh.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Makefile" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ssh.h">
+    <ClInclude Include="scp.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="scp.h">
+    <ClInclude Include="ssh.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

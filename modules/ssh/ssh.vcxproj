@@ -53,20 +53,20 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;SYSTEM_EXPORTS;_HAS_EXCEPTIONS=0;_CRT_SECURE_NO_WARNINGS;NOMINMAX;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\platform\quark\libbase;..\..\thirdlibs\libssh2-1.9.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\platform\quark\libbase;..\..\platform\quark\liblua;..\..\thirdlibs\libssh2-1.9.0\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output\;..\..\thirdlibs\libssh2-1.9.0\win32\Debug;..\..\thirdlibs\openssl-1.0.2p\out32dll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output\;..\..\thirdlibs\libssh2-1.9.0\win32\Debug;..\..\thirdlibs\openssl-1.0.2p\out32dll;</AdditionalLibraryDirectories>
       <AdditionalDependencies>lualibD.lib;base.lib;libeay32.lib;ssleay32.lib;ws2_32.lib;zlib.lib;libssh2.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)$(ProjectName)D$(TargetExt)</OutputFile>
+      <IgnoreSpecificDefaultLibraries>libcmtd.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -86,27 +86,25 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>lualib.lib;base.lib;odbc32.lib;odbccp32.lib;libeay32.lib;ssleay32.lib;ws2_32.lib;zlib.lib;libssh2.lib</AdditionalDependencies>
+      <AdditionalDependencies>lualib.lib;base.lib;libeay32.lib;ssleay32.lib;ws2_32.lib;zlib.lib;libssh2.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <PerUserRedirection>false</PerUserRedirection>
-      <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output;..\..\thirdlibs\libssh2-1.9.0\win32\Release;..\..\thirdlibs\openssl-1.0.2p\out32dll;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output\;..\..\thirdlibs\libssh2-1.9.0\win32\Debug;..\..\thirdlibs\openssl-1.0.2p\out32dll;</AdditionalLibraryDirectories>
       <Profile>true</Profile>
       <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
-      <IgnoreSpecificDefaultLibraries>
-      </IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="Makefile" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="interface.cpp" />
     <ClCompile Include="scp.cpp" />
-    <ClCompile Include="ssh.cpp" />
     <ClCompile Include="sftp.cpp" />
+    <ClCompile Include="ssh.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ssh.h" />
     <ClInclude Include="scp.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Makefile" />
+    <ClInclude Include="ssh.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

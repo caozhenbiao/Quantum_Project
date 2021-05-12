@@ -2,21 +2,35 @@
   wincng.c
   version.c
   userauth.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\userauth.c(581): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.18362.0\ucrt\stdio.h(208): note: 参见“fopen”的声明
   transport.c
   sftp.c
   session.c
-d:\quantum project 1.0\thirdlibs\libssh2-1.9.0\src\session.c(519): warning C4068: 未知的杂注
-d:\quantum project 1.0\thirdlibs\libssh2-1.9.0\src\session.c(520): warning C4068: 未知的杂注
-d:\quantum project 1.0\thirdlibs\libssh2-1.9.0\src\session.c(568): warning C4068: 未知的杂注
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\session.c(519): warning C4068: 未知的杂注
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\session.c(520): warning C4068: 未知的杂注
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\session.c(568): warning C4068: 未知的杂注
   scp.c
   publickey.c
   pem.c
   packet.c
   openssl.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\openssl.c(1070): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.18362.0\ucrt\stdio.h(208): note: 参见“fopen”的声明
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\openssl.c(1372): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.18362.0\ucrt\stdio.h(208): note: 参见“fopen”的声明
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\openssl.c(2451): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.18362.0\ucrt\stdio.h(208): note: 参见“fopen”的声明
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\openssl.c(2825): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.18362.0\ucrt\stdio.h(208): note: 参见“fopen”的声明
   misc.c
   mbedtls.c
   mac.c
   knownhost.c
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\knownhost.c(966): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.18362.0\ucrt\stdio.h(208): note: 参见“fopen”的声明
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\knownhost.c(1207): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.18362.0\ucrt\stdio.h(208): note: 参见“fopen”的声明
   kex.c
   keepalive.c
   hostkey.c
@@ -28,10 +42,10 @@ d:\quantum project 1.0\thirdlibs\libssh2-1.9.0\src\session.c(568): warning C4068
   channel.c
   blowfish.c
   bcrypt_pbkdf.c
-d:\quantum project 1.0\thirdlibs\libssh2-1.9.0\src\bcrypt_pbkdf.c(72): warning C4267: “函数”: 从“size_t”转换到“uint16_t”，可能丢失数据
-d:\quantum project 1.0\thirdlibs\libssh2-1.9.0\src\bcrypt_pbkdf.c(74): warning C4267: “函数”: 从“size_t”转换到“uint16_t”，可能丢失数据
-d:\quantum project 1.0\thirdlibs\libssh2-1.9.0\src\bcrypt_pbkdf.c(75): warning C4267: “函数”: 从“size_t”转换到“uint16_t”，可能丢失数据
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\bcrypt_pbkdf.c(72): warning C4267: “函数”: 从“size_t”转换到“uint16_t”，可能丢失数据
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\bcrypt_pbkdf.c(74): warning C4267: “函数”: 从“size_t”转换到“uint16_t”，可能丢失数据
+d:\quantum_project_v1.0\thirdlibs\libssh2-1.9.0\src\bcrypt_pbkdf.c(75): warning C4267: “函数”: 从“size_t”转换到“uint16_t”，可能丢失数据
   agent.c
   正在生成代码...
     正在创建库 .\Debug_dll\libssh2.lib 和对象 .\Debug_dll\libssh2.exp
-  libssh2.vcxproj -> D:\Quantum Project 1.0\thirdLibs\libssh2-1.9.0\win32\.\Debug_dll\libssh2.dll
+  libssh2.vcxproj -> D:\Quantum_Project_v1.0\thirdlibs\libssh2-1.9.0\win32\.\Debug_dll\libssh2.dll
