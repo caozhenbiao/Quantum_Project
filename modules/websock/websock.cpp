@@ -216,7 +216,7 @@ winapi websock::workthread(void* lpParam) {
 			if (FD_ISSET(svr->fdarray[nLoopi], &fdRead)) {
 				char data[MAX_BUF_SIZE] = { 0 };
 				int cnt = recv(svr->fdarray[nLoopi], data, sizeof(data), 0); 
-				if(cnt < 0 || !svr->dispath(svr->fdarray[nLoopi], data, cnt)){   //如何区分断开和超时
+				if(cnt <= 0 || !svr->dispath(svr->fdarray[nLoopi], data, cnt)){   //如何区分断开和超时
 					printf("websocket close socket\n");
 					closesocket(svr->fdarray[nLoopi]);
 					FD_CLR(svr->fdarray[nLoopi], &fdRead);
