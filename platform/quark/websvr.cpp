@@ -284,7 +284,7 @@ void cwebsvr::analysehead(const char* buf, std::map<std::string,std::string>& v,
 		v["TYPE"] = type;
 		ssHeader.getline(szline, sizeof(szline), '\r');
 		posthl += strlen(szline) + 1;
-		strspn(szline,"\r\n");
+		//strspn(szline,"\r\n");
 		v["FILE_ID"] = szline;
 		for (;; ) {
 			std::string skey;

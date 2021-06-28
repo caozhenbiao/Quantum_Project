@@ -1,0 +1,6 @@
+
+.vs
+*.vs
+*/.Release
+*/.Debug
+ 

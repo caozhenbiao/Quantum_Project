@@ -15,8 +15,8 @@ int ccamera::play(bool store){
 	m_playevt = event_create( false, false );
 	m_frmevt  = event_create( false, true );
 	mycapture = cvCreateCameraCapture( camid );	
-	//cvSetCaptureProperty(mycapture, CV_CAP_PROP_FRAME_WIDTH, 1280);
-	//cvSetCaptureProperty(mycapture, CV_CAP_PROP_FRAME_HEIGHT, 720);
+	cvSetCaptureProperty(mycapture, CV_CAP_PROP_FRAME_WIDTH, 1280);
+	cvSetCaptureProperty(mycapture, CV_CAP_PROP_FRAME_HEIGHT, 720);
 	//myimage   = cvCreateImage();
 #ifdef WIN32
 	threadid  = _beginthreadex(NULL,0,playthread,this,0,NULL);
@@ -32,7 +32,7 @@ int ccamera::stop(){
 	if(myvideo)cvReleaseVideoWriter(&myvideo);
 	event_set(m_playevt);
 	event_timedwait(m_playevt,10000);
-	//if(myimage) cvReleaseImage(&myimage);
+	if(myimage) cvReleaseImage(&myimage);
 	if(mycapture) cvReleaseCapture(&mycapture);
 	mycapture = NULL;
 	myvideo = NULL;

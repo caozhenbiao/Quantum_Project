@@ -199,9 +199,9 @@ int cssh::connect_privatekey(const char* ip, unsigned short port, const char* us
 	}
 	char bhead[2048] = { 0 };
 	libssh2_channel_read(pinfo.channel, bhead, sizeof(bhead));
+	libssh2_channel_close(pinfo.channel);
 	static int handle = 0;
 	peerlists[++handle] = pinfo;
-	
 	return handle;
 }
 
@@ -215,7 +215,7 @@ static int waitsocket(int socket_fd, LIBSSH2_SESSION *session)
 	fd_set *readfd = NULL;
 	int dir;
 
-	timeout.tv_sec = 10;
+	timeout.tv_sec = 2;
 	timeout.tv_usec = 0;
 
 	FD_ZERO(&fd);
@@ -241,19 +241,40 @@ int cssh::execute(int handle, const char* command, int callback) {
 						 base::Bind(&cssh::do_execute, base::Unretained(this), handle, command, callback));
 }
 
-void cssh::do_execute(int handle, const char * command, int callback ){
+void cssh::do_execute(int handle, const char * command, int callback) {
 	std::map<int, peerinfo>::iterator ifnd = peerlists.find(handle);
 	if (ifnd == peerlists.end())
 		return;
-    static char retbuf[10240] = { 0 };
+	static char retbuf[1024 * 100] = { 0 };
 	memset(retbuf, 0x00, sizeof(retbuf));
-	libssh2_channel_write(ifnd->second.channel, command, strlen(command));
-	waitsocket(ifnd->second.sock, ifnd->second.session);
-	libssh2_channel_set_blocking(ifnd->second.channel, 0);
-	int retcode = libssh2_channel_read(ifnd->second.channel, retbuf, sizeof(retbuf));
+	int npos = 0;
+	int wait = 0;
+	LIBSSH2_CHANNEL * channel = NULL;
+	if ( (channel = libssh2_channel_open_session(ifnd->second.session)) && !libssh2_channel_shell(channel) ) {
+		libssh2_channel_write(channel, command, strlen(command));
+		libssh2_channel_set_blocking(channel, 0);
+		while ( true ) {
+			waitsocket(ifnd->second.sock, ifnd->second.session);
+			int ret = libssh2_channel_read(channel, &retbuf[npos], sizeof(retbuf) - npos);
+			if ( ret > 0 ) {
+				npos += ret;
+				wait = 0;
+			}
+			if ( ret == LIBSSH2_ERROR_EAGAIN ) {
+				if (++wait > 2 ) {
+					break;
+				}
+			}
+			else if (ret <= 0)
+				break;
+		}
+		libssh2_channel_set_blocking(channel, 1);
+		libssh2_channel_close(channel);
+	}
+
 	if ( 0 == luaL_lock(theState)) {
 		lua_rawgeti(theState, LUA_REGISTRYINDEX, callback);
-		lua_pushinteger(theState, retcode);
+		lua_pushinteger(theState, npos);
 		lua_pushstring(theState, retbuf);
 		lua_pcall(theState, 2, 0, 0);
 		luaL_unref(theState, LUA_REGISTRYINDEX, callback);
@@ -265,7 +286,7 @@ int cssh::shutdown( int handle ) {
 	std::map<int, peerinfo>::iterator ifnd = peerlists.find(handle);
 	if (ifnd == peerlists.end())
 		return -1;
-	libssh2_channel_close(ifnd->second.channel);
+	//libssh2_channel_close(ifnd->second.channel);
 	libssh2_session_disconnect(ifnd->second.session, "Thank you for playing");
 	libssh2_session_free(ifnd->second.session);
 #ifdef _WIN32

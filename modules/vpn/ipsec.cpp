@@ -230,7 +230,6 @@ bool cipsec::checkOnline(const char* pszEntryName, bool doDisConnect)
 						break;
 					}
 				}
-
 				Sleep(50); // Presumably something else is in the process of establishing the connection. Wait and loop.
 			}
 		}
@@ -313,8 +312,8 @@ bool cipsec::connect() {
     strcpy(theRasDialParams.szPassword, _rascredentials.szPassword);
     strcpy(theRasDialParams.szEntryName, _vpnName);
     theRasDialParams.dwSize = sizeof(theRasDialParams);   
-		printf("USERNAME:%s\n", _rascredentials.szUserName);
-		printf("PWDNAME:%s\n", _rascredentials.szPassword);
+	printf("USERNAME:%s\n", _rascredentials.szUserName);
+	printf("PWDNAME:%s\n", _rascredentials.szPassword);
 
     // RasDial: should be Asynchronous Mode
     HRASCONN hRasConn = NULL;  //a handle to the RAS connection

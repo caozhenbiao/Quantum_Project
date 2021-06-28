@@ -86,10 +86,10 @@ static int display(lua_State *L){
 static int monitor(lua_State *L){
 	const char* mark = luaL_checkstring(L, 1);
 	int         tms = (int)luaL_checkinteger(L, 2);
-	//if (tms != 0)  //没有做线程处理，暂时这样处理
+	if (tms != 0)  //没有做线程处理，暂时这样处理
 		theWatchList[mark] = tms;
-	//else
-	//	theWatchList.erase(mark); //没有
+	else
+		theWatchList.erase(mark); //没有
 	lua_pushinteger(L, 0);
 	return 1;
 }
