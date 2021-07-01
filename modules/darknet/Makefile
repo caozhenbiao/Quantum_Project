@@ -24,7 +24,7 @@ NVCC=nvcc
 AR=ar
 ARFLAGS=rcs
 #OPTS=-Ofast
-LDFLAGS= -lm -pthread ../../platform/quark/liblua/output/liblua.a
+LDFLAGS= -lm -pthread ../../platform/quark/liblua/output/libLua.a
 COMMON= -Iinclude/ -Isrc/
 CFLAGS=-Wall -Wno-unused-result -Wno-unknown-pragmas -Wfatal-errors -lrt -fPIC
 

@@ -1,7 +1,7 @@
 CC = gcc
 XX = g++
 TARGET = ./output/websock.so
-CFLAGS = -Wall -O -g -I../../platform/smartx/include  -I../../platform/quark/liblua/src -Wall -Wno-unknown-pragmas -Wno-format -O3 -fPIC
+CFLAGS = -Wall -O -g -I../../platform/quark/liblua/src -Wall -Wno-unknown-pragmas -Wno-format -O3 -fPIC
 LIBS = -lpthread -lrt -ldl ../../platform/quark/liblua/output/libLua.a 
 SHARED := --shared  
 
@@ -11,7 +11,7 @@ SHARED := --shared
 %.o:%.cpp
 	$(XX) $(CFLAGS) -c $< -o $@
 
-SOURCES = $(wildcard ../../platform/smartx/include/event.cpp ../../platform/smartx/include/define.cpp interface.cpp sha1.cpp websock.cpp)
+SOURCES = $(wildcard websock.cpp event.cpp interface.cpp sha1.cpp)
 OBJS = $(patsubst %.c,%.o,$(patsubst %.cpp,%.o,$(SOURCES)))  
 
 $(TARGET) : $(OBJS)

@@ -1,8 +1,8 @@
 CC = gcc
 XX = g++
-TARGET = ./bin/webcam.so
-CFLAGS = -Wall -O -g -I../../smartx/libs/lua/src -Wall -Wno-unknown-pragmas -Wno-format -O3 -fPIC
-LIBS = -lpthread -lrt -ldl ../../smartx/libs/lua/src/liblua.a -lopencv_core -lopencv_imgproc  -lopencv_highgui 
+TARGET = ./output/webcam.so
+CFLAGS = -Wall -O -g -I../../platform/quark/liblua/src -Wall -Wno-unknown-pragmas -Wno-format -O3 -fPIC
+LIBS = -lpthread -lrt -ldl ../../platform/quark/liblua/output/liblua.a -lopencv_core -lopencv_imgproc  -lopencv_highgui 
 SHARED := --shared  
 
 %.o: %.c                                 
@@ -11,7 +11,7 @@ SHARED := --shared
 %.o:%.cpp
 	$(XX) $(CFLAGS) -c $< -o $@
 
-SOURCES = $(wildcard cammgr.cpp camera.cpp pnppr.cpp onvifpr.cpp snaps.cpp interface.cpp ../../smartx/include/event.cpp)
+SOURCES = $(wildcard cammgr.cpp camera.cpp pnppr.cpp onvifpr.cpp snaps.cpp interface.cpp event.cpp)
 OBJS = $(patsubst %.c,%.o,$(patsubst %.cpp,%.o,$(SOURCES)))  
 
 $(TARGET) : $(OBJS)
