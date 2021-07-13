@@ -274,7 +274,7 @@ void cpnppr::work(){
 		vdata.push_back(0xD1);
 		vdata.push_back(0x01);
 		vdata.push_back(0x00);
-		vdata.push_back( vcomfirm.size()/2 );
+		vdata.push_back( (char)(vcomfirm.size()/2) );
 		vdata.append(vcomfirm.begin(),vcomfirm.end());
 		sendto(mysock,(char*)&vdata[0],vdata.size(),0,(sockaddr*)&toaddr, addlen);
 		vcomfirm.clear();

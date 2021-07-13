@@ -20,7 +20,7 @@ static int open( lua_State *L ){
 
 //execute
 static int execute(lua_State *L){
-	lua_Integer   db = luaL_checkinteger(L, 1);
+	int  db = (int)luaL_checkinteger(L, 1);
 	const char * sql = luaL_checkstring(L, 2);
 	int ret = theSqlite->execute(db,sql);;
 	lua_pushinteger(L,ret);
@@ -29,7 +29,7 @@ static int execute(lua_State *L){
 
 //stop
 static int prepare(lua_State *L) {
-	lua_Integer   db = luaL_checkinteger(L, 1);
+	int   db = (int)luaL_checkinteger(L, 1);
 	const char * sql = luaL_checkstring(L, 2);
 	int mt = theSqlite->prepare(db, sql);;
 	lua_pushinteger(L, mt);
@@ -37,16 +37,16 @@ static int prepare(lua_State *L) {
 }
 
 static int setup(lua_State *L) {
-	lua_Integer   mt = luaL_checkinteger(L, 1);
+	int   mt = (int)luaL_checkinteger(L, 1);
 	int ret = theSqlite->setup(mt);;
 	lua_pushinteger(L, ret);
 	return 1;
 }
 
 static int bind_blod(lua_State *L) {
-	lua_Integer mt = luaL_checkinteger(L, 1);
-	lua_Integer col = luaL_checkinteger(L, 2);
-	size_t len = luaL_checkinteger(L, 3);
+	int mt = (int)luaL_checkinteger(L, 1);
+	int col = (int)luaL_checkinteger(L, 2);
+	size_t len = (size_t)luaL_checkinteger(L, 3);
 	const char * buf = luaL_checklstring(L, 4, &len);
 	int ret = theSqlite->bind_blob(mt, col, (void*)buf, len );
 	lua_pushinteger(L, ret);
@@ -54,17 +54,17 @@ static int bind_blod(lua_State *L) {
 }
 
 static int bind_int(lua_State *L) {
-	lua_Integer mt = luaL_checkinteger(L, 1);
-	lua_Integer col = luaL_checkinteger(L, 2);
-	lua_Integer val = luaL_checkinteger(L, 3);
+	int mt = (int)luaL_checkinteger(L, 1);
+	int col = (int)luaL_checkinteger(L, 2);
+	int val = (int)luaL_checkinteger(L, 3);
 	int ret = theSqlite->bind_int(mt, col, val);
 	lua_pushinteger(L, ret);
 	return 1;
 }
 
 static int bind_text(lua_State *L) {
-	lua_Integer mt = luaL_checkinteger(L, 1);
-	lua_Integer col = luaL_checkinteger(L, 2);
+	int mt = (int)luaL_checkinteger(L, 1);
+	int col = (int)luaL_checkinteger(L, 2);
 	const char* txt = theSqlite->column_text(mt, col);
 	int ret = theSqlite->bind_text(mt, col, txt);
 	lua_pushinteger(L, ret);
@@ -73,24 +73,24 @@ static int bind_text(lua_State *L) {
 
 
 static int column_text(lua_State *L) {
-	lua_Integer mt  = luaL_checkinteger(L, 1);
-	lua_Integer col = luaL_checkinteger(L, 2);
+	int mt  = (int)luaL_checkinteger(L, 1);
+	int col = (int)luaL_checkinteger(L, 2);
 	const char* txt = theSqlite->column_text(mt, col);;
 	lua_pushstring(L, txt);
 	return 1;
 }
 
 static int column_int(lua_State *L) {
-	lua_Integer mt = luaL_checkinteger(L, 1);
-	lua_Integer col = luaL_checkinteger(L, 2);
+	int mt = (int)luaL_checkinteger(L, 1);
+	int col = (int)luaL_checkinteger(L, 2);
 	int val = theSqlite->column_int(mt, col);;
 	lua_pushinteger(L, val);
 	return 1;
 }
 
 static int column_blob(lua_State *L) {
-	lua_Integer mt = luaL_checkinteger(L, 1);
-	lua_Integer col = luaL_checkinteger(L, 2);
+	int mt = (int)luaL_checkinteger(L, 1);
+	int col = (int)luaL_checkinteger(L, 2);
 	int len = 0;
 	const void* blob = theSqlite->column_blob(mt, col, len);
 	lua_pushlstring(L, (const char*)blob, len );
@@ -98,23 +98,23 @@ static int column_blob(lua_State *L) {
 }
 
 static int column_float(lua_State *L) {
-	lua_Integer mt = luaL_checkinteger(L, 1);
-	lua_Integer col = luaL_checkinteger(L, 2);
-	int val = theSqlite->column_double(mt, col);;
+	int mt = (int)luaL_checkinteger(L, 1);
+	int col = (int)luaL_checkinteger(L, 2);
+	double val = theSqlite->column_double(mt, col);;
 	lua_pushnumber(L, val);
 	return 1;
 }
 
 
 static int finalize(lua_State *L) {
-	lua_Integer mt = luaL_checkinteger(L, 1);
+	int mt = (int)luaL_checkinteger(L, 1);
 	int ret = theSqlite->finalize(mt);;
 	lua_pushinteger(L, ret);
 	return 1;
 }
 
 static int close(lua_State *L) {
-	lua_Integer db = luaL_checkinteger(L, 1);
+	int db = (int)luaL_checkinteger(L, 1);
 	int ret = theSqlite->close(db);;
 	lua_pushinteger(L, ret);
 	return 1;

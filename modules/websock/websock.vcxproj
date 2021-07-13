@@ -14,7 +14,7 @@
     <ProjectGuid>{F6B995BC-24AE-4AED-8862-DA1D421DE78C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>webcam</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -44,11 +44,13 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)output\</OutDir>
     <IntDir>$(SolutionDir)output\.Debug\</IntDir>
+    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)output\</OutDir>
     <IntDir>$(SolutionDir)output\.Release\</IntDir>
+    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -68,6 +70,10 @@
       <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\platform\quark\liblua\output\luadllD.dll .\output\luadllD.dll
+copy ..\..\platform\quark\lib3th\output\pthreadD.dll .\output\pthreadD.dll</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -88,7 +94,12 @@
       <AdditionalDependencies>luaLib.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\</AdditionalLibraryDirectories>
       <Profile>true</Profile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\platform\quark\liblua\output\luadll.dll .\output\luadll.dll
+copy ..\..\platform\quark\lib3th\output\pthread.dll .\output\pthread.dll</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="event.cpp" />

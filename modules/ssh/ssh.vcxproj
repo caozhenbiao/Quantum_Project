@@ -14,7 +14,7 @@
     <ProjectGuid>{219CB1F1-063A-4725-9D79-442B4356A07F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>system</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <ProjectName>ssh</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -56,7 +56,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;SYSTEM_EXPORTS;_HAS_EXCEPTIONS=0;_CRT_SECURE_NO_WARNINGS;NOMINMAX;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;SYSTEM_EXPORTS;_HAS_EXCEPTIONS=0;_CRT_SECURE_NO_WARNINGS;NOMINMAX;DEBUG;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\platform\quark\libbase;..\..\platform\quark\liblua;..\..\thirdlibs\libssh2-1.9.0\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
@@ -65,10 +65,14 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output\;..\..\thirdlibs\libssh2-1.9.0\win32\Debug;..\..\thirdlibs\openssl-1.0.2p\out32dll;</AdditionalLibraryDirectories>
       <AdditionalDependencies>lualibD.lib;base.lib;libeay32.lib;ssleay32.lib;ws2_32.lib;zlib.lib;libssh2.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(ProjectName)D$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
     </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\platform\quark\liblua\output\luadllD.dll .\output\luadllD.dll
+copy ..\..\platform\quark\lib3th\output\pthreadD.dll .\output\pthreadD.dll</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -78,7 +82,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SYSTEM_EXPORTS;_HAS_EXCEPTIONS=0;_CRT_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SYSTEM_EXPORTS;_HAS_EXCEPTIONS=0;_CRT_SECURE_NO_WARNINGS;NOMINMAX;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalIncludeDirectories>..\..\platform\quark\libbase;..\..\thirdlibs\libssh2-1.9.0\include;</AdditionalIncludeDirectories>
     </ClCompile>
@@ -89,10 +93,14 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>lualib.lib;base.lib;libeay32.lib;ssleay32.lib;ws2_32.lib;zlib.lib;libssh2.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <PerUserRedirection>false</PerUserRedirection>
-      <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output\;..\..\thirdlibs\libssh2-1.9.0\win32\Debug;..\..\thirdlibs\openssl-1.0.2p\out32dll;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output\;..\..\thirdlibs\libssh2-1.9.0\win32\Debug;..\..\thirdlibs\openssl-1.0.2p\out32dll</AdditionalLibraryDirectories>
       <Profile>true</Profile>
       <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
     </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\platform\quark\liblua\output\luadll.dll .\output\luadll.dll
+copy ..\..\platform\quark\lib3th\output\pthread.dll .\output\pthread.dll</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="Makefile" />

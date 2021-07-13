@@ -198,8 +198,8 @@ void getDiskInfo(const char* path, unsigned int& total, unsigned int& free) {
 	GetDiskFreeSpaceEx(path,(PULARGE_INTEGER)&qwFreeBytesToCaller,
 		(PULARGE_INTEGER)&qwTotalBytes,
 		(PULARGE_INTEGER)&qwFreeBytes);
-	free = qwFreeBytes/1024/1024;
-	total = qwTotalBytes/1024/1024;
+	free = (unsigned int)(qwFreeBytes/1024/1024);
+	total = (unsigned int)(qwTotalBytes/1024/1024);
 #else
 	struct statfs sfs;
 	statfs(path, &sfs);

@@ -56,7 +56,7 @@ static int setnetcardip(lua_State * L) {
 }
 
 static int Sleep(lua_State * L){
-	unsigned int nsleep = luaL_checkinteger(L,1);
+	unsigned int nsleep = (unsigned int)luaL_checkinteger(L,1);
 #ifdef _WIN32
 	Sleep( nsleep );
 #else
@@ -66,8 +66,8 @@ static int Sleep(lua_State * L){
 }
 
 static int beep(lua_State * L){
-	unsigned int nfreq   = luaL_checkinteger(L,1);
-	unsigned int ndelay = luaL_checkinteger(L,2);
+	unsigned int nfreq   = (unsigned int)luaL_checkinteger(L,1);
+	unsigned int ndelay = (unsigned int)luaL_checkinteger(L,2);
 	buzzer( nfreq, ndelay );
 	return 0;
 }

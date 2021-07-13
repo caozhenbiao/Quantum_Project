@@ -127,7 +127,7 @@ int cscp::login(const char* ip, unsigned short port, const char* user, const cha
 		}
 		int rc = libssh2_channel_read(channel, mem, amount);
 		if (rc > 0) {
-			write(1, mem, rc);
+			_write(1, mem, rc);
 		}
 		else if (rc < 0) {
 			fprintf(stderr, "libssh2_channel_read() failed: %d\n", rc);

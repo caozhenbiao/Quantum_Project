@@ -14,7 +14,7 @@
     <ProjectGuid>{219CB1F1-063A-4725-9D79-442B4356A07F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>system</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -57,16 +57,20 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;SYSTEM_EXPORTS;_HAS_EXCEPTIONS=0;_CRT_SECURE_NO_WARNINGS;NOMINMAX;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\platform\quark\libbase;D:\Quantum_Project_v1.0\thirdlibs\curl-7.76.0\include\curl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>..\..\platform\quark\libbase;D:\Quantum_Project_v1.0\thirdlibs\curl-7.76.0\include\curl</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output\;D:\Quantum_Project_v1.0\thirdlibs\curl-7.76.0\build\Win32\VC15\LIB Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>advapi32.lib;ole32.lib;shell32.lib;user32.lib;ws2_32.lib;lualib.lib;base.lib;wininet.lib;libcurld.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output\;D:\Quantum_Project_v1.0\thirdlibs\curl-7.76.0\build\Win32\VC15\LIB Debug;D:\Quantum_Project_v1.0\platform\quark\libbase\output;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>advapi32.lib;ole32.lib;shell32.lib;user32.lib;ws2_32.lib;lualibD.lib;baseD.lib;wininet.lib;libcurld.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
     </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\platform\quark\liblua\output\luadllD.dll .\output\luadllD.dll
+copy ..\..\platform\quark\lib3th\output\pthreadD.dll .\output\pthreadD.dll</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -93,6 +97,10 @@
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
     </Link>
+    <PostBuildEvent>
+      <Command>copy ..\..\platform\quark\liblua\output\luadll.dll .\output\luadll.dll
+copy ..\..\platform\quark\lib3th\output\pthread.dll .\output\pthread.dll</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cert\CertUtils.cpp" />

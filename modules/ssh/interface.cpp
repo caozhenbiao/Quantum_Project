@@ -10,7 +10,7 @@ cssh * theSSH = NULL;
 
 static int connect(lua_State * L) {
 	const char * ip = luaL_checkstring(L, 1);
-	unsigned short port = luaL_checkinteger(L, 2);
+	unsigned short port = (unsigned short)luaL_checkinteger(L, 2);
 	const char * name = luaL_checkstring(L, 3);
 	const char * pwd = luaL_checkstring(L, 4);
 	int handle = theSSH->connect_password( ip,port,name,pwd);
@@ -20,7 +20,7 @@ static int connect(lua_State * L) {
 
 static int connect_privatekey(lua_State * L) {
 	const char * ip = luaL_checkstring(L, 1);
-	unsigned short port = luaL_checkinteger(L, 2);
+	unsigned short port = (unsigned short)luaL_checkinteger(L, 2);
 	const char * name = luaL_checkstring(L, 3);
 	const char * keyfile = luaL_checkstring(L, 4);
 	int handle = theSSH->connect_privatekey(ip, port, name, keyfile);
@@ -30,14 +30,14 @@ static int connect_privatekey(lua_State * L) {
 
 static int disconnect(lua_State * L) {
 	//luaL_unref(L, LUA_REGISTRYINDEX, lua_callback); //***
-	int handle = luaL_checkinteger(L, 1);
+	int handle = (int)luaL_checkinteger(L, 1);
 	int ret = theSSH->shutdown( handle );
 	lua_pushinteger(L, ret);
 	return 1;
 }
 
 static int request(lua_State *L) {
-	int handle = luaL_checkinteger(L, 1);
+	int handle = (int)luaL_checkinteger(L, 1);
 	const char * cmd = luaL_checkstring(L, 2);
 	int callback = luaL_ref(L, LUA_REGISTRYINDEX);
 	int ret = theSSH->execute(handle, cmd, callback);

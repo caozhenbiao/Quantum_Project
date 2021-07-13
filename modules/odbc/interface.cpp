@@ -126,14 +126,14 @@ static int connect(lua_State * L) {
 }
 
 static int disconnect(lua_State * L) {
-	int idbc = luaL_checkinteger(L, 1);
+	int idbc = (int)luaL_checkinteger(L, 1);
 	int nRet = theODBC->disconnect( idbc );
 	lua_pushinteger(L, nRet);
 	return 1;
 }
 
 static int execute(lua_State * L){
-	int idbc  = luaL_checkinteger(L, 1);
+	int idbc  = (int)luaL_checkinteger(L, 1);
 	const char *sql = luaL_checkstring (L, 2);
 	int nRet = theODBC->execute(idbc, sql);
 	lua_pushinteger(L,nRet);
@@ -141,21 +141,21 @@ static int execute(lua_State * L){
 }
 
 static int freeHandle(lua_State * L){
-	int hsmt = luaL_checkinteger(L, 1);
+	int hsmt = (int)luaL_checkinteger(L, 1);
 	theODBC->freestmt( hsmt );
 	return 0;
 }
 
 static int NumResultCols(lua_State * L){
-	int hsmt = luaL_checkinteger(L, 1);
+	int hsmt = (int)luaL_checkinteger(L, 1);
 	int cols = theODBC->getcolcount( hsmt );
 	lua_pushinteger(L,cols); 
 	return 1;
 }
 
 static int DescribeCol(lua_State * L){
-	int hsmt = luaL_checkinteger(L,1);
-	int i    = luaL_checkinteger(L,2);
+	int hsmt = (int)luaL_checkinteger(L,1);
+	int i    = (int)luaL_checkinteger(L,2);
 	static char szcol[256] = {0};
 	memset(&szcol,0x00,256);
 	theODBC->getcoltext(hsmt,i,szcol);
@@ -166,15 +166,15 @@ static int DescribeCol(lua_State * L){
 }
 
 static int Fetch(lua_State * L){
-	int hsmt = luaL_checkinteger(L,1);
+	int hsmt = (int)luaL_checkinteger(L,1);
 	int nret = theODBC->fetch( hsmt );
 	lua_pushinteger(L, nret); 
 	return 1;
 }
 
 static int GetData(lua_State * L){
-	int hsmt = luaL_checkinteger(L,1);
-	int i    = luaL_checkinteger(L,2);
+	int hsmt = (int)luaL_checkinteger(L,1);
+	int i    = (int)luaL_checkinteger(L,2);
 	static char szcol[256] = {0};
 	memset(&szcol,0x00,256);
 	theODBC->getdata( hsmt, i, szcol ,256);
@@ -189,8 +189,8 @@ static int GetData(lua_State * L){
 }
 
 static int GetTitle(lua_State * L) {
-	int hsmt = luaL_checkinteger(L, 1);
-	int i = luaL_checkinteger(L, 2);
+	int hsmt = (int)luaL_checkinteger(L, 1);
+	int i = (int)luaL_checkinteger(L, 2);
 	static char sztext[256] = { 0 };
 	memset(&sztext, 0x00, 256);
 	theODBC->getcoltext(hsmt, i, sztext);
