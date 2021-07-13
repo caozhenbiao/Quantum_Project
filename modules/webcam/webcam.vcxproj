@@ -101,7 +101,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>luaLibD.lib;opencv_ts2413d.lib;opencv_calib3d2413d.lib;opencv_video2413d.lib;opencv_features2d2413d.lib;opencv_highgui2413d.lib;opencv_imgproc2413d.lib;opencv_flann2413d.lib;opencv_core2413d.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>../../thirdlibs/opencv-2.4/build/lib/Debug;../../platform/quark/liblua/output</AdditionalLibraryDirectories>
-      <OutputFile>$(OutDir)$(ProjectName)D$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
       <IgnoreAllDefaultLibraries>
@@ -148,7 +148,7 @@ copy .\lib3th\output\pthreadD.dll .\output\pthreadD.dll
       <AdditionalDependencies>lualib.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;opencv_ts2413.lib;opencv_calib3d2413.lib;opencv_video2413.lib;opencv_features2d2413.lib;opencv_highgui2413.lib;opencv_imgproc2413.lib;opencv_flann2413.lib;opencv_core2413.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>../../thirdlibs/opencv-2.4/build/lib/Release;../../platform/quark/liblua/output</AdditionalLibraryDirectories>
       <Profile>true</Profile>
-      <OutputFile>$(OutDir)webcam.dll</OutputFile>
+      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
     </Link>
     <PostBuildEvent>
       <Command>copy ..\..\platform\quark\liblua\output\luadll.dll .\output\luadll.dll

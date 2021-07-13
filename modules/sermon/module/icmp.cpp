@@ -74,7 +74,7 @@ PINGRET CICMP::doPing(const char * ip, bool bBroadcast){
 	icmp_hdr = (IcmpHeader*)icmp_data;
 	icmp_hdr->i_type = ICMP_ECHO; 
 	icmp_hdr->i_code = 0;
-	icmp_hdr->i_id  =  GetCurrentProcessId();
+	icmp_hdr->i_id  =  (unsigned short)GetCurrentProcessId();
 	icmp_hdr->i_cksum = 0;
 	icmp_hdr->i_seq = m_seq;
 	m_seq++;
@@ -168,4 +168,5 @@ void CICMP::SetBufSize(const unsigned short n ){
 }
 void CICMP::SetSeq(const unsigned short n){
 	m_seq = n;
-}
+}
+

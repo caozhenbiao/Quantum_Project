@@ -36,7 +36,6 @@ void responsetolua( std::string name, task * tsk ){
 	//luaL_unglock(theState);
 }
  
-//����ͨ��
 static int addtask(lua_State *L) {
 	int argcnt = lua_gettop(L);
 	if (argcnt < 2) {
@@ -46,9 +45,9 @@ static int addtask(lua_State *L) {
 	task tsk;
 	tsk.trigger = theMachine;
 	const char * name = luaL_checkstring(L, 1);
-	tsk.mark = luaL_checkinteger(L, 2);
+	tsk.mark = (int)luaL_checkinteger(L, 2);
 	if (argcnt > 3) {
-		size_t       len = luaL_checkinteger(L, 4);
+		size_t       len = (size_t)luaL_checkinteger(L, 4);
 		const char * data = luaL_checklstring(L, 3, &len);
 		strcpy(tsk.buffer, data);
 		tsk.buflen = len;
@@ -56,30 +55,27 @@ static int addtask(lua_State *L) {
 		strcpy(tsk.buffer, luaL_checkstring(L,3));
 	}
 	if (argcnt > 4) {
-		tsk.delay = luaL_checkinteger(L, 5);
+		tsk.delay = (int)luaL_checkinteger(L, 5);
 	}
 	theMachine->addtask(name, &tsk, false);
 	lua_pushinteger( L, tsk.seq );
 	return 1;
 }
 
-//����ͨ��
 static int createcnn( lua_State *L ){
 	const char * name = luaL_checkstring(L,1);
 	const char * path = luaL_checkstring(L, 2);
-	lua_Integer ht    = luaL_checkinteger(L,3);
+	int ht    = (int)luaL_checkinteger(L,3);
 	theMachine->createmodule(name,path,ht);
 	return 0;
 }
 
-//ɾ��ͨ��
 static int removechn(lua_State *L) {
 	const char * name = luaL_checkstring(L, 1);
 	theMachine->removemodule( name );
 	return 0;
 }
 
-//ͨ����
 static int openchn(lua_State *L) {
 	const char * name = luaL_checkstring(L, 1);
 	const char * args = luaL_checkstring(L, 2);
@@ -92,7 +88,6 @@ static int openchn(lua_State *L) {
 	return 0;
 }
 
-//ͨ���ر�
 static int closechn(lua_State *L) {
 	const char * name = luaL_checkstring(L, 1);
 	task tsk;
@@ -118,7 +113,7 @@ static int setparams(lua_State *L) {
 static int senddata(lua_State *L) {
 	const char * name = luaL_checkstring(L, 1);
 	const char * data = luaL_checkstring(L, 2);
-	lua_Integer   len = luaL_checkinteger(L, 3);
+	int   len = (int)luaL_checkinteger(L, 3);
 	task tsk;
 	strcpy(tsk.buffer, data);
 	tsk.buflen = len;
@@ -148,7 +143,7 @@ static int request(lua_State *L) {
 	tsk.mark = fly_back;
 	const char * name = luaL_checkstring(L, 1);
 	if (argcnt > 2) {
-		size_t       len = luaL_checkinteger(L, 3);
+		size_t       len = (size_t)luaL_checkinteger(L, 3);
 		const char * data = luaL_checklstring(L, 2, &len);
 		strcpy(tsk.buffer, data);
 		tsk.buflen = len;
@@ -157,7 +152,7 @@ static int request(lua_State *L) {
 		strcpy(tsk.buffer, luaL_checkstring(L, 2));
 	}
 	if (argcnt > 3) {
-		tsk.delay = luaL_checkinteger(L, 4);
+		tsk.delay = (int)luaL_checkinteger(L, 4);
 	}
 	theMachine->addtask(name, &tsk, false);
 	lua_pushinteger(L, tsk.seq);
@@ -166,13 +161,12 @@ static int request(lua_State *L) {
 
 static int setdelay(lua_State *L) {
 	const char * name = luaL_checkstring(L, 1);
-	lua_Integer overtime = luaL_checkinteger(L, 2);
+	unsigned int overtime = (unsigned int)luaL_checkinteger(L, 2);
 	xbase * dev = theMachine->getmodulebyname(name);
 	dev->setdelay(overtime);
 	return 0;
 }
 
-//��ȡ�豸״̬
 static int getparams(lua_State *L) {
 	const char * name = luaL_checkstring(L, 1);
 	xbase * dev = theMachine->getmodulebyname(name);
@@ -192,7 +186,6 @@ static int getstatus(lua_State *L) {
 	return 0;
 }
 
-//��ʷ����
 static int printhistorydata(lua_State *L) {
 	static char lastname[256] = { 0 };
 	if (lua_gettop(L) == 2) {
@@ -211,7 +204,6 @@ static int printhistorydata(lua_State *L) {
 	return 1;
 }
 
-//��ʷ����
 static int stophistorydata(lua_State *L) {
 	static char lastname[256] = { 0 };
 	const char * name = luaL_checkstring(L, 1);
@@ -221,7 +213,6 @@ static int stophistorydata(lua_State *L) {
 	return 1;
 }
 
-//����machine
 static int start(lua_State *L) {
 	lua_Integer waittime = luaL_checkinteger(L, 1);
 	lua_callback = luaL_ref(L, LUA_REGISTRYINDEX);
@@ -230,14 +221,11 @@ static int start(lua_State *L) {
 	return 1;
 }
 
-//�ر�machine
 static int stop(lua_State *L){
 	theMachine->stop();
 	return 0;
 }
 
-
-//ͨ����
 static int comopen(lua_State *L) {
 	const char * args = luaL_checkstring(L, 1);
 	if (!theCommer)theCommer = new comm();
@@ -260,7 +248,7 @@ static int comclose(lua_State *L) {
 static int comrequest(lua_State *L) {
 	if (theCommer) {
 		const char * data = luaL_checkstring(L, 1);
-		lua_Integer   len = luaL_checkinteger(L, 2);
+		int   len = (int)luaL_checkinteger(L, 2);
 		static char buf[1024] = { 0 };
 		memset(buf, 0x00, 1024);
 		theCommer->write((char*)data, len);
@@ -269,12 +257,13 @@ static int comrequest(lua_State *L) {
 		lua_pushinteger(L, ret);
 		return 2;
 	}
+	return 0;
 }
 
 static int comwrite(lua_State *L) {
 	if (theCommer) {
 		const char * data = luaL_checkstring(L, 1);
-		lua_Integer   len = luaL_checkinteger(L, 2);
+		int   len = (int)luaL_checkinteger(L, 2);
 		int ret = theCommer->write((char*)data, len);
 		lua_pushinteger(L, ret);
 		return 1;
@@ -298,8 +287,8 @@ static int comread(lua_State *L) {
 // ping
 static int ping(lua_State * L) {
 	const char * ip = luaL_checkstring(L, 1);
-	int timeout = luaL_checkinteger(L, 2);
-	int bufsize = luaL_checkinteger(L, 3);
+	int timeout = (int)luaL_checkinteger(L, 2);
+	int bufsize = (int)luaL_checkinteger(L, 3);
 	int usedtime = 0;
 	int nRet = theMachine->ping(ip, bufsize, timeout, usedtime);
 	lua_pushinteger(L, nRet);
@@ -309,7 +298,6 @@ static int ping(lua_State * L) {
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//ģ�����ٶ���ʵ����ɾ���������
 static int destory(lua_State *L){
 	if (theMachine) {
 		delete theMachine;
@@ -318,7 +306,6 @@ static int destory(lua_State *L){
 	return 0;
 }
 
-//�ⲿ�ӿڵ�������
 static const struct luaL_Reg mylib[]={
 	{"destory",destory},
 	{"createcnn",createcnn},

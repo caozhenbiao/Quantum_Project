@@ -9,8 +9,8 @@ copencv * theopencv = NULL;
 //打开OPCV分类器
 static int open(lua_State *L){
 	const char * haar = luaL_checkstring(L,1);
-	int min = luaL_checkinteger(L,2);
-	int max = luaL_checkinteger(L,3);
+	int min = (int)luaL_checkinteger(L,2);
+	int max = (int)luaL_checkinteger(L,3);
 	theopencv->open(haar,min,max);
 	return 0;
 }
@@ -59,7 +59,7 @@ static int stream_objcount(lua_State *L){
 
 //找出帧数据中对象坐标(用于深度学习)
 static int stream_coordinate(lua_State *L){
-	size_t  jpgsize = luaL_checkinteger(L, 1);
+	size_t  jpgsize = (size_t)luaL_checkinteger(L, 1);
 	const char*   jpgdata = luaL_checklstring(L, 2, &jpgsize);
 	const char*   szphoto = luaL_checkstring(L,3);
 	std::vector<CvRect> v;

@@ -20,7 +20,7 @@ int gpiox::GetStatus()
 	int fd = Open();
 	if(fd > 0)
 	{
-		if(1 == read(fd, buff, 1))
+		if(1 == _read(fd, buff, 1))
 			nRet = (buff[0]=='0')?0:1;
 		else
 			perror("read");
@@ -44,13 +44,13 @@ int gpiox::Init()
 	int nRet = -1;
 	char buff[256] = {0};
 	sprintf(buff, "%d", _pn);
-	fd = open("/sys/class/gpio/export", O_WRONLY);
+	fd = _open("/sys/class/gpio/export", O_WRONLY);
 
 	if(fd > 0)
 	{
-		if(write(fd, buff, strlen(buff)) > 0)
+		if(_write(fd, buff, strlen(buff)) > 0)
 			nRet = 0;
-		close(fd);
+		_close(fd);
 		fd = -1;
 		if(_nMode == 1) //DO
 		{
@@ -69,7 +69,7 @@ int gpiox::Open()
 	{
 		char buff[256] = {0};
 		sprintf(buff, "/sys/class/gpio/gpio%d/value", _pn);
-		_fdValue = open(buff, O_RDWR);
+		_fdValue = _open(buff, O_RDWR);
 		if(_fdValue <=0 )
 			perror("buff");
 	}
@@ -83,10 +83,10 @@ int gpiox::SetDirection(int out)
 	int fd = -1;
 	int nRet = -1;
 	sprintf(buff, "/sys/class/gpio/gpio%d/direction" , _pn);
-	fd = open(buff, O_RDWR);
+	fd = _open(buff, O_RDWR);
 	if(fd > 0)
 	{
-		if(write(fd, out?"out":"in",out?3:2)  > 0) 
+		if(_write(fd, out?"out":"in",out?3:2)  > 0) 
 			nRet = 0;
 	}
 	return nRet;
@@ -97,10 +97,10 @@ int gpiox::WriteValue(int out)
 	int fd = -1;
 	int nRet = -1;
 	sprintf(buff, "/sys/class/gpio/gpio%d/value" , _pn);
-	fd = open(buff, O_RDWR);
+	fd = _open(buff, O_RDWR);
 	if(fd > 0)
 	{
-		if(write(fd, out?"1":"0",1)  > 0) 
+		if(_write(fd, out?"1":"0",1)  > 0) 
 			nRet = 0;
 	}
 	return nRet;
@@ -108,7 +108,7 @@ int gpiox::WriteValue(int out)
 int gpiox::Close()
 {
 	if(_fdValue > 0)
-		close(_fdValue);
+		_close(_fdValue);
 	_fdValue = -1;
 	return _fdValue;
 }

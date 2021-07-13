@@ -181,7 +181,7 @@ bool CRawDataDB::Save(std::vector<Rec>* pdq)
 		CSQLiteStatement stmt;
 		for(std::vector<Rec>::const_iterator it = pdq->begin(); it != pdq->end();it++)
 		{		
-			int nRet = CheckTime(CTimeVal(it->timeScale));
+			int nRet = CheckTime((int)CTimeVal(it->timeScale));
 			if(nRet != 0) //此记录不属于当天文件
 			{
 				if(nRet >= -1 ){                 //opened
@@ -192,7 +192,7 @@ bool CRawDataDB::Save(std::vector<Rec>* pdq)
 					stmt.finalize();
 					Close();
 				}
-				Open(CTimeVal(it->timeScale));  //open a new file
+				Open((int)(CTimeVal(it->timeScale)));  //open a new file
 				execDML("BEGIN TRANSACTION");
 				stmt=compileStatement("INSERT INTO RDTEMP(FT,Dir,Data) VALUES (?,?,?)");
 			}

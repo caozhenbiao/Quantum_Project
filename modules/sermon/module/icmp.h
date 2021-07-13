@@ -145,7 +145,6 @@ unsigned short checksum(unsigned short  *buffer, int size);
 
 class xbase;
 
-#define DATAMAXSIZE 1024*4
 typedef struct _devstatus {
 	unsigned char protype;
 	unsigned int  ipaddr;
