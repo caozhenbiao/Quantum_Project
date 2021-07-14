@@ -123,12 +123,7 @@ static int filedetect(lua_State * L ){
 	int nboxes = 0;
     detection *dets = get_network_boxes(mynet, im.w, im.h, thresh, hier_thresh, 0, 1, &nboxes);
 	if (nms) do_nms_sort(dets, nboxes, l.classes, nms);
-
-
 	printf("filedetect finish boxs:%d class:%d\n", nboxes, l.classes);
-
-
-
 	//¼ì²âÊä³ö
 	int ndetcnt = 0;
 	lua_newtable(L);

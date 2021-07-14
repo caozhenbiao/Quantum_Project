@@ -56,10 +56,10 @@ void cmonitor::supeedupdate( int callback ) {
 	unsigned short dwin = 0;
 	unsigned short dwou = 0;
 	GetIfTable(m_pIfTable, &m_dwSize, FALSE);
-	for (int i = 0; i < m_pIfTable->dwNumEntries; i++) {
+	for (unsigned int i = 0; i < m_pIfTable->dwNumEntries; i++) {
 		if (strcmp((char*)m_pIfTable->table[i].bDescr, "_vpnName") == 0) {
-			dwin = m_pIfTable->table[i].dwInOctets;
-			dwou = m_pIfTable->table[i].dwOutOctets;
+			dwin = (unsigned short)m_pIfTable->table[i].dwInOctets;
+			dwou = (unsigned short)m_pIfTable->table[i].dwOutOctets;
 			break;
 		}
 	}

@@ -56,14 +56,14 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;SYSTEM_EXPORTS;_HAS_EXCEPTIONS=0;_CRT_SECURE_NO_WARNINGS;NOMINMAX;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\platform\quark\libbase;D:\Quantum_Project_v1.0\thirdlibs\curl-7.76.0\include\curl</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;SYSTEM_EXPORTS;_HAS_EXCEPTIONS=0;_CRT_SECURE_NO_WARNINGS;NOMINMAX;DEBUG;BUILDING_LIBCURL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\platform\quark\libbase;..\..\thirdlibs\curl-7.76.0\include\curl</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output\;D:\Quantum_Project_v1.0\thirdlibs\curl-7.76.0\build\Win32\VC15\LIB Debug;D:\Quantum_Project_v1.0\platform\quark\libbase\output;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output\;..\..\thirdlibs\curl-7.76.0\build\Win32\VC15\LIB Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>advapi32.lib;ole32.lib;shell32.lib;user32.lib;ws2_32.lib;lualibD.lib;baseD.lib;wininet.lib;libcurld.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
     </Link>
@@ -82,7 +82,7 @@ copy ..\..\platform\quark\lib3th\output\pthreadD.dll .\output\pthreadD.dll</Comm
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SYSTEM_EXPORTS;_HAS_EXCEPTIONS=0;_CRT_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>..\..\platform\quark\libbase;D:\Quantum_Project_v1.0\thirdlibs\curl-7.76.0\include\curl</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\platform\quark\libbase;..\..\thirdlibs\curl-7.76.0\include\curl</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -91,7 +91,7 @@ copy ..\..\platform\quark\lib3th\output\pthreadD.dll .\output\pthreadD.dll</Comm
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>advapi32.lib;ole32.lib;shell32.lib;user32.lib;ws2_32.lib;lualib.lib;base.lib;wininet.lib;libcurl.lib</AdditionalDependencies>
       <PerUserRedirection>false</PerUserRedirection>
-      <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output\;D:\Quantum_Project_v1.0\thirdlibs\curl-7.76.0\build\Win32\VC15\DLL Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output\;..\..\thirdlibs\curl-7.76.0\build\Win32\VC15\DLL Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <Profile>true</Profile>
       <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
       <IgnoreSpecificDefaultLibraries>
