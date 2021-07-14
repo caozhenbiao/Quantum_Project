@@ -126,7 +126,7 @@ static int destory(lua_State *L){
 	return 0;
 }
 
-//�ⲿ�ӿڵ�������
+//
 static const struct luaL_Reg mylib[]={
 	{"destory",destory},
 	{"start",start},

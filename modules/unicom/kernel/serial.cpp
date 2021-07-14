@@ -51,7 +51,7 @@ int CMySerial::setserialparam(char * param, int len)
 	if( 4 != sscanf(param,"%[^,],%c%c%c",szbaundrate,&cdatabits,&cparity,&cstopbits ))
 		return -1;
 
-	//Ҫ�����ò�����
+	//
 	if( strcmp(szbaundrate,"-") != 0 ){
 		DWORD  nbaudrate = 0;
 		nbaudrate = atoi( szbaundrate );
@@ -62,7 +62,7 @@ int CMySerial::setserialparam(char * param, int len)
 		dcb.BaudRate   = nbaudrate;
 	}
 
-	//���������޸�
+	//
 	bool bfix = false;
 	if( cdatabits != '-' ){
 		if( cdatabits < '5' || cdatabits > '8')
@@ -109,7 +109,7 @@ int CMySerial::setserialparam(char * param, int len)
 	if( 4 != sscanf(param,"%[^,],%c%c%c",szbaundrate,&cdatabits,&cparity,&cstopbits ))
 		return -1;
 
-	//Ҫ�����ò�����
+	//
 	if( strcmp(szbaundrate,"-") != 0 ){
 		unsigned int nbaudrate = atoi( szbaundrate );
 		if( -1 == SetBaudrate(nbaudrate)){
@@ -290,7 +290,7 @@ bool fileSearch(std::string dir,std::string starttime ,std::string endtime ,std:
 			return false;
 		} 
 
-		// if (dp->d_type == DT_DIR)   //DT_DIR:??��?????
+		// if (dp->d_type == DT_DIR)   //DT_DIR
 		if(S_ISDIR(info.st_mode))
 		{
 			if ( 0==strcmp(dp->d_name, ".") || 0==strcmp(dp->d_name, "..") )
@@ -327,7 +327,6 @@ bool fileSearch(std::string dir,std::string starttime ,std::string endtime ,std:
 {
 	_finddata_t fileInfo;
 	std::string strfind=dir;
-	//Ϊ�ļ���˫б��
 	//printf("%s\n",dir.c_str());
 	if(strfind[strfind.size()-1] == '\n')
 	{
@@ -353,18 +352,15 @@ bool fileSearch(std::string dir,std::string starttime ,std::string endtime ,std:
 	}
 	//printf("strfind:%s \n",strfind.c_str());
 	int  handle = _findfirst(strfind.c_str(), &fileInfo);
-	//�ļ�û���ҵ�����ӡʧ��
 	if (-1==handle){
 		printf("(fileSearch)failed to transfer files\n");
 		return false;
 	}
 	do{
-		//�ж��Ƿ�����Ŀ¼
 		if (fileInfo.attrib & _A_SUBDIR){
-			//���������Ҫ�����˵�.��..
 			if( (strcmp(fileInfo.name,".") != 0 ) &&(strcmp(fileInfo.name,"..") != 0)){
-				std::string newPath = dir + "\\" + fileInfo.name;   //����˫�ܼ����ļ�������������
-				fileSearch(newPath,starttime,endtime,list,ext);        //�ݹ����
+				std::string newPath = dir + "\\" + fileInfo.name;   //
+				fileSearch(newPath,starttime,endtime,list,ext);        //
 			}
 		}
 		else{

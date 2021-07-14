@@ -29,7 +29,10 @@
     <ClCompile Include="kernel\xbase.cpp">
       <Filter>kernel</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\platform\smartx\include\define.cpp">
+    <ClCompile Include="define.cpp">
+      <Filter>include</Filter>
+    </ClCompile>
+    <ClCompile Include="event.cpp">
       <Filter>include</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,7 +53,10 @@
     <ClInclude Include="kernel\xbase.h">
       <Filter>kernel</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\platform\smartx\include\define.h">
+    <ClInclude Include="define.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="event.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

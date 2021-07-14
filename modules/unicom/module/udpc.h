@@ -9,7 +9,7 @@
 #include <arpa/inet.h>
 #endif
 
-#include "define.h"
+#include "../define.h"
 
 class udpc : public xbase{
 public:

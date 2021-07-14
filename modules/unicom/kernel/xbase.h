@@ -1,6 +1,6 @@
 #ifndef _XBASE_H_
 #define _XBASE_H_
-#include "../../../platform/smartx/include/define.h"
+#include "../define.h"
 #include <vector>
 
 //模块抽象基类

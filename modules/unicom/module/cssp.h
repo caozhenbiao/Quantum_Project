@@ -2,7 +2,7 @@
 #define _CSSP_H_
 #include "../kernel/xbase.h"
 #include "../kernel/serial.h"
-#include "event.h"
+#include "../event.h"
 
 class cssp : public xbase{ 
 private:

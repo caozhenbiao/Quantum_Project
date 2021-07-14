@@ -1,18 +1,17 @@
 extern "C" {
-#include "../../platform/smartx/libs/lua/src/lua.h"
-#include "../../platform/smartx/libs/lua/src/lualib.h"
-#include "../../platform/smartx/libs/lua/src/lauxlib.h"
+#include "../../platform/quark/liblua/src/lua.h"
+#include "../../platform/quark/liblua/src/lualib.h"
+#include "../../platform/quark/liblua/src/lauxlib.h"
 }
-#include "../../platform/smartx/include/define.h"
+#include "define.h"
 #include "machine.h"
 
 machine   * theMachine = NULL;
 lua_State * theState = NULL;
 char g_recvBuffer[65535] = { 0 };
 
-//ͨ����
 static int openchn(lua_State *L) {
-	int  type = luaL_checkinteger(L, 1);
+	int  type = (int)luaL_checkinteger(L, 1);
 	const char * name = luaL_checkstring(L, 2);
 	const char * args = luaL_checkstring(L, 3);
 	int ret = theMachine->open(name, type, args);
@@ -20,7 +19,6 @@ static int openchn(lua_State *L) {
 	return 1;
 }
 
-//ͨ���ر�
 static int closechn(lua_State *L) {
 	const char * name = luaL_checkstring(L, 1);
 	int ret = theMachine->close(name);
@@ -31,7 +29,7 @@ static int closechn(lua_State *L) {
 static int senddata(lua_State *L) {
 	const char * name = luaL_checkstring(L, 1);
 	const char * data = luaL_checkstring(L, 2);
-	lua_Integer   len = luaL_checkinteger(L, 3);
+	int   len = (int)luaL_checkinteger(L, 3);
 	printf(name);
 	int ret = theMachine->send(name, data, len);
 	lua_pushinteger(L,ret);
@@ -48,7 +46,6 @@ static int recvdata(lua_State *L) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//ģ�����ٶ���ʵ����ɾ���������
 static int destory(lua_State *L){
 	if (theMachine) {
 		delete theMachine;
@@ -57,7 +54,6 @@ static int destory(lua_State *L){
 	return 0;
 }
 
-//�ⲿ�ӿڵ�������
 static const struct luaL_Reg mylib[]={
 	{"destory",destory},
 	{"openchn",openchn },

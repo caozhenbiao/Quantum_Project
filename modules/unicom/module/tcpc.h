@@ -9,7 +9,7 @@
 #include <arpa/inet.h>
 #endif
 
-#include "define.h"
+#include "../define.h"
 class tcpc : public xbase{
 public:
 	virtual bool open(const char* param);
