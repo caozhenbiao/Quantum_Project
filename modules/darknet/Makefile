@@ -15,9 +15,9 @@ ARCH= -gencode arch=compute_30,code=sm_30 \
 
 VPATH=./src/:./examples
 SLIB=./output/darknet.so
-ALIB=./output/libdarknet.a
+ALIB=./output/darknet.a
 EXEC=./output/darknet
-OBJDIR=./output/.obj/
+OBJDIR=./output/
 
 CC=gcc
 NVCC=nvcc 

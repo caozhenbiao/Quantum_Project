@@ -1,7 +1,0 @@
-C:/smartx1.0/modules/dlib/dlib-19.17/tools/imglab/CMakeFiles/imglab.dir
-C:/smartx1.0/modules/dlib/dlib-19.17/tools/imglab/CMakeFiles/INSTALL.dir
-C:/smartx1.0/modules/dlib/dlib-19.17/tools/imglab/CMakeFiles/ALL_BUILD.dir
-C:/smartx1.0/modules/dlib/dlib-19.17/tools/imglab/CMakeFiles/ZERO_CHECK.dir
-C:/smartx1.0/modules/dlib/dlib-19.17/tools/imglab/dlib_build/CMakeFiles/dlib.dir
-C:/smartx1.0/modules/dlib/dlib-19.17/tools/imglab/dlib_build/CMakeFiles/INSTALL.dir
-C:/smartx1.0/modules/dlib/dlib-19.17/tools/imglab/dlib_build/CMakeFiles/ALL_BUILD.dir

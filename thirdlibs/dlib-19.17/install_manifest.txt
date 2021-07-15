@@ -1,8 +1,0 @@
-/usr/local/lib/libdlib.a
-/usr/local/include/dlib/config.h
-/usr/local/include/dlib/revision.h
-/usr/local/lib/cmake/dlib/dlib.cmake
-/usr/local/lib/cmake/dlib/dlib-release.cmake
-/usr/local/lib/cmake/dlib/dlibConfig.cmake
-/usr/local/lib/cmake/dlib/dlibConfigVersion.cmake
-/usr/local/lib/pkgconfig/dlib-1.pc

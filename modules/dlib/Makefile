@@ -1,9 +1,9 @@
 CC = gcc
 XX = g++
-TARGET = ./bin/dlib.so
-CFLAGS = -Wall -O -g -I../../smartx/libs/lua/src -I./dlib-19.17 -Wall -Wno-unknown-pragmas -Wno-format -O3 -fPIC -std=c++11
-LIBS = -lpthread -lrt -ldl ../../smartx/libs/lua/src/liblua.a ./dlib-19.17/dlib/libdlib.a -lopencv_core -lopencv_imgproc -lopencv_highgui
-SHARED := --shared  
+TARGET = ./output/dlib.so
+CFLAGS = -Wall -O -g -I../../platform/quark/liblua/src -Wall -Wno-unknown-pragmas -Wno-format -O3 -fPIC -std=c++11
+LIBS = -lpthread -lrt -ldl ../../platform/quark/liblua/output/libLua.a -ldlib -lopencv_core -lopencv_imgproc -lopencv_highgui
+SHARED := --shared  -DLIB_NO_GUI_SUPPORT
 
 %.o: %.c                                 
 	$(CC) $(CFLAGS) -c $< -o $@          
@@ -12,7 +12,7 @@ SHARED := --shared
 	$(XX) $(CFLAGS) -c $< -o $@
 
 
-SOURCES = $(wildcard ../../smartx/include/event.cpp ../../smartx/include/define.cpp interface.cpp dlibwraper.cpp)
+SOURCES = $(wildcard event.cpp define.cpp interface.cpp dlibwraper.cpp)
 OBJS = $(patsubst %.c,%.o,$(patsubst %.cpp,%.o,$(SOURCES)))  
 
 $(TARGET) : $(OBJS)
