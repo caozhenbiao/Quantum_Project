@@ -1,9 +1,9 @@
 CC = gcc
 XX = g++
 TARGET = ./output/dlib.so
-CFLAGS = -Wall -O -g -I../../platform/quark/liblua/src -Wall -Wno-unknown-pragmas -Wno-format -O3 -fPIC -std=c++11
+CFLAGS = -Wall -O -g -I../../platform/quark/liblua/src -I../../thirdlibs/dlib-19.22 -Wall -Wno-unknown-pragmas -Wno-format -O3 -fPIC -std=c++11
 LIBS = -lpthread -lrt -ldl ../../platform/quark/liblua/output/libLua.a -ldlib -lopencv_core -lopencv_imgproc -lopencv_highgui
-SHARED := --shared  -DLIB_NO_GUI_SUPPORT
+SHARED := --shared
 
 %.o: %.c                                 
 	$(CC) $(CFLAGS) -c $< -o $@          
