@@ -50,10 +50,10 @@ bool udpc::open(const char* param )
 
 bool udpc::close(){
 #ifdef WIN32
-	closesocket( mysocket );
+	closesocket(mysocket);
 	WSACleanup();
 #else
-    close(mysocket);
+	::close(mysocket);
 #endif
 	return true;
 }
@@ -71,7 +71,6 @@ int udpc::readdata( char* data, int len )
 	int length = sizeof(sockaddr);
 	cnt = recvfrom(mysocket,data,len,0,(struct sockaddr*)&addr,(socklen_t*)&length);
 #endif
-	printf(data);
 	if( cnt > 0 ){
 		inports += cnt;
 		//lastcommtime = time(NULL);

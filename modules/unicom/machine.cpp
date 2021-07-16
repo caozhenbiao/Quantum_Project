@@ -19,7 +19,7 @@ int machine::open(const char* name, int ht, const char* params){
 	if (newmdl->open(params)) {
 		mymodules.insert(make_pair(name, newmdl));
 	}else {
-		delete newmdl;
+		free(newmdl);
 		return -1;
 	}
 	return 0;

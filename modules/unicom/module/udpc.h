@@ -8,7 +8,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #endif
-
+ 
 #include "../define.h"
 
 class udpc : public xbase{

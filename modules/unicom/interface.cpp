@@ -30,7 +30,6 @@ static int senddata(lua_State *L) {
 	const char * name = luaL_checkstring(L, 1);
 	const char * data = luaL_checkstring(L, 2);
 	int   len = (int)luaL_checkinteger(L, 3);
-	printf(name);
 	int ret = theMachine->send(name, data, len);
 	lua_pushinteger(L,ret);
 	return 1;

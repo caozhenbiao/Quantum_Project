@@ -65,7 +65,7 @@ bool tcpc::close(){
 	closesocket( mysocket );
 	WSACleanup();
 #else
-	close(mysocket);
+	::close(mysocket);
 #endif
 	return true;
 }
@@ -73,7 +73,6 @@ bool tcpc::close(){
 //当前客户端实时数据
 int tcpc::readdata( char* data, int len ){
 	int cnt = recv( mysocket, data, len,0);
-	printf(data);
 	if( cnt > 0 ){
 	}
 	return cnt;
