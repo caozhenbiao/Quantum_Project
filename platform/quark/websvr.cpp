@@ -243,10 +243,8 @@ std::string cwebsvr::getgmtime(){
 	return szBuf;
 }
 
-//analyse http head
-void cwebsvr::analysehead(const char* buf, std::map<std::string,std::string>& v, int& httphl, int & posthl) {
+void cwebsvr::analysehead(std::stringstream& ssHeader, std::map<std::string, std::string>& v, int& httphl) {
 	char szline[256] = { 0 };
-	std::stringstream ssHeader(buf);
 	ssHeader.getline(szline, sizeof(szline), '\r');
 	httphl += strlen(szline) + 1;
 	char sztype[32] = { 0 };
@@ -256,11 +254,11 @@ void cwebsvr::analysehead(const char* buf, std::map<std::string,std::string>& v,
 	sscanf(szline, "%[^ ] %[^( |?)]?%[^ ]*", sztype, szurl, szargs);
 	sscanf(szurl, "%*[^.].%s", szfileex);
 	v["METHORD"] = sztype;
-	v["TARGET"]  = szurl;
-	v["ARGS"]    = szargs;
-	v["TYPE"]    = szfileex;
+	v["TARGET"] = szurl;
+	v["ARGS"] = szargs;
+	v["TYPE"] = szfileex;
 	//httpcontext
-	for ( ;; ) {
+	for (;; ) {
 		std::string skey;
 		std::string sval;
 		ssHeader.getline(szline, sizeof(szline), '\r');
@@ -275,36 +273,8 @@ void cwebsvr::analysehead(const char* buf, std::map<std::string,std::string>& v,
 		else
 			break;
 		count = strspn(p, ": ");
-		sval.assign( p + count );
+		sval.assign(p + count);
 		v[skey] = sval;
-	}
-	if (v["METHORD"] == "POST") {
-		char type[32] = { 0 };
-		sscanf(szurl, "[^.].%s", type);
-		v["TYPE"] = type;
-		ssHeader.getline(szline, sizeof(szline), '\r');
-		posthl += strlen(szline) + 1;
-		//strspn(szline,"\r\n");
-		v["FILE_ID"] = szline;
-		for (;; ) {
-			std::string skey;
-			std::string sval;
-			ssHeader.getline(szline, sizeof(szline), '\r');
-			posthl += strlen(szline) + 1;
-			size_t count = strspn(szline, "\r\n");
-			char * start = szline + count;
-			if (0 == strlen(start))
-				break;
-			char *p = strchr(start, ':');
-			if (p - start > 0)
-				skey.assign(start, p - start);
-			else 
-				continue;
-			count = strspn(p, ": ");
-			sval.assign(p + count);
-			v[skey] = sval;
-		}
-		posthl += 1;
 	}
 }
 
@@ -354,14 +324,19 @@ bool cwebsvr::uploadfiletrans(int sock, char* buf, unsigned int size) {
 		static char send_buf[1024] = { 0 };
 		memset(send_buf, 0x00, sizeof(send_buf));
 		int len = sprintf(send_buf, "HTTP/1.1 200 OK\r\n \
-																								Date: %s GMT\r\n \
-																								Server: smartx\r\n \
-																								Content-Length: 0\r\n \
-																								Connection: keep-alive\r\n \
-																								Keep-Alive: timeout=5, max=100\r\n \
-																								Content-Type: text/html; charset=UTF-8\r\n\r\n",
-																							  getgmtime().c_str());
+						Date: %s GMT\r\n \
+						Server: smartx\r\n \
+						Content-Length: 0\r\n \
+						Connection: keep-alive\r\n \
+						Keep-Alive: timeout=5, max=100\r\n \
+						Content-Type: text/html; charset=UTF-8\r\n\r\n",
+						getgmtime().c_str());
 		sends(sock, send_buf, len);
+#ifdef _WIN32
+		closesocket(sock);
+#else
+		close(sock);
+#endif
 		return true;
 	}
 	recvbuflen += size;
@@ -390,8 +365,8 @@ void cwebsvr::replay(int sock, std::string data) {
 								   X-Content-Type-Options: nosniff\r\n \
 								   Server: smartx\r\n \
 								   Content-Type: application/json\r\n",
-									now.c_str(),
-									now.c_str());
+								   now.c_str(),
+								   now.c_str());
 	 bufLen += sprintf(send_buf + bufLen, "Content-Length: %ld\r\n\r\n%s", data.length(),data.c_str());
 	 sends(sock, send_buf, bufLen);
 	 #ifdef _WIN32
@@ -403,10 +378,49 @@ void cwebsvr::replay(int sock, std::string data) {
 
 void cwebsvr::request(int sock, std::string data) {
 	int httpheadlen = 0;
-	int postheadlen = 0;
 	std::map<std::string, std::string> v;
-	analysehead( data.c_str(), v, httpheadlen, postheadlen);
-	if ("LUAGET" == v["METHORD"]) {
+	std::stringstream ssHeader(data);
+	analysehead(ssHeader, v, httpheadlen );
+	//web request methord
+	if("UPFILE" == v["METHORD"]) {
+		char szline[256] = { 0 };
+		ssHeader.getline(szline, sizeof(szline), '\r');
+		int postheadlen = strlen(szline) + 1;
+		v["FILE_ID"] = szline;
+		for (;;) {
+			std::string skey;
+			std::string sval;
+			ssHeader.getline(szline, sizeof(szline), '\r');
+			postheadlen += strlen(szline) + 1;
+			size_t count = strspn(szline, "\r\n");
+			char * start = szline + count;
+			if (0 == strlen(start))
+				break;
+			char *p = strchr(start, ':');
+			if (p - start > 0)
+				skey.assign(start, p - start);
+			else
+				continue;
+			count = strspn(p, ": ");
+			sval.assign(p + count);
+			v[skey] = sval;
+		}
+		postheadlen += 1;
+		//upload file
+		if (v.find("Content-Disposition") != v.end()) {
+			markidLen = v["FILE_ID"].size() + 4;
+			upfilesize = atoi(v["Content-Length"].c_str()) - markidLen - postheadlen;
+			std::string filepath = "." + v["TARGET"];
+			std::string filename = filepath + description(v["Content-Disposition"]);
+			printf("upfile id:%s  name:%s\n", v["FILE_ID"].c_str(), filename.c_str());
+			setpath(filepath.c_str());
+			mytranfile = fopen(filename.c_str(), "wb");
+			int datpos = httpheadlen + postheadlen;
+			uploadfiletrans(sock, &data[datpos], data.size() - datpos);
+		}
+		return;
+	}
+	else if ("LUAGET" == v["METHORD"]) {
 		std::string arg = v["TARGET"];
 		int n = arg.find_first_of('=');
 		std::string ifunc = arg.substr(1, n-1);
@@ -420,21 +434,21 @@ void cwebsvr::request(int sock, std::string data) {
 		onwebtask(sock, ifunc, args);
 		return;
 	}
- //static file transport
+    //static file transport
 	std::string cont = getcontent(v["TYPE"]);
 	std::string nowt = getgmtime();
 	static char send_buf[MAX_BUF_SIZE];
 	memset(send_buf, 0x00, sizeof(send_buf));
 	int bufLen = sprintf(send_buf, "HTTP/1.1 200 OK \r\n \
-													   Date: %s GMT\r\n \
-													   Expires: %s GMT\r\n \
-													   Cache-Control: private, max-age=31536000\r\n \
-													   X-Content-Type-Options: nosniff\r\n \
-													   Server: smartx\r\n \
-													   Content-Type: %s\r\n",
-														nowt.c_str(),
-														nowt.c_str(),
-														cont.c_str());
+									Date: %s GMT\r\n \
+									Expires: %s GMT\r\n \
+									Cache-Control: private, max-age=31536000\r\n \
+									X-Content-Type-Options: nosniff\r\n \
+									Server: smartx\r\n \
+									Content-Type: %s\r\n",
+									nowt.c_str(),
+									nowt.c_str(),
+									cont.c_str());
 	//File trans
 	std::string respath = webpath;
 	respath += v["TARGET"];

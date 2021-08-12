@@ -39,7 +39,7 @@ public:
 	virtual void onwebtask(int sock, std::string ifunc, std::string data)=0;
 
 private:
-	void analysehead(const char* buf, std::map<std::string,std::string>& v,int& httphl, int & posthl);
+	void analysehead(std::stringstream& ssHeader, std::map<std::string, std::string>& v, int& httphl);
 	bool uploadfiletrans(int sock, char* buf, unsigned int size);
 	bool dispath(int sock, char* buf, unsigned int size);
 	std::string description(std::string val);

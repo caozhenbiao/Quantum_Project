@@ -5,7 +5,7 @@ public:
 	struct identify {
 		unsigned char  type;
 		unsigned short freq;
-		unsigned int     expire;
+		unsigned int   expire;
 		unsigned char  mac[8];
 		unsigned char  md3[4];
 		unsigned char  cs;

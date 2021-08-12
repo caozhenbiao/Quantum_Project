@@ -5,7 +5,7 @@
 #ifdef _WIN32
 #include<crtdbg.h>
 TCHAR SVCNAME[128] = "quarksvr";
-TCHAR SVCDESC[128]   = "quark for quantum project";
+TCHAR SVCDESC[128] = "quark for quantum project";
 #else
 #include <mcheck.h>
 #define TCHAR char
@@ -63,7 +63,7 @@ int getopt( int argc, char **argv, char *opts ) {
 #define new  new(_NORMAL_BLOCK, __FILE__, __LINE__)  
 #endif 
 
-//smartx main
+//main
 #ifdef _WIN32
 int MyMain(int argc, char * argv[]) {
 #else

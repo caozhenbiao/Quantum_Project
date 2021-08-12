@@ -64,7 +64,7 @@ void ccommsvr::write(sockaddr* addr, std::string data){
 }
 
 void ccommsvr::recvproc(base::TimeDelta interval) {
-	char buf[2048] = { 0 };
+	char buf[10240] = { 0 };
 	#ifdef _WIN32
 	int length = sizeof(sockaddr);
 	#else
@@ -74,7 +74,7 @@ void ccommsvr::recvproc(base::TimeDelta interval) {
 	struct sockaddr addr;
 	int len = recvfrom(mysocket, buf, 2048, 0, &addr, &length);
 	if (len >= 7) {
-		std::string data ="test";
+		std::string data(buf);
 		taskmgr::posttask(taskmgr::LUA, base::Bind(&ccommsvr::oncomtask, base::Unretained(this), &addr,data));
 	}
 	taskmgr::postdelayedtask(taskmgr::NET,
