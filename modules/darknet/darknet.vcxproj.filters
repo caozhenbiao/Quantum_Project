@@ -153,6 +153,10 @@
     <ClCompile Include="src\gettimeofday.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\iseg_layer.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\image_opencv.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -334,6 +338,9 @@
     </ClInclude>
     <ClInclude Include="src\darkunistd.h" />
     <ClInclude Include="src\gettimeofday.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\iseg_layer.h">
       <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>

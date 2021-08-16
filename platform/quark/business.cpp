@@ -70,7 +70,7 @@ bool cbusiness::start(const char* file) {
 	}
 	lua_register(theState, "install", install);
 	lua_register(theState, "transmit", transmit);
-	lua_pcall(theState, 0, LUA_MULTRET, 0);
+	lua_pcall(theState, 0, 0, 0);
 	luastates.insert(make_pair(luakey(file), theState));
 	return true;
 }

@@ -1,31 +1,24 @@
-
-/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
 #include <assert.h>
-#include <unistd.h>
+//#include <unistd.h>
 #include <float.h>
 #include <limits.h>
 #include <time.h>
-#include "utils.h"
-*/
+//#include <sys/time.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <assert.h>
-#include <float.h>
-#include <limits.h>
+#include "utils.h"
+
+
 #ifdef WIN32
 #include "gettimeofday.h"
 #else
 //#include <sys/time.h>
 #include <time.h>
-#include "utils.h"
 #endif
+
 
 /*
 // old timing. is it better? who knows!!
@@ -39,18 +32,13 @@ double get_wall_time()
 }
 */
 
-void file_error(char *s)
-{
-    fprintf(stderr, "Couldn't open file: %s\n", s);
-    exit(0);
-}
-
-
 double what_time_is_it_now()
 {
-    struct timespec now;
-    clock_gettime(CLOCK_REALTIME, &now);
-    return now.tv_sec + now.tv_nsec*1e-9;
+    struct timeval time;
+    if (gettimeofday(&time,NULL)){
+        return 0;
+    }
+    return (double)time.tv_sec + (double)time.tv_usec * .000001;
 }
 
 int *read_intlist(char *gpu_list, int *ngpus, int d)
@@ -91,18 +79,6 @@ int *read_map(char *filename)
     return map;
 }
 
-void shuffle(void *arr, size_t n, size_t size)
-{
-	size_t i;
-	void *swp = calloc(1, size);
-	for (i = 0; i < n - 1; ++i) {
-		size_t j = i + rand() / (RAND_MAX / (n - i) + 1);
-		memcpy(swp, (char*)arr + (j*size), size);
-		memcpy((char*)arr + (j*size), (char*)arr + (i*size), size);
-		memcpy((char*)arr + (i*size), swp, size);
-	}
-}
-
 void sorta_shuffle(void *arr, size_t n, size_t size, size_t sections)
 {
     size_t i;
@@ -111,6 +87,18 @@ void sorta_shuffle(void *arr, size_t n, size_t size, size_t sections)
         size_t end = n*(i+1)/sections;
         size_t num = end-start;
         shuffle((char*)arr+(start*size), num, size);
+    }
+}
+
+void shuffle(void *arr, size_t n, size_t size)
+{
+    size_t i;
+    void *swp = calloc(1, size);
+    for(i = 0; i < n-1; ++i){
+        size_t j = i + rand()/(RAND_MAX / (n-i)+1);
+        memcpy(swp, (char*)arr+(j*size), size);
+        memcpy((char*)arr+(j*size), (char*)arr+(i*size), size);
+        memcpy((char*)arr+(i*size), swp,          size);
     }
 }
 
@@ -298,6 +286,12 @@ void malloc_error()
     exit(-1);
 }
 
+void file_error(char *s)
+{
+    fprintf(stderr, "Couldn't open file: %s\n", s);
+    exit(0);
+}
+
 list *split_str(char *s, char delim)
 {
     size_t i;
@@ -433,21 +427,13 @@ void write_all(int fd, char *buffer, size_t bytes)
     }
 }
 
-#ifdef WIN32
-int copy_string(char* s)
+
+char *copy_string(char *s)
 {
-	char *copy = (char*)malloc(strlen(s) + 1);
-	strncpy(copy, s, strlen(s) + 1);
-	//return copy;
-}
-#else
-char *copy_string(char* s)
-{
-    char *copy = (char*)malloc(strlen(s)+1);
+    char *copy = malloc(strlen(s)+1);
     strncpy(copy, s, strlen(s)+1);
     return copy;
 }
-#endif
 
 list *parse_csv_line(char *line)
 {
@@ -689,7 +675,7 @@ float rand_normal()
     rand1 = rand() / ((double) RAND_MAX);
     if(rand1 < 1e-100) rand1 = 1e-100;
     rand1 = -2 * log(rand1);
-    rand2 = (rand() / ((double) RAND_MAX)) * 6.2831853071795864769252866f;
+    rand2 = (rand() / ((double) RAND_MAX)) * TWO_PI;
 
     return sqrt(rand1) * cos(rand2);
 }

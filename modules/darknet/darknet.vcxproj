@@ -35,6 +35,8 @@
     <ClCompile Include="src\gru_layer.c" />
     <ClCompile Include="src\im2col.c" />
     <ClCompile Include="src\image.c" />
+    <ClCompile Include="src\image_opencv.cpp" />
+    <ClCompile Include="src\iseg_layer.c" />
     <ClCompile Include="src\l2norm_layer.c" />
     <ClCompile Include="src\layer.c" />
     <ClCompile Include="src\list.c" />
@@ -98,6 +100,7 @@
     <ClInclude Include="src\gru_layer.h" />
     <ClInclude Include="src\im2col.h" />
     <ClInclude Include="src\image.h" />
+    <ClInclude Include="src\iseg_layer.h" />
     <ClInclude Include="src\l2norm_layer.h" />
     <ClInclude Include="src\layer.h" />
     <ClInclude Include="src\list.h" />

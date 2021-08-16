@@ -14,7 +14,6 @@
 
 #define TWO_PI 6.2831853071795864769252866f
 
-void file_error(char *s);
 double what_time_is_it_now();
 void shuffle(void *arr, size_t n, size_t size);
 void sorta_shuffle(void *arr, size_t n, size_t size, size_t sections);
@@ -29,16 +28,13 @@ int read_all_fail(int fd, char *buffer, size_t bytes);
 int write_all_fail(int fd, char *buffer, size_t bytes);
 void find_replace(char *str, char *orig, char *rep, char *output);
 void malloc_error();
+void file_error(char *s);
 void strip(char *s);
 void strip_char(char *s, char bad);
 list *split_str(char *s, char delim);
 char *fgetl(FILE *fp);
 list *parse_csv_line(char *line);
-#ifdef WIN32
-int copy_string(char *s);
-#else
 char *copy_string(char *s);
-#endif
 int count_fields(char *line);
 float *parse_fields(char *line, int n);
 void translate_array(float *a, int n, float s);
@@ -52,7 +48,6 @@ float **one_hot_encode(float *a, int n, int k);
 float sec(clock_t clocks);
 void print_statistics(float *a, int n);
 int int_index(int *a, int val, int n);
-
 
 #endif
 
