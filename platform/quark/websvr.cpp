@@ -386,10 +386,14 @@ void cwebsvr::request(int sock, std::string data) {
 		char szline[256] = { 0 };
 		ssHeader.getline(szline, sizeof(szline), '\r');
 		int postheadlen = strlen(szline) + 1;
-		v["FILE_ID"] = szline;
+		std::string sval(szline);
+		sval.erase(std::remove(sval.begin(), sval.end(), '\n'), sval.end());
+		sval.erase(std::remove(sval.begin(), sval.end(), '-'), sval.end());
+		v["FILE_ID"] = sval;
 		for (;;) {
 			std::string skey;
 			std::string sval;
+			char szline[256] = { 0 };
 			ssHeader.getline(szline, sizeof(szline), '\r');
 			postheadlen += strlen(szline) + 1;
 			size_t count = strspn(szline, "\r\n");

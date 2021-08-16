@@ -109,3 +109,58 @@ function UpladFile() {
    };
    xhr.send(form); //开始上传，发送form数据
 }
+
+
+//大文件上传处理(尚未完成)
+if("UPFILE" == v["METHORD"]) {
+	if ( v.find("Content-Type") != v.end() ) {
+		std::string context = v["Content-Type"];
+		int npos = context.find("boundary");
+		if (npos != -1) {
+			v["FILE_ID"] = context.substr(npos + 13);
+		}
+	}
+	int postheadlen = 0;
+	for (;;) {
+		char szline[256] = { 0 };
+		ssHeader.getline(szline, sizeof(szline), '\r');
+		std::string sline(szline);
+		if (sline.find(v["FILE_ID"]) != -1) {
+			postheadlen += strlen(szline) + 1;
+			ssHeader.getline(szline, sizeof(szline), '\r');
+			postheadlen += strlen(szline) + 1;
+			//Content - Disposition: form - data; name = "file_size"
+			std::string sline1(szline);
+			std::string skey;
+			std::string value;
+			int np = sline1.find("name=");
+			if (np != -1) {
+				skey = sline1.substr(np + 6, sline1.size() - np -7 );
+			}
+			ssHeader.getline(szline, sizeof(szline), '\r');
+			postheadlen += strlen(szline) + 1;
+			ssHeader.getline(szline, sizeof(szline), '\r');
+			postheadlen += strlen(szline) + 1;
+			std::string svalue(szline);
+			svalue.erase(std::remove(svalue.begin(), svalue.end(), '\n'), svalue.end());
+			v.insert(make_pair(skey, svalue));
+			continue;
+		}
+		break;
+	}
+	if (v.find("file_name") != v.end()) {
+		upfilesize = std::stoi( v["file_size"] );
+		//markidLen = v["FILE_ID"].size() + 4;
+		//upfilesize = atoi(v["Content-Length"].c_str()) - markidLen - postheadlen;
+		std::string filepath = "." + v["TARGET"];
+		std::string filename = filepath + v["file_name"];
+		printf("upfile id:%s  name:%s\n", v["FILE_ID"].c_str(), filename.c_str());
+		setpath(filepath.c_str());
+		if( !mytranfile )
+			mytranfile = fopen(filename.c_str(), "wb");
+		int datpos = httpheadlen + postheadlen;
+		ftsock = sock;
+		uploadfiletrans(sock, &data[datpos], data.size() - datpos);
+	}
+	return;
+}
