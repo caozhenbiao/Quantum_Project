@@ -3,6 +3,25 @@ webui : Qt webkit UI
 directui: Direct UI
 
 
+HOW to build
+
+1：build lua
+cd liblua
+make linux
+
+2: build libbase
+cd libbase
+$ cd libbase
+$ gyp --depth=. base.gyp -I build/common.gypi
+# Specify BUILDTYPE=Release on the command line for a release build. MAKEFILE
+BUILDTYPE ?= Release
+make
+
+3. build quark
+cd quark
+make
+
+
 UASGE
 k: auth key
 s: lua script

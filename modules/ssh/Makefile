@@ -2,7 +2,7 @@ CC = gcc
 XX = g++
 TARGET = ./output/ssh.so
 CFLAGS = -I$(MYLIB) -Wall -O -g -I. -I../platform/quark/liblua/src -I../../platform/quark/libbase  -Wall -Wno-unknown-pragmas -Wno-format -O3 -fPIC -std=c++11 
-LIBS =  -lrt -ldl ../../platform/quark/liblua/output/libLua.a  ../../platform/quark/libbase/output/Release/obj.target/libbase.a -lssh2 -levent
+LIBS =  -lrt -ldl ../../platform/quark/liblua/output/libLua.a  ../../platform/quark/libbase/out/Release/obj.target/libbase.a -lssh2 -levent
 SHARED := --shared  
 
 %.o: %.c                                 
