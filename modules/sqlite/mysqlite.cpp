@@ -74,5 +74,5 @@ int mysqlite::bind_int(int mt, int col, int val) {
 
 int mysqlite::bind_text(int mt, int col, const char* val) {
 
-	return sqlite3_bind_text(mymts[mt], col, val, strlen(val), NULL);
+	return sqlite3_bind_text(mymts[mt], col, val, (int)strlen(val), NULL);
 }

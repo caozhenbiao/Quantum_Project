@@ -26,7 +26,7 @@ int cmyodbc::close() {
 int cmyodbc::connect(const char* dns, const char* usr, const char* pwd){
 	HDBC hDbc = NULL;
 	SQLRETURN ret = SQLAllocHandle(SQL_HANDLE_DBC, m_hEnv, &hDbc);
-	ret = SQLConnectA(hDbc,(SQLCHAR *)dns,strlen(dns),(SQLCHAR *)usr,strlen(usr),(SQLCHAR *)pwd,strlen(pwd));
+	ret = SQLConnectA(hDbc,(SQLCHAR *)dns,(SQLSMALLINT)strlen(dns),(SQLCHAR *)usr,strlen(usr),(SQLCHAR *)pwd,strlen(pwd));
 	if(ret == -1 ) {
 		SQLFreeHandle(SQL_HANDLE_DBC, hDbc);
 		printf("connect error: %d\n", ret ); 
@@ -48,7 +48,7 @@ int cmyodbc::disconnect( int idbc ) {
 int cmyodbc::execute(int idbc, const char * sql ){
 	HSTMT hsmt = NULL;
 	SQLAllocHandle(SQL_HANDLE_STMT, myHdbcs[idbc], &hsmt);
-	SQLRETURN retcode = SQLExecDirectA(hsmt, (SQLCHAR *)sql, strlen(sql) );
+	SQLRETURN retcode = SQLExecDirectA(hsmt, (SQLCHAR *)sql, (SQLINTEGER)strlen(sql) );
 	if( retcode == SQL_SUCCESS ){
 		++myIndex;
 		myHstmts[myIndex] = hsmt;

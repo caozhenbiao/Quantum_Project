@@ -14,7 +14,7 @@ typedef struct _feature {
 	float point[128];
 }feature;
 
-#define DLIB_NO_GUI_SUPPORT 1
+//#define DLIB_NO_GUI_SUPPORT 0
 
 //opencv
 class dlibwraper{

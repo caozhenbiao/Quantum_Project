@@ -48,7 +48,7 @@ static int bind_blod(lua_State *L) {
 	int col = (int)luaL_checkinteger(L, 2);
 	size_t len = (size_t)luaL_checkinteger(L, 3);
 	const char * buf = luaL_checklstring(L, 4, &len);
-	int ret = theSqlite->bind_blob(mt, col, (void*)buf, len );
+	int ret = theSqlite->bind_blob(mt, col, (void*)buf, (int)len );
 	lua_pushinteger(L, ret);
 	return 1;
 }

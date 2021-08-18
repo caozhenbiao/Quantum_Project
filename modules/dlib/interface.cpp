@@ -56,7 +56,7 @@ static int addtracktarget(lua_State *L) {
 	int t = (int)luaL_checkinteger(L, 4);
 	int w = (int)luaL_checkinteger(L, 5);
 	int h = (int)luaL_checkinteger(L, 6);
-	thedlib->add_tracker_target((char*)buf, len, l, t, w, h);
+	thedlib->add_tracker_target((char*)buf, (int)len, l, t, w, h);
 	event_set(mydispath);
 	return 0;
 }
@@ -68,7 +68,7 @@ static int targetpositions(lua_State *L) {
 	size_t len = (size_t)luaL_checkinteger(L, 1);
 	const char * buf = luaL_checklstring(L, 2, &len);
 	std::vector<rect> boxs;
-	int cnt = thedlib->get_tracking_targets((char*)buf, len, boxs);
+	int cnt = thedlib->get_tracking_targets((char*)buf, (int)len, boxs);
 	if( cnt > 0) {
 		lua_pushlstring(L, (const char*)&boxs[0], sizeof(rect) * cnt);
 		event_set(mydispath);
@@ -98,7 +98,7 @@ static int objectpositions(lua_State *L) {
 	const char * buf = luaL_checklstring(L, 2, &len);
 	std::vector<int> classes;
 	std::vector<rect> boxs;
-	int cnt = thedlib->get_detecting_targets((char*)buf, len, classes, boxs);
+	int cnt = thedlib->get_detecting_targets((char*)buf, (int)len, classes, boxs);
 	if( cnt > 0 ) {
 		lua_pushlstring(L, (const char*)&classes[0], sizeof(int) * cnt);
 		lua_pushlstring(L, (const char*)&boxs[0], sizeof(rect) * cnt);
@@ -130,7 +130,7 @@ static int markfeatures(lua_State *L) {
 	const char * buf = luaL_checklstring(L, 2, &len);
 	std::vector<rect> boxs;
 	std::vector<feature> feats;
-	int cnt = thedlib->get_face_features((char*)buf, len, boxs, feats);
+	int cnt = thedlib->get_face_features((char*)buf, (int)len, boxs, feats);
 	if( cnt > 0 ){
 		lua_pushlstring(L, (const char*)&boxs[0], sizeof(rect) * cnt);
 		lua_pushlstring(L, (const char*)&feats[0], sizeof(feature) * cnt);
