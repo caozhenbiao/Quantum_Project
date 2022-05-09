@@ -6,6 +6,12 @@ https://github.com/caozhenbiao/Quantum_Project
 
 git clone git@github.com:caozhenbiao/Quantum_Project.git
 
+caozhenbiao@hotmail.com
+Czy20101204
+
+
+
+
 2021/4/20
 
 1. platform

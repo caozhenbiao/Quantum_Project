@@ -309,7 +309,7 @@ private:
 class CFrameWindowWnd : public CWindowWnd, public INotifyUI, public CDwm, public CDPI
 {
 public:
-    CFrameWindowWnd() : m_pWndShadow(NULL) { };
+    CFrameWindowWnd() { };
     LPCTSTR GetWindowClassName() const { return _T("UIMainFrame"); };
     UINT GetClassStyle() const { return UI_CLASSSTYLE_FRAME | CS_DBLCLKS; };
     void OnFinalMessage(HWND /*hWnd*/) { delete this; };
@@ -396,11 +396,11 @@ public:
             m_pm.AttachDialog(pRoot);
             m_pm.AddNotifier(this);
 
-            m_pWndShadow = new CWndShadow;
-            m_pWndShadow->Create(m_hWnd);
+            //m_pWndShadow = new CWndShadow;
+            //m_pWndShadow->Create(m_hWnd);
             RECT rcCorner = {3,3,4,4};
             RECT rcHoleOffset = {0,0,0,0};
-            m_pWndShadow->SetImage(_T("LeftWithFill.png"), rcCorner, rcHoleOffset);
+            //m_pWndShadow->SetImage(_T("LeftWithFill.png"), rcCorner, rcHoleOffset);
 
             DWMNCRENDERINGPOLICY ncrp = DWMNCRP_ENABLED;
             SetWindowAttribute(m_hWnd, DWMWA_TRANSITIONS_FORCEDISABLED, &ncrp, sizeof(ncrp));
@@ -413,6 +413,16 @@ public:
 
             //DWM_MARGINS margins = {-1}/*{0,0,0,25}*/;
             //ExtendFrameIntoClientArea(m_hWnd, margins);
+
+
+			//LONG styleValue = ::GetWindowLong(*this, GWL_STYLE);
+			//styleValue &= ~WS_CAPTION;
+			//styleValue &= ~WS_THICKFRAME;
+			//::SetWindowLong(*this, GWL_STYLE, styleValue | WS_CLIPSIBLINGS | WS_CLIPCHILDREN);
+			//styleValue = ::GetWindowLong(*this, GWL_EXSTYLE);
+			//::SetWindowLong(*this, GWL_EXSTYLE, styleValue | WS_EX_TOOLWINDOW);
+
+
 
             Init();
             return 0;
@@ -430,7 +440,7 @@ public:
 
 public:
     CPaintManagerUI m_pm;
-    CWndShadow* m_pWndShadow;
+    //CWndShadow* m_pWndShadow;
 };
 
 
