@@ -1,0 +1,29 @@
+darnket yolo更新记录
+当前版本从yolov3更新过，需要修改以下事项
+
+1.Makefile
+#OPTS=-Ofast
+
+2.include/darknet.h 
+fix define darknet,layer
+
+3.include/darknet.h L694
+//add by caozhenbiao 2018-4-4
+unsigned char * stream_toimage_data(unsigned char* stream, int len, int* w, int* h);
+//add finish
+
+4.src/image.c L1488 add
+//add by caozhenbiao 2018-4-4
+unsigned char * stream_toimage_data(unsigned char* stream, int len, int* w, int* h){
+	int comp;
+	return stbi_load_from_memory(stream,len,w,h,&comp,3);
+}
+//add finish
+
+
+1.添加 	
+	gettimeofday.c
+	gettimeofday.h
+
+2:修改了 utils.c
+              utils.h
