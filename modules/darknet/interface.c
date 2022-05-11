@@ -7,34 +7,51 @@
 
 #include "./src/network.h"
 #include "./src/utils.h"
+#include "./src/network.h"
+#include "./src/region_layer.h"
+#include "./src/cost_layer.h"
+#include "./src/utils.h"
+#include "./src/parser.h"
+#include "./src/box.h"
+#include "./src/demo.h"
+
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+
+//#include "option_list.h"
 #include "../../platform/quark/liblua/src/lua.h"
 #include "../../platform/quark/liblua/src/lualib.h"
 #include "../../platform/quark/liblua/src/lauxlib.h"
 
-
-network* mynet = NULL;
+network mynet;
 image**  myalphabet = NULL;
 char**   mynames;
 
 //yolo
 static int setup(lua_State * L){
-   printf("yolo setup thread start\n");
    const char *  nf = luaL_checkstring(L, 1); //label文件
    const char *  cf = luaL_checkstring(L, 2); //网络配置文件
    const char *  wf = luaL_checkstring(L, 3); //权重文件
-   mynames = get_labels((char*)nf);
+   printf("darknet setup names:%s   cfg:%s  weight:%s\n", nf, cf, wf);
+   int names_size = 0;
+   mynames = get_labels_custom((char*)nf, &names_size );
    myalphabet = load_alphabet();
-   mynet = parse_network_cfg((char*)cf);
-   load_weights(mynet, (char*)wf);
-   set_batch_network(mynet, 1);
+  mynet = parse_network_cfg_custom((char*)cf, 1, 1); // set batch=1
+   load_weights(&mynet, (char*)wf);
+   //set_batch_network(mynet, 1);
+   fuse_conv_batchnorm( mynet );
+   calculate_binary_weights( mynet );
+   if (mynet.layers[mynet.n - 1].classes != names_size) {
+		printf("\n Error: in the file %s number of names %d that isn't equal to classes=%d in the file %s \n",nf, names_size, mynet.layers[mynet.n - 1].classes, cf);
+	}
    srand(2222222);
-   printf("steup finish!");
+   printf("steup finish!\n");
    return 0;
 }
 
 //jpg数据流对象检测
 static int framedetect(lua_State * L){
-	int jpgsize = luaL_checkinteger(L,1);
+	 __int64 jpgsize = luaL_checkinteger(L,1);
 	const char* jpgdata = luaL_checklstring(L,2,&jpgsize);
 	float thresh = 0.24;
 	float hier_thresh = 0.5;
@@ -43,66 +60,61 @@ static int framedetect(lua_State * L){
 	//JPG数据流转换
 	int c = 3;
 	int w,h,comp;
-	//unsigned char * data  = stbi_load_from_memory((unsigned char*)jpgdata,jpgsize,&w,&h,&comp,3);					  
-	unsigned char * data  = stream_toimage_data((unsigned char*)jpgdata,jpgsize,&w,&h);
+	unsigned char * data  = stbi_load_from_memory((unsigned char*)jpgdata,jpgsize,&w,&h,&comp,3);
 	if( !data ){
 		printf("error image data.\n");
 		return 0;
 	}
 	image im = make_image(w, h, c);
-	int i,j,k;
+	int ia,ja,k;
 	for(k = 0; k < c; ++k){
-		for(j = 0; j < h; ++j){
-			for(i = 0; i < w; ++i){
-				im.data[i+w*j+w*h*k] = (float)data[c*i+c*w*j]/255.;
+		for(ja = 0; ja < h; ++ja){
+			for(ia = 0; ia < w; ++ia){
+				im.data[ia+w*ja+w*h*k] = (float)data[c*ia+c*w*ja]/255.;
 			}
 		}
 	}
 	free(data);
- 
+
 	//对象检测
-    image sized = letterbox_image(im, mynet->w, mynet->h);
-    layer l = mynet->layers[mynet->n-1];
-    network_predict(*mynet, sized.data);
+	image sized = letterbox_image(im, mynet.w, mynet.h);
+	layer l = mynet.layers[mynet.n - 1];
+	float* out = network_predict(mynet, sized.data);
 	int nboxes = 0;
-	detection *dets = NULL; //= get_network_boxes(mynet, im.w, im.h, thresh, hier_thresh, 0, 1, &nboxes);
+	detection *dets = get_network_boxes(&mynet, im.w, im.h, thresh, hier_thresh, 0, 1, &nboxes, 1);
 	if (nms) do_nms_sort(dets, nboxes, l.classes, nms);
-
-	printf("get_network_boxes finish boxs:%d class:%d\n", nboxes, l.classes);
-
+	printf("framedetect finish boxs:%d class:%d\n", nboxes, l.classes);
 	//检测输出
 	int ndetcnt = 0;
 	lua_newtable(L);
-	int ib,jb;
-	for( ib = 0; ib < nboxes; ++ib){
-        for( jb = 0; jb < l.classes; ++jb){
-            if (dets[ib].prob[jb] > thresh){
-				box b = dets[ib].bbox;
-				int left  = (b.x-b.w/2.)*im.w;
-				int right = (b.x+b.w/2.)*im.w;
-				int top   = (b.y-b.h/2.)*im.h;
-				int bot   = (b.y+b.h/2.)*im.h;
-				if(left < 0) left = 0;
-				if(right > im.w-1) right = im.w-1;
-				if(top < 0) top = 0;
-				if(bot > im.h-1) bot = im.h-1;
-				char szText[512]={0};
-				sprintf(szText,"name:%s simal:%f left:%d right:%d top:%d bottom:%d",mynames[jb], dets[ib].prob[jb]*100, left,right,top,bot);
-				lua_pushstring(L,szText);
-				lua_rawseti(L,-2,ndetcnt++);
-				printf("%s\n",szText);
-            }
-        }
-    }
-
+	int i, j;
+	for (i = 0; i < nboxes; ++i) {
+		for (j = 0; j < l.classes; ++j) {
+			if (dets[i].prob[j] > thresh) {
+				box b = dets[i].bbox;
+				int left = (b.x - b.w / 2.)*im.w;
+				int right = (b.x + b.w / 2.)*im.w;
+				int top = (b.y - b.h / 2.)*im.h;
+				int bot = (b.y + b.h / 2.)*im.h;
+				if (left < 0) left = 0;
+				if (right > im.w - 1) right = im.w - 1;
+				if (top < 0) top = 0;
+				if (bot > im.h - 1) bot = im.h - 1;
+				char szText[256] = { 0 };
+				sprintf(szText, "name:%s simal:%f left:%d right:%d top:%d bottom:%d", mynames[j], dets[i].prob[j] * 100, left, right, top, bot);
+				lua_pushstring(L, szText);
+				lua_rawseti(L, -2, ndetcnt++);
+				ndetcnt++;
+			}
+		}
+	}
 	//保存检测文件
 	if( ndetcnt>0 ){
-	//	draw_detections(im, dets, nboxes, thresh, mynames, myalphabet, l.classes);
 		free_detections(dets, nboxes);
-		static int ii = 0;
-		char path[256];
-		sprintf(path, "./%d", ii++ );
-		save_image(im, path);
+		//static int ii = 0;
+		//char path[256];
+		//sprintf(path, "./%d", ii++ );
+		//save_image(im, path);
 	}
     free_image(im);
     free_image(sized);
@@ -116,17 +128,13 @@ static int filedetect(lua_State * L ){
 	float thresh = 0.24;
 	float hier_thresh = 0.4;
 	float nms=.45;
-    image im = load_image_color((char*)srcfile,0,0);
-    image sized = letterbox_image(im, mynet->w, mynet->h);
-    layer l = mynet->layers[mynet->n-1];
-    float* out = network_predict(*mynet, sized.data);
+	image im = load_image((char*)srcfile, 0, 0, mynet.c);
+    image sized = letterbox_image(im, mynet.w, mynet.h);
+    layer l = mynet.layers[mynet.n-1];
+    float* out = network_predict(mynet, sized.data);
 	int nboxes = 0;
 	printf("start get_network_boxes\n");
-	detection *dets = NULL; // = get_network_boxes(mynet, im.w, im.h, thresh, hier_thresh, 0, 1, &nboxes);
-
- 
-	printf("start do_nms_sort\n");
-
+	detection *dets = get_network_boxes(&mynet, im.w, im.h, thresh, hier_thresh, 0, 1, &nboxes, 1);
 	if (nms) do_nms_sort(dets, nboxes, l.classes, nms);
 	printf("filedetect finish boxs:%d class:%d\n", nboxes, l.classes);
 	//检测输出
@@ -155,12 +163,7 @@ static int filedetect(lua_State * L ){
         }
     }
    if( ndetcnt>0 ){
-	   // draw_detections(im, dets, nboxes, thresh, mynames, myalphabet, l.classes);
-
-
-	//	void draw_detections(image im, int num, float thresh, box *boxes, float **probs, char **names, image **alphabet, int classes)
-
-
+		draw_detections_v3(im, dets, nboxes, thresh, mynames, myalphabet, l.classes, 1);
         free_detections(dets, nboxes);
 		save_image(im, dtcfile);
     }
@@ -280,7 +283,7 @@ static int train(lua_State * L ){
 #endif
             char buff[256];
             sprintf(buff, "%s/%s.backup", backup_directory, base);
-            save_weights(net, buff);
+            save_weights(*net, buff);
         }
         if(i%10000==0 || (i < 1000 && i%100 == 0)){
 #ifdef GPU
@@ -288,7 +291,7 @@ static int train(lua_State * L ){
 #endif
             char buff[256];
             sprintf(buff, "%s/%s_%d.weights", backup_directory, base, i);
-            save_weights(net, buff);
+            save_weights(*net, buff);
         }
         free_data(train);
     }
@@ -297,7 +300,7 @@ static int train(lua_State * L ){
 #endif
     char buff[256];
     sprintf(buff, "%s/%s_final.weights", backup_directory, base);
-    save_weights(net, buff);
+    save_weights(*net, buff);
 	return 0;
 }
 

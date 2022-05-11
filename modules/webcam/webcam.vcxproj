@@ -75,6 +75,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)output\</OutDir>
+    <IntDir>$(SolutionDir)output\.Debug\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -83,8 +85,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>./bin</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)output\</OutDir>
+    <IntDir>$(SolutionDir)output\.Release\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -119,14 +121,15 @@ copy .\lib3th\output\pthreadD.dll .\output\pthreadD.dll
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;WEBCAM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\..\opencv\opencv-2.4.10\include;.\..\opencv\opencv-2.4.10\build\include\opencv2\highgui;.\..\opencv\opencv-2.4.10\modules\core\include;.\..\opencv\opencv-2.4.10\modules\flann\include;.\..\opencv\opencv-2.4.10\modules\imgproc\include;.\..\opencv\opencv-2.4.10\modules\photo\include;.\..\opencv\opencv-2.4.10\modules\video\include;.\..\opencv\opencv-2.4.10\modules\nonfree\include;.\..\opencv\opencv-2.4.10\modules\features2d\include;.\..\opencv\opencv-2.4.10\modules\objdetect\include;.\..\opencv\opencv-2.4.10\modules\calib3d\include;.\..\opencv\opencv-2.4.10\modules\ml\include;.\..\opencv\opencv-2.4.10\modules\highgui\include;.\..\opencv\opencv-2.4.10\modules\contrib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;WEBCAM_EXPORTS;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Quantum\thirdlibs\opencv-2.4\include;D:\Quantum\thirdlibs\opencv-2.4\build\include\opencv2\highgui;D:\Quantum\thirdlibs\opencv-2.4\modules\core\include;D:\Quantum\thirdlibs\opencv-2.4\modules\flann\include;D:\Quantum\thirdlibs\opencv-2.4\modules\imgproc\include;D:\Quantum\thirdlibs\opencv-2.4\modules\photo\include;D:\Quantum\thirdlibs\opencv-2.4\modules\video\include;D:\Quantum\thirdlibs\opencv-2.4\modules\nonfree\include;D:\Quantum\thirdlibs\opencv-2.4\modules\features2d\include;D:\Quantum\thirdlibs\opencv-2.4\modules\objdetect\include;D:\Quantum\thirdlibs\opencv-2.4\modules\calib3d\include;D:\Quantum\thirdlibs\opencv-2.4\modules\ml\include;D:\Quantum\thirdlibs\opencv-2.4\modules\highgui\include;D:\Quantum\thirdlibs\opencv-2.4\modules\contrib\include;D:\Quantum\thirdlibs\opencv-2.4\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>../../smartx/libs/luaLibD.lib;ws2_32.lib;opencv_ml2410d.lib;opencv_calib3d2410d.lib;opencv_contrib2410d.lib;opencv_core2410d.lib;opencv_features2d2410d.lib;opencv_flann2410d.lib;opencv_gpu2410d.lib;opencv_highgui2410d.lib;opencv_imgproc2410d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>.\..\opencv\opencv-2.4.10\build\lib\x86\vc10\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>..\..\platform\quark\liblua\output\lualibD.lib;..\..\platform\quark\lib3th\output\pthreadD.lib;ws2_32.lib;opencv_ml2413d.lib;opencv_calib3d2413d.lib;opencv_contrib2413d.lib;opencv_core2413d.lib;opencv_features2d2413d.lib;opencv_flann2413d.lib;opencv_gpu2413d.lib;opencv_highgui2413d.lib;opencv_imgproc2413d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\thirdlibs\opencv-2.4\build\lib\Debug\</AdditionalLibraryDirectories>
+      <OutputFile>$(OutDir)$(TargetName)D$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -162,8 +165,8 @@ copy ..\..\platform\quark\lib3th\output\pthread.dll .\output\pthread.dll</Comman
       </PrecompiledHeader>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;WEBCAM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\..\opencv\opencv-2.4.10\include;.\..\opencv\opencv-2.4.10\build\include\opencv2\highgui;.\..\opencv\opencv-2.4.10\modules\core\include;.\..\opencv\opencv-2.4.10\modules\flann\include;.\..\opencv\opencv-2.4.10\modules\imgproc\include;.\..\opencv\opencv-2.4.10\modules\photo\include;.\..\opencv\opencv-2.4.10\modules\video\include;.\..\opencv\opencv-2.4.10\modules\nonfree\include;.\..\opencv\opencv-2.4.10\modules\features2d\include;.\..\opencv\opencv-2.4.10\modules\objdetect\include;.\..\opencv\opencv-2.4.10\modules\calib3d\include;.\..\opencv\opencv-2.4.10\modules\ml\include;.\..\opencv\opencv-2.4.10\modules\highgui\include;.\..\opencv\opencv-2.4.10\modules\contrib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;WEBCAM_EXPORTS;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Quantum\thirdlibs\opencv-2.4\include;D:\Quantum\thirdlibs\opencv-2.4\build\include\opencv2\highgui;D:\Quantum\thirdlibs\opencv-2.4\modules\core\include;D:\Quantum\thirdlibs\opencv-2.4\modules\flann\include;D:\Quantum\thirdlibs\opencv-2.4\modules\imgproc\include;D:\Quantum\thirdlibs\opencv-2.4\modules\photo\include;D:\Quantum\thirdlibs\opencv-2.4\modules\video\include;D:\Quantum\thirdlibs\opencv-2.4\modules\nonfree\include;D:\Quantum\thirdlibs\opencv-2.4\modules\features2d\include;D:\Quantum\thirdlibs\opencv-2.4\modules\objdetect\include;D:\Quantum\thirdlibs\opencv-2.4\modules\calib3d\include;D:\Quantum\thirdlibs\opencv-2.4\modules\ml\include;D:\Quantum\thirdlibs\opencv-2.4\modules\highgui\include;D:\Quantum\thirdlibs\opencv-2.4\modules\contrib\include;D:\Quantum\thirdlibs\opencv-2.4\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -171,8 +174,8 @@ copy ..\..\platform\quark\lib3th\output\pthread.dll .\output\pthread.dll</Comman
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>../../smartx/libs/lualib.lib;../../smartx/libs/pthread.lib;ws2_32.lib;opencv_ml2410.lib;opencv_calib3d2410.lib;opencv_contrib2410.lib;opencv_core2410.lib;opencv_features2d2410.lib;opencv_flann2410.lib;opencv_gpu2410.lib;opencv_highgui2410.lib;opencv_imgproc2410.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>.\..\opencv\opencv-2.4.10\build\lib\x86\vc10\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>..\..\platform\quark\liblua\output\lualib.lib;..\..\platform\quark\lib3th\output\pthread.lib;ws2_32.lib;opencv_ml2413.lib;opencv_calib3d2413.lib;opencv_contrib2413.lib;opencv_core2413.lib;opencv_features2d2413.lib;opencv_flann2413.lib;opencv_gpu2413.lib;opencv_highgui2413.lib;opencv_imgproc2413.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\thirdlibs\opencv-2.4\build\lib\Release\</AdditionalLibraryDirectories>
       <Profile>true</Profile>
     </Link>
   </ItemDefinitionGroup>

@@ -19,7 +19,7 @@ int ccamera::play(bool store){
 	cvSetCaptureProperty(mycapture, CV_CAP_PROP_FRAME_HEIGHT, 720);
 	//myimage   = cvCreateImage();
 #ifdef WIN32
-	threadid  = _beginthreadex(NULL,0,playthread,this,0,NULL);
+	threadid  = (unsigned int)_beginthreadex(NULL,0,playthread,this,0,NULL);
 #else
 	if( pthread_create(&threadid, NULL, playthread, this) != 0) 
 		printf("pthread_create failed! \n");

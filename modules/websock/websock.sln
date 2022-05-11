@@ -1,22 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Blend for Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1831
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "websock", "websock.vcxproj", "{F6B995BC-24AE-4AED-8862-DA1D421DE78C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
 		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F6B995BC-24AE-4AED-8862-DA1D421DE78C}.Debug|Win32.ActiveCfg = Debug|Win32
 		{F6B995BC-24AE-4AED-8862-DA1D421DE78C}.Debug|Win32.Build.0 = Debug|Win32
+		{F6B995BC-24AE-4AED-8862-DA1D421DE78C}.Debug|x64.ActiveCfg = Debug|x64
+		{F6B995BC-24AE-4AED-8862-DA1D421DE78C}.Debug|x64.Build.0 = Debug|x64
 		{F6B995BC-24AE-4AED-8862-DA1D421DE78C}.Release|Win32.ActiveCfg = Release|Win32
 		{F6B995BC-24AE-4AED-8862-DA1D421DE78C}.Release|Win32.Build.0 = Release|Win32
+		{F6B995BC-24AE-4AED-8862-DA1D421DE78C}.Release|x64.ActiveCfg = Release|x64
+		{F6B995BC-24AE-4AED-8862-DA1D421DE78C}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A7869D3-AA09-4775-959A-862A0C03782E}
 	EndGlobalSection
 EndGlobal

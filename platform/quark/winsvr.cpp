@@ -27,7 +27,7 @@ VOID WINAPI SvcMain( DWORD, LPTSTR * );
 
 VOID ReportSvcStatus( DWORD, DWORD, DWORD );
 VOID SvcInit( DWORD, LPTSTR * ); 
-VOID SvcReportEvent( LPTSTR );
+VOID SvcReportEvent( LPCSTR );
 BOOL ShowMenu(void);
 VOID CALLBACK MainThread(HWND hwnd,UINT uMsg,UINT_PTR idEvent,DWORD dwTime);
 HANDLE m_HThread;
@@ -203,7 +203,7 @@ VOID WINAPI SvcCtrlHandler( DWORD dwCtrl ){
 	} 
 }
 
-VOID SvcReportEvent(LPTSTR szFunction) { 
+VOID SvcReportEvent(LPCSTR szFunction) { 
 	HANDLE hEventSource;
 	LPCTSTR lpszStrings[2];
 	TCHAR Buffer[80];

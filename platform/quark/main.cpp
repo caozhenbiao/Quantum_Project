@@ -4,8 +4,8 @@
 
 #ifdef _WIN32
 #include<crtdbg.h>
-TCHAR SVCNAME[128] = "quarksvr";
-TCHAR SVCDESC[128] = "quark for quantum project";
+CHAR SVCNAME[128] = "quarksvr";
+CHAR SVCDESC[128]  = "quark for quantum project";
 #else
 #include <mcheck.h>
 #define TCHAR char
@@ -13,7 +13,7 @@ TCHAR SVCDESC[128] = "quark for quantum project";
 
 #ifdef _WIN32
 char *optarg = NULL;
-int getopt( int argc, char **argv, char *opts ) {
+int getopt( int argc, char **argv, const char *opts ) {
 	static int sp = 1;
 	static int opterr = 1;
 	static int optind = 1;
@@ -28,7 +28,7 @@ int getopt( int argc, char **argv, char *opts ) {
 			return(-1);
 		}
 	optopt = c = argv[optind][sp];
-	if (c == ':' || (cp = strchr(opts, c)) == 0) {
+	if (c == ':' || (cp = (char*)strchr(opts, c)) == 0) {
 		printf(": illegal option --%c ", c);
 		if (argv[optind][++sp] == '\0') {
 			optind++;
@@ -75,7 +75,7 @@ int main(int argc, char* argv[]) {
 #else
 	mtrace();
 #endif
-	printf("[Quantum Project v1.0] \nquark start.\n");
+	printf("[Quantum Project v1.0] \nquark start.\n"); 
 	base::AtExitManager exit_manager;
 	macopt opt;
 	memset(&opt, 0x00, sizeof(macopt));

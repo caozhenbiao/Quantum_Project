@@ -1555,13 +1555,6 @@ image load_image_color(char *filename, int w, int h)
     return load_image(filename, w, h, 3);
 }
 
-//add by caozhenbiao 2018-4-4
-unsigned char* stream_toimage_data(unsigned char* stream, int len, int* w, int* h) {
-    int comp;
-    return stbi_load_from_memory(stream, len, w, h, &comp, 3);
-}
-//add finish
-
 image get_image_layer(image m, int l)
 {
     image out = make_image(m.w, m.h, 1);

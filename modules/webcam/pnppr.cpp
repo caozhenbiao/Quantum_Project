@@ -58,7 +58,7 @@ int cpnppr::play(bool store){
 	m_playevt = event_create( false, false );
 	m_frmevt  = event_create( false, true );
 #ifdef WIN32
-	threadid  = _beginthreadex(NULL,0,playthread,this,0,NULL);
+	threadid  = (unsigned int)_beginthreadex(NULL,0,playthread,this,0,NULL);
 #else
 	if( pthread_create(&threadid, NULL, playthread, this) != 0) 
 		printf("pthread_create failed! \n");
@@ -251,7 +251,7 @@ void cpnppr::work(){
 		if( 0xFF== startmark && ite->first-itb->first+1==vframe.size()){
 			std::string jpegstream;
 			for(std::map<unsigned int,std::string>::iterator it=vframe.begin();it!=vframe.end();it++)jpegstream += it->second;
-			setframe( &jpegstream[0], jpegstream.size());
+			setframe( &jpegstream[0], (int)jpegstream.size());
 			static unsigned char buf3[] = { 0xf1,0xE0,0x00,0x00};
 			sendto(mysock, (char*)buf3,sizeof(buf3),0,(sockaddr*)&toaddr,addlen);
 		}
@@ -276,7 +276,7 @@ void cpnppr::work(){
 		vdata.push_back(0x00);
 		vdata.push_back( (char)(vcomfirm.size()/2) );
 		vdata.append(vcomfirm.begin(),vcomfirm.end());
-		sendto(mysock,(char*)&vdata[0],vdata.size(),0,(sockaddr*)&toaddr, addlen);
+		sendto(mysock,(char*)&vdata[0],(int)vdata.size(),0,(sockaddr*)&toaddr, addlen);
 		vcomfirm.clear();
 	}
 	echo = 0;

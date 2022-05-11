@@ -68,7 +68,7 @@ static int display(lua_State *L){
 		lua_callback = luaL_ref(L, LUA_REGISTRYINDEX);
 		theExitEvt = event_create( false, false);
 #ifdef WIN32
-		threadid  = _beginthreadex(NULL,0,watching,(void*)&waittime,0,NULL);
+		threadid  = (unsigned int)_beginthreadex(NULL,0,watching,(void*)&waittime,0,NULL);
 #else
 		if( pthread_create(&threadid, NULL, watching, (void*)&waittime) != 0) 
 			printf("pthread_create failed! \n");
