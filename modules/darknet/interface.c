@@ -16,6 +16,7 @@
 #include "./src/demo.h"
 
 #define STB_IMAGE_IMPLEMENTATION
+#define STB_IMAGE_STATIC
 #include "stb_image.h"
 
 //#include "option_list.h"
@@ -51,7 +52,11 @@ static int setup(lua_State * L){
 
 //jpg数据流对象检测
 static int framedetect(lua_State * L){
+#ifdef WIN32
 	 __int64 jpgsize = luaL_checkinteger(L,1);
+#else
+	int jpgsize = luaL_checkinteger(L, 1);
+#endif
 	const char* jpgdata = luaL_checklstring(L,2,&jpgsize);
 	float thresh = 0.24;
 	float hier_thresh = 0.5;

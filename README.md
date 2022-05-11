@@ -1,17 +1,6 @@
 Quantum Project (量子计划）
 跨平台模块化开发框架，支持windows/linux/mac等平台。
 
-git hub
-https://github.com/caozhenbiao/Quantum_Project
-
-git clone git@github.com:caozhenbiao/Quantum_Project.git
-
-caozhenbiao@hotmail.com
-Czy20101204
-
-
-
-
 2021/4/20
 
 1. platform
