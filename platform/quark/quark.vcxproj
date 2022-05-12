@@ -202,7 +202,7 @@ copy .\lib3th\output\pthread.dll .\output\pthread.dll</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_WIN32;NDEBUG;_CONSOLE;_HAS_EXCEPTIONS=0;_CRT_SECURE_NO_WARNINGS;NOMINMAX;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./libbase;./liblua/src;./liblua/pthread/src;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./libbase;./liblua/src;./lib3th/pthread/src;</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
