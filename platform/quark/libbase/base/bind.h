@@ -86,7 +86,7 @@ Bind(Functor functor, const Args&... args) {
   // non-const reference parameter can make for subtle bugs because the
   // invoked function will receive a reference to the stored copy of the
   // argument and not the original.
-  static_assert(!internal::HasNonConstReferenceParam<BoundRunType>::value,
+   (!internal::HasNonConstReferenceParam<BoundRunType>::value,
                 "do_not_bind_functions_with_nonconst_ref");
 
   const bool is_method = internal::HasIsMethodTag<RunnableType>::value;

@@ -1,8 +1,8 @@
 CC = gcc 
 XX = g++
 TARGET = ./output/quark
-CFLAGS = -Wall -O -g -I./include -I./libbase -I./liblua/src -fPIC -std=c++11 
-LIBS   = ./libbase/output/Release/obj.target/libbase.a ./liblua/output/libLua.a -levent -lpthread -lrt -ldl
+CFLAGS = -Wall -O -g -I./include -I./libbase -I./liblua/src -fPIC -std=c++17
+LIBS   = ./libbase/output/libbase.a ./liblua/output/libLua.a -levent -lpthread -lrt -ldl
 
 %.o: %.c                                 
 	$(CC) $(CFLAGS) -c $< -o $@          

@@ -296,7 +296,7 @@ int64 File::Seek(Whence whence, int64 offset) {
   return lseek64(file_.get(), static_cast<off64_t>(offset),
                  static_cast<int>(whence));
 #else
-  COMPILE_ASSERT(sizeof(int64) == sizeof(off_t), off_t_64_bit);
+  //COMPILE_ASSERT(sizeof(int64) == sizeof(off_t), off_t_64_bit);
   return lseek(file_.get(), static_cast<off_t>(offset),
                static_cast<int>(whence));
 #endif

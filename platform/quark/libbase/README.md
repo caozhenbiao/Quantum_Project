@@ -12,3 +12,7 @@ $ gyp --depth=. base.gyp -I build/common.gypi
 $ ninja -C output
 make
 ```
+make builddir_name=output BUILDTYPE=Release
+
+
+请使用 用 CMakeLists.txt
