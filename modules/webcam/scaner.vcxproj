@@ -22,7 +22,7 @@
     <ProjectGuid>{F6B995BC-24AE-4AED-8862-DA1D421DE78C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>webcam</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -82,6 +82,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)output\</OutDir>
+    <IntDir>$(SolutionDir)output\.Release\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -145,7 +147,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;WEBCAM_EXPORTS;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\thirdlibs\opencv-2.4.10\include;..\..\thirdlibs\opencv-2.4.10\build\include\opencv2\highgui;..\..\thirdlibs\opencv-2.4.10\modules\core\include;..\..\thirdlibs\opencv-2.4.10\modules\flann\include;..\..\thirdlibs\opencv-2.4.10\modules\imgproc\include;..\..\thirdlibs\opencv-2.4.10\modules\photo\include;..\..\thirdlibs\opencv-2.4.10\modules\video\include;..\..\thirdlibs\opencv-2.4.10\modules\nonfree\include;..\..\thirdlibs\opencv-2.4.10\modules\features2d\include;..\..\thirdlibs\opencv-2.4.10\modules\objdetect\include;..\..\thirdlibs\opencv-2.4.10\modules\calib3d\include;..\..\thirdlibs\opencv-2.4.10\modules\ml\include;..\..\thirdlibs\opencv-2.4.10\modules\highgui\include;..\..\thirdlibs\opencv-2.4.10\modules\contrib\include;..\..\thirdlibs\opencv-2.4.10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Quantum\thirdlibs\opencv-2.4\include;D:\Quantum\thirdlibs\opencv-2.4\build\include\opencv2\highgui;D:\Quantum\thirdlibs\opencv-2.4\modules\core\include;D:\Quantum\thirdlibs\opencv-2.4\modules\flann\include;D:\Quantum\thirdlibs\opencv-2.4\modules\imgproc\include;D:\Quantum\thirdlibs\opencv-2.4\modules\photo\include;D:\Quantum\thirdlibs\opencv-2.4\modules\video\include;D:\Quantum\thirdlibs\opencv-2.4\modules\nonfree\include;D:\Quantum\thirdlibs\opencv-2.4\modules\features2d\include;D:\Quantum\thirdlibs\opencv-2.4\modules\objdetect\include;D:\Quantum\thirdlibs\opencv-2.4\modules\calib3d\include;D:\Quantum\thirdlibs\opencv-2.4\modules\ml\include;D:\Quantum\thirdlibs\opencv-2.4\modules\highgui\include;D:\Quantum\thirdlibs\opencv-2.4\modules\contrib\include;D:\Quantum\thirdlibs\opencv-2.4\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -153,8 +155,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>lualib.lib;ws2_32.lib;opencv_ml2410.lib;opencv_calib3d2410.lib;opencv_contrib2410.lib;opencv_core2410.lib;opencv_features2d2410.lib;opencv_flann2410.lib;opencv_gpu2410.lib;opencv_highgui2410.lib;opencv_imgproc2410.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../../thirdlibs/opencv-2.4.10/build/lib/x86/vc10/lib;../../platform/quark/liblua/output</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ws2_32.lib;opencv_ml2413.lib;opencv_calib3d2413.lib;opencv_contrib2413.lib;opencv_core2413.lib;opencv_features2d2413.lib;opencv_flann2413.lib;opencv_gpu2413.lib;opencv_highgui2413.lib;opencv_imgproc2413.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\thirdlibs\opencv-2.4\build\lib\Release\</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

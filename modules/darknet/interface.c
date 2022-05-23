@@ -14,19 +14,39 @@
 #include "./src/parser.h"
 #include "./src/box.h"
 #include "./src/demo.h"
+#include "./src/option_list.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_STATIC
 #include "stb_image.h"
 
-//#include "option_list.h"
 #include "../../platform/quark/liblua/src/lua.h"
 #include "../../platform/quark/liblua/src/lualib.h"
 #include "../../platform/quark/liblua/src/lauxlib.h"
 
 network mynet;
 image**  myalphabet = NULL;
-char**   mynames;
+char**     mynames;
+
+
+// compare to sort detection** by bbox.x
+int compare_by_lefts_1(const void *a_ptr, const void *b_ptr) {
+	const detection_with_class* a = (detection_with_class*)a_ptr;
+	const detection_with_class* b = (detection_with_class*)b_ptr;
+	const float delta = (a->det.bbox.x - a->det.bbox.w / 2) - (b->det.bbox.x - b->det.bbox.w / 2);
+	return delta < 0 ? -1 : delta > 0 ? 1 : 0;
+}
+
+
+// compare to sort detection** by best_class probability
+int compare_by_probs_1(const void *a_ptr, const void *b_ptr) {
+	const detection_with_class* a = (detection_with_class*)a_ptr;
+	const detection_with_class* b = (detection_with_class*)b_ptr;
+	float delta = a->det.prob[a->best_class] - b->det.prob[b->best_class];
+	return delta < 0 ? -1 : delta > 0 ? 1 : 0;
+}
+
+
 
 //yolo
 static int setup(lua_State * L){
@@ -59,7 +79,7 @@ static int framedetect(lua_State * L){
 #endif
 	const char* jpgdata = luaL_checklstring(L,2,&jpgsize);
 	float thresh = 0.24;
-	float hier_thresh = 0.5;
+	float hier_thresh = 0.4;
 	float nms=.45;
 
 	//JPG数据流转换
@@ -87,42 +107,63 @@ static int framedetect(lua_State * L){
 	float* out = network_predict(mynet, sized.data);
 	int nboxes = 0;
 	detection *dets = get_network_boxes(&mynet, im.w, im.h, thresh, hier_thresh, 0, 1, &nboxes, 1);
-	if (nms) do_nms_sort(dets, nboxes, l.classes, nms);
-	printf("framedetect finish boxs:%d class:%d\n", nboxes, l.classes);
+	if (nms) {
+		if (l.nms_kind == DEFAULT_NMS) do_nms_sort(dets, nboxes, l.classes, nms);
+		else diounms_sort(dets, nboxes, l.classes, nms, l.nms_kind, l.beta_nms);
+	}
 	//检测输出
 	int ndetcnt = 0;
 	lua_newtable(L);
-	int i, j;
-	for (i = 0; i < nboxes; ++i) {
-		for (j = 0; j < l.classes; ++j) {
+
+	//// text output
+	//int selected_detections_num;
+	//detection_with_class* selected_detections = get_actual_detections(dets, nboxes, thresh, &selected_detections_num, mynames);
+	//qsort(selected_detections, selected_detections_num, sizeof(*selected_detections), compare_by_lefts_1);
+	//for (int i = 0; i < selected_detections_num; ++i) {
+	//	const int best_class = selected_detections[i].best_class;
+	//	char szText[256] = { 0 };
+	//	sprintf(szText, "{\"n\":\"%s\",\"s\":%f ,\"x\":%f,\"y\":%f,\"w\":%f,\"h\":%f}", mynames[best_class], selected_detections[i].det.prob[best_class] * 100,
+	//		selected_detections[i].det.bbox.x,
+	//		selected_detections[i].det.bbox.y,
+	//		selected_detections[i].det.bbox.w,
+	//		selected_detections[i].det.bbox.h);
+	//	lua_pushstring(L, szText);
+	//	lua_rawseti(L, -2, ndetcnt++);
+	//	int j;
+	//	for (j = 0; j < l.classes; ++j) {
+	//		if (selected_detections[i].det.prob[j] > thresh && j != best_class) {
+	//			char szText[256] = { 0 };
+	//			sprintf(szText, "{\"n\":\"%s\",\"s\":%f ,\"x\":%f,\"y\":%f,\"w\":%f,\"h\":%f}", mynames[j], selected_detections[i].det.prob[j] * 100,
+	//				selected_detections[i].det.bbox.x,
+	//				selected_detections[i].det.bbox.y,
+	//				selected_detections[i].det.bbox.w,
+	//				selected_detections[i].det.bbox.h);
+	//			lua_pushstring(L, szText);
+	//			lua_rawseti(L, -2, ndetcnt++);
+	//		}
+	//	}
+	//}
+	//free(selected_detections);
+
+	for (int i = 0; i < nboxes; ++i) {
+		for (int j = 0; j < l.classes; ++j) {
 			if (dets[i].prob[j] > thresh) {
 				box b = dets[i].bbox;
-				int left = (b.x - b.w / 2.)*im.w;
-				int right = (b.x + b.w / 2.)*im.w;
-				int top = (b.y - b.h / 2.)*im.h;
-				int bot = (b.y + b.h / 2.)*im.h;
-				if (left < 0) left = 0;
-				if (right > im.w - 1) right = im.w - 1;
-				if (top < 0) top = 0;
-				if (bot > im.h - 1) bot = im.h - 1;
+				if (b.x < 0) b.x = 0.0;
+				if (b.y < 0) b.y = 0.0;
 				char szText[256] = { 0 };
-				sprintf(szText, "name:%s simal:%f left:%d right:%d top:%d bottom:%d", mynames[j], dets[i].prob[j] * 100, left, right, top, bot);
+				sprintf(szText, "{\"n\":\"%s\",\"s\":%f ,\"x\":%f,\"y\":%f,\"w\":%f,\"h\":%f}", mynames[j], dets[i].prob[j] * 100, b.x, b.y, b.w, b.h);
 				lua_pushstring(L, szText);
 				lua_rawseti(L, -2, ndetcnt++);
-				ndetcnt++;
 			}
 		}
 	}
 	//保存检测文件
 	if( ndetcnt>0 ){
 		free_detections(dets, nboxes);
-		//static int ii = 0;
-		//char path[256];
-		//sprintf(path, "./%d", ii++ );
-		//save_image(im, path);
 	}
     free_image(im);
-    free_image(sized);
+	free_image(sized);
 	return 1;
 }
 
@@ -145,28 +186,19 @@ static int filedetect(lua_State * L ){
 	//检测输出
 	int ndetcnt = 0;
 	lua_newtable(L);
-	int i, j;
-	for(i = 0; i < nboxes; ++i){
-        for(j = 0; j < l.classes; ++j){
-            if (dets[i].prob[j] > thresh){
+	for (int i = 0; i < nboxes; ++i) {
+		for (int j = 0; j < l.classes; ++j) {
+			if (dets[i].prob[j] > thresh) {
 				box b = dets[i].bbox;
-				int left  = (b.x-b.w/2.)*im.w;
-				int right = (b.x+b.w/2.)*im.w;
-				int top   = (b.y-b.h/2.)*im.h;
-				int bot   = (b.y+b.h/2.)*im.h;
-				if(left < 0) left = 0;
-				if(right > im.w-1) right = im.w-1;
-				if(top < 0) top = 0;
-				if(bot > im.h-1) bot = im.h-1;
-				char szText[256]={0};
-				sprintf(szText,"name:%s simal:%f left:%d right:%d top:%d bottom:%d",mynames[j], dets[i].prob[j]*100, left,right,top,bot);
-				lua_pushstring(L,szText);
-				lua_rawseti(L,-2,ndetcnt++);
-				printf("%s\n",szText);
-				ndetcnt++;
-            }
-        }
-    }
+				if (b.x < 0) b.x = 0.0;
+				if (b.y < 0) b.y = 0.0;
+				char szText[256] = { 0 };
+				sprintf(szText, "{\"n\":\"%s\",\"s\":%f ,\"x\":%f,\"y\":%f,\"w\":%f,\"h\":%f}", mynames[j], dets[i].prob[j] * 100, b.x, b.y, b.w, b.h);
+				lua_pushstring(L, szText);
+				lua_rawseti(L, -2, ndetcnt++);
+			}
+		}
+	}
    if( ndetcnt>0 ){
 		draw_detections_v3(im, dets, nboxes, thresh, mynames, myalphabet, l.classes, 1);
         free_detections(dets, nboxes);
@@ -182,130 +214,75 @@ static int train(lua_State * L ){
 	const char*  datacfg  = luaL_checkstring(L,1);   //数据配置文件，包括几个文件信息
 	const char*  cfgfile  = luaL_checkstring(L,2);   //网络配置文件
  	const char*  weightfile  = luaL_checkstring(L,3);//权重文件
-	int ngpus = 0;
-	int clear = 0;
 
     list *options = read_data_cfg((char*)datacfg);
-    char *train_images = option_find_str(options, (char*)"train", (char*)"data/train.list");
+    char *train_images = option_find_str(options, (char*)"train", (char*)"data/train.txt");
     char *backup_directory = option_find_str(options, (char*)"backup", (char*)"/backup/");
 
-    srand(time(0));
-    char *base = basecfg((char*)cfgfile);
-    printf("%s\n", base);
-    float avg_loss = -1;
-    network **nets = calloc(ngpus, sizeof(network));
+	srand(time(0));
+	char *base = basecfg(cfgfile);
+	printf("%s\n", base);
+	float avg_loss = -1;
+	network net = parse_network_cfg(cfgfile);
+	if (weightfile) {
+		load_weights(&net, weightfile);
+	}
+	printf("Learning Rate: %g, Momentum: %g, Decay: %g\n", net.learning_rate, net.momentum, net.decay);
+	int imgs = net.batch*net.subdivisions;
+	int i = *net.seen / imgs;
+	data train, buffer;
+	layer l = net.layers[net.n - 1];
+	int side = l.side;
+	int classes = l.classes;
+	float jitter = l.jitter;
 
-    srand(time(0));
-    int seed = rand();
-    int i;
-    for(i = 0; i < ngpus; ++i){
-        srand(seed);
-#ifdef GPU
-       // cuda_set_device(gpus[i]);
-#endif
-        nets[i] = load_network((char*)cfgfile, (char*)weightfile, clear);
-        nets[i]->learning_rate *= ngpus;
-    }
-    srand(time(0));
-    network *net = nets[0];
+	list *plist = get_paths(train_images);
+	char **paths = (char **)list_to_array(plist);
 
-    int imgs = net->batch * net->subdivisions * ngpus;
-    printf("Learning Rate: %g, Momentum: %g, Decay: %g\n", net->learning_rate, net->momentum, net->decay);
-    data train, buffer;
+	load_args args = { 0 };
+	args.w = net.w;
+	args.h = net.h;
+	args.paths = paths;
+	args.n = imgs;
+	args.m = plist->size;
+	args.classes = classes;
+	args.jitter = jitter;
+	args.num_boxes = side;
+	args.d = &buffer;
+	args.type = REGION_DATA;
 
-    layer l = net->layers[net->n - 1];
+	args.angle = net.angle;
+	args.exposure = net.exposure;
+	args.saturation = net.saturation;
+	args.hue = net.hue;
 
-    int classes = l.classes;
-    float jitter = l.jitter;
+	pthread_t load_thread = load_data_in_thread(args);
+	clock_t time;
+	//while(i*imgs < N*120){
+	while (get_current_batch(net) < net.max_batches) {
+		i += 1;
+		time = clock();
+		pthread_join(load_thread, 0);
+		train = buffer;
+		load_thread = load_data_in_thread(args);
+		printf("Loaded: %lf seconds\n", sec(clock() - time));
 
-    list *plist = get_paths(train_images);
-    //int N = plist->size;
-    char **paths = (char **)list_to_array(plist);
+		time = clock();
+		float loss = train_network(net, train);
+		if (avg_loss < 0) avg_loss = loss;
+		avg_loss = avg_loss * .9 + loss * .1;
+		printf("%d: %f, %f avg, %f rate, %lf seconds, %d images\n", i, loss, avg_loss, get_current_rate(net), sec(clock() - time), i*imgs);
 
-    load_args args = get_base_args(net);
-    args.coords = l.coords;
-    args.paths = paths;
-    args.n = imgs;
-    args.m = plist->size;
-    args.classes = classes;
-    args.jitter = jitter;
-    args.num_boxes = l.max_boxes;
-    args.d = &buffer;
-    args.type = DETECTION_DATA;
-    //args.type = INSTANCE_DATA;
-    args.threads = 64;
-
-    pthread_t load_thread = load_data(args);
-    double time;
-    int count = 0;
-    //while(i*imgs < N*120){
-    while(get_current_batch(*net) < net->max_batches){
-        if(l.random && count++%10 == 0){
-            printf("Resizing\n");
-            int dim = (rand() % 10 + 10) * 32;
-            if (get_current_batch(*net)+200 > net->max_batches) dim = 608;
-            //int dim = (rand() % 4 + 16) * 32;
-            printf("%d\n", dim);
-            args.w = dim;
-            args.h = dim;
-
-            pthread_join(load_thread, 0);
-            train = buffer;
-            free_data(train);
-            load_thread = load_data(args);
-
-            #pragma omp parallel for
-            for(i = 0; i < ngpus; ++i){
-                resize_network(nets[i], dim, dim);
-            }
-            net = nets[0];
-        }
-        time=what_time_is_it_now();
-        pthread_join(load_thread, 0);
-        train = buffer;
-        load_thread = load_data(args);
-        printf("Loaded: %lf seconds\n", what_time_is_it_now()-time);
-
-        time=what_time_is_it_now();
-        float loss = 0;
-#ifdef GPU
-        if(ngpus == 1){
-            loss = train_network(net, train);
-        } else {
-            loss = train_networks(nets, ngpus, train, 4);
-        }
-#else
-        loss = train_network(*net, train);
-#endif
-        if (avg_loss < 0) avg_loss = loss;
-        avg_loss = avg_loss*.9 + loss*.1;
-
-        i = get_current_batch(*net);
-        printf("%ld: %f, %f avg, %f rate, %lf seconds, %d images\n", get_current_batch(*net), loss, avg_loss, get_current_rate(*net), what_time_is_it_now()-time, i*imgs);
-        if(i%100==0){
-#ifdef GPU
-            if(ngpus != 1) sync_nets(nets, ngpus, 0);
-#endif
-            char buff[256];
-            sprintf(buff, "%s/%s.backup", backup_directory, base);
-            save_weights(*net, buff);
-        }
-        if(i%10000==0 || (i < 1000 && i%100 == 0)){
-#ifdef GPU
-            if(ngpus != 1) sync_nets(nets, ngpus, 0);
-#endif
-            char buff[256];
-            sprintf(buff, "%s/%s_%d.weights", backup_directory, base, i);
-            save_weights(*net, buff);
-        }
-        free_data(train);
-    }
-#ifdef GPU
-    if(ngpus != 1) sync_nets(nets, ngpus, 0);
-#endif
-    char buff[256];
-    sprintf(buff, "%s/%s_final.weights", backup_directory, base);
-    save_weights(*net, buff);
+		if (i % 1000 == 0 || (i < 1000 && i % 100 == 0)) {
+			char buff[256];
+			sprintf(buff, "%s/%s_%d.weights", backup_directory, base, i);
+			save_weights(net, buff);
+		}
+		free_data(train);
+	}
+	char buff[256];
+	sprintf(buff, "%s/%s_final.weights", backup_directory, base);
+	save_weights(net, buff);
 	return 0;
 }
 
@@ -324,8 +301,7 @@ static const struct luaL_Reg myLib[] = {
 	{NULL, NULL},
 };
 
-//open
-
+//luaopen_darknet
 #ifdef WIN32
 	__declspec(dllexport) int luaopen_darknet(lua_State *L) {
 #else

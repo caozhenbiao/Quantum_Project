@@ -1,7 +1,6 @@
 #include "snaps.h"
 #include <string>
 #include <map>
-const size_t bufsize = 2048;
 
 //监控线程启动
 int csnaps::play(bool store){
@@ -13,7 +12,7 @@ int csnaps::play(bool store){
 	unsigned short port = 0;
 	sscanf(m_source, "%[^:]:%hd", ip, &port);
 	mysock = socket(AF_INET, SOCK_STREAM, 0);
-	//printf("snaps addr %s:%d\n", ip, port);
+	printf("snaps addr %s:%d\n", ip, port);
 	//struct timeval tv_out;
 	//tv_out.tv_sec = 2;
 	//tv_out.tv_usec = 100000;
@@ -72,7 +71,7 @@ void csnaps::work(){
 		}
 		return;
 	}
-	unsigned int nsize = 0;
+	int nsize = 0;
 	if ( -1 == recv(mysock, (char*)&nsize, 4, 0) ) {
 		printf("maybe scaner disconnect!\n");
 		closesocket(mysock);
@@ -80,15 +79,17 @@ void csnaps::work(){
 		m_bConn = false;
 		return;
 	}
+	printf("frame Size:%d   ", nsize);
 	std::string newframe;
-	while( nsize ){
-		char buf[1024] = { 0 };
-		int nrecv = recv(mysock, buf, 1024, 0);
+	while(nsize > 0  ){
+		char buf[0x8F] = { 0 };
+		int nrecv = recv(mysock, buf, (nsize>0x8E)? 0x8F :nsize, 0);
 		if (nrecv <= 0)
 			break;
 		newframe.append(buf, nrecv);
 		nsize -= nrecv;
 	}
+	printf(" recv:%d\n", newframe.size());
 	setframe(&newframe[0], (int)newframe.size());
 	return;
 }
@@ -96,7 +97,7 @@ void csnaps::work(){
 //接收处理线
 winapi  csnaps::playthread(void* lpParam){
 	csnaps * fpr = (csnaps*)lpParam;
-	while(0!=event_timedwait(fpr->m_playevt,30)){
+	while(0!=event_timedwait(fpr->m_playevt,10)){
 		fpr->work();
 	}
 	event_set( fpr->m_playevt );

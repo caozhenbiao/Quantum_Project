@@ -57,13 +57,20 @@ extern "C" int transmit(lua_State* L) {
 	return 1;
 }
 
+static int panic(lua_State *L) {
+	lua_writestringerror("PANIC: unprotected error in call to Lua API (%s)\n",lua_tostring(L, -1));
+	return 0;  /* return to Lua to abort */
+}
+
+
 bool cbusiness::start(const char* file) {
 	printf("start business service, script:%s\n", file);
 	business = this;
 	theState = luaL_newstate();
 	luaL_openlibs(theState);
 	if (luaL_loadfile(theState, file)) {
-		printf("script error or file:%s mission!\n", file);
+		if (theState) lua_atpanic(theState, &panic);  
+		printf("script error or file:%s  error:%d mission!\n", file, lua_error(theState));
 		lua_close(theState);
 		theState = NULL;
 		return false;

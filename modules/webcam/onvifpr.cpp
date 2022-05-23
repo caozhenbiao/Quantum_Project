@@ -15,6 +15,10 @@ int convifpr::play(bool store){
 	m_playevt = event_create( false, false );
 	m_frmevt  = event_create( false, true );
 	mycapture = cvCaptureFromFile(rtpurl);
+	if ( !mycapture ) {
+		printf("cvCaptureFromFile open Url:%s Fail!\n", rtpurl);
+		return -1;
+	}
 #ifdef WIN32
 	threadid  = (unsigned int)_beginthreadex(NULL,0,playthread,this,0,NULL);
 #else

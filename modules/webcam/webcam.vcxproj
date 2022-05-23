@@ -186,6 +186,7 @@ copy ..\..\platform\quark\lib3th\output\pthread.dll .\output\pthread.dll</Comman
     <ClCompile Include="interface.cpp" />
     <ClCompile Include="onvifpr.cpp" />
     <ClCompile Include="pnppr.cpp" />
+    <ClCompile Include="screen.cpp" />
     <ClCompile Include="snaps.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -194,6 +195,7 @@ copy ..\..\platform\quark\lib3th\output\pthread.dll .\output\pthread.dll</Comman
     <ClInclude Include="event.h" />
     <ClInclude Include="onvifpr.h" />
     <ClInclude Include="pnppr.h" />
+    <ClInclude Include="screen.h" />
     <ClInclude Include="snaps.h" />
   </ItemGroup>
   <ItemGroup>

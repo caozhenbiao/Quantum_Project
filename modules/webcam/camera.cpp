@@ -3,6 +3,7 @@
 
 //监控线程启动
 int ccamera::play(bool store){
+	m_bExit = false;
 	m_status  = 0;
 	myvideo = NULL;
 	myimage = NULL;
@@ -29,11 +30,15 @@ int ccamera::play(bool store){
 
 //停止
 int ccamera::stop(){
-	if(myvideo)cvReleaseVideoWriter(&myvideo);
+	m_bExit = true;
 	event_set(m_playevt);
-	event_timedwait(m_playevt,10000);
-	if(myimage) cvReleaseImage(&myimage);
+	event_set(m_frmevt);
+	event_timedwait(m_playevt, 100000);
+	event_timedwait(m_frmevt,100000);
+	if (myvideo)cvReleaseVideoWriter(&myvideo);
 	if(mycapture) cvReleaseCapture(&mycapture);
+	//if (myimage) cvReleaseImage(&myimage);
+	myimage = NULL;
 	mycapture = NULL;
 	myvideo = NULL;
 	return 0;
@@ -42,7 +47,7 @@ int ccamera::stop(){
 //接收处理线
 winapi  ccamera::playthread(void* lpParam){
 	ccamera * fpr = (ccamera*)lpParam;
-	while(0!=event_timedwait(fpr->m_playevt,30)){
+	while(!fpr->m_bExit && 0!=event_timedwait(fpr->m_playevt,30)){
   		if( 0 == event_wait(fpr->m_frmevt)){
 			event_reset(fpr->m_frmevt);
 			fpr->myimage = cvQueryFrame(fpr->mycapture);

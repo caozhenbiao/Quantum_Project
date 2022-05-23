@@ -11,7 +11,7 @@ SHARED := --shared
 %.o:%.cpp
 	$(XX) $(CFLAGS) -c $< -o $@
 
-SOURCES = $(wildcard cammgr.cpp camera.cpp pnppr.cpp onvifpr.cpp snaps.cpp interface.cpp event.cpp)
+SOURCES = $(wildcard cammgr.cpp camera.cpp pnppr.cpp onvifpr.cpp snaps.cpp screen.cpp interface.cpp event.cpp)
 OBJS = $(patsubst %.c,%.o,$(patsubst %.cpp,%.o,$(SOURCES)))  
 
 $(TARGET) : $(OBJS)

@@ -26,6 +26,7 @@ static winapi watching(void* param){
 			std::string frm;
 			if (--theWatchList[it->first] != 0 && theCameras->getfrm(it->first.c_str(), JPG, frm) > 100) {
 				if (0 == luaL_lock(theState)) {
+					unsigned char * fr = (unsigned char *)&frm[0];
 					lua_rawgeti(theState, LUA_REGISTRYINDEX, lua_callback);
 					lua_pushstring(theState, &it->first[0]);
 					lua_pushlstring(theState, &frm[0], frm.size());
@@ -44,21 +45,20 @@ static winapi watching(void* param){
 //添加摄像头
 static int addcam(lua_State *L ){
 	const char* mark  = luaL_checkstring(L,1);
-	int         type  = (int)luaL_checkinteger(L,2);
+	int type  = (int)luaL_checkinteger(L,2);
 	const char* url   = luaL_checkstring(L,3);
 	printf("addcammer %s:%d,%s\n",mark,type,url);
 	theCameras->add(mark,url,type);
-	theCameras->play(mark,false);
-	return 0;
+	lua_pushinteger(L, theCameras->play(mark, false));
+	return 1;
 }
 
 //删除摄像头
 static int delcam(lua_State *L ){
 	const char* mark = luaL_checkstring(L,1);
 	printf("del cam:%s\n",mark);
-	theCameras->stop(mark);
-	theCameras->del(mark);
-	return 0;
+	lua_pushinteger(L, theCameras->del(mark));
+	return 1;
 }
 
 //开启、关闭监视,无参数时退出线程
@@ -76,7 +76,7 @@ static int display(lua_State *L){
 		lua_pushinteger(L,0);
 	}else{
 		event_set(theExitEvt);
-		event_timedwait(theExitEvt,100000);
+		event_timedwait(theExitEvt,10000);
 		lua_pushinteger(L,1);
 	}
 	return 1;
@@ -103,10 +103,10 @@ static int takephoto( lua_State *L ){
 	if( theCameras->getfrm(id,JPG,frm)>100 && (pFile=fopen(fp,"wb"))){
 		fwrite( &frm[0], frm.size(),1, pFile);
 		fclose( pFile );
+		lua_pushinteger(L, 0);
+		return 1;
 	}
-	lua_pushlstring(L,&frm[0], frm.size());
-	lua_pushinteger(L,frm.size());
-	return 2;
+	return 0;
 }
 
 //快照

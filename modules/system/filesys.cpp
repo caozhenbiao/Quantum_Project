@@ -15,16 +15,29 @@
 
 int getFiles(const char * cate_dir, vector<string> & v ){
 #ifdef _WIN32
-	_finddata_t file;
-	int lf = -1;
-	if ((lf=_findfirst(cate_dir,&file)) != -1){
+#ifdef X64
+	_finddatai64_t file;
+	__int64 lf = _findfirsti64(cate_dir, &file);
+	if (  lf > -1 ) {
 		do{
-			if(strcmp(file.name,".") == 0 || strcmp(file.name,"..")==0)
-				continue;
-			v.push_back(file.name);
-		}while(_findnext(lf, &file) == 0);
+			if (strcmp(file.name, ".")  !=0 && strcmp(file.name, "..") != 0) {
+				v.push_back(file.name);
+			}
+		}while( _findnexti64( lf, &file ) == 0 );
 	}
 	_findclose(lf);
+#else
+	_finddata_t file;
+	int lf = _findfirst(cate_dir, &file);
+	if (lf > -1) {
+		do {
+			if (strcmp(file.name, ".") != 0 && strcmp(file.name, "..") != 0) {
+				v.push_back(file.name);
+			}
+		} while (_findnext(lf, &file) == 0);
+	}
+	_findclose(lf);
+#endif
 #else
 	/*
 	DIR *dir;

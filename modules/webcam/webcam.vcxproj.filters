@@ -35,6 +35,9 @@
     <ClCompile Include="event.cpp">
       <Filter>include</Filter>
     </ClCompile>
+    <ClCompile Include="screen.cpp">
+      <Filter>devices</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pnppr.h">
@@ -54,6 +57,9 @@
     </ClInclude>
     <ClInclude Include="event.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="screen.h">
+      <Filter>devices</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

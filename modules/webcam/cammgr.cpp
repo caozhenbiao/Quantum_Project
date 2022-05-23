@@ -3,6 +3,7 @@
 #include "pnppr.h"
 #include "camera.h"
 #include "snaps.h"
+#include "screen.h"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -59,6 +60,7 @@ int ccammgr::add(const char* mark, const char* url, int type){
 	case 2: mbs = new cpnppr();  break;
 	case 3: mbs = new ccamera(); break;
 	case 4: mbs = new csnaps(); break;
+	case 5: mbs = new cscreen(); break;
 	}
 	memset(mbs->m_source,0x00,256);
 	strncpy(mbs->m_source,url,strlen(url));
@@ -69,29 +71,29 @@ int ccammgr::add(const char* mark, const char* url, int type){
 
 //¹ÜÀíÆ÷ÍË³ö
 int ccammgr::del(const char* mark){
-	for(std::map<std::string,mbase*>::iterator it = this->begin(); it!=this->end(); it++){
-		it->second->stop();
-		delete it->second;
-	}
+	std::map<std::string, mbase*>::iterator ifnd = this->find(mark);
+	if (ifnd == this->end())
+		return -1;
+	ifnd->second->stop();
+	delete ifnd->second;
+	erase( ifnd );
 	return 0;
 }
 
 //play
 int ccammgr::play(const char* mark, bool store){
 	std::map<std::string,mbase*>::iterator ifnd = this->find( mark );
-	if( ifnd != end() ){
-		ifnd->second->play(store);
-	}
-	return 0 ;
+	if( ifnd == end() )
+		return -1;
+	return ifnd->second->play(store);
 }
 
 //stop
 int ccammgr::stop(const char* mark){
 	std::map<std::string,mbase*>::iterator ifnd = this->find( mark );
-	if( ifnd != end() ){
-		ifnd->second->stop();
-	}
-	return 0;
+	if (ifnd == end())
+		return -1;
+	return ifnd->second->stop();
 }
 
 //getfrm

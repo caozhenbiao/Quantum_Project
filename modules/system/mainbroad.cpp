@@ -113,6 +113,9 @@ void getCpuInfo(int& freq, unsigned int& guid, std::string& mid, std::string& ty
 	unsigned int uCpuID = 0U;
 	int start, over;
 	memset(cpuType, 0, sizeof(cpuType));
+ 
+#ifdef ASM
+
 	__asm {
 		mov eax, 0
 		cpuid
@@ -123,12 +126,16 @@ void getCpuInfo(int& freq, unsigned int& guid, std::string& mid, std::string& ty
 		cpuid
 		mov uCpuID, edx
 	}
+
+#endif // DEBUG
+
 	for (DWORD t = 0; t < 3; t++) {
 		unsigned int veax = 0x80000002 + t;
 		unsigned int deax;
 		unsigned int debx;
 		unsigned int decx;
 		unsigned int dedx;
+#ifdef ASM
 		__asm {
 			mov eax, veax
 			cpuid
@@ -137,11 +144,14 @@ void getCpuInfo(int& freq, unsigned int& guid, std::string& mid, std::string& ty
 			mov decx, ecx
 			mov dedx, edx
 		}
+#endif // 
 		memcpy(cpuType + 16 * t + 0, &deax, 4);
 		memcpy(cpuType + 16 * t + 4, &debx, 4);
 		memcpy(cpuType + 16 * t + 8, &decx, 4);
 		memcpy(cpuType + 16 * t + 12, &dedx, 4);
 	}
+
+#ifdef ASM
 	_asm {
 		RDTSC
 		mov start, eax
@@ -151,6 +161,8 @@ void getCpuInfo(int& freq, unsigned int& guid, std::string& mid, std::string& ty
 		RDTSC
 		mov over, eax
 	}
+#endif // ASM
+
 	guid = uCpuID;
 	freq = (over - start)/50000;
 	mid  = (char*)szCpu;

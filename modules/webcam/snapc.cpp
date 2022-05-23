@@ -70,17 +70,16 @@ bool csnapc::stop(){
 
 void csnapc::dowork(){
 	if (mybConn) {
-		int width = 800;
-		int height = 600;
-		HBITMAP hBmp = CreateCompatibleBitmap(myScreenDC, width, height);
+#ifdef _WIN32
+		HBITMAP hBmp = CreateCompatibleBitmap(myScreenDC, myfrmwidth, myfrmheight);
 		HBITMAP hOld = (HBITMAP)SelectObject(myCompDC, hBmp);
 		//BitBlt(myCompDC, 0, 0, myfrmwidth, myfrmheight, myScreenDC, myfrmtop, myfrmleft, SRCCOPY);
-		StretchBlt(myCompDC, 0, 0, width, height, myScreenDC, myfrmleft, myfrmtop, myfrmwidth, myfrmheight, SRCCOPY);
+		StretchBlt(myCompDC, 0, 0, myfrmwidth, myfrmheight, myScreenDC, myfrmleft, myfrmtop, myfrmwidth, myfrmheight, SRCCOPY);
 		SelectObject(myCompDC, hOld);
 		cv::Mat tempMat;
 		//cv::Mat sizeMat;
-		tempMat.create(cvSize(width, height), CV_MAKETYPE(CV_8U, 4));
-		GetBitmapBits(hBmp, width * height * 4, tempMat.data);
+		tempMat.create(cvSize(myfrmwidth, myfrmheight), CV_MAKETYPE(CV_8U, 4));
+		GetBitmapBits(hBmp, myfrmwidth * myfrmheight * 4, tempMat.data);
 		DeleteObject(hBmp);
 		DeleteObject(hOld);
 
@@ -95,6 +94,22 @@ void csnapc::dowork(){
 		//FILE * fid = fopen("./txt_out.jpg", "wb");
 		//fwrite(&myimgbuf[0], myimgbuf.size(), 1, fid);
 		//fclose(fid);
+#else
+		int fd = open("/dev/fb0", O_RDONLY);
+		if (fb < 0)
+		{
+		}
+		unsigned char buf[1280 * 480 * 4];
+		read(fb, buf, 1280 * 480 * 4);
+		close(fb);
+		std::vector<init> param;
+		param.push_back(CV_IMWRITE_PNG_COMPRESSION);
+		param.push_back(0);
+		myimgbuf.clear();
+		cv::imencode(".jpg", buf, myimgbuf, param);
+		tempMat.release();
+#endif // 0
+
 		//¿ªÊ¼·¢ËÍ
 		unsigned int nsize = myimgbuf.size();
 		if ( nsize< 1000 )
