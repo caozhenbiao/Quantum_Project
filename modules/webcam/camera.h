@@ -15,10 +15,10 @@ private:
 	pthread_t threadid;
 	bool m_bExit;
 private:
-	IplImage*  myimage;   
-	CvCapture* mycapture;
-	CvVideoWriter *myvideo;
-	std::vector<int> myparam; 
+	std::vector<int> myparam;
+	cv::VideoCapture myVideoCapture;
+	cv::VideoWriter myVideoWriter;
+	cv::Mat   myMat;
 private:
 	void storage();
 };

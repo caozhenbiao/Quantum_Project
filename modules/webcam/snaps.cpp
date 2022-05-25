@@ -89,7 +89,7 @@ void csnaps::work(){
 		newframe.append(buf, nrecv);
 		nsize -= nrecv;
 	}
-	printf(" recv:%d\n", newframe.size());
+	printf(" recv:%d\n", (int)newframe.size());
 	setframe(&newframe[0], (int)newframe.size());
 	return;
 }

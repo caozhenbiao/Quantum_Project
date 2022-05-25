@@ -113,6 +113,12 @@
 #define ARCH_CPU_MIPSEL 1
 #define ARCH_CPU_32_BITS 1
 #define ARCH_CPU_LITTLE_ENDIAN 1
+//add nvidia tx2 release option by kevin 2022/5/24
+#elif defined(__aarch64__)
+#define ARCH_CPU_ARM_FAMILY 1
+#define ARCH_CPU_ARM64 1
+#define ARCH_CPU_64_BITS 1
+#define ARCH_CPU_LITTLE_ENDIAN 1
 #else
 #error Please add support for your architecture in build/build_config.h
 #endif

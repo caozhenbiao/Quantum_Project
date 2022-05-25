@@ -35,7 +35,7 @@ int copencv::detect(const char* file, std::vector<CvRect>& v){
 	}
 	cvReleaseImage(&pSrcImage);	
 	cvReleaseImage(&pGrayImage);
-	return v.size();
+	return (int)v.size();
 }
 
 //对象检测
@@ -55,7 +55,7 @@ int copencv::detect(char* buf, std::vector<CvRect>& v){
 	}
 	cvReleaseImage(&pSrcImage);	
 	cvReleaseImage(&pGrayImage);
-	return v.size();
+	return (int)v.size();
 }
 
 //帧数据中有几个对象
@@ -76,8 +76,8 @@ int copencv::detect( char* buf, char* photo ){
 		P1.y=r->y;  
 		P2.x=r->x+r->width;  
 		P2.y=r->y+r->height;
-		cvRectangle(pSrcImage,P1 ,P2, CV_RGB(0, 255, 0), 2);
-		cvPutText(pSrcImage,"face", cvPoint(P1.x, P1.y-10), &m_font, CV_RGB(255, 0, 0));
+		cvRectangle(pSrcImage,P1 ,P2, cvScalar(0, 255, 0), 2);
+		cvPutText(pSrcImage,"face", cvPoint(P1.x, P1.y-10), &m_font, cvScalar(255, 0, 0));
 	}
 	if( photo && pcvSeqFaces->total>0){
 		cvSaveImage(photo,pSrcImage);
@@ -108,7 +108,7 @@ int copencv::detect(char* buf, char* photo, std::vector<CvRect>& v){
 	}
 	cvReleaseImage(&pSrcImage);	
 	cvReleaseImage(&pGrayImage);
-	return v.size();
+	return (int)v.size();
 }
 
 
@@ -143,7 +143,7 @@ int copencv::recognition(const char* haar, const char* file, std::vector<CvRect>
 	cvReleaseImage(&pSrcImage);	
 	cvReleaseImage(&pGrayImage);
 	cvReleaseHaarClassifierCascade(&pHaarCascade);
-	return v.size();
+	return (int)v.size();
 }
 
 int copencv::eyereg(IplImage* pSrc, std::vector<CvRect> v ){
@@ -172,4 +172,34 @@ int copencv::eyereg(IplImage* pSrc, std::vector<CvRect> v ){
 	}
 	return 0;
 }
+
+
+//帧数据中有几个对象
+//int copencv::compare(char* buf, char* buf2) {
+//	CvMat mat = cvMat(640, 480, CV_8UC1, buf);
+//	IplImage *pSrcImage = cvDecodeImage(&mat, 1);
+//	if (!pSrcImage)
+//		return -1;
+//	IplImage *pGrayImage = cvCreateImage(cvGetSize(pSrcImage), IPL_DEPTH_8U, 1);
+//	cvCvtColor(pSrcImage, pGrayImage, CV_BGR2GRAY);
+//	cvClearMemStorage(myMStorage);
+//	//人脸识别
+//	CvSeq *pcvSeqFaces = cvHaarDetectObjects(pGrayImage, myHaarCascade, myMStorage, 1.1, 2, 0, cvSize(m_minSize, m_minSize), cvSize(m_maxSize, m_maxSize));
+//	for (int i = 0; i < pcvSeqFaces->total; i++) {
+//		CvRect * r = (CvRect*)cvGetSeqElem(pcvSeqFaces, i);
+//		CvPoint P1, P2;
+//		P1.x = r->x;
+//		P1.y = r->y;
+//		P2.x = r->x + r->width;
+//		P2.y = r->y + r->height;
+//		cvRectangle(pSrcImage, P1, P2, CV_RGB(0, 255, 0), 2);
+//		cvPutText(pSrcImage, "face", cvPoint(P1.x, P1.y - 10), &m_font, CV_RGB(255, 0, 0));
+//	}
+//	if (photo && pcvSeqFaces->total > 0) {
+//		cvSaveImage(photo, pSrcImage);
+//	}
+//	cvReleaseImage(&pSrcImage);
+//	cvReleaseImage(&pGrayImage);
+//	return pcvSeqFaces->total;
+//}
 

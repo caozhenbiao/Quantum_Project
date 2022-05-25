@@ -5,8 +5,6 @@
 int ccamera::play(bool store){
 	m_bExit = false;
 	m_status  = 0;
-	myvideo = NULL;
-	myimage = NULL;
 	int camid = 0;
 	int quality = 50;
 	sscanf(m_source,"%d;%d",&camid,&quality);
@@ -15,10 +13,13 @@ int ccamera::play(bool store){
 	myparam.push_back(quality);
 	m_playevt = event_create( false, false );
 	m_frmevt  = event_create( false, true );
-	mycapture = cvCreateCameraCapture( camid );	
-	cvSetCaptureProperty(mycapture, CV_CAP_PROP_FRAME_WIDTH, 1280);
-	cvSetCaptureProperty(mycapture, CV_CAP_PROP_FRAME_HEIGHT, 720);
-	//myimage   = cvCreateImage();
+	if (!myVideoCapture.open(cv::CAP_ANY + camid)) {
+		printf("cvVideoCapture open ID:%d Fail!\n", camid);
+		return -1;
+	}
+	if (  store ){
+		myVideoWriter.open("cammer_video.mpg", CV_FOURCC('D', 'I', 'V', 'X'), 30.0, cv::Size(640, 480));
+	}
 #ifdef WIN32
 	threadid  = (unsigned int)_beginthreadex(NULL,0,playthread,this,0,NULL);
 #else
@@ -35,12 +36,9 @@ int ccamera::stop(){
 	event_set(m_frmevt);
 	event_timedwait(m_playevt, 100000);
 	event_timedwait(m_frmevt,100000);
-	if (myvideo)cvReleaseVideoWriter(&myvideo);
-	if(mycapture) cvReleaseCapture(&mycapture);
-	//if (myimage) cvReleaseImage(&myimage);
-	myimage = NULL;
-	mycapture = NULL;
-	myvideo = NULL;
+	myVideoCapture.release();
+	myVideoWriter.release();
+	myMat.release();
 	return 0;
 }
 
@@ -50,9 +48,10 @@ winapi  ccamera::playthread(void* lpParam){
 	while(!fpr->m_bExit && 0!=event_timedwait(fpr->m_playevt,30)){
   		if( 0 == event_wait(fpr->m_frmevt)){
 			event_reset(fpr->m_frmevt);
-			fpr->myimage = cvQueryFrame(fpr->mycapture);
-			cvFlip(fpr->myimage,NULL, 1);
-			fpr->storage();
+			if (fpr->myVideoCapture.isOpened()) {
+				fpr->myVideoCapture.read(fpr->myMat);
+				fpr->storage();
+			}
 			event_set(fpr->m_frmevt);
 		}
 	}
@@ -63,17 +62,14 @@ winapi  ccamera::playthread(void* lpParam){
 
 //获取帧画面数据
 size_t ccamera::getframe(ftype type, std::string & frm ){
-	if(!myimage || 0!=event_wait( m_frmevt ) )
+	if(!myVideoCapture.isOpened() || 0!=event_wait( m_frmevt ) )
 		return 0;
 	event_reset(m_frmevt);
 	switch( type ){
 	case JPG: {
-		//cv::Mat tempMat(myimage); //linux 无法编译通过
-		cv::Mat tempMat = cv::cvarrToMat(myimage);
 		static std::vector<unsigned char> buff;
 		buff.clear();
-		cv::imencode(".jpg", tempMat, buff, myparam);
-		tempMat.release();
+		cv::imencode(".jpg", myMat, buff, myparam);
 		frm.insert(frm.end(), buff.begin(), buff.end());
 		break;}
 	case BMP: break;
@@ -100,20 +96,7 @@ int ccamera::query(){
 
 //视频存储
 void ccamera::storage(){
-	if( m_bsave && myvideo && myimage){
-		cvWriteFrame(myvideo,myimage);
-		return;
+	if ( myVideoWriter.isOpened()) {
+		myVideoWriter.write(myMat);
 	}
-	if( !m_bsave && myvideo ){
-		cvReleaseVideoWriter(&myvideo);
-		myvideo = NULL;
-		return;
-	}
-	if( m_bsave && myimage ){
-		char szavi[256]={0};
-		sprintf( szavi, "../%s.avi", identify);
-		myvideo = cvCreateVideoWriter(szavi,CV_FOURCC('M','P','4','3'),15,cvSize(myimage->width,myimage->height),1);
-		return;
-	}
-	//如果过了一些时间
 }

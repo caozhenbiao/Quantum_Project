@@ -122,13 +122,13 @@ copy .\lib3th\output\pthreadD.dll .\output\pthreadD.dll
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;WEBCAM_EXPORTS;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Quantum\thirdlibs\opencv-2.4\include;D:\Quantum\thirdlibs\opencv-2.4\build\include\opencv2\highgui;D:\Quantum\thirdlibs\opencv-2.4\modules\core\include;D:\Quantum\thirdlibs\opencv-2.4\modules\flann\include;D:\Quantum\thirdlibs\opencv-2.4\modules\imgproc\include;D:\Quantum\thirdlibs\opencv-2.4\modules\photo\include;D:\Quantum\thirdlibs\opencv-2.4\modules\video\include;D:\Quantum\thirdlibs\opencv-2.4\modules\nonfree\include;D:\Quantum\thirdlibs\opencv-2.4\modules\features2d\include;D:\Quantum\thirdlibs\opencv-2.4\modules\objdetect\include;D:\Quantum\thirdlibs\opencv-2.4\modules\calib3d\include;D:\Quantum\thirdlibs\opencv-2.4\modules\ml\include;D:\Quantum\thirdlibs\opencv-2.4\modules\highgui\include;D:\Quantum\thirdlibs\opencv-2.4\modules\contrib\include;D:\Quantum\thirdlibs\opencv-2.4\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\thirdlibs\opencv-3.4.16\include;..\..\thirdlibs\opencv-3.4.16\build\include\opencv2\highgui;..\..\thirdlibs\opencv-3.4.16\modules\core\include;..\..\thirdlibs\opencv-3.4.16\modules\flann\include;..\..\thirdlibs\opencv-3.4.16\modules\imgproc\include;..\..\thirdlibs\opencv-3.4.16\modules\photo\include;..\..\thirdlibs\opencv-3.4.16\modules\video\include;..\..\thirdlibs\opencv-3.4.16\modules\nonfree\include;..\..\thirdlibs\opencv-3.4.16\modules\features2d\include;..\..\thirdlibs\opencv-3.4.16\modules\objdetect\include;..\..\thirdlibs\opencv-3.4.16\modules\calib3d\include;..\..\thirdlibs\opencv-3.4.16\modules\ml\include;..\..\thirdlibs\opencv-3.4.16\modules\highgui\include;..\..\thirdlibs\opencv-3.4.16\modules\videoio\include;..\..\thirdlibs\opencv-3.4.16\modules\contrib\include;..\..\thirdlibs\opencv-3.4.16\modules\imgcodecs\include;..\..\thirdlibs\opencv-3.4.16\modules\dnn\include;..\..\thirdlibs\opencv-3.4.16\modules\shape\include;..\..\thirdlibs\opencv-3.4.16\modules\stitching\include;..\..\thirdlibs\opencv-3.4.16\modules\superres\include;..\..\thirdlibs\opencv-3.4.16\modules\videostab\include;..\..\thirdlibs\opencv-3.4.16\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\..\platform\quark\liblua\output\lualibD.lib;..\..\platform\quark\lib3th\output\pthreadD.lib;ws2_32.lib;opencv_ml2413d.lib;opencv_calib3d2413d.lib;opencv_contrib2413d.lib;opencv_core2413d.lib;opencv_features2d2413d.lib;opencv_flann2413d.lib;opencv_gpu2413d.lib;opencv_highgui2413d.lib;opencv_imgproc2413d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\thirdlibs\opencv-2.4\build\lib\Debug\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>..\..\platform\quark\liblua\output\lualibD.lib;..\..\platform\quark\lib3th\output\pthreadD.lib;ws2_32.lib;opencv_world3416d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\thirdlibs\opencv-3.4.16\build\lib\Debug\</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)$(TargetName)D$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
@@ -166,7 +166,7 @@ copy ..\..\platform\quark\lib3th\output\pthread.dll .\output\pthread.dll</Comman
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;WEBCAM_EXPORTS;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Quantum\thirdlibs\opencv-2.4\include;D:\Quantum\thirdlibs\opencv-2.4\build\include\opencv2\highgui;D:\Quantum\thirdlibs\opencv-2.4\modules\core\include;D:\Quantum\thirdlibs\opencv-2.4\modules\flann\include;D:\Quantum\thirdlibs\opencv-2.4\modules\imgproc\include;D:\Quantum\thirdlibs\opencv-2.4\modules\photo\include;D:\Quantum\thirdlibs\opencv-2.4\modules\video\include;D:\Quantum\thirdlibs\opencv-2.4\modules\nonfree\include;D:\Quantum\thirdlibs\opencv-2.4\modules\features2d\include;D:\Quantum\thirdlibs\opencv-2.4\modules\objdetect\include;D:\Quantum\thirdlibs\opencv-2.4\modules\calib3d\include;D:\Quantum\thirdlibs\opencv-2.4\modules\ml\include;D:\Quantum\thirdlibs\opencv-2.4\modules\highgui\include;D:\Quantum\thirdlibs\opencv-2.4\modules\contrib\include;D:\Quantum\thirdlibs\opencv-2.4\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\thirdlibs\opencv-3.4.16\include;..\..\thirdlibs\opencv-3.4.16\build\include\opencv2\highgui;..\..\thirdlibs\opencv-3.4.16\modules\core\include;..\..\thirdlibs\opencv-3.4.16\modules\flann\include;..\..\thirdlibs\opencv-3.4.16\modules\imgproc\include;..\..\thirdlibs\opencv-3.4.16\modules\photo\include;..\..\thirdlibs\opencv-3.4.16\modules\video\include;..\..\thirdlibs\opencv-3.4.16\modules\nonfree\include;..\..\thirdlibs\opencv-3.4.16\modules\features2d\include;..\..\thirdlibs\opencv-3.4.16\modules\objdetect\include;..\..\thirdlibs\opencv-3.4.16\modules\calib3d\include;..\..\thirdlibs\opencv-3.4.16\modules\ml\include;..\..\thirdlibs\opencv-3.4.16\modules\highgui\include;..\..\thirdlibs\opencv-3.4.16\modules\videoio\include;..\..\thirdlibs\opencv-3.4.16\modules\contrib\include;..\..\thirdlibs\opencv-3.4.16\modules\imgcodecs\include;..\..\thirdlibs\opencv-3.4.16\modules\dnn\include;..\..\thirdlibs\opencv-3.4.16\modules\shape\include;..\..\thirdlibs\opencv-3.4.16\modules\stitching\include;..\..\thirdlibs\opencv-3.4.16\modules\superres\include;..\..\thirdlibs\opencv-3.4.16\modules\videostab\include;..\..\thirdlibs\opencv-3.4.16\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -174,8 +174,8 @@ copy ..\..\platform\quark\lib3th\output\pthread.dll .\output\pthread.dll</Comman
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>..\..\platform\quark\liblua\output\lualib.lib;..\..\platform\quark\lib3th\output\pthread.lib;ws2_32.lib;opencv_ml2413.lib;opencv_calib3d2413.lib;opencv_contrib2413.lib;opencv_core2413.lib;opencv_features2d2413.lib;opencv_flann2413.lib;opencv_gpu2413.lib;opencv_highgui2413.lib;opencv_imgproc2413.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\thirdlibs\opencv-2.4\build\lib\Release\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>..\..\platform\quark\liblua\output\lualib.lib;..\..\platform\quark\lib3th\output\pthread.lib;ws2_32.lib;opencv_world3416.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\thirdlibs\opencv-3.4.16\build\lib\Release\</AdditionalLibraryDirectories>
       <Profile>true</Profile>
     </Link>
   </ItemDefinitionGroup>
