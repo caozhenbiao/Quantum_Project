@@ -29,10 +29,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 RC_FILE = src/webui.rc
 
-INCLUDEPATH += $$PWD/../smartx/libs/lua/src
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../smartx/libs/ -llibLua
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../smartx/libs/ -llibLua
-else:unix: LIBS += -L$$PWD/../smartx/libs/ -lLua -ldl
+INCLUDEPATH += $$PWD/../quark/liblua/src
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../quark/liblua/output/ -llualib
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../quark/liblua/output/ -llualib
+else:unix: LIBS += -L$$PWD/../quark/liblua/output/ -lLua -ldl
 
 SOURCES += \
     src/webdocument.cpp \

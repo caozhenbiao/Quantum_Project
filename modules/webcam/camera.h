@@ -2,7 +2,7 @@
 #ifndef _CCAMERA_H_
 #define _CCAMERA_H_
 #include "cammgr.h"
-#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/opencv.hpp>
 class mbase;
 class ccamera : public mbase{
 public:

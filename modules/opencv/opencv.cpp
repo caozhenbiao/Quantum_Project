@@ -1,6 +1,9 @@
 #include "opencv.h"
 #include <cstdio>
 #include <cstdlib>
+#include <Windows.h>
+
+
 CvHaarClassifierCascade* myHaarCascade = NULL;
 CvMemStorage* myMStorage = NULL;
 CvFont m_font;
@@ -203,3 +206,43 @@ int copencv::eyereg(IplImage* pSrc, std::vector<CvRect> v ){
 //	return pcvSeqFaces->total;
 //}
 
+int copencv::screenshot( const char* imgpath ){
+	// 获取窗口当前显示的监视器
+	HWND hWnd = GetDesktopWindow();
+	HMONITOR hMonitor = MonitorFromWindow(hWnd, MONITOR_DEFAULTTONEAREST);
+
+	// 获取监视器逻辑宽度
+	MONITORINFOEX monitorInfo;
+	monitorInfo.cbSize = sizeof(monitorInfo);
+	GetMonitorInfo(hMonitor, &monitorInfo);
+	int cxLogical = (monitorInfo.rcMonitor.right - monitorInfo.rcMonitor.left);
+
+	// 获取监视器物理宽度
+	DEVMODE dm;
+	dm.dmSize = sizeof(dm);
+	dm.dmDriverExtra = 0;
+	EnumDisplaySettings(monitorInfo.szDevice, ENUM_CURRENT_SETTINGS, &dm);
+	int cxPhysical = dm.dmPelsWidth;
+
+	double zoom = dm.dmPelsWidth * 1.0 / cxLogical;
+	int m_width   = GetSystemMetrics(SM_CXSCREEN) * zoom;
+	int m_height  = GetSystemMetrics(SM_CYSCREEN) * zoom;
+
+	LPVOID screenshotData = new char[m_width * m_height * 4];
+	memset(screenshotData, 0, m_width);
+	// 获取屏幕 DC
+	HDC m_screenDC = GetDC(NULL);
+	HDC m_compatibleDC = CreateCompatibleDC(m_screenDC);
+	HBITMAP m_hBitmap = CreateCompatibleBitmap(m_screenDC, m_width, m_height);
+	SelectObject(m_compatibleDC, m_hBitmap);
+	// 得到位图的数据
+	BitBlt(m_compatibleDC, 0, 0, m_width, m_height, m_screenDC, 0, 0, SRCCOPY);
+	GetBitmapBits(m_hBitmap, m_width * m_height * 4, screenshotData);
+	// 创建图像
+	cv::Mat screenshot(m_height, m_width, CV_8UC4, screenshotData);
+	cv::imwrite(imgpath, screenshot);
+	DeleteDC(m_compatibleDC);
+	DeleteObject(m_hBitmap);
+	free(screenshotData);
+	return 0;
+}

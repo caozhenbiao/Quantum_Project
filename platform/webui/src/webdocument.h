@@ -5,9 +5,9 @@
 #include <QMap>
 
 extern "C" {
-#include "../smartx/libs/lua/src/lua.h"
-#include "../smartx/libs/lua/src/lauxlib.h"
-#include "../smartx/libs/lua/src/lualib.h"
+#include "../quark/liblua/src/lua.h"
+#include "../quark/liblua/src/lauxlib.h"
+#include "../quark/liblua/src/lualib.h"
 }
 
 class CLua : public QObject{
@@ -19,6 +19,7 @@ public:
     bool start(const QString file, QWidget* parent);
 public slots:
     void request(const QString file, const QString func, const QString args);
+    void request(const QString func, const QString sjson);
 signals:
     void response(const QString &text);
 private:

@@ -31,7 +31,7 @@ static int SaveFile(lua_State * L ){
 static int FirstChildElement(lua_State * L){
 	lua_Integer   idx = luaL_checkinteger(L, 1);
 	const char *    n = luaL_checkstring(L, 2);
-	int  idc          = myxml->FirstChildElement(idx, n );
+	int  idc          = myxml->FirstChildElement((int)idx, n );
 	lua_pushinteger(L, idc );
 	return 1;
 }
@@ -39,7 +39,7 @@ static int FirstChildElement(lua_State * L){
 static int NextSiblingElement(lua_State * L){
 	lua_Integer    idx = luaL_checkinteger(L, 1);
 	const char *   n   = luaL_checkstring(L, 2);
-	int           idn  = myxml->NextSiblingElement(idx, n );
+	int           idn  = myxml->NextSiblingElement((int)idx, n );
 	lua_pushinteger(L, idn );
 	return 1;
 }
@@ -47,14 +47,14 @@ static int NextSiblingElement(lua_State * L){
 static int Attribute(lua_State * L){
 	lua_Integer   idx = luaL_checkinteger(L, 1);
 	const char *   n  = luaL_checkstring(L, 2);
-	const char *   r  = myxml->Attribute( idx, n );
+	const char *   r  = myxml->Attribute((int)idx, n );
 	lua_pushstring(L, r);
 	return 1;
 }
 
 static int GetText(lua_State * L){
 	lua_Integer idx  = luaL_checkinteger(L, 1);
-	const char *   r = myxml->GetText( idx );
+	const char *   r = myxml->GetText( (int)idx );
 	lua_pushstring(L, r);
 	return 1;
 }

@@ -62,7 +62,6 @@ static int panic(lua_State *L) {
 	return 0;  /* return to Lua to abort */
 }
 
-
 bool cbusiness::start(const char* file) {
 	printf("start business service, script:%s\n", file);
 	business = this;

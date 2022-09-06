@@ -75,6 +75,14 @@ static int stream_coordinate(lua_State *L){
 	return 1;
 }
 
+//ÆÁÄ»½ØÆÁ
+static int screenshot(lua_State *L) {
+	const char* filepath = luaL_checkstring(L, 1);
+	int ret = theopencv->screenshot((char*)filepath);
+	lua_pushinteger(L, ret);
+	return 1;
+}
+
 static int close(lua_State *L){
 	theopencv->close();
 	return 0;
@@ -96,6 +104,7 @@ static const struct luaL_Reg mylib[]={
 	{"stream_objcount",stream_objcount},
 	{"stream_coordinate",stream_coordinate},
 	{"close",close},
+	{"screenshot",screenshot},
 	{NULL,NULL}
 };
 

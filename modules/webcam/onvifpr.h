@@ -3,7 +3,7 @@
 #include "cammgr.h"
 #include <opencv2/opencv.hpp>
 class mbase;
-class convifpr : public mbase{
+class convifpr : public mbase {
 public:
 	virtual int play(bool store);
 	virtual int stop();
@@ -14,10 +14,10 @@ private:
 	pthread_t threadid;
 	bool m_bExit;
 private:
-	IplImage*  myimage;   
-	CvCapture* mycapture;
-	CvVideoWriter *myvideo;
-	std::vector<int> myparam; 
+	std::vector<int> myparam;
+	cv::VideoCapture myVideoCapture;
+	cv::VideoWriter myVideoWriter;
+	cv::Mat   myMat;
 private:
 	void storage();
 };

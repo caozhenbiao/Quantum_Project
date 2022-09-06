@@ -15,7 +15,10 @@ public:
 	int detect(char* buf, char* photo );
 	int detect(char* buf, char* photo, std::vector<CvRect>& v);
 	int close();
-private:
+
+public:
+	int screenshot( const char* imgpath );
+ 
 
 };
 #endif

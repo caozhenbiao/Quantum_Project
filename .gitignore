@@ -1,5 +1,7 @@
-
 .vs
+.sdf
+.suo
+.o
 *.vs
 */.Release
 */.Debug

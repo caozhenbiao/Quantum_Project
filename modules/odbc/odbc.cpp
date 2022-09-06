@@ -26,7 +26,7 @@ int cmyodbc::close() {
 int cmyodbc::connect(const char* dns, const char* usr, const char* pwd){
 	HDBC hDbc = NULL;
 	SQLRETURN ret = SQLAllocHandle(SQL_HANDLE_DBC, m_hEnv, &hDbc);
-	ret = SQLConnectA(hDbc,(SQLCHAR *)dns,(SQLSMALLINT)strlen(dns),(SQLCHAR *)usr,strlen(usr),(SQLCHAR *)pwd,strlen(pwd));
+	ret = SQLConnectA(hDbc,(SQLCHAR *)dns,(SQLSMALLINT)strlen(dns),(SQLCHAR *)usr,(SQLSMALLINT)strlen(usr),(SQLCHAR *)pwd,(SQLSMALLINT)strlen(pwd));
 	if(ret == -1 ) {
 		SQLFreeHandle(SQL_HANDLE_DBC, hDbc);
 		printf("connect error: %d\n", ret ); 

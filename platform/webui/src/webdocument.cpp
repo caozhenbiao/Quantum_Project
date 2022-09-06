@@ -14,7 +14,7 @@ static CWebWidget* theWidget= nullptr;
 //设置LUA函数及启动业务逻辑处理
 extern "C" int install(lua_State* L){
     theState = L;
-    unsigned int tmval  = (unsigned int)lua_tointeger(L,1);
+    //unsigned int tmval  = (unsigned int)lua_tointeger(L,1);
     luaclose = luaL_ref(L,LUA_REGISTRYINDEX); //注意，这里是先进后出,第注册一次返回会+1
     luatimer = luaL_ref(L,LUA_REGISTRYINDEX);
     luatrans = luaL_ref(L,LUA_REGISTRYINDEX);
@@ -32,7 +32,7 @@ extern "C" int print(lua_State* L){
 
 //u:输入的lua脚本参数
 extern "C" int option(lua_State* L){
-    //lua_pushstring(L, business->myoption);
+    lua_pushstring(L, "myoption");
     return 1;
 }
 
@@ -91,11 +91,48 @@ void CLua::request(const QString file, const QString func, const QString args){
             char* ret = (char*)lua_tostring(lua,-1);
             if( ret ) rsp =ret;
             m_States[file] = lua;
-
         }
     }
     emit response( rsp );
 }
+
+void CLua::request(const QString func, const QString sjson){
+    if( theWidget ){
+        theWidget->Trace( QString("%1:%2").arg(func).arg(sjson));
+    }
+    QString rsp;
+    QStringList funcs = func.split(".");
+    QMap<QString, lua_State*>::iterator ifnd = m_States.find( funcs[0] );
+    if( ifnd != m_States.end()){
+        //luaL_glock(ifnd.value());
+        lua_getglobal(ifnd.value(), funcs[1].toUtf8().constData());
+        lua_pushstring(ifnd.value(), sjson.toUtf8().constData() );
+        lua_pcall(ifnd.value(),1,1,0);
+        char* ret = (char*)lua_tostring(ifnd.value(),-1);
+        //luaL_unglock(ifnd.value());
+        if( ret ) rsp =ret;
+    }else{
+        lua_State * lua = luaL_newstate();
+        luaL_openlibs( lua );
+        if( luaL_dofile(lua, funcs[0].toUtf8().constData())){
+            printf("%s,script error or file mission!\n",funcs[0].toUtf8().constData());
+            lua_close(lua);
+            lua = nullptr;
+            rsp = "err script";
+        }else{
+            lua_getglobal(lua, funcs[1].toUtf8().constData());
+            lua_pushstring(ifnd.value(), sjson.toUtf8().constData() );
+            lua_pcall(ifnd.value(),1,1,0);
+            char* ret = (char*)lua_tostring(lua,-1);
+            if( ret ) rsp =ret;
+           // m_States[file] = lua;
+        }
+    }
+    emit response( rsp );
+}
+
+
+
 
  /************************************* session ************************************************/
 void CSession::add(const QString name, const QString value ){

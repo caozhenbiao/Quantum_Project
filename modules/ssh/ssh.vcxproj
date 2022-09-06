@@ -96,6 +96,7 @@ copy ..\..\platform\quark\lib3th\output\pthreadD.dll .\output\pthreadD.dll</Comm
       <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\;..\..\platform\quark\libbase\output\;..\..\thirdlibs\libssh2-1.9.0\win32\Debug;..\..\thirdlibs\openssl-1.0.2p\out32dll</AdditionalLibraryDirectories>
       <Profile>true</Profile>
       <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PostBuildEvent>
       <Command>copy ..\..\platform\quark\liblua\output\luadll.dll .\output\luadll.dll

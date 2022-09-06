@@ -1,9 +1,9 @@
 CC = gcc
 XX = g++
-TARGET = ./output/sqlite.so
+TARGET = ./tlstest.so
 MYLIB  = 
-CFLAGS = -I$(MYLIB) -Wall -O -g -I. -I../platform/quark/liblua/src -Wall -Wno-unknown-pragmas -Wno-format -O3 -fPIC
-LIBS = -lpthread -lrt -ldl  ../../platform/quark/liblua/output/libLua.a 
+CFLAGS = -I$(MYLIB) -Wall -O -g -I. -I/home/caozhenbiao/Downloads/SSL/GmSSL-develop/include
+LIBS = -lpthread -lrt -ldl  /home/caozhenbiao/Downloads/SSL/GmSSL-develop/build/lib/libgmssl.a 
 SHARED := --shared  
 
 %.o: %.c                                 
@@ -12,7 +12,7 @@ SHARED := --shared
 %.o:%.cpp
 	$(XX) $(CFLAGS) -c $< -o $@
 
-SOURCES = $(wildcard interface.cpp mysqlite.cpp sqlite3.c )
+SOURCES = $(wildcard tlstest.c )
 OBJS = $(patsubst %.c,%.o,$(patsubst %.cpp,%.o,$(SOURCES)))  
 
 $(TARGET) : $(OBJS)

@@ -28,7 +28,6 @@ network mynet;
 image**  myalphabet = NULL;
 char**     mynames;
 
-
 // compare to sort detection** by bbox.x
 int compare_by_lefts_1(const void *a_ptr, const void *b_ptr) {
 	const detection_with_class* a = (detection_with_class*)a_ptr;
@@ -37,7 +36,6 @@ int compare_by_lefts_1(const void *a_ptr, const void *b_ptr) {
 	return delta < 0 ? -1 : delta > 0 ? 1 : 0;
 }
 
-
 // compare to sort detection** by best_class probability
 int compare_by_probs_1(const void *a_ptr, const void *b_ptr) {
 	const detection_with_class* a = (detection_with_class*)a_ptr;
@@ -45,8 +43,6 @@ int compare_by_probs_1(const void *a_ptr, const void *b_ptr) {
 	float delta = a->det.prob[a->best_class] - b->det.prob[b->best_class];
 	return delta < 0 ? -1 : delta > 0 ? 1 : 0;
 }
-
-
 
 //yolo
 static int setup(lua_State * L){
@@ -81,7 +77,6 @@ static int framedetect(lua_State * L){
 	float thresh = 0.24;
 	float hier_thresh = 0.4;
 	float nms=.45;
-
 	//JPG数据流转换
 	int c = 3;
 	int w,h,comp;
@@ -114,7 +109,6 @@ static int framedetect(lua_State * L){
 	//检测输出
 	int ndetcnt = 0;
 	lua_newtable(L);
-
 	//// text output
 	//int selected_detections_num;
 	//detection_with_class* selected_detections = get_actual_detections(dets, nboxes, thresh, &selected_detections_num, mynames);
@@ -144,7 +138,6 @@ static int framedetect(lua_State * L){
 	//	}
 	//}
 	//free(selected_detections);
-
 	for (int i = 0; i < nboxes; ++i) {
 		for (int j = 0; j < l.classes; ++j) {
 			if (dets[i].prob[j] > thresh) {

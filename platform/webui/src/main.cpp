@@ -26,7 +26,7 @@ int main(int argc, char *argv[]){
     //show mainframe
     attestor::identify idf;
     QString defaulturl("qrc:/error.html");
-    if( attestor::prove((char*)(prikey.toStdString().c_str()),idf) ){
+    if( !homepag.isEmpty() && attestor::prove((char*)(prikey.toStdString().c_str()),idf)){
         if( homepag.startsWith("http:/",Qt::CaseInsensitive))
             defaulturl = homepag;
         else

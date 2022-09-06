@@ -43,9 +43,10 @@ void ccommsvr::stop(void){
 void ccommsvr::write(sockaddr* addr, std::string data){
 	int sent = 0;
 	int len = data.length();
-	unsigned char buf[10248] = {0};
+	static unsigned char buf[10248] = {0};
 	static unsigned char seq = 0;
 	unsigned char nPicec = (unsigned char)((len + 10239) / 10240);
+	memset(buf, 0x00, sizeof(buf));
 	for( unsigned char i = 0; i< nPicec; i++ ){
 		size_t datalen = (i<nPicec-1)?(10240):(len-(i*10240));
 		buf[0] = 0xF1;
@@ -64,7 +65,7 @@ void ccommsvr::write(sockaddr* addr, std::string data){
 }
 
 void ccommsvr::recvproc(base::TimeDelta interval) {
-	char buf[10240] = { 0 };
+	static char buf[10240] = { 0 };
 	#ifdef _WIN32
 	int length = sizeof(sockaddr);
 	#else

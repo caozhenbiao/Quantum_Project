@@ -160,6 +160,7 @@ copy ..\..\platform\quark\lib3th\output\pthreadD.dll .\output\pthreadD.dll</Comm
       <AdditionalDependencies>luaLib.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PostBuildEvent>
       <Command>copy ..\..\platform\quark\liblua\output\luadll.dll .\output\luadll.dll

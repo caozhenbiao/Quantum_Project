@@ -111,7 +111,7 @@ void getCpuInfo(int& freq, unsigned int& guid, std::string& mid, std::string& ty
 	char cpuType[49] = { 0 };
 	BYTE szCpu[16] = { 0 };
 	unsigned int uCpuID = 0U;
-	int start, over;
+	int start = 0, over = 0;
 	memset(cpuType, 0, sizeof(cpuType));
  
 #ifdef ASM
@@ -131,10 +131,10 @@ void getCpuInfo(int& freq, unsigned int& guid, std::string& mid, std::string& ty
 
 	for (DWORD t = 0; t < 3; t++) {
 		unsigned int veax = 0x80000002 + t;
-		unsigned int deax;
-		unsigned int debx;
-		unsigned int decx;
-		unsigned int dedx;
+		unsigned int deax = 0;
+		unsigned int debx = 0;
+		unsigned int decx = 0;
+		unsigned int dedx = 0;
 #ifdef ASM
 		__asm {
 			mov eax, veax

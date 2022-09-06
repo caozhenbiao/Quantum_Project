@@ -132,7 +132,7 @@ void UTF_8ToGB2312(char*pOut, const char *pText, int pLen){
 std::string UrlGB2312Decode(std::string str) {
 	std::string output = "";
 	char tmp[2];
-	int i = 0, idx = 0, len = str.length();
+    int i = 0, len = (int)str.length();
 	while (i<len) {
 		if (str[i] == '%') {
 			tmp[0] = str[i + 1];
@@ -160,7 +160,7 @@ std::string UrlGB2312Decode(std::string str) {
 std::string UrlUTF8Decode(std::string str) {
 	char output[1024] = { 0 };
 	std::string temp = UrlGB2312Decode(str);//
-	UTF_8ToGB2312(output, (char *)temp.data(), strlen(temp.data()));
+    UTF_8ToGB2312(output, (char *)temp.data(), (int)strlen(temp.data()));
 	return output;
 }
 
@@ -168,12 +168,12 @@ std::string utf2gb( const char* data ){
 	if(!data)
 		return "NULL";
 	char szout[1024]={0};
-	UTF_8ToGB2312(szout, data, strlen(data));
+    UTF_8ToGB2312(szout, data, (int)strlen(data));
 	return std::string(szout);
 }
 std::string gb2utf( char* data){
 	std::string str;
-	GB2312ToUTF_8( str,data, strlen(data) );
+    GB2312ToUTF_8( str,data, (int)strlen(data) );
 	return str;
 }
 #else
