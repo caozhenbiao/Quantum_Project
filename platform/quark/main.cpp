@@ -1,6 +1,7 @@
 #define _CRTDBG_MAP_ALLOC
 #include <stdio.h>
 #include "machine.h"
+//#pragma comment( linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"" ) 
 
 #ifdef _WIN32
 #include<crtdbg.h>
@@ -85,8 +86,9 @@ int main(int argc, char* argv[]) {
 	opt.commsvrport = 0;
 	opt.websvrport = 0;
 	int c = 0;
-	while ((c = getopt(argc, argv, "k:s:u:w:m:n:x:y:c")) != -1) {
+	while ((c = getopt(argc, argv, "i:k:s:u:w:m:n:x:y:c")) != -1) {
 		switch (c) {
+		case 'i': ShowWindow(GetForegroundWindow(), SW_HIDE); break;
 		case 'k':memset(opt.runkey, 0x00, 40); strncpy(opt.runkey, optarg, 40); break;
 		case 's':memset(opt.script, 0x00, 256); strncpy(opt.script, optarg, 256); break;
 		case 'u':memset(opt.option, 0x00, 256); strncpy(opt.option, optarg, 256); break;

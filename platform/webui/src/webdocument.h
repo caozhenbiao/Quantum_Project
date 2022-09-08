@@ -92,5 +92,20 @@ private:
     QString s_text;
 };
 
+//CCommand
+class CCommand : public QObject{
+    Q_OBJECT
+    Q_PROPERTY(QString text MEMBER s_text NOTIFY context)
+public:
+    explicit CCommand(QObject *parent = nullptr):QObject(parent){}
+public slots:
+    void show( bool isVisiable);
+    void move( int x, int y );
+signals:
+    void context(const QString &text);
+private:
+    QString s_text;
+};
+
 
 #endif // WEBDOCUMENT_H

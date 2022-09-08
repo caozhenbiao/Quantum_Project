@@ -11,11 +11,11 @@ static int luaclose = LUA_REFNIL;
 static lua_State * theState = nullptr;
 static CWebWidget* theWidget= nullptr;
 
-//è®¾ç½®LUAå‡½æ•°åŠå¯åŠ¨ä¸šåŠ¡é€»è¾‘å¤„ç†
+//ÉèÖÃLUAº¯Êý¼°Æô¶¯ÒµÎñÂß¼­´¦Àí
 extern "C" int install(lua_State* L){
     theState = L;
     //unsigned int tmval  = (unsigned int)lua_tointeger(L,1);
-    luaclose = luaL_ref(L,LUA_REGISTRYINDEX); //æ³¨æ„ï¼Œè¿™é‡Œæ˜¯å…ˆè¿›åŽå‡º,ç¬¬æ³¨å†Œä¸€æ¬¡è¿”å›žä¼š+1
+    luaclose = luaL_ref(L,LUA_REGISTRYINDEX); //×¢Òâ£¬ÕâÀïÊÇÏÈ½øºó³ö,µÚ×¢²áÒ»´Î·µ»Ø»á+1
     luatimer = luaL_ref(L,LUA_REGISTRYINDEX);
     luatrans = luaL_ref(L,LUA_REGISTRYINDEX);
     return 0;
@@ -30,7 +30,7 @@ extern "C" int print(lua_State* L){
     return 0;
 }
 
-//u:è¾“å…¥çš„luaè„šæœ¬å‚æ•°
+//u:ÊäÈëµÄlua½Å±¾²ÎÊý
 extern "C" int option(lua_State* L){
     lua_pushstring(L, "myoption");
     return 1;
@@ -38,18 +38,18 @@ extern "C" int option(lua_State* L){
 
 /**********************************************************************************************************/
 
-//ä¸šåŠ¡é€»è¾‘å¤„ç†å¯åŠ¨
+//ÒµÎñÂß¼­´¦ÀíÆô¶¯
 bool CLua::start(const QString file, QWidget* parent){
     theWidget = (CWebWidget*)parent;
     theState = luaL_newstate();
     luaL_openlibs( theState );
-    if(luaL_loadfile(theState, file.toUtf8().constData())){  //è¿™é‡Œä¸€å®šè¦loadfileï¼Œdofileè‡´lua c++æŽ¥å£æ— æ•ˆ
+    if(luaL_loadfile(theState, file.toUtf8().constData())){  //ÕâÀïÒ»¶¨Òªloadfile£¬dofileÖÂlua c++½Ó¿ÚÎÞÐ§
         printf("script error or file:%s mission!\n", file.toUtf8().constData());
         lua_close(theState);
         theState = nullptr;
         return true;
     }
-    //æ³¨å†ŒLUA c++æŽ¥å£
+    //×¢²áLUA c++½Ó¿Ú
     lua_register( theState, "install",install);
     lua_register( theState, "print", print );
     lua_register( theState, "option", option );
@@ -130,9 +130,6 @@ void CLua::request(const QString func, const QString sjson){
     }
     emit response( rsp );
 }
-
-
-
 
  /************************************* session ************************************************/
 void CSession::add(const QString name, const QString value ){
@@ -231,7 +228,7 @@ void CFile::load(const QString name ){
 }
 
 void CFile::saveto(const QString name, const QString filter, const QString text ){
-    QString filepath = QFileDialog::getSaveFileName(nullptr,"è¯·é€‰æ‹©å¯¼å‡ºæ–‡ä»¶ä¿å­˜è·¯å¾„",QString("%1/%2").arg(QDir::homePath()).arg(name),filter);
+    QString filepath = QFileDialog::getSaveFileName(nullptr,"ÇëÑ¡Ôñµ¼³öÎÄ¼þ±£´æÂ·¾¶",QString("%1/%2").arg(QDir::homePath()).arg(name),filter);
     if(filepath.isEmpty())
         return;
     QFile *file = new QFile;
@@ -257,3 +254,15 @@ void CWarrant::get(){
     }
 }
 
+/****************************************Command******************************************************/
+void CCommand::show( bool  isVisiable ){
+    if( isVisiable ){
+        theWidget->show();
+    }else{
+        theWidget->hide();
+    }
+}
+
+void CCommand::move( int x, int y ){
+    theWidget->move(x, y );
+}

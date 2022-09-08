@@ -19,12 +19,13 @@ int main(int argc, char *argv[]){
     QString prikey   = cfg->value("key","").toString();
     QString homepag  = cfg->value("home","").toString();
     QString mainlua  = cfg->value("main","").toString();
-    unsigned int fullscreen = cfg->value("fullscreen",0).toInt();
-    unsigned int  w  = cfg->value("width",800).toInt();
-    unsigned int  h  = cfg->value("height",600).toInt();
+    unsigned int fullscreen = cfg->value("fullscreen",0).toUInt();
+    int  w  = cfg->value("width",800).toInt();
+    int  h  = cfg->value("height",600).toInt();
 
     //show mainframe
     attestor::identify idf;
+    memset(&idf,0x00,sizeof(idf));
     QString defaulturl("qrc:/error.html");
     if( !homepag.isEmpty() && attestor::prove((char*)(prikey.toStdString().c_str()),idf)){
         if( homepag.startsWith("http:/",Qt::CaseInsensitive))
@@ -40,7 +41,7 @@ int main(int argc, char *argv[]){
         webwidget.showFullScreen();
     else{
         webwidget.setMinimumSize(w,h);
-        webwidget.show();
+        //webwidget.show();
     }
     a.exec();
     return 0;

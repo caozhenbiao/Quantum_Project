@@ -77,9 +77,9 @@
         "-D__FUNCTION__=\"\"",
         "-D__FUNCDNAME__=\"\"",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui",
+        "D:\\Quantum\\platform\\webui",
         "-I",
-        "Y:\\smartx1.2\\platform\\smartx\\libs\\lua\\src",
+        "D:\\Quantum\\platform\\quark\\liblua\\src",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include",
         "-I",
@@ -107,18 +107,18 @@
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include\\QtCore",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin\\release",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release\\release",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\mkspecs\\win32-msvc",
         "-fms-compatibility-version=19.00",
         "-x",
         "c++",
-        "Y:\\smartx1.2\\platform\\webui\\src\\webdocument.cpp"
+        "D:\\Quantum\\platform\\webui\\src\\webdocument.cpp"
     ],
-    "directory": "Y:/smartx1.2/platform/webui/bin",
-    "file": "Y:/smartx1.2/platform/webui/src/webdocument.cpp"
+    "directory": "D:/Quantum/platform/build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
+    "file": "D:/Quantum/platform/webui/src/webdocument.cpp"
 },
 {
     "arguments": [
@@ -198,9 +198,9 @@
         "-D__FUNCTION__=\"\"",
         "-D__FUNCDNAME__=\"\"",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui",
+        "D:\\Quantum\\platform\\webui",
         "-I",
-        "Y:\\smartx1.2\\platform\\smartx\\libs\\lua\\src",
+        "D:\\Quantum\\platform\\quark\\liblua\\src",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include",
         "-I",
@@ -228,18 +228,18 @@
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include\\QtCore",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin\\release",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release\\release",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\mkspecs\\win32-msvc",
         "-fms-compatibility-version=19.00",
         "-x",
         "c++",
-        "Y:\\smartx1.2\\platform\\webui\\src\\webwidget.cpp"
+        "D:\\Quantum\\platform\\webui\\src\\webwidget.cpp"
     ],
-    "directory": "Y:/smartx1.2/platform/webui/bin",
-    "file": "Y:/smartx1.2/platform/webui/src/webwidget.cpp"
+    "directory": "D:/Quantum/platform/build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
+    "file": "D:/Quantum/platform/webui/src/webwidget.cpp"
 },
 {
     "arguments": [
@@ -319,9 +319,9 @@
         "-D__FUNCTION__=\"\"",
         "-D__FUNCDNAME__=\"\"",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui",
+        "D:\\Quantum\\platform\\webui",
         "-I",
-        "Y:\\smartx1.2\\platform\\smartx\\libs\\lua\\src",
+        "D:\\Quantum\\platform\\quark\\liblua\\src",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include",
         "-I",
@@ -349,18 +349,18 @@
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include\\QtCore",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin\\release",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release\\release",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\mkspecs\\win32-msvc",
         "-fms-compatibility-version=19.00",
         "-x",
         "c++",
-        "Y:\\smartx1.2\\platform\\webui\\src\\attestor.cpp"
+        "D:\\Quantum\\platform\\webui\\src\\attestor.cpp"
     ],
-    "directory": "Y:/smartx1.2/platform/webui/bin",
-    "file": "Y:/smartx1.2/platform/webui/src/attestor.cpp"
+    "directory": "D:/Quantum/platform/build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
+    "file": "D:/Quantum/platform/webui/src/attestor.cpp"
 },
 {
     "arguments": [
@@ -440,9 +440,9 @@
         "-D__FUNCTION__=\"\"",
         "-D__FUNCDNAME__=\"\"",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui",
+        "D:\\Quantum\\platform\\webui",
         "-I",
-        "Y:\\smartx1.2\\platform\\smartx\\libs\\lua\\src",
+        "D:\\Quantum\\platform\\quark\\liblua\\src",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include",
         "-I",
@@ -470,18 +470,18 @@
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include\\QtCore",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin\\release",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release\\release",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\mkspecs\\win32-msvc",
         "-fms-compatibility-version=19.00",
         "-x",
         "c++",
-        "Y:\\smartx1.2\\platform\\webui\\src\\define.cpp"
+        "D:\\Quantum\\platform\\webui\\src\\define.cpp"
     ],
-    "directory": "Y:/smartx1.2/platform/webui/bin",
-    "file": "Y:/smartx1.2/platform/webui/src/define.cpp"
+    "directory": "D:/Quantum/platform/build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
+    "file": "D:/Quantum/platform/webui/src/define.cpp"
 },
 {
     "arguments": [
@@ -561,9 +561,9 @@
         "-D__FUNCTION__=\"\"",
         "-D__FUNCDNAME__=\"\"",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui",
+        "D:\\Quantum\\platform\\webui",
         "-I",
-        "Y:\\smartx1.2\\platform\\smartx\\libs\\lua\\src",
+        "D:\\Quantum\\platform\\quark\\liblua\\src",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include",
         "-I",
@@ -591,18 +591,18 @@
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include\\QtCore",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin\\release",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release\\release",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\mkspecs\\win32-msvc",
         "-fms-compatibility-version=19.00",
         "-x",
         "c++",
-        "Y:\\smartx1.2\\platform\\webui\\src\\sha1.cpp"
+        "D:\\Quantum\\platform\\webui\\src\\sha1.cpp"
     ],
-    "directory": "Y:/smartx1.2/platform/webui/bin",
-    "file": "Y:/smartx1.2/platform/webui/src/sha1.cpp"
+    "directory": "D:/Quantum/platform/build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
+    "file": "D:/Quantum/platform/webui/src/sha1.cpp"
 },
 {
     "arguments": [
@@ -682,9 +682,9 @@
         "-D__FUNCTION__=\"\"",
         "-D__FUNCDNAME__=\"\"",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui",
+        "D:\\Quantum\\platform\\webui",
         "-I",
-        "Y:\\smartx1.2\\platform\\smartx\\libs\\lua\\src",
+        "D:\\Quantum\\platform\\quark\\liblua\\src",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include",
         "-I",
@@ -712,18 +712,18 @@
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include\\QtCore",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin\\release",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release\\release",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\mkspecs\\win32-msvc",
         "-fms-compatibility-version=19.00",
         "-x",
         "c++",
-        "Y:\\smartx1.2\\platform\\webui\\src\\main.cpp"
+        "D:\\Quantum\\platform\\webui\\src\\main.cpp"
     ],
-    "directory": "Y:/smartx1.2/platform/webui/bin",
-    "file": "Y:/smartx1.2/platform/webui/src/main.cpp"
+    "directory": "D:/Quantum/platform/build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
+    "file": "D:/Quantum/platform/webui/src/main.cpp"
 },
 {
     "arguments": [
@@ -803,9 +803,9 @@
         "-D__FUNCTION__=\"\"",
         "-D__FUNCDNAME__=\"\"",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui",
+        "D:\\Quantum\\platform\\webui",
         "-I",
-        "Y:\\smartx1.2\\platform\\smartx\\libs\\lua\\src",
+        "D:\\Quantum\\platform\\quark\\liblua\\src",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include",
         "-I",
@@ -833,18 +833,18 @@
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include\\QtCore",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin\\release",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release\\release",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\mkspecs\\win32-msvc",
         "-fms-compatibility-version=19.00",
         "-x",
         "c++-header",
-        "Y:\\smartx1.2\\platform\\webui\\src\\webdocument.h"
+        "D:\\Quantum\\platform\\webui\\src\\webdocument.h"
     ],
-    "directory": "Y:/smartx1.2/platform/webui/bin",
-    "file": "Y:/smartx1.2/platform/webui/src/webdocument.h"
+    "directory": "D:/Quantum/platform/build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
+    "file": "D:/Quantum/platform/webui/src/webdocument.h"
 },
 {
     "arguments": [
@@ -924,9 +924,9 @@
         "-D__FUNCTION__=\"\"",
         "-D__FUNCDNAME__=\"\"",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui",
+        "D:\\Quantum\\platform\\webui",
         "-I",
-        "Y:\\smartx1.2\\platform\\smartx\\libs\\lua\\src",
+        "D:\\Quantum\\platform\\quark\\liblua\\src",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include",
         "-I",
@@ -954,18 +954,18 @@
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include\\QtCore",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin\\release",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release\\release",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\mkspecs\\win32-msvc",
         "-fms-compatibility-version=19.00",
         "-x",
         "c++-header",
-        "Y:\\smartx1.2\\platform\\webui\\src\\webwidget.h"
+        "D:\\Quantum\\platform\\webui\\src\\webwidget.h"
     ],
-    "directory": "Y:/smartx1.2/platform/webui/bin",
-    "file": "Y:/smartx1.2/platform/webui/src/webwidget.h"
+    "directory": "D:/Quantum/platform/build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
+    "file": "D:/Quantum/platform/webui/src/webwidget.h"
 },
 {
     "arguments": [
@@ -1045,9 +1045,9 @@
         "-D__FUNCTION__=\"\"",
         "-D__FUNCDNAME__=\"\"",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui",
+        "D:\\Quantum\\platform\\webui",
         "-I",
-        "Y:\\smartx1.2\\platform\\smartx\\libs\\lua\\src",
+        "D:\\Quantum\\platform\\quark\\liblua\\src",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include",
         "-I",
@@ -1075,18 +1075,18 @@
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include\\QtCore",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin\\release",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release\\release",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\mkspecs\\win32-msvc",
         "-fms-compatibility-version=19.00",
         "-x",
         "c++-header",
-        "Y:\\smartx1.2\\platform\\webui\\src\\attestor.h"
+        "D:\\Quantum\\platform\\webui\\src\\attestor.h"
     ],
-    "directory": "Y:/smartx1.2/platform/webui/bin",
-    "file": "Y:/smartx1.2/platform/webui/src/attestor.h"
+    "directory": "D:/Quantum/platform/build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
+    "file": "D:/Quantum/platform/webui/src/attestor.h"
 },
 {
     "arguments": [
@@ -1166,9 +1166,9 @@
         "-D__FUNCTION__=\"\"",
         "-D__FUNCDNAME__=\"\"",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui",
+        "D:\\Quantum\\platform\\webui",
         "-I",
-        "Y:\\smartx1.2\\platform\\smartx\\libs\\lua\\src",
+        "D:\\Quantum\\platform\\quark\\liblua\\src",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include",
         "-I",
@@ -1196,18 +1196,18 @@
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include\\QtCore",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin\\release",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release\\release",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\mkspecs\\win32-msvc",
         "-fms-compatibility-version=19.00",
         "-x",
         "c++-header",
-        "Y:\\smartx1.2\\platform\\webui\\src\\define.h"
+        "D:\\Quantum\\platform\\webui\\src\\define.h"
     ],
-    "directory": "Y:/smartx1.2/platform/webui/bin",
-    "file": "Y:/smartx1.2/platform/webui/src/define.h"
+    "directory": "D:/Quantum/platform/build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
+    "file": "D:/Quantum/platform/webui/src/define.h"
 },
 {
     "arguments": [
@@ -1287,9 +1287,9 @@
         "-D__FUNCTION__=\"\"",
         "-D__FUNCDNAME__=\"\"",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui",
+        "D:\\Quantum\\platform\\webui",
         "-I",
-        "Y:\\smartx1.2\\platform\\smartx\\libs\\lua\\src",
+        "D:\\Quantum\\platform\\quark\\liblua\\src",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include",
         "-I",
@@ -1317,17 +1317,17 @@
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\include\\QtCore",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin\\release",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release\\release",
         "-I",
-        "Y:\\smartx1.2\\platform\\webui\\bin",
+        "D:\\Quantum\\platform\\build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
         "-I",
         "C:\\Qt\\Qt5.9.8\\5.9.8\\msvc2015\\mkspecs\\win32-msvc",
         "-fms-compatibility-version=19.00",
         "-x",
         "c++-header",
-        "Y:\\smartx1.2\\platform\\webui\\src\\sha1.h"
+        "D:\\Quantum\\platform\\webui\\src\\sha1.h"
     ],
-    "directory": "Y:/smartx1.2/platform/webui/bin",
-    "file": "Y:/smartx1.2/platform/webui/src/sha1.h"
+    "directory": "D:/Quantum/platform/build-webui-Desktop_Qt_5_9_8_MSVC2015_32bit-Release",
+    "file": "D:/Quantum/platform/webui/src/sha1.h"
 }
 ]

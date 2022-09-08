@@ -34,6 +34,7 @@ private:
     QWebEnginePage * mainPage;
     QListWidget *    mainTrace;
     QProcess *       m_iQProcess;
+    CCommand      m_commandobj;
 };
 
 #endif // MAINWIDGET_H

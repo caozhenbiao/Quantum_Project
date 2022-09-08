@@ -1,4 +1,4 @@
-﻿#include "webwidget.h"
+#include "webwidget.h"
 #include <QWebChannel>
 #include <QWebEngineView>
 #include <QMessageBox>
@@ -20,6 +20,7 @@ CWebWidget::CWebWidget(QWidget *parent) :QWidget(parent),mainTrace(nullptr){
     channel->registerObject(QStringLiteral("cookies"), &m_cookiesobj);
     channel->registerObject(QStringLiteral("file"), &m_fileobj);
     channel->registerObject(QStringLiteral("warrant"), &m_warrantobj);
+    channel->registerObject(QStringLiteral("command"), &m_commandobj);
     mainPage->setWebChannel(channel);
     mainLayout->addWidget( mainView );
     mainTrace = new QListWidget(this);

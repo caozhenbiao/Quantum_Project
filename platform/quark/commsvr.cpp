@@ -73,7 +73,7 @@ void ccommsvr::recvproc(base::TimeDelta interval) {
 	#endif
 	memset(buf, 0x00, sizeof(buf));
 	struct sockaddr addr;
-	int len = recvfrom(mysocket, buf, 2048, 0, &addr, &length);
+	int len = recvfrom(mysocket, buf, 10240, 0, &addr, &length);
 	if (len >= 7) {
 		std::string data(buf);
 		taskmgr::posttask(taskmgr::LUA, base::Bind(&ccommsvr::oncomtask, base::Unretained(this), &addr,data));
