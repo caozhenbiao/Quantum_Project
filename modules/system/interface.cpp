@@ -9,6 +9,7 @@ extern "C" {
 #include "netcard.h"
 #include "filesys.h"
 #include "mainbroad.h"
+#include "winos.h"
 
 #include "base/at_exit.h"
 #include "base/bind.h"
@@ -27,6 +28,24 @@ lua_State * theState = NULL;
 std::vector<std::string> gOutput;
 cnetcard * theNetCard = NULL;
 scoped_ptr<base::Thread> g_thread_;
+
+static int cmdExecute(lua_State * L) {
+	const char *cmd = luaL_checkstring(L, 1);
+	printf("lua cmd execute:%s\n", cmd);
+	FILE* pf = NULL;
+	std::string retstr;
+	pf = _popen(cmd, "r");
+	if (NULL != pf) {
+		char buffer[1024] = { '\0' };
+		while (fgets(buffer, sizeof(buffer), pf)) {
+			retstr += buffer;
+			printf(buffer);
+		}
+		_pclose(pf);
+	}
+	lua_pushstring(L, retstr.c_str());
+	return 1;
+}
 
 static int getnetcards(lua_State * L){
 	std::vector<netcardinfo> v;
@@ -158,6 +177,28 @@ static int authorize(lua_State * L) {
 	return 1;
 }
 
+static int disableService(lua_State * L) {
+	const char * serverName = luaL_checkstring(L, 1);
+	bool ret = DisableService( serverName );
+	lua_pushboolean( L, ret );
+	return 1;
+}
+
+static int closeService(lua_State * L) {
+	const char * serverName = luaL_checkstring(L, 1);
+	bool ret = CloseService(serverName);
+	lua_pushboolean(L, ret);
+	return 1;
+}
+
+static int startService(lua_State * L) {
+	const char * serverName = luaL_checkstring(L, 1);
+	bool ret = StartService(serverName);
+	lua_pushboolean(L, ret);
+	return 1;
+}
+
+
 static int destory(lua_State * L){
 	if( theNetCard ){
 		delete theNetCard;
@@ -191,6 +232,7 @@ static int callback_test(lua_State *L) {
 
 static const struct luaL_Reg myLib[]={
 	{"destory",destory},
+	{"cmdExecute",cmdExecute},
 	{"getnetcards",getnetcards},
 	{"setnetcardip",setnetcardip },
 	{"ListDirFile",ListDirFile},
@@ -203,6 +245,11 @@ static const struct luaL_Reg myLib[]={
 	{"removefile",removefile },
 	{"Sleep",Sleep},
 	{"beep",beep},
+
+	{"disableService",disableService},
+	{"closeService",closeService},
+	{"startService",startService},
+
 	{"netConnected",netConnected },
 	{"callback_test",callback_test },
 	{NULL,NULL}

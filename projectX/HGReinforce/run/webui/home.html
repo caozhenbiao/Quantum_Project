@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>设备信息状态</title>
+<link href="css/sermon.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.min.js"></script>
+<style>
+.progress-clock__time-digit {
+	background: transparent;
+	font-weight: 400;
+}
+[data-group]:focus {outline: transparent;}
+[data-units] {transition: opacity 0.2s linear;}
+[data-group="d"]:focus,[data-group="d"]:hover {color: hsl(333,90%,55%);}
+[data-group="h"]:focus,[data-group="h"]:hover {color: hsl(33,90%,55%);}
+[data-group="m"]:focus,[data-group="m"]:hover {color: hsl(213,90%,55%);}
+[data-group="x"]:focus,[data-group="x"]:hover {color: hsl(273,90%,55%);}
+[data-group]:focus ~ .progress-clock__rings [data-units],
+[data-group]:hover ~ .progress-clock__rings [data-units] {opacity: 0.2;}
+[data-group="x"]:focus ~ .progress-clock__rings [data-units="x"],
+[data-group="x"]:hover ~ .progress-clock__rings [data-units="x"],
+[data-group="d"]:focus ~ .progress-clock__rings [data-units="d"],
+[data-group="d"]:hover ~ .progress-clock__rings [data-units="d"],
+[data-group="h"]:focus ~ .progress-clock__rings [data-units="h"],
+[data-group="h"]:hover ~ .progress-clock__rings [data-units="h"],
+[data-group="m"]:focus ~ .progress-clock__rings [data-units="m"],
+[data-group="m"]:hover ~ .progress-clock__rings [data-units="m"]{
+	opacity: 1;
+}
+.progress-clock__rings{
+	position: absolute;
+	margin-left:300px;
+	margin-top:20px;
+}
+.progress-clock__time-digit{
+	position: absolute;
+	border-style: none;
+}
+[data-group="x"]{font-weight:500; margin-left:700px; margin-top: 120px;}
+[data-group="d"]{font-weight:500; margin-left:70px;  margin-top: 120px;}
+[data-group="h"]{font-weight:500; margin-left:70px;  margin-top: 240px;}
+[data-group="m"]{font-weight:500; margin-left:700px; margin-top: 240px;}
+.marklab{
+	position: absolute;
+	background: transparent;
+	font-size: 5em;
+	font-weight: 600;
+	margin-left:410px;
+	margin-top:145px;
+	color: #00FF00;
+}
+</style>
+</head>
+<body>
+<table border="0" width="100%">
+	<tr height="50">
+		<td>
+		<label style="padding-left:20px; padding-right:20px;">监听装置信息</label>
+		</td>
+	</tr>
+	<tr>
+		<td width="13%" align="right">操作系统：</td>
+		<td width="33%"><div id="osdesc" /></td>
+		<td width="19%" align="right">CPU频率：</td>
+		<td width="33%"><div id="cpufreq" /></td>
+	</tr>
+	<tr>
+		<td width="13%" align="right">CPUID：</td>
+		<td width="33%"><div id="cpumid" /></td>
+		<td width="19%" align="right">CPU类型：</td>
+		<td width="33%"><div id="cputype" /></td>
+	</tr>
+	<tr>
+		<td width="13%" align="right">装置IP：</td>
+		<td width="33%"><div id="hostIP" /></td>
+		<td width="19%" align="right">装置启动时间：</td>
+		<td width="33%"><div id="onstime" /></td>
+	</tr>
+	<tr>
+		<td width="13%" align="right">总存储空间：</td>
+		<td width="33%"><div id="dsktotal" /></td>
+		<td width="19%" align="right">剩余存储空间：</td>
+		<td width="33%"><div id="dskval" /></td>
+	</tr>
+	<tr>
+		<td width="13%" align="right">已使用内存：</td>
+		<td width="33%"><div id="memtotal" /></td>
+		<td width="19%" align="right">剩余内存：</td>
+		<td width="33%"><div id="memval" /></td>
+	</tr>
+</table>
+<div id="clock" class="progress-clock">
+	<div id="mark" class="marklab">100</div>
+	<button class="progress-clock__time-digit" data-unit="x" data-group="x" type="button"></button>
+	<button class="progress-clock__time-digit" data-unit="d" data-group="d" type="button"></button>
+	<button class="progress-clock__time-digit" data-unit="h" data-group="h" type="button"></button>
+	<button class="progress-clock__time-digit" data-unit="m" data-group="m" type="button"></button>
+	<svg class="progress-clock__rings" width="400" height="400" viewBox="-10 -10 300 300">
+		<defs>
+			<lineargradient id="pc-red" x1="1" y1="0.5" x2="0" y2="0.5">
+				<stop offset="0%"   stop-color="hsl(343,90%,55%)"></stop>
+				<stop offset="100%" stop-color="hsl(323,90%,55%)"></stop>
+			</lineargradient>
+			<lineargradient id="pc-yellow" x1="1" y1="0.5" x2="0" y2="0.5">
+				<stop offset="0%"   stop-color="hsl(43,90%,55%)"></stop>
+				<stop offset="100%" stop-color="hsl(23,90%,55%)"></stop>
+			</lineargradient>
+			<lineargradient id="pc-blue" x1="1" y1="0.5" x2="0" y2="0.5">
+				<stop offset="0%"   stop-color="hsl(223,90%,55%)"></stop>
+				<stop offset="100%" stop-color="hsl(203,90%,55%)"></stop>
+			</lineargradient>
+			<lineargradient id="pc-purple" x1="1" y1="0.5" x2="0" y2="0.5">
+				<stop offset="0%"   stop-color="hsl(283,90%,55%)"></stop>
+				<stop offset="100%" stop-color="hsl(263,90%,55%)"></stop>
+			</lineargradient>
+		</defs>
+		<!-- Days of Month -->
+		<g data-units="d">
+			<circle class="progress-clock__ring" cx="128" cy="128" r="74" fill="none" opacity="0.1" stroke="url(#pc-red)" stroke-width="15"></circle>
+			<circle class="progress-clock__ring-fill" data-ring="x" cx="128" cy="128" r="74" fill="none" stroke="url(#pc-red)" stroke-width="15" stroke-dasharray="465 465" stroke-dashoffset="0.422569444444417" stroke-linecap="round" transform="rotate(-90,128,128)"></circle>
+		</g>
+		<!-- Hours of Day -->
+		<g data-units="h">
+			<circle class="progress-clock__ring" cx="128" cy="128" r="90" fill="none" opacity="0.1" stroke="url(#pc-yellow)" stroke-width="15"></circle>
+			<circle class="progress-clock__ring-fill" data-ring="d" cx="128" cy="128" r="90" fill="none" stroke="url(#pc-yellow)" stroke-width="15" stroke-dasharray="565.5 565.5" stroke-dashoffset="80.6308680555555" stroke-linecap="round" transform="rotate(-90,128,128)"></circle>
+		</g>
+		<!-- Minutes of Hour -->
+		<g data-units="m">
+			<circle class="progress-clock__ring" cx="128" cy="128" r="106" fill="none" opacity="0.1" stroke="url(#pc-blue)" stroke-width="15"></circle>
+			<circle class="progress-clock__ring-fill" data-ring="h" cx="128" cy="128" r="106" fill="none" stroke="url(#pc-blue)" stroke-width="15" stroke-dasharray="666 666" stroke-dashoffset="220.89000000000004" stroke-linecap="round" transform="rotate(-90,128,128)"></circle>
+		</g>
+		<!-- Seconds of Minute -->
+		<g data-units="x">
+			<circle class="progress-clock__ring" cx="128" cy="128" r="122" fill="none" opacity="0.1" stroke="url(#pc-purple)" stroke-width="15"></circle>
+			<circle class="progress-clock__ring-fill" data-ring="m" cx="128" cy="128" r="122" fill="none" stroke="url(#pc-purple)" stroke-width="15" stroke-dasharray="766.5 766.5" stroke-dashoffset="150.34999999999997" stroke-linecap="round" transform="rotate(-90,128,128)"></circle>
+		</g>
+	</svg>
+</div>
+</body>
+</html>
+
+<script>
+//httprequest
+function GetXmlHttpObject() {   
+	var xmlHttp=null;   
+	try{xmlHttp=new XMLHttpRequest();}
+	catch(e){ 
+		try{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+		catch(e){xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}     
+	}
+	return xmlHttp; 
+}
+
+function updateClock( name, code, wid, value){
+	var el = document.querySelector( "#clock" );
+	el.querySelector(`[data-ring="${code}"]`).setAttribute("stroke-dashoffset",wid*(1.0- value));
+	el.querySelector(`[data-unit="${code}"]`).innerText = name + ":" + value;
+}
+
+var mytimeout = null;
+var devtime = 0;
+window.onload = function(){	
+	updateClock( "账号及口令安全", "x", 465, 0.55) ;
+	updateClock( "日志与审核", "d", 565.5, 0.7) ;
+	updateClock( "服务优化", "h", 666, 0.35) ;
+	updateClock( "关闭高危端口", "m", 766.5, 0.85) ;
+	window.clearInterval(mytimeout);
+	document.getElementById("hostIP").innerText =  g_localhost;
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUAPOST","main.macinfo" ,true);  
+	xhr.setRequestHeader('Content-Type', 'application/json');     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var obj = eval('(' + xhr.responseText + ')');
+			document.getElementById("osdesc").innerText = obj.osname + " - " + obj.osversion;
+			document.getElementById("cpufreq").innerText = obj.cpufreq / 1000 + "GHZ";
+			document.getElementById("cpumid").innerText = obj.cpumid;
+			document.getElementById("cputype").innerText =  obj.cputype;
+			document.getElementById("memtotal").innerText =  (obj.memtotal/1024).toFixed(2)+ "GB";
+			document.getElementById("memval").innerText =  (obj.memval/1024).toFixed(2)+ "GB";
+			document.getElementById("dsktotal").innerText = (obj.dsktotal/1024).toFixed(2)+ "GB";
+			document.getElementById("dskval").innerText =  (obj.dskval/1024).toFixed(2)+ "GB";	
+			document.getElementById("onstime").innerText =  obj.ontime;	
+			g_privatekey = obj.prikey;
+		}
+	}	
+	xhr.send();
+}
+
+var CHNNORMAL = 0;
+var CHNDISCONNECT = 1;
+var CHNOVERLATE = 2;
+function transtatus( status ){
+	if( status == CHNOVERLATE )
+		return "<font color='#FF0000'>超时</font>";
+	else if ( status == CHNDISCONNECT )
+		return "<font color='#000000'>断开</font>";
+	return "<font color='#00FF00'>正常</font>";
+}
+window.onload();
+</script>

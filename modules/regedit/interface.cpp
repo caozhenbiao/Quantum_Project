@@ -11,34 +11,72 @@ extern "C" {
 lua_State * theState = NULL;
 cregedit *  theRegedit = NULL;
 
-std::string _cmdPopen(const std::string& cmdLine) {
-	char buffer[1024] = { '\0' };
-	FILE* pf = NULL;
-	pf = _popen(cmdLine.c_str(), "r");
-	if (NULL == pf) {
-		printf("open pipe failed\n");
-		return std::string("");
-	}
-	std::string ret;
-	while (fgets(buffer, sizeof(buffer), pf)) {
-		ret += buffer;
-	}
-	_pclose(pf);
-	return ret;
+static int openKey(lua_State * L) {
+	HKEY hMaster = (HKEY)luaL_checkinteger(L, 1);
+	const char *path = luaL_checkstring(L, 2);
+	HKEY hKey = 0;
+	int ret = theRegedit->openKey( hMaster, path, hKey );
+	lua_pushinteger(L, ret);
+	lua_pushinteger(L, lua_Integer(hKey) );
+	return 2;
 }
 
-static int cmdPopen(lua_State * L) {
-	const char *subkey = luaL_checkstring(L, 1);
-	std::string retstr =  _cmdPopen(subkey);
-	lua_pushstring(L, retstr.c_str() );
+static int createKey(lua_State * L) {
+	printf("lua createKey\n");
+	HKEY hMaster = (HKEY)luaL_checkinteger(L, 1);
+	const char *path = luaL_checkstring(L, 2);
+	HKEY hKey = 0;
+	int ret = theRegedit->createKey(hMaster, path, hKey);
+	lua_pushinteger(L, ret);
+	lua_pushinteger(L, lua_Integer(hKey));
+	return 2;
+}
+
+static int closeKey(lua_State * L) {
+	HKEY hKey = (HKEY)luaL_checkinteger(L, 1);
+	int ret = theRegedit->closeKey(hKey);
+	lua_pushinteger(L, ret);
 	return 1;
 }
 
-static int openKey(lua_State * L) {
-	int hMaster = (int)luaL_checkinteger(L, 1);
-	const char *subkey = luaL_checkstring(L, 2);
-	//theRegedit->openKey((HKEY)hMaster, subkey);
-	lua_pushinteger(L, 1);
+static int readStrValue( lua_State * L ) {
+	static char value[1024];
+	HKEY hKey  = (HKEY)luaL_checkinteger(L, 1);
+	const char *name = luaL_checkstring(L, 2);
+	memset(&value, 0x00, sizeof(value));
+	int ret = theRegedit->readValue(hKey, name, value, 1024);
+	lua_pushinteger(L, ret);
+	lua_pushstring(L, value);
+	return 2;
+}
+
+static int writeStrValue(lua_State * L) {
+	HKEY hKey = (HKEY)luaL_checkinteger(L, 1);
+	const char *name = luaL_checkstring(L, 2);
+	const char *value = luaL_checkstring(L, 3);
+	int ret = theRegedit->writeValue(hKey, name, value);
+	lua_pushinteger(L, ret);
+	return 1;
+}
+
+static int readIntValue(lua_State * L) {
+	int value = 0;
+	HKEY hKey = (HKEY)luaL_checkinteger(L, 1);
+	const char *name = luaL_checkstring(L, 2);
+	memset(&value, 0x00, sizeof(value));
+	int ret = theRegedit->readValue(hKey, name, value);
+	lua_pushinteger(L, ret);
+	lua_pushinteger(L, value);
+	return 2;
+}
+
+static int writeIntValue(lua_State * L) {
+	HKEY hKey = (HKEY)luaL_checkinteger(L, 1);
+	const char *name = luaL_checkstring(L, 2);
+	int value = (int)luaL_checkinteger(L, 3);
+	memset(&value, 0x00, sizeof(value));
+	int ret = theRegedit->writeValue( hKey, name, value);
+	lua_pushinteger(L, ret);
 	return 1;
 }
 
@@ -53,7 +91,12 @@ static int destory(lua_State * L){
 static const struct luaL_Reg myLib[]={
 	{"destory",destory},
 	{"openKey",openKey},
-	{"cmdPopen",cmdPopen},
+	{"createKey",createKey},
+	{"closeKey",closeKey},
+	{"readStrValue",readStrValue},
+	{"writeStrValue",writeStrValue},
+	{"readIntValue",readIntValue},
+	{"writeIntValue",writeIntValue},
 	{NULL,NULL}
 };
 

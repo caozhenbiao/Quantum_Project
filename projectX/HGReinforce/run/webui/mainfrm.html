@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<meta http-equiv="Expires" content="0"> 
+<title>测试 - smartx</title>
+<link rel="icon" href="images/smartx.ico" type="image/x-icon">
+<link rel="shortcut icon" href="images/smartx.ico" type="image/x-icon">
+<script type="text/javascript" src="js/qwebchannel.js"></script>
+<script src="js/jquery.min.js"></script>
+<style>
+	html{
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	font-family:Microsoft YaHei,Helvetica,Arial,sans-serif;
+	height:100%;
+	font-size:inherit;
+	}
+	body{
+		font-family:Microsoft YaHei,Helvetica,Arial,sans-serif;
+ 		font-size:inherit;
+		line-height:1.42857143;
+		color:#333;
+		background-color:#fff;
+		height:100%;
+	}
+	button,input,select,textarea{
+		font-family:Microsoft YaHei,Helvetica,Arial,sans-serif;
+		font-size:inherit;
+	}
+	
+	a{color:#337ab7;text-decoration:none; }
+	a:focus,a:hover{color:#23527c;text-decoration:underline}
+	a:focus{outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}
+	
+	.nav{padding:0;margin:0;list-style:none}
+	.nav>li{position:relative;display:block;font-size:18px; font-weight:500;}
+	.nav>li>a{position:relative; display:block;color:#fff;padding:18px 60px;}
+	.nav>li>a:focus,
+	.nav>li>a:hover{text-decoration:none;background-color:#444}
+	.nav>li.disabled>a{color:#777}
+	.nav>li.disabled>a:focus,
+	.nav>li.disabled>a:hover{color:#777;text-decoration:none;cursor:not-allowed;background-color:transparent}
+	.nav .open>a,
+	.nav .open>a:focus,
+	.nav .open>a:hover{background-color:#eee;border-color:#337ab7}
+	.nav 
+	.nav-divider{height:1px;margin:9px 0;overflow:hidden;background-color:#e5e5e5}
+	.nav>li>a>img{position: absolute; margin-top:-1px; margin-left:-30px}
+	.nav-tabs{border-bottom:1px solid #ddd}
+	.nav-tabs>li{float:left;margin-bottom:-1px}
+	.nav-tabs>li>a{margin-right:2px;line-height:0.4;border:1px solid transparent;border-radius:6px 6px 0 0}
+	.nav-tabs>li>a:hover{border-color:#eee #eee #ddd}
+	.nav-tabs>li.active>a,
+	.nav-tabs>li.active>a:focus,
+	.nav-tabs>li.active>a:hover{color:#555;cursor:default;background-color:#fff;border:1px solid #ddd;border-bottom-color:transparent}
+	.tab-pane{display:none}
+	.tab-active{display:block}
+	
+	/*style the main menu*/
+	.myMenu { margin: 0; padding: 0px 0px; height:50px; margin-top:12px }
+	.myMenu li { list-style: none; float: left; font: 12px Arial, Helvetica, sans-serif #111;}
+	.myMenu li a:link, .myMenu li a:visited { display: block; text-decoration: none; padding: 0.5em 2em; margin: 0; border-right: 1px solid #fff; color: #111; }
+	.myMenu li a:hover { background-color: #fff; border: 1px solid #000;} 
+	/*style the sub menu*/
+	.myMenu li ul { position: absolute; visibility: hidden; border-top: 1px solid #fff; margin: 0; padding: 0; z-index:9999}
+	.myMenu li ul li { display: inline; float: none; }
+	.myMenu li ul li a:link, .myMenu li ul li a:visited { background-color: #fff; width: auto; }
+	.myMenu li ul li a:hover { background-color: #F00; }
+	.scalBtn{
+		position:absolute;
+	}
+</style>
+</head>
+
+<body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0">
+<img src="images/rbc.png" style="position: absolute;bottom:0;right:0;" />
+<table border="0" width="100%" height="100%" cellspacing="0" cellpadding="0">
+	<tr>
+		<td valign="top" colspan="2" style="background-color:#fff;" height="50">
+			<table border="0" width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="*" align="left">
+						<table border="0" width="100%">
+							<tr>
+								<td width="*">
+									<ul class="myMenu">
+									    <li><a href="javascript:void(0)">文件(<u>F</u>)</a>
+									    	<ul>
+												<li><a href="javascript:void(0)" onclick="javascript:onExitApp()">关闭</a></li>
+									            <li><a href="javascript:void(0)" onclick="javascript:onExitApp()">退出</a></li>
+									        </ul>
+									    </li>
+									    <li><a href="javascript:void(0)">编辑(<u>E</u>)</a>
+									        <ul>
+									            <li><a href="javascript:void(0)" onclick="javascript:openMenu()">拷贝</a></li>
+									            <li><a href="javascript:void(0)" onclick="javascript:openMenu()">粘贴</a></li>
+									        </ul>
+									    </li>
+									    <li><a href="javascript:void(0)">视图(<u>E</u>)</a>
+									        <ul>
+									            <li><a href="javascript:void(0)" onclick="javascript:onShowTabView('home')">home</a></li>
+									            <li><a href="javascript:void(0)" onclick="javascript:onShowTabView('reinforce')">reinforce</a></li>
+									            <li><a href="javascript:void(0)" onclick="javascript:onShowTabView('history')">history</a></li>
+									            <li><a href="javascript:void(0)" onclick="javascript:onShowTabView('usermgr')">usrmgr</a></li>
+												<li><a href="javascript:void(0)" onclick="javascript:onShowTabView('softmgr')">softmgr</a></li>
+												<li><a href="javascript:void(0)" onclick="javascript:onShowTabView('about')">about</a></li>
+									        </ul>
+									    </li>
+									    <li><a href="javascript:void(0)" onclick="javascript:openMenu()">工具(<u>T</u>)</a></li>
+									    <li><a href="javascript:void(0)" onclick="javascript:openMenu()">关于(<u>A</u>)</a></li>
+									</ul>
+								</td>
+								<td align="left">
+									当前模板
+									<select size="1" name="D1">
+									<option>主机加固模版1</option>
+									<option>主机加固模版2</option>
+									<option>主机加固模版3</option>
+									</select>
+								</td>
+								<td width=‘*’>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td width="200">
+						<table border="0" width="100%">
+							<tr>
+								<td width="48"><img border="0" src="avtar/invite_avatar_1.c98cee48.png" width="48" height="48"></td>
+								<td width="106"><a href="#">熊霸天</a></td>
+								<td></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr height="*">
+		<td width="200" valign="top" style="background-color:#545869;">
+			<ul id="myTab" class="nav" >
+				<li><a id="homenav" href="#home" data-toggle="tab" url="home.html" style="background-color:#404458; background:url('images/tabLeft.png');background-repeat:no-repeat;">
+					<img border="0" src="images/house.png" width="24" height="24"> 系统信息 </a>
+				</li>
+	 			<li><a id="reinforcenav"  href="#reinforce" data-toggle="tab" url="reinforce.html"><img border="0" src="images/house.png" width="24" height="24">   设备加固 </a></li>
+				<li><a id="historynav"  href="#history" data-toggle="tab" url="history.html"><img border="0" src="images/cog.png" width="24" height="24">  操作记录 </a></li>
+				<li><a id="usermgrnav"  href="#usermgr" data-toggle="tab" url="usermgr.html"><img border="0" src="images/user.png" width="24" height="24"> 用户管理 </a></li>	
+				<li><a id="softmgrnav"  href="#softmgr" data-toggle="tab" url="softmgr.html"><img border="0" src="images/user.png" width="24" height="24"> 软件安装 </a></li>
+				<li><a id="aboutnav"  href="#about"   data-toggle="tab" url="about.html"><img border="0" src="images/user.png" width="24" height="24"> 关于 </a></li>
+			</ul>
+		</td>
+		<td valign="top" style="background-color:#dddddd;">
+			<div id="myTabContent" style="height: 100%">
+				<div style="display:block; height:100%" id="home">&nbsp;</div>
+				<div style="display:none;" id="reinforce"></div>
+				<div style="display:none;" id="history"></div>
+				<div style="display:none;" id="usermgr"></div>
+				<div style="display:none;" id="softmgr"></div>
+				<div style="display:none;" id="about"></div>
+			</div>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
+
+<script>
+var g_database = null;
+var g_comdeflist = null;
+var g_devchnlist = null;
+var realtimeworking = false;
+var g_currentworkchn = "";
+var g_localhost = "0.0.0.0";
+var g_authority = 0;
+var g_username = "";
+var g_account = "";
+var g_comparams="";
+var g_privatekey="";
+
+//jquery function
+//$(function(){
+var mytabObj = {};
+var lasttab = "#home";
+var lastnav = "#homenav"; //document.getElementById('homenav');
+$('a[data-toggle="tab"],#opt_list').on('click', function (e) {
+	var activeTab  = $(e.target).text(); 
+	var activeName = $(e.target).attr('href');
+	$(lasttab).attr("style","display:none;");
+	$(activeName).attr("style","display:block;height:100%");
+	$(lastnav).attr("style","background:'';");
+	$(e.target).attr("style","background-color:#404458; background:url('images/tabLeft.png');background-repeat:no-repeat;");
+	if( !mytabObj[activeTab] ){
+		$(activeName).load( $(e.target).attr('url'));
+		mytabObj[activeTab] = activeName;
+	}
+	lastnav = e.target;
+	lasttab = activeName;
+});
+//});
+
+function onShowTabView( name ){
+	var currtab  = "#" + name;
+	var currnav  = "#" + name + "nav";
+	if( currtab != lasttab){
+		$(lasttab).attr("style","display:none;");
+		$(currtab).attr("style","display:block;height:100%");
+		$(lasttab + "nav").attr("style","background:'';");
+		$(currnav).attr("style","background-color:#404458; background:url('images/tabLeft.png');background-repeat:no-repeat;");
+		$(currtab).load( name + ".html" );
+		lasttab = currtab;
+	}
+}
+
+$(document).ready(function() {
+	$('.myMenu > li').bind('mouseover', openSubMenu);
+	$('.myMenu > li').bind('mouseout', closeSubMenu);
+	function openSubMenu() {
+		$(this).find('ul').css('visibility', 'visible');	
+	};
+	function closeSubMenu() {
+		$(this).find('ul').css('visibility', 'hidden');	
+	};		   
+});
+
+function openShutKey(){
+    window.onkeydown=function() {
+        //event.preventDefault();
+        // F1~F12
+        switch(event.keyCode){
+            case 112: alert('f1'); break;
+            case 113: alert('f2'); break;
+            case 114: alert('f3'); break;
+            case 115: alert('f4'); break;
+            case 117: console.log('f6'); break;
+            case 118: console.log('f7'); break;
+            case 119: console.log('f8'); break;
+            case 120: console.log('f9'); break;
+            case 121: console.log('f10'); break;
+            case 122: console.log('f11'); break;
+        }
+        console.log(event.keyCode);
+        if(event.ctrlKey && event.keyCode === 83){
+            console.log('保存成功');
+        }
+    }
+}
+
+//GetXmlHttpObject
+function GetXmlHttpObject() {   
+	var xmlHttp=null;   
+	try{xmlHttp=new XMLHttpRequest();}
+	catch(e){ 
+		try{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+		catch(e){xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}     
+	}
+	return xmlHttp; 
+}
+
+//onload
+window.onload = function(){
+	$('#home').load('home.html');
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUAPOST","main.onload" ,true);  
+	xhr.setRequestHeader('Content-Type', 'application/json');	  
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			g_database = rsp;
+			new QWebChannel(qt.webChannelTransport, function(channel) {
+				var cmd = channel.objects.command;
+				cmd.show( true );
+				$('#reinforce').load('reinforce.html');
+				$('#history').load('history.html');
+				$('#usermgr').load('usermgr.html');
+				$('#softmgr').load('softmgr.html');
+				$('#about').load('about.html');
+			});
+		}
+	}	
+	xhr.send();
+	openShutKey();
+}
+
+
+
+
+function openMenu(){
+	alert("open");
+}
+
+
+function onExitApp(){
+	new QWebChannel(qt.webChannelTransport, function(channel) {
+		var cmd = channel.objects.command;
+		cmd.exitApp();
+	});
+}
+
+//$("#hrefopen").removeAttr("href");
+
+</script>

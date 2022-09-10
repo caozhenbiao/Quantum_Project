@@ -183,3 +183,38 @@ if("UPFILE" == v["METHORD"]) {
 	}
 	return;
 }
+
+
+webChannel
+通过webchannel可以实现webjs与webui交互
+目前有如下几个通道 
+lua
+session
+cookies
+file
+warrant
+command
+
+
+var account = document.getElementById('account').value;
+var password= document.getElementById('password').value;
+    new QWebChannel(qt.webChannelTransport, function(channel) {
+        var lua     = channel.objects.lua;
+        var cookies = channel.objects.cookies;
+        var session = channel.objects.session;
+        lua.request("main.lua","userlogin",account + "," + hex_md5(password));
+        lua.response.connect(function(message) {
+        	var obj = eval('(' + message + ')');
+            if ( obj && obj.result==0){
+				cookies.add("account", account);
+				cookies.add("username", obj.name);
+				session.add("account", account);
+				session.add("username", obj.name);
+				session.add("authority", obj.authority);
+				window.location.href="mainfrm.html";
+			}else{
+				alert("认证错误错误的用户帐号和密码，请核对后重新输入!");
+			}
+        });
+     });
+

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>身份鉴别</title>
+<script src="js/jquery.min.js"></script>
+
+<style>
+	.hislist tr{height:43px}
+	.hislist td{padding:5px 5px}
+	.header {height:42px}
+	.nav2{padding:0;margin:0;list-style:none;float:left;}
+	.nav2>li{position:relative;display:block;float:left; font-size:16px; padding:5px 15px}
+	.nav2>li>a{position:relative;display:block;padding:5px 5px}
+	.nav2>li>a:focus,
+	.nav2>li>a:hover{text-decoration:none;}
+	.nav2>li.disabled>a{color:#777}.nav>li.disabled>a:focus,
+	.nav2>li.disabled>a:hover{color:#777;text-decoration:none;cursor:not-allowed;background-color:transparent}
+	.nav2 .open>a,
+	.nav2 .open>a:focus,
+	.nav2 .open>a:hover{background-color:#eee;border-color:#337ab7}
+	.nav2 
+	.nav2-divider{height:1px;margin:9px 0;overflow:hidden;background-color:#e5e5e5}
+	.nav2>li>a>img{max-width:none}
+	 .div1{
+		 width: 100%;
+		 height: 50px;
+		 position: relative;
+		 border: 0px solid;
+		 margin: 0 auto;
+		 text-align:center;
+	 }
+	 aside{
+		 height: 50px;
+		 background:green;
+	 }
+	 aside>span{
+	 	position: absolute;
+	 	margin:0 auto;
+	 	color: #f00;
+	 }
+	 .scanRunbutton{
+	 	width : 100%;
+	 	height: 50px;
+	 }
+</style>
+</head>
+<body>
+<table border="0" width="100%" height="100%">
+	<tr height="50">
+		<td align="center">
+			<ul id="myTab0" class="nav2" >
+				<li><a id="masterkill" href="#options1" data-toggle="tab2" url="options.html" style="font-weight:600">[主机杀毒]</a></li>
+	 			<li><a href="#options2" data-toggle="tab2" url="options.html">用户帐号与口令安全</a></li>
+	 			<li><a href="#options3" data-toggle="tab2" url="options.html">日志与审核</a></li>
+	 			<li><a href="#options4" data-toggle="tab2" url="options.html">服务优化</a></li>
+	 			<li><a href="#options5" data-toggle="tab2" url="options.html">关闭高危端口</a></li>
+	 			<li><a href="#options6" data-toggle="tab2" url="options.html">软件安装</a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr height="*">
+		<td valign="top">
+			<table width="100%" class="csoptlist" cellspacing="0" cellpadding="0">
+				<thead>
+					<tr class="header"><th width="80">序号</th>
+						<th width="80">作业号</th>
+						<th width="300">项目</th>
+						<th width="*">数据</th>
+						<th width="80">状态</th>
+						<th width="260">时间</th>
+					</tr>
+				</thead>
+				<tbody id="historydatalist" class="hislist"></tbody>
+			</table>
+		</td>
+	</tr>
+	<tr height="22">
+		<td align="center">&lt;&lt; 1,2,3 &gt;&gt;</td>
+	</tr>
+	<tr height="30">
+		<td>
+			<button id="scanRunbutton" class="scanRunbutton" onclick="onStartScan();" >扫描</button>
+			<div id="scanProgress" class="div1" onclick="onPauseScan();" style="display:none;">
+				<aside id="aside" style="width: 0px;"> <span id="span">50%</span> </aside>
+			</div>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
+
+<script type="text/javascript">
+var runScan = false;
+var curViewitem = {};
+var lastTab = document.getElementById("masterkill");
+$(function(){
+	$('a[data-toggle="tab2"]').on('click', function (e) {
+		if( lastTab != e.target){
+			var activeTab  = $(e.target).text();
+			lastTab.innerText = lastTab.innerText.replace('[','').replace(']','');
+			lastTab.setAttribute('style','font-weight:400;');
+			e.target.innerText = "[" + activeTab  + "]";
+			e.target.setAttribute('style','font-weight:600;');
+			lastTab = e.target;
+			show_datalist(activeTab,0);
+		}
+	});
+});
+
+function JsonToString(o) {
+	var arr = [];
+	var fmt = function(s) {
+	if (typeof s == 'object' && s != null) return JsonToString(s);
+	return /^(string|number)$/.test(typeof s) ? "'" + s + "'" : s;
+	}
+	for (var i in o)
+	arr.push("'" + i + "':" + fmt(o[i]));
+	return '{' + arr.join(',') + '}';
+}
+
+
+//httprequest
+function GetXmlHttpObject() {  
+	var xmlHttp=null;   
+	try{xmlHttp=new XMLHttpRequest();}
+	catch(e){ 
+		try{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+		catch(e){xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}     
+	}
+	return xmlHttp; 
+}
+
+function getdate() {
+    var now = new Date(),
+        y = now.getFullYear(),
+        m = now.getMonth() + 1,
+        d = now.getDate();
+    return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
+}
+
+//clean
+function onclean(){
+	var devlst = document.getElementById("historydatalist");
+	for( var i=devlst.rows.length; i > 1; i--){
+		devlst.deleteRow( -1 );
+	}
+}
+
+//TASK
+var page = 0;
+function show_datalist( subject, page ){
+	var devlst   = document.getElementById("historydatalist");
+	for( var i=devlst.rows.length; i > 0; i--){
+		devlst.deleteRow( -1 );
+	}
+	var rowno = 0
+	var showdata = g_database[ subject ];
+	curViewitem = {};
+	for( var v = page * 10; v < showdata.length && v<(page*10+10); v++ ){
+		var devitem = devlst.insertRow( -1 );
+		var td1 = devitem.insertCell(0);
+		td1.innerHTML = ++rowno;
+		td1.setAttribute('align','center');		
+		var td2 = devitem.insertCell(1);
+		td2.innerHTML = showdata[v].code;
+		td2.setAttribute('align','center');
+		devitem.insertCell(2).innerHTML = showdata[v].name;
+		devitem.insertCell(3).innerHTML = showdata[v].context;
+		var td4 = devitem.insertCell(4);
+		td4.innerHTML = showdata[v].status;
+		td4.setAttribute('align','center');
+		var td5 = devitem.insertCell(5);
+		td5.innerHTML = showdata[v].time;	
+		var viewOjb= {};
+		viewOjb["status"] = td4;
+		viewOjb["time"] = td5;
+		curViewitem[showdata[v].code] =	viewOjb;	
+	}
+}
+
+function setProgessPos( pos ){
+	document.getElementById("aside").style.width = pos+ '%';
+	document.getElementById("span").innerHTML = parseInt( pos*100/500 ) + '%';
+}
+
+
+function getFinishPercent(){
+	var total = 0;
+	var done  = 0;
+	for( var sub in g_database ){
+		var showdata = g_database[ sub ];
+		for( var item in showdata){
+			total = total +1;
+			done  = done + (showdata[item].scan?1:0);
+		}
+	}
+	return done / total * 100;
+}
+
+//重置所有任务
+function resetTaskList(){
+	for( var sub in g_database ){
+		var showdata = g_database[ sub ];
+		for( var item in showdata){
+			var code = g_database[sub][item].code;
+ 			g_database[sub][item].scan = false;
+ 			g_database[sub][item].status = 0;
+ 			g_database[sub][item].time = "";
+ 			if( curViewitem[code]){
+				curViewitem[code].status.innerHTML = 0;
+				curViewitem[code].time.innerHTML = "";
+			}	
+		}
+	}
+}
+
+//获取当前任务
+function getCurrentItem(){
+	for( var sub in g_database ){
+		var showdata = g_database[ sub ];
+		for( var item in showdata){	
+			if( !showdata[item].scan ){
+				return g_database[sub][item].code;
+			}
+		}
+	}
+	return null;
+}
+
+
+//更新任务状态
+function updateItem( code, status ){
+	for( var sub in g_database ){
+		var showdata = g_database[ sub ];
+		for( var item in showdata){
+			if( showdata[item].code == code ){
+				g_database[sub][item].scan = true;
+				g_database[sub][item].status = status;
+				g_database[sub][item].time = getdate();
+				if( curViewitem[code]){
+					curViewitem[code].status.innerHTML = g_database[sub][item].status;
+					curViewitem[code].time.innerHTML = g_database[sub][item].time;
+				}
+				return;
+			}
+		}
+	}
+}
+
+//单任务执行行
+function scanTask(){
+	var code  = getCurrentItem();
+	if( code ){
+		document.getElementById("scanRunbutton").style = "display:none;"
+		document.getElementById("scanProgress").style = "display:block;"
+		var xhr = GetXmlHttpObject();     
+		xhr.open("LUAPOST","main.startTask" ,true);  
+		xhr.setRequestHeader('Content-Type', 'application/json');	  
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				var rsp = eval('(' + xhr.responseText + ')');
+				updateItem( rsp.code, 2 );
+				setProgessPos( getFinishPercent());
+				scanTask();
+			}
+		}	
+		xhr.send("{'code':'"+ code +"'}");
+	}else{
+		document.getElementById("scanRunbutton").style = "display:block;"
+		document.getElementById("scanProgress").style = "display:none;"
+	}
+}
+
+//开始执行任务
+function onStartScan(){
+	setProgessPos( 0 );
+	resetTaskList();
+	scanTask();
+}
+
+//暂停执行任务
+function onPauseScan(){
+	document.getElementById("scanRunbutton").style = "display:block;"
+	document.getElementById("scanProgress").style = "display:none;"
+
+}
+
+setProgessPos( 0 );
+show_datalist( "主机杀毒", 0 );
+</script>
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 

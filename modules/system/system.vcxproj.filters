@@ -26,6 +26,9 @@
     <ClCompile Include="md5.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="winos.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="netcard.h">
@@ -38,6 +41,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="md5.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="winos.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>历史数据查询</title>
+<link href="css/zane-calendar.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.min.js"></script>
+<link rel="stylesheet"  type ="text/css" href="./css/zane-calendar.css">
+<script src="./js/zane-calendar.js"></script>
+<style>
+	.hislist tr{height:43px}
+	.hislist td{padding:5px 5px}
+	.header {height:42px}
+	.nav2{padding:0;margin:0;list-style:none;float:left;}
+	.nav2>li{position:relative;display:block;float:left; padding:5px 15px}
+	.nav2>li>a{position:relative;display:block;padding:5px 5px}
+	.nav2>li>a:focus,
+	.nav2>li>a:hover{text-decoration:none;}
+	.nav2>li.disabled>a{color:#777}.nav>li.disabled>a:focus,
+	.nav2>li.disabled>a:hover{color:#777;text-decoration:none;cursor:not-allowed;background-color:transparent}
+	.nav2 .open>a,
+	.nav2 .open>a:focus,
+	.nav2 .open>a:hover{background-color:#eee;border-color:#337ab7}
+	.nav2 
+	.nav2-divider{height:1px;margin:9px 0;overflow:hidden;background-color:#e5e5e5}
+	.nav2>li>a>img{max-width:none}
+</style>
+</head>
+<body>
+<table border="0" width="100%" height="100%">
+	<tr height="50">
+		<td>
+			<label style="padding-left:20px; padding-right:20px;">历史数据</label>操作类型
+			<select class="realchn" id="historychannels" style="width:180px;" size="1" name="historychannels"></select>
+			<label style="padding-left:20px;">开始时间：<input id="begintime" name="begintime" size="20" ></label>
+			<label style="padding-left:20px;">结束时间：<input id="endtime" name="endtime" size="20" ></label>
+			<input type="button" value="开始" id="history_runbtn" onclick="onPrintHistoryData();"> 
+			<input type="button" value="清除" id="history_clrbtn" onclick="onClearHistoryList();"> 
+			<a id="downloadlnk" href="tmp/history.txt" download="" >打印</a>
+ 		</td>
+	</tr>
+	<tr height="*">
+	<td valign="top">
+		<table width="100%" class="csoptlist" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr class="header"><th width="80">序号</th>
+					<th width="194">时间</th>
+					<th width="141">操作类型</th>
+					<th width="*">数据</th>
+					<th width="260">描述</th>
+					<th width="200">操作员</th>
+				</tr>
+			</thead>
+			<tbody id="historydatalist"></tbody>
+		</table>
+	</td>
+	</tr>
+</table>
+
+
+<div class="enmovediv" style="position: absolute;display: none;background:white;border:1px solid #cad9ea;width:485px;height:473px;left:284px;top:562px" id="historytoast">     
+  <div id="historydlgTest" class="dialog" style="position: absolute; margin-left: -1px; margin-top: -1px">
+        <div style="color:#fff;background-color:#404040;font-size:12pt;font-weight:bold;padding:4px 6px;cursor:move;">
+			<table border="0" width="100%" cellspacing="0" cellpadding="0" class="sss">
+				<tr>
+					<td><font size="4"><b>操作记录</font></b></td>
+					<td align="right"><button type="button" id="hisdivclose">关闭</button></td>
+				</tr>
+			</table>
+		</div>
+        <div style="padding:4px">
+			<table width="100%">
+				<tr><td>
+					<img border="0" src="snapshot/now.jpg" width="1019" height="640"></td></tr>
+				<tr><td><textarea rows="11" id="historyS2" cols="72" name="S2"></textarea></td></tr>
+			</table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+$(".enmovediv").mousedown(function(e){
+	var left= parseInt($(".enmovediv").css("left"));
+	var top = parseInt($(".enmovediv").css("top"));
+	//获取鼠标按下时的坐标，区别于下面的es.pageX,es.pageY
+	var downx=e.pageX;
+	var downy=e.pageY;   //pageY的y要大写，必须大写！！
+	if( downy - top > 30 ) return;
+	//  鼠标按下时给div挂事件
+	$(".enmovediv").bind("mousemove",function(es){
+		//es.pageX,es.pageY:获取鼠标移动后的坐标
+		var endx= es.pageX-downx+left;   //计算div的最终位置
+		var endy= es.pageY-downy+top;
+		$(".enmovediv").css("left",endx+"px").css("top",endy+"px")
+	});  
+})
+$(".enmovediv").mouseup(function(){
+	$(".enmovediv").unbind("mousemove")
+})
+document.getElementById("hisdivclose").onclick = function(e){ 
+	document.getElementById("historytoast").style.display = "none";
+}
+function historyshowdesc( chn, data ){
+  	var toast = document.getElementById("historytoast");
+    toast.style.display = "block";
+    toast.style.position = "fixed";
+    var winWidth = window.innerWidth;
+    var winHeight = window.innerHeight;
+    var targetWidth = toast.offsetWidth;
+    var targetHeight = toast.offsetHeight;
+    toast.style.top = (winHeight - targetHeight) / 2 + "px";
+    toast.style.left = (winWidth - targetWidth) / 2 + "px";
+    document.getElementById("historyS1").value = data ;
+    document.getElementById("historyS2").value ="";
+    var xhr = GetXmlHttpObject();
+	xhr.open("GET","main.lua?frameExplain=" + chn + "," + data ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			document.getElementById("historyS2").value = rsp.pntdesc + ";\n" + rsp.explain.replace(/\;/g,";\n") ;	
+		}
+	}	
+	xhr.send(null); 
+}
+</script>
+
+<script type="text/javascript">
+var objSelectet = document.getElementById("historychannels");
+var opttype = ["主机杀毒","用户帐号与口令安全","日志与审核","服务优化","关闭高危端口","软件安装"];
+for( var i=0; i<opttype.length; i++){
+	var objOption   = document.createElement("OPTION");
+	objOption.text  =  opttype[i];
+	objOption.value = "g_devchnlist[v].name";
+	objSelectet.options.add(objOption); 
+}
+
+zaneDate({
+	elem:'#begintime',
+	format:'yyyy-MM-dd HH:mm:ss',
+	leng:'en',
+	//begintime:'2017-09-20 12:10:10',
+	showtime:true
+});
+
+zaneDate({
+	elem:'#endtime',
+	format:'yyyy-MM-dd HH:mm:ss',
+	leng:'en',
+	//begintime:'2017-09-20 12:10:10',
+	showtime:true
+});
+
+//httprequest
+function GetXmlHttpObject() {   
+	var xmlHttp=null;   
+	try{xmlHttp=new XMLHttpRequest();}
+	catch(e){ 
+		try{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+		catch(e){xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}     
+	}
+	return xmlHttp; 
+}
+
+//
+var rowno=0;
+function historydataframe( obj ){
+	var devlst  = document.getElementById("historydatalist");
+	var devitem = devlst.insertRow( 0 );
+	devitem.setAttribute( "onclick", "historyshowdesc('"+ obj.chn + "','" + obj.data + "')"); 
+	devitem.setAttribute( "style", "height:50px;"); 
+	var td1 = devitem.insertCell(0);
+	td1.innerHTML = ++rowno;
+	td1.setAttribute('align','center');
+	
+	devitem.insertCell(1).innerHTML = obj.time;
+	var cel3 = devitem.insertCell(2); 
+	cel3.align="center"; 
+	cel3.innerHTML = obj.dir;	
+	devitem.insertCell(3).innerHTML = obj.data;
+	devitem.insertCell(4).innerHTML = obj.resume;
+	devitem.insertCell(5).innerHTML = "熊霸天";
+	//if(v>2000){devlst.deleteRow(-1);}
+}
+
+function onClearHistoryList(){
+	var devlst  = document.getElementById("historydatalist");
+	for( var i = devlst.rows.length; i > 0; i--){
+		devlst.deleteRow( 0 );
+	}
+}
+
+function onPrintHistoryData(){  
+	var name = $("#historychannels option:selected").val();
+	var strStart = $("#begintime").val();
+	var strEnd   = $("#endtime").val();
+	document.getElementById("history_runbtn").value="停止";
+	document.getElementById("history_runbtn").onclick=function(){StopHistoryData();};
+	document.getElementById("downloadlnk").removeAttribute("disabled");
+	//document.getElementById("historytablediv").style.height = window.innerHeight-185+"px";
+	for( var i=0; i<8; i++){
+		historydataframe({"chn":"asdfsd","data":"sdafds","time":"ssssss","resume":"sdafsfds"});
+	}
+}
+
+function StopHistoryData(){
+	var xhr  = GetXmlHttpObject();  
+	xhr.open("LUA","main.lua?PrintHistoryData",true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			document.getElementById("history_runbtn").value="开始";
+			document.getElementById("history_runbtn").onclick=function(){
+				onPrintHistoryData();
+			};
+		}
+	}	
+	xhr.send(null); 
+}
+
+//clean
+function onclean(){
+	var devlst = document.getElementById("historydatalist");
+	for( var i=devlst.rows.length; i > 1; i--){
+		devlst.deleteRow( -1 );
+	}
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+ 

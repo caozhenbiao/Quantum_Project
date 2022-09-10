@@ -10,12 +10,21 @@ class cregedit {
 public:
 	int openKey(HKEY hMasterKey, const char* subkey, HKEY & hKey);
 	int createKey(HKEY hKey, const char* name, HKEY & subKey);
-	int writeValue(HKEY hKey, const char * subject, const char* value);
+	int writeValue(HKEY hKey, const char * name, const char* value);
+	int readValue(HKEY hKey, const char* name, char* value, int len);
+
+	int writeValue(HKEY hKey, const char * name, int value);
+	int readValue(HKEY hKey, const char* name, int& value);
+
+
 	int closeKey(HKEY hKey);
 
 
-	int queryKey(HKEY hKey, const char* name, char* value);
+ 
 
+
+
+ 
 
 private:
 	std::map<int, HKEY> myHinstant;

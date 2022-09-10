@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sermon", "..\..\modules\sermon\sermon.vcxproj", "{F5A1B454-5004-408E-8E40-240A135E279F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "websock", "..\..\modules\websock\websock.vcxproj", "{F6B995BC-24AE-4AED-8862-DA1D421DE78C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tinyxml", "..\..\modules\tinyxml\tinyxml.vcxproj", "{2833E301-09ED-4495-BAB5-B7DCED51F335}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sqlite", "..\..\modules\sqlite\sqlite.vcxproj", "{2AE45F96-6D89-4DFF-A1A7-BE2D983D3554}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "system", "..\..\modules\system\system.vcxproj", "{219CB1F1-063A-4725-9D79-442B4356A07F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "smartx", "..\..\platform\smartx\src\smartx.vcxproj", "{7B57CB90-52AC-41C3-995B-5EEC0AAAA299}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unicom", "..\..\modules\unicom\unicom.vcxproj", "{DB308CE6-51CF-40BE-9CB5-64C64ADDCCC8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5A1B454-5004-408E-8E40-240A135E279F}.Debug|x86.ActiveCfg = Debug|Win32
+		{F5A1B454-5004-408E-8E40-240A135E279F}.Debug|x86.Build.0 = Debug|Win32
+		{F5A1B454-5004-408E-8E40-240A135E279F}.Release|x86.ActiveCfg = Release|Win32
+		{F5A1B454-5004-408E-8E40-240A135E279F}.Release|x86.Build.0 = Release|Win32
+		{F6B995BC-24AE-4AED-8862-DA1D421DE78C}.Debug|x86.ActiveCfg = Debug|Win32
+		{F6B995BC-24AE-4AED-8862-DA1D421DE78C}.Debug|x86.Build.0 = Debug|Win32
+		{F6B995BC-24AE-4AED-8862-DA1D421DE78C}.Release|x86.ActiveCfg = Release|Win32
+		{F6B995BC-24AE-4AED-8862-DA1D421DE78C}.Release|x86.Build.0 = Release|Win32
+		{2833E301-09ED-4495-BAB5-B7DCED51F335}.Debug|x86.ActiveCfg = Debug|Win32
+		{2833E301-09ED-4495-BAB5-B7DCED51F335}.Debug|x86.Build.0 = Debug|Win32
+		{2833E301-09ED-4495-BAB5-B7DCED51F335}.Release|x86.ActiveCfg = Release|Win32
+		{2833E301-09ED-4495-BAB5-B7DCED51F335}.Release|x86.Build.0 = Release|Win32
+		{2AE45F96-6D89-4DFF-A1A7-BE2D983D3554}.Debug|x86.ActiveCfg = Debug|Win32
+		{2AE45F96-6D89-4DFF-A1A7-BE2D983D3554}.Debug|x86.Build.0 = Debug|Win32
+		{2AE45F96-6D89-4DFF-A1A7-BE2D983D3554}.Release|x86.ActiveCfg = Release|Win32
+		{2AE45F96-6D89-4DFF-A1A7-BE2D983D3554}.Release|x86.Build.0 = Release|Win32
+		{219CB1F1-063A-4725-9D79-442B4356A07F}.Debug|x86.ActiveCfg = Debug|Win32
+		{219CB1F1-063A-4725-9D79-442B4356A07F}.Debug|x86.Build.0 = Debug|Win32
+		{219CB1F1-063A-4725-9D79-442B4356A07F}.Release|x86.ActiveCfg = Release|Win32
+		{219CB1F1-063A-4725-9D79-442B4356A07F}.Release|x86.Build.0 = Release|Win32
+		{7B57CB90-52AC-41C3-995B-5EEC0AAAA299}.Debug|x86.ActiveCfg = Debug|Win32
+		{7B57CB90-52AC-41C3-995B-5EEC0AAAA299}.Debug|x86.Build.0 = Debug|Win32
+		{7B57CB90-52AC-41C3-995B-5EEC0AAAA299}.Release|x86.ActiveCfg = Release|Win32
+		{7B57CB90-52AC-41C3-995B-5EEC0AAAA299}.Release|x86.Build.0 = Release|Win32
+		{DB308CE6-51CF-40BE-9CB5-64C64ADDCCC8}.Debug|x86.ActiveCfg = Debug|Win32
+		{DB308CE6-51CF-40BE-9CB5-64C64ADDCCC8}.Debug|x86.Build.0 = Debug|Win32
+		{DB308CE6-51CF-40BE-9CB5-64C64ADDCCC8}.Release|x86.ActiveCfg = Release|Win32
+		{DB308CE6-51CF-40BE-9CB5-64C64ADDCCC8}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

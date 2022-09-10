@@ -193,12 +193,14 @@ copy ..\..\platform\quark\lib3th\output\pthread.dll .\output\pthread.dll</Comman
     <ClCompile Include="mainbroad.cpp" />
     <ClCompile Include="md5.cpp" />
     <ClCompile Include="netcard.cpp" />
+    <ClCompile Include="winos.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="filesys.h" />
     <ClInclude Include="mainbroad.h" />
     <ClInclude Include="md5.h" />
     <ClInclude Include="netcard.h" />
+    <ClInclude Include="winos.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />

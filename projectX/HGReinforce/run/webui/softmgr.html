@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>设备参数设置</title>
+<link href="css/sermon.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.min.js"></script>
+</head>
+<body>
+ <table border="0" width="100%" cellpadding="2">
+	<tr>
+		<td colspan="2" height="50">
+		<label style="padding-left:20px; padding-right:20px;">主机网卡设置</label>
+		</td>
+	</tr>
+	<tr>
+		<td width="18%" align="right">网卡名称：</td>
+		<td width="42%"><select id="netcards" width="200px" size="1" name="netcards"></select></div></td>
+	</tr>
+	<tr>
+		<td width="18%" align="right">IP地址：</td>
+		<td width="42%"><input type="text" id="cardip"  size="36"></td>
+	</tr>
+	<tr>
+		<td width="18%" align="right" height="28">子网掩码：</td>
+		<td width="42%" height="28">
+		<input type="text" id="cardmask"  size="36" name="T1"></td>
+	</tr>
+	<tr>
+		<td width="18%" align="right">网关地址：</td>
+		<td width="42%"><input type="text" id="cardgate"  size="36" name="T2"></td>
+	</tr>
+	<tr>
+		<td width="18%" align="right"></td>
+		<td width="42%">
+		<input type='button' name='submitbtn' value='网卡设置' onclick="onIPConfig();"/></td>
+	</tr>
+</table>
+</body>
+</html>
+<script>
+function GetXmlHttpObject() {   
+	var xmlHttp=null;   
+	try{xmlHttp=new XMLHttpRequest();}
+	catch(e){ 
+		try{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+		catch(e){xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}     
+	}
+	return xmlHttp; 
+}
+ 
+window.onload = function(){
+/*
+	document.getElementById("privatekey").innerText = g_privatekey;
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUA","main.lua?deviceinfo" ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var netcardlist = eval('(' + xhr.responseText + ')');
+		 	document.getElementById("devicename").value = netcardlist.devname;
+		 	document.getElementById("devicedesc").value = netcardlist.devdesc;
+		 	var objSelectet = document.getElementById("netcards");
+			for( var v = 0; v < netcardlist.netcard.length; v++ ){
+				var objOption   = document.createElement("OPTION");
+				objOption.text  = netcardlist.netcard[v].name;
+				objOption.value = netcardlist.netcard[v].name;
+				objSelectet.options.add(objOption);
+				if( v == 0  ){
+					$("#cardip").val( netcardlist.netcard[v].ip ); 
+					$("#cardmask").val( netcardlist.netcard[v].mask ); 
+					$("#cardgate").val( netcardlist.netcard[v].gate ); 
+				} 
+			}
+		}
+	}
+	xhr.send(null); 
+	*/
+}
+
+function onselectchange(){
+	
+}
+
+function onIPConfig(){
+	var name = $("#netcards option:selected").val();
+ 	var ipdz = $("#cardip").val();
+	var mask = $("#cardmask").val();
+	var gate = $("#cardgate").val();
+	if(!window.confirm("请确认网卡信息?\n"+name+"\nIP地址："+ipdz+"\n子网掩码："+mask+"\n网关地址："+gate))
+		return false;
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUA","main.lua?setnetcard=" + name + ','+ ipdz + ',' + mask + ',' + gate,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			if( rsp.result == 0 ){
+ 				alert("网卡:" + name + "设置成功！");
+			}else{
+				alert("网卡:" + name + "设置失败！\n请检查设置参数。");
+			}
+		}
+	}	
+	xhr.send(null); 
+}
+
+//恢复出厂设置
+function onFectorySetup(){
+	if(!window.confirm("恢复出出设置将删除所有数据，是否要继续?"))
+		return false;
+	var name = $("#devicename").val();  
+	var desc = $("#devicedesc").val(); 
+	var xhr = GetXmlHttpObject(); 
+	xhr.open("LUA","main.lua?factorysetup=" + name + ','+ g_account + ',' + desc,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			if( rsp.result == 0 ){
+ 				alert("设置成功！");
+			}else{
+				alert("设置失败！\n请检查设置参数。");
+			}
+		}
+	}	
+	xhr.send(null); 
+}
+window.onload();
+</script>
+ 
