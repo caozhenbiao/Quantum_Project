@@ -89,13 +89,15 @@
 									    <li><a href="javascript:void(0)">文件(<u>F</u>)</a>
 									    	<ul>
 												<li><a href="javascript:void(0)" onclick="javascript:onExitApp()">关闭</a></li>
+												<li><a href="javascript:void(0)" onclick="javascript:onExitUser()">用户退出</a></li>
 									            <li><a href="javascript:void(0)" onclick="javascript:onExitApp()">退出</a></li>
 									        </ul>
 									    </li>
 									    <li><a href="javascript:void(0)">编辑(<u>E</u>)</a>
 									        <ul>
-									            <li><a href="javascript:void(0)" onclick="javascript:openMenu()">拷贝</a></li>
-									            <li><a href="javascript:void(0)" onclick="javascript:openMenu()">粘贴</a></li>
+									            <li><a href="javascript:void(0)" onclick="javascript:onCurrentTaskQuery();">查询</a></li>
+									            <li><a href="javascript:void(0)" onclick="javascript:onCurrentTaskExecute();">执行</a></li>
+												<li><a href="javascript:void(0)" onclick="javascript:onCurrentTaskRevert();">恢复</a></li>
 									        </ul>
 									    </li>
 									    <li><a href="javascript:void(0)">视图(<u>E</u>)</a>
@@ -108,7 +110,14 @@
 												<li><a href="javascript:void(0)" onclick="javascript:onShowTabView('about')">about</a></li>
 									        </ul>
 									    </li>
-									    <li><a href="javascript:void(0)" onclick="javascript:openMenu()">工具(<u>T</u>)</a></li>
+										<li><a href="javascript:void(0)">工具(<u>T</u>)</a>
+									        <ul>
+									            <li><a href="javascript:void(0)" onclick="javascript:onFactorySetup()">初始数据库</a></li>
+												<li><a href="javascript:void(0)" onclick="javascript:onImportModel()">导入模版</a></li>
+												<li><a href="javascript:void(0)" onclick="javascript:onResetTask()">重置任务</a></li>
+												<li><a href="javascript:void(0)" onclick="javascript:onRevertTask()">恢复设置</a></li>
+									        </ul>
+									    </li>
 									    <li><a href="javascript:void(0)" onclick="javascript:openMenu()">关于(<u>A</u>)</a></li>
 									</ul>
 								</td>
@@ -229,7 +238,7 @@ function openShutKey(){
         //event.preventDefault();
         // F1~F12
         switch(event.keyCode){
-            case 112: alert('f1'); break;
+            case 27: onPopWindowClose(); break;
             case 113: alert('f2'); break;
             case 114: alert('f3'); break;
             case 115: alert('f4'); break;
@@ -268,36 +277,101 @@ window.onload = function(){
 		if(xhr.readyState==4 && xhr.status==200){
 			var rsp = eval('(' + xhr.responseText + ')');
 			g_database = rsp;
-			new QWebChannel(qt.webChannelTransport, function(channel) {
-				var cmd = channel.objects.command;
-				cmd.show( true );
-				$('#reinforce').load('reinforce.html');
-				$('#history').load('history.html');
-				$('#usermgr').load('usermgr.html');
-				$('#softmgr').load('softmgr.html');
-				$('#about').load('about.html');
-			});
+			$('#reinforce').load('reinforce.html');
+			$('#history').load('history.html');
+			$('#usermgr').load('usermgr.html');
+			$('#softmgr').load('softmgr.html');
+			$('#about').load('about.html');
 		}
+		new QWebChannel(qt.webChannelTransport, function(channel) {
+			var cmd = channel.objects.command;
+			cmd.show( true );
+		});
 	}	
 	xhr.send();
 	openShutKey();
 }
 
-
-
-
 function openMenu(){
 	alert("open");
 }
 
+//初始数据库
+function onFactorySetup(){
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUAPOST","main.factorysetup" ,true);  
+	xhr.setRequestHeader('Content-Type', 'application/json');	  
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			alert("初始数库存完成。");
+		}
+	}	
+	xhr.send();
+}
 
+//导入任务模版
+function onImportModel(){
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUAPOST","main.importModel" ,true);  
+	xhr.setRequestHeader('Content-Type', 'application/json');	  
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			alert("模板导入完成。");
+		}
+	}
+	xhr.send();
+}
+
+//重置任务状态
+function onResetTask(){
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUAPOST","main.resetTask" ,true);  
+	xhr.setRequestHeader('Content-Type', 'application/json');	  
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			resetTaskList();
+			alert("任务重置完成！");
+		}
+	}
+	xhr.send();
+}
+
+//恢复设置
+function onRevertTask(){
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUAPOST","main.revertTask" ,true);  
+	xhr.setRequestHeader('Content-Type', 'application/json');	  
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			alert("恢复设置完成！");
+		}
+	}
+	xhr.send();
+}
+
+//刷新
+function onRefresh(){
+	location.reload();
+}
+
+//用户退出
+function onExitUser(){
+
+	
+}
+
+
+//退出主界面
 function onExitApp(){
 	new QWebChannel(qt.webChannelTransport, function(channel) {
 		var cmd = channel.objects.command;
-		cmd.exitApp();
+		cmd.exitProc();
+		alert("open");
 	});
 }
-
 //$("#hrefopen").removeAttr("href");
-
 </script>

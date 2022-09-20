@@ -1,4 +1,4 @@
-print("start HG project alc at:" .. os.date("%Y-%m-%d %H:%M:%S", os.time()))
+print("start alc at:" .. os.date("%Y-%m-%d %H:%M:%S", os.time()))
 local JSON = require "luajson"
 local XAPI = require "luaxapi"
 local SYS  = require "system"
@@ -10,106 +10,108 @@ local HKEY_CLASSES_ROOT = 0x80000000;
 local HKEY_CURRENT_USER  = 0x80000001;
 local HKEY_LOCAL_MACHINE  = 0x80000002;
 local HKEY_USERS  = 0x80000003;
+print("load module success!")
 
---删除共享
-function A1( opt )
-	print("A1:DELETE SHARED")
-	local result = 0;
-	local context = "DATA:";
-	local data = {};
-	data.code = "A1";
-	data.Name = "DELETE SHARED";
-	if opt == EXECUTE then
-		local retStr = SYS.cmdExecute("net share");
-		local shares = retStr:gmatch("(%w+$)");
-		for k,_ in shares do	
-			local ret = SYS.cmdExecute(string.format("net share %s /delete", k) );
-			context = context .. string.format("'%d',",ret);
-		end
-		context = string.sub(context,1,-2);
-		--print( JSON:encode( shares ) );
-		--file=io.open("A1.txt","a")
-		--file:write(args)
-		--io.close()
-		local ret, hkey = REGEDIT.openKey(HKEY_CLASSES_ROOT,"\\System\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\");	
-		if ret == 0 then
-			print("sdfadsfsadfadsfdsfdsf")
-			REGEDIT.writeIntValue( hkey,"AutoShareServer", 0 );
-			REGEDIT.writeIntValue( hkey,"AutoShareWKS", 0 );
-			REGEDIT.closeKey( hKey );
-		end
-	elseif opt == REVERT then
-		local retStr1 = SYS.cmdExecute("net share ipc$");
-		local retStr2 = SYS.cmdExecute("net share admin$");
-		local retStr3 = SYS.cmdExecute("net share c$");
-		local retStr4 = SYS.cmdExecute("net share d$");
-		local retStr5 = SYS.cmdExecute("net share e$");
-		local retStr6 = SYS.cmdExecute("net share f$");
-	else
-		local retStr = SYS.cmdExecute("net share");
-		local shares = retStr:gmatch("(%w+$)");
-		for k,_ in shares do	
-			context = context .. string.format("%s,",k);
-		end
-		context = string.sub(context,1,-2);
-		local ret, hkey = REGEDIT.openKey(HKEY_CLASSES_ROOT,"System\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\");
-		--if ret == 0 and hkey then
-		--	local r1, v1 = REGEDIT.readIntValue(hKey, "AutoShareServer");
-		--	local r2, v2 = REGEDIT.readIntValue(hKey, "AutoShareWKS");
-		--	context = context .. string.format("AutoShareServer:%d,",v1);
-		--	context = context .. string.format("AutoShareWKS:%d,",v2);
-		--	REGEDIT.closeKey( hKey );
-		--end
+--A1:删除共享
+function A1_execute( data )	
+	local detail = {};
+	detail.unShare = {};
+	for _,v in pairs(data.share) do
+		local ret = SYS.cmdExecute(string.format("net share %s /delete",v.name));
+		table.insert(detail.unShare,v);
 	end
-	
-	print( context );
-	return result, context;
+	local ret,hkey = REGEDIT.openKey(HKEY_CLASSES_ROOT,"System\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\");
+	if ret == 0 and hkey > 0 then
+		REGEDIT.writeIntValue( hkey,"AutoShareServer", 0 );
+		REGEDIT.writeIntValue( hkey,"AutoShareWKS", 0 );
+		REGEDIT.closeKey( hkey );
+		detail.AutoShareServer = 0;
+		detail.AutoShareWKS = 0;
+	end
+	return 0,detail;
+end
+function A1_revert( data )
+	for _,v in pairs(data.share) do
+		local echo = SYS.cmdExecute(string.format("net share %s=%s",v.name, v.path));
+	end
+	local ret,hkey = REGEDIT.openKey(HKEY_CLASSES_ROOT,"System\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\");
+	if ret == 0 and hkey then
+		REGEDIT.writeIntValue( hkey,"AutoShareServer", data.AutoShareServer );
+		REGEDIT.writeIntValue( hkey,"AutoShareWKS", data.AutoShareWKS );
+		REGEDIT.closeKey( hKey );
+	end
+	return ret;
+end
+function A1_query()
+	local data = {};
+	data.share = {};
+	local retStr = SYS.cmdExecute("net share");
+	local shares = retStr:gmatch("(%w+$)%s*(%w:\\+)");
+	for k,v in shares do
+		table.insert(data.share,{name=k,path=v});
+	end
+	local ret,hkey = REGEDIT.openKey(HKEY_CLASSES_ROOT,"System\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\");
+	if ret == 0  then
+		local r1,v1 = REGEDIT.readIntValue(hkey, "AutoShareServer");
+		local r2,v2 = REGEDIT.readIntValue(hkey, "AutoShareWKS");
+		REGEDIT.closeKey( hkey );
+		data.AutoShareServer = v1;
+		data.AutoShareWKS = v2;
+	end
+	return data;
 end
 
---密码策略设置符合复杂度要求
-function A2( opt )
-	print("A2:PWSSWORD CONFIG")
-	local result = 0;
-	local context = "";
-	if opt == EXECUTE then
-		print("A1 EXECUTE")
-		local file = io.open("gp.cfg", "a");
-		io.output(file);
-		io.write("[version]\n");
-		io.write("signature=\"$CHICAGO$\"\n");
-		io.write("[System Access]\n");
-		io.write("MinimumPasswordAge = 0\n");
-		io.write("MaximumPasswordAge = 13\n");
-		io.write("MinimumPasswordLength = 0\n");
-		io.write("PasswordComplexity = 0\n");
-		io.write("PasswordHistorySize = 0\n");
-		io.close(file);
-		local cmdstr = "secedit /configure /db %windir%\\security\\policy.sdb /cfg gp.cfg /areas SECURITYPOLICY";
-		local retStr = SYS.cmdExecute( cmdstr );
-		context = "set config success";
-		print( "exec secedit finish");
-	elseif opt == REVERT then
-		print("A2 REVERT");
-		local file = io.open("gp.inf", "a");
-		io.output(file);
-		io.write("[version]\n");
-		io.write("signature=\"$CHICAGO$\"\n");
-		io.write("[System Access]\n");
-		io.write("MinimumPasswordAge = 0\n");
-		io.write("MaximumPasswordAge = 42\n");
-		io.write("MinimumPasswordLength = 0\n");
-		io.write("PasswordComplexity = 0\n");
-		io.write("PasswordHistorySize = 0\n");
-		local retStr = SYS.cmdExecute("secedit /configure /db %windir%\\security\\policy.sdb /cfg gp.cfg /areas SECURITYPOLICY");
-		context = "revert config success";
-		print( retStr );
-	else
-		print("A2 QUERY");
-		local command_rd = "secedit /export /cfg luan.inf > 0 & type luan.inf | findstr /R /i \"^min ^max ^pass ^lock\"";
-		local retStr = SYS.cmdExecute( command_rd );
-		context = string.gsub(retStr, " ", "")
+
+--A：密码策略设置符合复杂度要求
+function A2_execute( data )
+	print("A2 EXECUTE")
+	local detail = {};
+	local file = io.open("gp.cfg", "a");
+	io.output(file);
+	io.write("[version]\n");
+	io.write("signature=\"$CHICAGO$\"\n");
+	io.write("[System Access]\n");
+	io.write("MinimumPasswordAge = 0\n");
+	io.write("MaximumPasswordAge = 13\n");
+	io.write("MinimumPasswordLength = 0\n");
+	io.write("PasswordComplexity = 0\n");
+	io.write("PasswordHistorySize = 0\n");
+	io.close(file);
+	local cmdstr = "secedit /configure /db %windir%\\security\\policy.sdb /cfg gp.cfg /areas SECURITYPOLICY";
+	local retsr = SYS.cmdExecute( cmdstr );
+	detail.MinimumPasswordAge = 0;
+	detail.MaximumPasswordAge = 13;
+	detail.MinimumPasswordLength = 0;
+	detail.PasswordComplexity = 0;
+	detail.PasswordHistorySize = 0;
+	return 0,detail;
+end
+function A2_revert( data )
+	local file = io.open("gp.inf", "a");
+	io.output(file);
+	io.write("[version]\n");
+	io.write("signature=\"$CHICAGO$\"\n");
+	io.write("[System Access]\n");
+	for k, v in pairs( data ) do
+		print( k, v )
+		io.write(string.format("%s = %d\n", k, v));
+	end 
+	io.close();
+	local retStr = SYS.cmdExecute("secedit /configure /db %windir%\\security\\policy.sdb /cfg gp.inf /areas SECURITYPOLICY");
+	print( retStr );
+	return 0;
+end
+function A2_query()
+	local data = {};
+	local command_rd = "secedit /export /cfg luan.inf > 0 & type luan.inf | findstr /R /i \"^min ^max ^pass ^lock\"";
+	local retStr = SYS.cmdExecute( command_rd );
+	print( retStr );
+	for k, v in string.gmatch(retStr, "(%w+) = (%d+)") do
+	
+		print( k, v );
+		data[ k ] = tonumber(v);
 	end
-	return result, context;
+	return data;
 end
 
 --启用账户锁定策略
@@ -118,7 +120,7 @@ function A3( opt )
 	local result = 0;
 	local context = "";
 	if opt == EXECUTE then
-		local file = io.open("gp.cfg", "a");
+		local file = io.open("gp.cfg", "w+");
 		io.output(file);
 		io.write("[System Access]\n");
 		io.write("LockoutBadCount = 3\n");
@@ -130,12 +132,12 @@ function A3( opt )
 		context = "set config success";
 		print( "exec secedit finish");
 	elseif opt == REVERT then
-		local file = io.open("gp.inf", "a");
-		io.output(file);
+		local file = io.open("gp.cfg", "w+");
 		io.write("[System Access]\n");
 		io.write("LockoutBadCount = 0\n");
 		io.write("ResetLockoutCount = 0\n");
 		io.write("LockoutDuration = 0\n");
+		io.close(file);
 		local retStr = SYS.cmdExecute("secedit /configure /db %windir%\\security\\policy.sdb /cfg gp.cfg /areas SECURITYPOLICY");
 		context = "revert config success";
 		print( retStr );
@@ -182,19 +184,26 @@ function A4( opt )
 end
 
 --删除或禁用多余的、过期的帐户
-function A5( opt )
-	print("A3:DELETE ACCOUNT")
-	local result = 0;
-	local context = "";
-	if opt == EXECUTE then
- 
-	elseif opt == REVERT then
- 
-	else
-		context = "A5";
-	end
-	return result, context;
+function A5_execute( data )
+	XAPI:PrintTable( data )
+	
+	
+	
 end
+function A5_revert( data )
+
+end
+function A5_query()
+	local data = {};
+	local userList = SYS.ListUserInfo();
+	for k, v in pairs(userList) do
+		local item = JSON:decode( v );
+		table.insert( data, item );
+	end
+	return data;
+end
+
+
 
 --应用软件的账户权限设置
 function A6( opt )
@@ -379,15 +388,23 @@ function A19( opt )
 	local result = 0;
 	local context = "";
 	if opt == EXECUTE then
+		local bWrite = 0;
 		local ret, hkey = REGEDIT.openKey(HKEY_LOCAL_MACHINE,"Software\\Microsoft\\WindowsNT\\CurrentVersion\\Winlogon");	
 		if ret== 0 and hkey then
-			REGEDIT.writeIntValue( hkey,"AutoAdminLogon", 0 );
+			bWrite = REGEDIT.writeIntValue( hkey,"AutoAdminLogon", 0 );
 			REGEDIT.closeKey( hKey );
 		end
+		context = string.format("{'result':0,'AutoAdminLogon':%d}",bWrite);
 	elseif opt == REVERT then
  
 	else
-		context = "Alertter"
+		local open = 0;
+		local ret, hkey = REGEDIT.openKey(HKEY_LOCAL_MACHINE,"Software\\Microsoft\\WindowsNT\\CurrentVersion\\Winlogon");	
+		if ret== 0 and hkey then
+			open = REGEDIT.ReadIntValue( hkey,"AutoAdminLogon", 0 );
+			REGEDIT.closeKey( hKey );
+		end
+		context = string.format("{'AutoAdminLogon':%d}",open);
 	end
 	return result, context;
 end
@@ -470,4 +487,44 @@ function A27( opt )
 	return 0, "A27";
 end
 
-print("load main_alc.lua success.")
+
+local TaskA = {}
+
+function TaskA:execute( code, data )
+	local ret = 0;
+	local ctx = "";	
+	if code=="A1"     then ret,ctx=A1_execute( data );
+	elseif code=="A2" then ret,ctx=A2_execute( data );
+	end
+	return ret,ctx;
+end
+
+function TaskA:revert( code, data )
+	local ret = 0;
+	if code=="A1" then ret=A1_revert( data );
+	elseif code=="A2" then ret=A2_revert( data );
+	end
+	return ret;
+end
+
+function TaskA:query( code )
+	local data;
+	if code == "A1" then data = A1_query();
+	elseif code == "A2" then data = A2_query();
+	elseif code == "A5" then data = A5_query();
+	end
+	return data;
+end
+
+function TaskA:new(args)
+   local new = { }
+   if args then
+      for key, val in pairs(args) do
+         new[key] = val
+      end
+   end
+   return setmetatable(new, TaskA)
+end
+
+TaskA.__index = TaskA
+return TaskA:new()

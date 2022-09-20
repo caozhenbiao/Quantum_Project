@@ -5,7 +5,10 @@
 #include <lm.h>
 #pragma comment(lib, "netapi32.lib")
 #include <iostream>
-
+#include <map>
+#include <string>
+#include <vector>
+ 
 bool DisableService(const char* service) {
 	SC_HANDLE hSC = OpenSCManager(NULL, NULL, SC_MANAGER_ALL_ACCESS);
 	if (hSC == NULL) {
@@ -478,4 +481,80 @@ void MondifyPassword(LPWSTR szServerName, LPWSTR userName, LPWSTR oldPassword, L
 	}else{
 		fprintf(stderr, "A system error has occurred: %d\n", nStatus);
 	}
+}
+
+int GetAllUserInfo(std::vector<std::string>& data ) {
+	LPUSER_INFO_0 pBuf = NULL;
+	LPUSER_INFO_0 pTmpBuf;
+	DWORD dwEntriesRead = 0;
+	DWORD dwTotalEntries = 0;
+	DWORD dwResumeHandle = 0;
+	std::vector<std::wstring> userList;
+	NET_API_STATUS nStatus;
+	// 循环，直到可以成功调用 NetUserEnum
+	do {
+		nStatus = NetUserEnum(NULL, 0,// 这里设置为0，使用 LPUSER_INFO_0 返回结果
+			FILTER_NORMAL_ACCOUNT, // 只列举“正常”类型的用户
+			(LPBYTE*)&pBuf,// LPUSER_INFO_0 保存返回结果
+			MAX_PREFERRED_LENGTH, //内存由API分配，需要在之后调用NetApiBufferFree释放
+			&dwEntriesRead,// 读了的 Entries
+			&dwTotalEntries,// 一共的 Entries
+			&dwResumeHandle);
+		if ((nStatus == NERR_Success) || (nStatus == ERROR_MORE_DATA)) {
+			if ((pTmpBuf = pBuf) != NULL) {
+				// 循环读取用户信息
+				for (unsigned int i = 0; ( i < dwEntriesRead); i++) {
+					assert(pTmpBuf != NULL);
+					if (pTmpBuf == NULL) {
+						fprintf(stderr, "An access violation has occurred\n");
+						break;
+					}
+					userList.push_back(pTmpBuf->usri0_name);
+					pTmpBuf++;
+				}
+			}
+		}
+		if (pBuf != NULL) {
+			NetApiBufferFree(pBuf);
+			pBuf = NULL;
+		}
+	} while (nStatus == ERROR_MORE_DATA); // end do
+	if (pBuf != NULL) {
+		NetApiBufferFree(pBuf); 
+	}
+	//获取所有用户信息
+	for( unsigned int i = 0; i<userList.size(); i++ ){
+		LPUSER_INFO_4 pBuf = NULL;
+		LPCWSTR userName = userList[i].c_str();
+		char szInfo[1204] = { 0 };
+		wchar_t uinfo[1204] = {0};
+		NET_API_STATUS nStatus = NetUserGetInfo(NULL, userName , 4, (LPBYTE *)&pBuf);
+		if ( nStatus==NERR_Success && pBuf != NULL) {
+			swprintf_s(uinfo, 1204, L"{'Account':'%s','Fullname':'%s','PwdAge':%d,'Flags':%d,'AccExpires':%d,'PwdExpires':%d}",
+				pBuf->usri4_name, 
+				pBuf->usri4_full_name,
+				pBuf->usri4_password_age,
+				pBuf->usri4_flags,
+				pBuf->usri4_acct_expires,
+				pBuf->usri4_password_expired);
+		}else {
+			swprintf_s(uinfo, 1024, L"{'Account':'%s','Fullname':'','PwdAge':0,'Flags':0,'AccExpires':0,'PwdExpires':0}", userName);
+		}
+		int nLen1 = WideCharToMultiByte(CP_ACP, NULL, uinfo, wcslen(uinfo), NULL, 0, NULL, FALSE);
+		int nLen2 = WideCharToMultiByte(CP_ACP, NULL, uinfo, wcslen(uinfo), szInfo, nLen1, NULL, FALSE);
+		szInfo[nLen1] = '\0';
+		data.push_back(szInfo);
+		if (pBuf != NULL) {
+			NetApiBufferFree(pBuf);
+		}
+	}
+	return 0;
+}
+
+int RemoveUser(const char * userName) {
+	wchar_t wcName[1024] = { 0 };
+	int len = MultiByteToWideChar(CP_ACP, 0, userName, strlen(userName), NULL, 0);
+	MultiByteToWideChar(CP_ACP, 0, userName, strlen(userName), wcName, len);
+	wcName[len] = '\0';
+	return NetUserDel(NULL, wcName);
 }

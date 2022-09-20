@@ -68,7 +68,7 @@
 						<th width="300">项目</th>
 						<th width="*">数据</th>
 						<th width="80">状态</th>
-						<th width="260">时间</th>
+						<th width="170">时间</th>
 					</tr>
 				</thead>
 				<tbody id="historydatalist" class="hislist"></tbody>
@@ -91,6 +91,8 @@
 </html>
 
 <script type="text/javascript">
+var curTaskCode = "";
+var curListItem = null;
 var runScan = false;
 var curViewitem = {};
 var lastTab = document.getElementById("masterkill");
@@ -159,6 +161,8 @@ function show_datalist( subject, page ){
 	curViewitem = {};
 	for( var v = page * 10; v < showdata.length && v<(page*10+10); v++ ){
 		var devitem = devlst.insertRow( -1 );
+		devitem.setAttribute('ondblclick', 'onCurrentTaskExecute();');
+		devitem.setAttribute('onclick', 'onTaskItemClick( this, \'' + showdata[v].code + '\');');
 		var td1 = devitem.insertCell(0);
 		td1.innerHTML = ++rowno;
 		td1.setAttribute('align','center');		
@@ -166,24 +170,35 @@ function show_datalist( subject, page ){
 		td2.innerHTML = showdata[v].code;
 		td2.setAttribute('align','center');
 		devitem.insertCell(2).innerHTML = showdata[v].name;
-		devitem.insertCell(3).innerHTML = showdata[v].context;
+		var td3 = devitem.insertCell(3)
+		td3.innerHTML = showdata[v].context;
 		var td4 = devitem.insertCell(4);
 		td4.innerHTML = showdata[v].status;
 		td4.setAttribute('align','center');
 		var td5 = devitem.insertCell(5);
 		td5.innerHTML = showdata[v].time;	
 		var viewOjb= {};
+		viewOjb["context"] = td3;
 		viewOjb["status"] = td4;
 		viewOjb["time"] = td5;
 		curViewitem[showdata[v].code] =	viewOjb;	
 	}
 }
 
+function onTaskItemClick( item, code ){
+	if( curListItem != null ){
+		curListItem.removeAttribute("style");
+	}
+	item.setAttribute("style","background-color:#ccc;");
+	curListItem = item;
+	curTaskCode = code;
+	return;
+}
+
 function setProgessPos( pos ){
 	document.getElementById("aside").style.width = pos+ '%';
 	document.getElementById("span").innerHTML = parseInt( pos*100/500 ) + '%';
 }
-
 
 function getFinishPercent(){
 	var total = 0;
@@ -195,7 +210,7 @@ function getFinishPercent(){
 			done  = done + (showdata[item].scan?1:0);
 		}
 	}
-	return done / total * 100;
+	return (done / total) * 100;
 }
 
 //重置所有任务
@@ -206,8 +221,10 @@ function resetTaskList(){
 			var code = g_database[sub][item].code;
  			g_database[sub][item].scan = false;
  			g_database[sub][item].status = 0;
+			g_database[sub][item].context = "";
  			g_database[sub][item].time = "";
  			if( curViewitem[code]){
+				curViewitem[code].context.innerHTML = "";
 				curViewitem[code].status.innerHTML = 0;
 				curViewitem[code].time.innerHTML = "";
 			}	
@@ -230,16 +247,18 @@ function getCurrentItem(){
 
 
 //更新任务状态
-function updateItem( code, status ){
+function updateItem( code, status, context ){
 	for( var sub in g_database ){
 		var showdata = g_database[ sub ];
 		for( var item in showdata){
 			if( showdata[item].code == code ){
 				g_database[sub][item].scan = true;
 				g_database[sub][item].status = status;
+				g_database[sub][item].context = context;
 				g_database[sub][item].time = getdate();
 				if( curViewitem[code]){
-					curViewitem[code].status.innerHTML = g_database[sub][item].status;
+					curViewitem[code].context.innerHTML = context;
+					curViewitem[code].status.innerHTML = status;
 					curViewitem[code].time.innerHTML = g_database[sub][item].time;
 				}
 				return;
@@ -247,6 +266,7 @@ function updateItem( code, status ){
 		}
 	}
 }
+
 
 //单任务执行行
 function scanTask(){
@@ -260,9 +280,9 @@ function scanTask(){
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState==4 && xhr.status==200){
 				var rsp = eval('(' + xhr.responseText + ')');
-				updateItem( rsp.code, 2 );
+				updateItem( rsp.code, 2 , rsp.context);
 				setProgessPos( getFinishPercent());
-				scanTask();
+				setTimeout(function (){scanTask();}, 1000);
 			}
 		}	
 		xhr.send("{'code':'"+ code +"'}");
@@ -271,6 +291,53 @@ function scanTask(){
 		document.getElementById("scanProgress").style = "display:none;"
 	}
 }
+
+//查询当前任务
+function onCurrentTaskQuery(){
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUAPOST","main.queryTask" ,true);  
+	xhr.setRequestHeader('Content-Type', 'application/json');	  
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			alert( xhr.responseText );
+		}
+	}	
+	xhr.send("{'code':'"+ curTaskCode +"'}");
+	return;
+}
+
+//执行当前任务
+function onCurrentTaskExecute(){
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUAPOST","main.executeTask" ,true);  
+	xhr.setRequestHeader('Content-Type', 'application/json');	  
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			updateItem( rsp.code, 2 , rsp.context);
+			setProgessPos( getFinishPercent());
+		}
+	}	
+	xhr.send("{'code':'"+ curTaskCode +"'}");
+	return;
+}
+
+//恢复当前任务
+function onCurrentTaskRevert(){
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUAPOST","main.revertTask" ,true);  
+	xhr.setRequestHeader('Content-Type', 'application/json');	  
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			alert( xhr.responseText );
+		}
+	}	
+	xhr.send("{'code':'"+ curTaskCode +"'}");
+	return;
+}
+
 
 //开始执行任务
 function onStartScan(){
@@ -283,7 +350,6 @@ function onStartScan(){
 function onPauseScan(){
 	document.getElementById("scanRunbutton").style = "display:block;"
 	document.getElementById("scanProgress").style = "display:none;"
-
 }
 
 setProgessPos( 0 );

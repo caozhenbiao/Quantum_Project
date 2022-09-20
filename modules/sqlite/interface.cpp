@@ -113,6 +113,15 @@ static int finalize(lua_State *L) {
 	return 1;
 }
 
+static int table_count(lua_State *L) {
+	int   db = (int)luaL_checkinteger(L, 1);
+	const char * tname = luaL_checkstring(L, 2);
+	const char * tcond = luaL_checkstring(L, 3);
+	int ret = theSqlite->table_count( db, tname, tcond);
+	lua_pushinteger(L, ret);
+	return 1;
+}
+
 static int close(lua_State *L) {
 	int db = (int)luaL_checkinteger(L, 1);
 	int ret = theSqlite->close(db);;
@@ -145,6 +154,7 @@ static const struct luaL_Reg mylib[]={
 	{ "column_float",column_float },
 	{ "column_blob",column_blob },
 	{ "finalize",finalize },
+	{"table_count",table_count},
 	{ "close",close },
 	{NULL,NULL}
 };

@@ -76,3 +76,18 @@ int mysqlite::bind_text(int mt, int col, const char* val) {
 
 	return sqlite3_bind_text(mymts[mt], col, val, (int)strlen(val), NULL);
 }
+
+int mysqlite::table_count(int db, const char* name,const char* cond) {
+	int retcount = 0;
+	char sql[1024] = { 0 };
+	sprintf(sql, "select count(*) from %s %s", name, cond);
+	sqlite3_stmt * stmt = NULL;
+	const char *zTail;
+	if (sqlite3_prepare_v2(mydbs[db], sql, -1, &stmt, &zTail) == SQLITE_OK) {
+		if (SQLITE_ROW == sqlite3_step(stmt)){
+			retcount = sqlite3_column_int(stmt, 0);
+		}
+	}
+	 sqlite3_finalize( stmt );
+	return retcount;
+}

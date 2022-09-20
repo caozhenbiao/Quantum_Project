@@ -19,6 +19,7 @@ public:
 	int bind_blob(int mt, int col, void* blod, int len);
 	int bind_int(int mt, int col, int val);
 	int bind_text(int mt, int col, const char* val);
+	int table_count(int db, const char* name,const char* cond);
 
 private:
 	std::map<int, sqlite3*>       mydbs;

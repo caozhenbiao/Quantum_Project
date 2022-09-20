@@ -255,6 +255,11 @@ void CWarrant::get(){
 }
 
 /****************************************Command******************************************************/
+void CCommand::exitProc(){
+    theWidget->close();
+    exit(0);
+}
+
 void CCommand::show( bool  isVisiable ){
     if( isVisiable ){
         theWidget->show();
@@ -266,3 +271,4 @@ void CCommand::show( bool  isVisiable ){
 void CCommand::move( int x, int y ){
     theWidget->move(x, y );
 }
+

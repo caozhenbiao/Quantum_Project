@@ -112,5 +112,6 @@ int main(int argc, char* argv[]) {
 	muntrace();
 #endif
 	printf("\nquark exit!\n");
+	exit(0);
 	return 0;
 }

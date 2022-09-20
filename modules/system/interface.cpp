@@ -37,9 +37,11 @@ static int cmdExecute(lua_State * L) {
 	pf = _popen(cmd, "r");
 	if (NULL != pf) {
 		char buffer[1024] = { '\0' };
-		while (fgets(buffer, sizeof(buffer), pf)) {
+		while (fgets(buffer, 1024, pf) != NULL) {
+			if (buffer[strlen(buffer) - 1] == '\n') {
+				buffer[strlen(buffer) - 1] = '\0';
+			}
 			retstr += buffer;
-			printf(buffer);
 		}
 		_pclose(pf);
 	}
@@ -147,14 +149,29 @@ static int ListDirFile(lua_State * L){
 	return 1;
 }
 
+static int ListUserInfo(lua_State * L) {
+	std::vector<std::string> userList;
+	GetAllUserInfo(userList);
+	lua_newtable(L);
+	for (size_t i = 0; i < userList.size(); i++) {
+		lua_pushstring(L, userList[i].c_str());
+		lua_rawseti(L, -2, i);
+	}
+	return 1;
+}
 
+static int RemoveUser(lua_State * L) {
+	const char * userName = luaL_checkstring(L, 1);
+	int ret = RemoveUser(userName);
+	lua_pushinteger(L, ret);
+	return 1;
+}
 
 static int netConnected(lua_State * L) {
 	int ret = theNetCard->IsNetwork();
 	lua_pushinteger(L, ret);
 	return 1;
 }
-
 
 static int CreatePath(lua_State * L){
 	const char * dir = luaL_checkstring(L,1);
@@ -252,6 +269,8 @@ static const struct luaL_Reg myLib[]={
 
 	{"netConnected",netConnected },
 	{"callback_test",callback_test },
+	{"ListUserInfo",ListUserInfo},
+	{"RemoveUser",RemoveUser},
 	{NULL,NULL}
 };
 

@@ -24,117 +24,105 @@
 	.nav2 
 	.nav2-divider{height:1px;margin:9px 0;overflow:hidden;background-color:#e5e5e5}
 	.nav2>li>a>img{max-width:none}
+	
+	#popview{
+		width: 1019px;
+		height: 680px;
+		z-index: 2;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		margin-left: -510px;
+		margin-top: -340px;
+		overflow: hidden;
+		display: none;
+		background-color: white;
+	}
+	#popmask{
+		position: fixed;
+		left: 0;
+		top:0;
+		width: 100%;
+		height: 100%;
+		background-color: grey;
+		z-index: 1;
+		opacity: 0.8;
+		display: none;
+	}
+	.topbar{
+		width: 100%;
+		height: 30px;
+		margin: 2px auto;
+	}
+	.topbar a{
+		float: right;
+		margin-top: 10px;
+		margin-right: 20px;
+		text-decoration: none;
+		color: #3A3C3D;
+		opacity: 0.5;
+	}
+	.topbar a:hover{
+		opacity: 1;
+	}
+		
 </style>
 </head>
 <body>
 <table border="0" width="100%" height="100%">
 	<tr height="50">
 		<td>
-			<label style="padding-left:20px; padding-right:20px;">历史数据</label>操作类型
+			<label style="padding-left:20px; padding-right:5px;">类型</label>
 			<select class="realchn" id="historychannels" style="width:180px;" size="1" name="historychannels"></select>
 			<label style="padding-left:20px;">开始时间：<input id="begintime" name="begintime" size="20" ></label>
 			<label style="padding-left:20px;">结束时间：<input id="endtime" name="endtime" size="20" ></label>
-			<input type="button" value="开始" id="history_runbtn" onclick="onPrintHistoryData();"> 
+			<input type="button" value="开始" id="history_runbtn" onclick="onPrintHistoryData(0);"> 
 			<input type="button" value="清除" id="history_clrbtn" onclick="onClearHistoryList();"> 
 			<a id="downloadlnk" href="tmp/history.txt" download="" >打印</a>
  		</td>
 	</tr>
 	<tr height="*">
-	<td valign="top">
-		<table width="100%" class="csoptlist" cellspacing="0" cellpadding="0">
-			<thead>
-				<tr class="header"><th width="80">序号</th>
-					<th width="194">时间</th>
-					<th width="141">操作类型</th>
-					<th width="*">数据</th>
-					<th width="260">描述</th>
-					<th width="200">操作员</th>
-				</tr>
-			</thead>
-			<tbody id="historydatalist"></tbody>
-		</table>
-	</td>
+		<td valign="top">
+			<table width="100%" class="csoptlist" cellspacing="0" cellpadding="0">
+				<thead>
+					<tr class="header">
+						<th width="60">代码</th>
+						<th width="120">类型</th>
+						<th width="300">名称</th>
+						<th width="*">数据</th>
+						<th width="100">操作员</th>
+						<th width="60">结果</th>
+						<th width="170">时间</th>
+					</tr>	
+				</thead>
+				<tbody id="historylist"></tbody>
+			</table>
+		</td>
+	</tr>
+	<tr height="50">
+		<td align="center">
+			<div id= "pageNav"></div>
+		</td>
 	</tr>
 </table>
 
-
-<div class="enmovediv" style="position: absolute;display: none;background:white;border:1px solid #cad9ea;width:485px;height:473px;left:284px;top:562px" id="historytoast">     
-  <div id="historydlgTest" class="dialog" style="position: absolute; margin-left: -1px; margin-top: -1px">
-        <div style="color:#fff;background-color:#404040;font-size:12pt;font-weight:bold;padding:4px 6px;cursor:move;">
-			<table border="0" width="100%" cellspacing="0" cellpadding="0" class="sss">
-				<tr>
-					<td><font size="4"><b>操作记录</font></b></td>
-					<td align="right"><button type="button" id="hisdivclose">关闭</button></td>
-				</tr>
-			</table>
-		</div>
-        <div style="padding:4px">
-			<table width="100%">
-				<tr><td>
-					<img border="0" src="snapshot/now.jpg" width="1019" height="640"></td></tr>
-				<tr><td><textarea rows="11" id="historyS2" cols="72" name="S2"></textarea></td></tr>
-			</table>
-        </div>
-    </div>
+<div id="popmask"></div>
+<div id="popview">
+	<div class="topbar">
+		<a href="javascript:void(0)" onclick="onPopWindowClose()">&#935;</a>
+	</div>
+	<img id="snapimg" border="0" width="1019px" height="640px">
 </div>
-
 </body>
 </html>
 
 <script type="text/javascript">
-$(".enmovediv").mousedown(function(e){
-	var left= parseInt($(".enmovediv").css("left"));
-	var top = parseInt($(".enmovediv").css("top"));
-	//获取鼠标按下时的坐标，区别于下面的es.pageX,es.pageY
-	var downx=e.pageX;
-	var downy=e.pageY;   //pageY的y要大写，必须大写！！
-	if( downy - top > 30 ) return;
-	//  鼠标按下时给div挂事件
-	$(".enmovediv").bind("mousemove",function(es){
-		//es.pageX,es.pageY:获取鼠标移动后的坐标
-		var endx= es.pageX-downx+left;   //计算div的最终位置
-		var endy= es.pageY-downy+top;
-		$(".enmovediv").css("left",endx+"px").css("top",endy+"px")
-	});  
-})
-$(".enmovediv").mouseup(function(){
-	$(".enmovediv").unbind("mousemove")
-})
-document.getElementById("hisdivclose").onclick = function(e){ 
-	document.getElementById("historytoast").style.display = "none";
-}
-function historyshowdesc( chn, data ){
-  	var toast = document.getElementById("historytoast");
-    toast.style.display = "block";
-    toast.style.position = "fixed";
-    var winWidth = window.innerWidth;
-    var winHeight = window.innerHeight;
-    var targetWidth = toast.offsetWidth;
-    var targetHeight = toast.offsetHeight;
-    toast.style.top = (winHeight - targetHeight) / 2 + "px";
-    toast.style.left = (winWidth - targetWidth) / 2 + "px";
-    document.getElementById("historyS1").value = data ;
-    document.getElementById("historyS2").value ="";
-    var xhr = GetXmlHttpObject();
-	xhr.open("GET","main.lua?frameExplain=" + chn + "," + data ,true);  
-	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
-	xhr.onreadystatechange = function(){
-		if(xhr.readyState==4 && xhr.status==200){
-			var rsp = eval('(' + xhr.responseText + ')');
-			document.getElementById("historyS2").value = rsp.pntdesc + ";\n" + rsp.explain.replace(/\;/g,";\n") ;	
-		}
-	}	
-	xhr.send(null); 
-}
-</script>
-
-<script type="text/javascript">
 var objSelectet = document.getElementById("historychannels");
-var opttype = ["主机杀毒","用户帐号与口令安全","日志与审核","服务优化","关闭高危端口","软件安装"];
+var opttype = ["不限","主机杀毒","用户帐号与口令安全","日志与审核","服务优化","关闭高危端口"];
 for( var i=0; i<opttype.length; i++){
 	var objOption   = document.createElement("OPTION");
-	objOption.text  =  opttype[i];
-	objOption.value = "g_devchnlist[v].name";
+	objOption.text  = opttype[i];
+	objOption.value = opttype[i];
 	objSelectet.options.add(objOption); 
 }
 
@@ -154,6 +142,9 @@ zaneDate({
 	showtime:true
 });
 
+var history_current_page = 0;
+var pageLink = [];
+
 //httprequest
 function GetXmlHttpObject() {   
 	var xmlHttp=null;   
@@ -166,44 +157,95 @@ function GetXmlHttpObject() {
 }
 
 //
-var rowno=0;
 function historydataframe( obj ){
-	var devlst  = document.getElementById("historydatalist");
-	var devitem = devlst.insertRow( 0 );
-	devitem.setAttribute( "onclick", "historyshowdesc('"+ obj.chn + "','" + obj.data + "')"); 
-	devitem.setAttribute( "style", "height:50px;"); 
-	var td1 = devitem.insertCell(0);
-	td1.innerHTML = ++rowno;
-	td1.setAttribute('align','center');
-	
-	devitem.insertCell(1).innerHTML = obj.time;
-	var cel3 = devitem.insertCell(2); 
-	cel3.align="center"; 
-	cel3.innerHTML = obj.dir;	
-	devitem.insertCell(3).innerHTML = obj.data;
-	devitem.insertCell(4).innerHTML = obj.resume;
-	devitem.insertCell(5).innerHTML = "熊霸天";
+	var devlst  = document.getElementById("historylist");
+	var devitem = devlst.insertRow( -1 );
+	devitem.setAttribute( "ondblclick", "onPopWindowOpen('./snapshot/now.jpg')"); 	
+	devitem.setAttribute( "style", "height:48px;"); 
+	var td0 = devitem.insertCell(0); td0.innerHTML = obj.code; td0.setAttribute('align','center');
+	var td1 = devitem.insertCell(1); td1.innerHTML = obj.type;
+	var td2 = devitem.insertCell(2); td2.innerHTML = obj.title;
+	var td3 = devitem.insertCell(3); td3.innerHTML = obj.context;
+	var td4 = devitem.insertCell(4); td4.innerHTML = obj.user; td4.setAttribute('align','center');
+	var td5 = devitem.insertCell(5); td5.innerHTML = obj.result; td5.setAttribute('align','center');
+	var td6 = devitem.insertCell(6); td6.innerHTML = obj.opttime;
 	//if(v>2000){devlst.deleteRow(-1);}
 }
 
 function onClearHistoryList(){
-	var devlst  = document.getElementById("historydatalist");
+	var devlst  = document.getElementById("historylist");
 	for( var i = devlst.rows.length; i > 0; i--){
 		devlst.deleteRow( 0 );
 	}
+	rowno = 0;
 }
 
 function onPrintHistoryData(){  
-	var name = $("#historychannels option:selected").val();
+	var name     = $("#historychannels option:selected").val();
 	var strStart = $("#begintime").val();
 	var strEnd   = $("#endtime").val();
-	document.getElementById("history_runbtn").value="停止";
-	document.getElementById("history_runbtn").onclick=function(){StopHistoryData();};
-	document.getElementById("downloadlnk").removeAttribute("disabled");
+	//document.getElementById("history_runbtn").value="停止";
+	//document.getElementById("history_runbtn").onclick=function(){StopHistoryData();};
+	//document.getElementById("downloadlnk").removeAttribute("disabled");
 	//document.getElementById("historytablediv").style.height = window.innerHeight-185+"px";
-	for( var i=0; i<8; i++){
-		historydataframe({"chn":"asdfsd","data":"sdafds","time":"ssssss","resume":"sdafsfds"});
+	var xhr  = GetXmlHttpObject();  
+	xhr.open("LUAPOST","main.queryHistory",true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			onClearHistoryList();
+			var rsp = eval('(' + xhr.responseText + ')');
+			for( var v = 0; v < rsp.datalist.length; v++ ){
+				historydataframe( rsp.datalist[v] );
+			}
+			var navBtns = document.getElementById("pageNav");
+			for(var item of pageLink) {
+				navBtns.removeChild( item );
+			}
+			pageLink=[];
+			for ( var n = 0; n < rsp.pagecount; n++ ){
+				var a = document.createElement('a');
+				a.setAttribute('href', "javascript:void(0);");
+				a.setAttribute('style','margin:30;padding-left:20px; padding-right:20px;');
+				a.setAttribute('onclick', 'javascript:showListClickPage(' + n + ');')
+				a.innerText = n;
+				navBtns.appendChild(a);
+				pageLink.push( a );
+			}
+			document.getElementById("history_runbtn").value="开始";
+			document.getElementById("history_runbtn").onclick=function(){
+				onPrintHistoryData();
+			};
+		}
 	}
+	var args = {};
+	args.page = 0;
+	args.name = name;
+	args.starttime = strStart;
+	args.endtime = strEnd;
+	xhr.send( JSON.stringify(args) );
+}
+
+function showListClickPage( page ){  
+	var xhr  = GetXmlHttpObject();  
+	xhr.open("LUAPOST","main.queryHistory",true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var rsp = eval('(' + xhr.responseText + ')');
+			onClearHistoryList();
+			history_current_page = rsp.currentPage;
+			for( var v = 0; v < rsp.datalist.length; v++ ){
+				historydataframe( rsp.datalist[v] );
+			}
+		}
+	}
+	var args = {};
+	args.page = page;
+	args.name = $("#historychannels option:selected").val();;
+	args.starttime = $("#begintime").val();
+	args.endtime = $("#endtime").val();
+	xhr.send( JSON.stringify(args) );
 }
 
 function StopHistoryData(){
@@ -214,7 +256,7 @@ function StopHistoryData(){
 		if(xhr.readyState==4 && xhr.status==200){
 			document.getElementById("history_runbtn").value="开始";
 			document.getElementById("history_runbtn").onclick=function(){
-				onPrintHistoryData();
+				onPrintHistoryData( 0 );
 			};
 		}
 	}	
@@ -223,10 +265,26 @@ function StopHistoryData(){
 
 //clean
 function onclean(){
-	var devlst = document.getElementById("historydatalist");
+	var devlst = document.getElementById("historylist");
 	for( var i=devlst.rows.length; i > 1; i--){
 		devlst.deleteRow( -1 );
 	}
+}
+
+function onPopWindowOpen( image ) {
+	document.getElementById("snapimg").src = image;
+	let d2=document.getElementById("popmask");
+	d2.style.display="block";
+	let d1=document.getElementById("popview");
+	d1.style.display="block";
+}
+
+function onPopWindowClose() {
+	let d2=document.getElementById("popmask");
+	d2.style.display="none";
+	let d1=document.getElementById("popview");
+	d1.style.display="none";
+	console.log("您点击了取消");
 }
 </script>
 

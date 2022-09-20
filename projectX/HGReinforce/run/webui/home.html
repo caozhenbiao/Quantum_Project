@@ -67,12 +67,6 @@
 		<td width="33%"><div id="cpufreq" /></td>
 	</tr>
 	<tr>
-		<td width="13%" align="right">CPUID：</td>
-		<td width="33%"><div id="cpumid" /></td>
-		<td width="19%" align="right">CPU类型：</td>
-		<td width="33%"><div id="cputype" /></td>
-	</tr>
-	<tr>
 		<td width="13%" align="right">装置IP：</td>
 		<td width="33%"><div id="hostIP" /></td>
 		<td width="19%" align="right">装置启动时间：</td>
@@ -89,6 +83,10 @@
 		<td width="33%"><div id="memtotal" /></td>
 		<td width="19%" align="right">剩余内存：</td>
 		<td width="33%"><div id="memval" /></td>
+	</tr>
+	<tr height="35">
+		<td>
+		</td>
 	</tr>
 </table>
 <div id="clock" class="progress-clock">
@@ -176,8 +174,6 @@ window.onload = function(){
 			var obj = eval('(' + xhr.responseText + ')');
 			document.getElementById("osdesc").innerText = obj.osname + " - " + obj.osversion;
 			document.getElementById("cpufreq").innerText = obj.cpufreq / 1000 + "GHZ";
-			document.getElementById("cpumid").innerText = obj.cpumid;
-			document.getElementById("cputype").innerText =  obj.cputype;
 			document.getElementById("memtotal").innerText =  (obj.memtotal/1024).toFixed(2)+ "GB";
 			document.getElementById("memval").innerText =  (obj.memval/1024).toFixed(2)+ "GB";
 			document.getElementById("dsktotal").innerText = (obj.dsktotal/1024).toFixed(2)+ "GB";

@@ -57,6 +57,15 @@ extern "C" int transmit(lua_State* L) {
 	return 1;
 }
 
+extern "C" int exitProc(lua_State* L) {
+	printf("Exit Proc\n");
+	if (business) {
+		printf("exitproc\n");
+		business->stop();
+	}
+	return 0;
+}
+
 static int panic(lua_State *L) {
 	lua_writestringerror("PANIC: unprotected error in call to Lua API (%s)\n",lua_tostring(L, -1));
 	return 0;  /* return to Lua to abort */

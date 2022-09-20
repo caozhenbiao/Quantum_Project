@@ -99,6 +99,7 @@ class CCommand : public QObject{
 public:
     explicit CCommand(QObject *parent = nullptr):QObject(parent){}
 public slots:
+    void exitProc();
     void show( bool isVisiable);
     void move( int x, int y );
 signals:

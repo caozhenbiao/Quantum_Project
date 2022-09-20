@@ -5,23 +5,23 @@ local CSV    = require "luacsv"
 local XAPI   = require "luaxapi"
 local MD5    = require "luamd5"
 local BITX   = require "luabit"
-local OPENCV = require "opencv"
-local SYS    = require "system"
-local SQLITE = require "sqlite"
 
-require("main_alc")
+--local OPENCV = require "opencv"
+local SYS    = require "system"
+local xSQL   = require "sqlite"
+local TaskA  = require("main_alc")
 require("main_sec")
 require("main_ips")
-
 local currentModel = {};
 local currentTable = {};
+local currentUser = "KEVIN";
 local scanPos = 0;
 local scanStatus = 0;
-
 local mydb = 0;
 
-------------------------------------------------------恢复出厂设置-------------------------------------------------------------------------------
-function factorysetup(name,account,desc )
+------------------------------------------------------管理操作-------------------------------------------------------------------------------
+--初始数据库存
+function factorysetup()
 	if os.getenv("OS") == "Windows_NT" then
 		os.execute("rmdir /s/q logs");
 		os.execute("rmdir /s/q data");
@@ -30,19 +30,82 @@ function factorysetup(name,account,desc )
 		os.execute("rm -r -f ./data");
 	end
 	local sqls={};
-	sqls[1] = "DELETE FROM channels";
-	sqls[2] = "UPDATE sqlite_sequence SET seq=0 WHERE name='channels'";
-	sqls[3] = "DELETE FROM chndetect";
-	sqls[4] = "UPDATE sqlite_sequence SET seq=0 WHERE name='chndetect'";
-	sqls[5] = "DELETE FROM pointinfo";
-	sqls[6] = "UPDATE sqlite_sequence SET seq=0 WHERE name='pointinfo'";
+	sqls[1] = "DROP TABLE operatrec";
+	sqls[2] = "DROP TABLE users";
+	sqls[3] = "DROP TABLE reinforce";
+	sqls[4] = "CREATE TABLE operatrec(autoid INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR(20) NOT NULL, code VARCHAR(4) NOT NULL,type INT(4) NOT NULL,result INT(4) NOT NULL, context TEXT(500), optime TIMESTAMP DEFAULT (datetime('now','localtime')))";
+	sqls[5] = "CREATE TABLE users(autoid INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,account VARCHAR(30) NOT NULL,pwdmd5 VARCHAR(42),name VARCHAR(20),sex BOOL,telphone CHAR(15), email CHAR(50), authority INTEGER,address VARCHAR(200), endtime TIMESTAMP, context CHAR(100))";
+	sqls[6] = "CREATE TABLE reinforce(autoid INTEGER PRIMARY KEY AUTOINCREMENT,code VARCHAR(4) NOT NULL,type VARCHAR(50) NOT NULL,title VARCHAR[100] NOT NULL,status INT(4) NOT NULL DEFAULT(0), primitive TEXT(2048),result INT(4) NOT NULL DEFAULT(0), context TEXT(2048), optime TIMESTAMP DEFAULT (datetime('now','localtime')))";
 	for k, v in pairs( sqls ) do
-		local dbret = SQLITE.execute(mydb,v);
+		local dbret = xSQL.execute(mydb,v);
 	end
-	local strsql= string.format("replace into device(idx,name,setuptime,setupuser,desc) VALUES(0,'%s',%d,'%s','%s')",name,os.time(),account,desc);
-	local dbret = SQLITE.execute(mydb, strsql);
-	local jsret = string.format("{'action':'setup','result':%d}",dbret);
-	return jsret;
+	return string.format("{'action':'setup','result':%d}",0);
+end
+
+--导入任务模版
+function importModel( jsonstr )
+	local model = LoadCSV(".\\model\\model1.csv");
+	local pfile = io.open("primitive.json", "r");
+	io.input(pfile)
+	local jsonstr = io.read("*a")
+	io.close(pfile)
+	local priData = JSON:decode( jsonstr );	
+	for k,v in pairs(model) do
+		local priobj = priData[v[3]];
+		local pristr = JSON:encode(priobj) or "";
+		local sqlstr = string.format("insert into reinforce(type,code,title,primitive) VALUES('%s','%s','%s','%s')",v[2],v[3],v[4],pristr);
+		local sqlret = xSQL.execute(mydb, sqlstr );
+	end
+	return string.format("{'action':'importModel','result':%d}",0);
+end
+
+
+--恢复所有任务
+function revertTask()
+	local taskList ={};
+	local mt = xSQL.prepare(mydb,"SELECT CODE,PRIMITIVE FROM reinforce");
+	while xSQL.setup( mt ) == 0 do
+		local code = xSQL.column_text(mt,0);
+		local prim = xSQL.column_text(mt,1);
+		taskList[ code ] = prim;
+	end
+	xSQL.finalize(mt);
+	for k,v in pairs(taskList) do
+		TaskA:revert(k,v);
+	end
+	resetTask()
+	return string.format("{'action':'revertTask','result':%d}",0);
+end
+
+
+--重置任务
+function resetTask()
+	local sql = string.format("update reinforce set result=0,status=0,context=''");
+	local ret = xSQL.execute(mydb, sql);
+	return string.format("{'action':'resetTask','result':%d}",ret);
+end
+
+--获取原始数据
+function getPrimitive( code )
+	local data ={};
+	local mt = xSQL.prepare(mydb,string.format("SELECT PRIMITIVE FROM reinforce WHERE CODE='%s'",code));
+	if xSQL.setup( mt ) == 0 then
+		local primitive =xSQL.column_text(mt,0);
+		data = JSON:decode( primitive );
+	end
+	xSQL.finalize(mt);
+	return data;
+end
+	
+
+-----------------------------------------------------用户管理-------------------------------------------------------------------------------
+function onUserExit()
+
+end
+
+
+function onUserLogin( josnstr )
+	currentUser = "";
 end
 
 
@@ -52,25 +115,26 @@ end
 function onload()
 	print("lua onload")
 	currentModel = {};
-	currentTable = LoadCSV(".\\model\\model1.csv");
-	for k,v in pairs(currentTable) do
-		local worktype = v[2];
+	local mt = xSQL.prepare( mydb, "SELECT TYPE,CODE,TITLE,PRIMITIVE,CONTEXT FROM reinforce");
+	while xSQL.setup( mt ) == 0 do
+		local worktype = xSQL.column_text(mt,0);;
 		if currentModel[worktype] == nil then
 			currentModel[worktype] = {};
 		end
 		local obj = {};
-		obj["code"]  = v[3];
-		obj["name"]  = v[4];
-		obj["context"]  = _queryStatus( v[3] );
-		obj["status"]  = 0; 
-		obj["time"]  = v[7] or "";
-		obj["argument"]  = "";
+		obj["code"] = xSQL.column_text(mt,1);
+		obj["name"] = xSQL.column_text(mt,2);
+		obj["primitive"] =xSQL.column_text(mt,3);
+		obj["context"] = xSQL.column_text(mt,4) or "";
+		obj["status"] = 0; 
+		obj["time"] = "";
+		obj["argument"] = "";
 		obj["scan"]  = false;
 		table.insert( currentModel[worktype], obj );
 	end
+	xSQL.finalize(mt);
 	local retstr = JSON:encode(currentModel);
 	print( "result onload:" .. retstr );
-	--OPENCV.screenshot("./now.jpg")
 	return retstr;
 end
 
@@ -81,14 +145,128 @@ function macinfo()
 	local memtotal,memval = SYS.meminfo();
 	local dsktotal,dskval = SYS.diskinfo("/");
 	local md5key = MD5.tohex(MD5.sum(string.format("%s%10d","cpumid",132313)));
-	local retstr = string.format("{'osname':'%s','osversion':'%s','ontime':'%s','cpufreq':'%d','cpumid':'%s','cputype':'%s','memtotal':'%f','memval':'%f','dsktotal':'%f','dskval':'%f','prikey':'%s'}",
-										osname,osversion,os.date("%Y-%m-%d %H:%M:%S",onStartTime),1500,"cpumid","AMD",memtotal,memval,dsktotal,dskval,md5key);
+	local retstr = string.format("{'osname':'%s','osversion':'%s','ontime':'%s','cpufreq':'%d','memtotal':'%f','memval':'%f','dsktotal':'%f','dskval':'%f','prikey':'%s'}",
+										osname,osversion,os.date("%Y-%m-%d %H:%M:%S",onStartTime),1500,memtotal,memval,dsktotal,dskval,md5key);
 	return retstr;
 end
 
---网页关闭
-function unload()
+--任务操作记录
+function _taskRecord( code, ret, desc, opt )
+	local sql = string.format("insert into operatrec(code,type,result,context,user) VALUES('%s',%d, %d,'%s','%s')",code,opt,ret,desc,currentUser);
+	local ret = xSQL.execute(mydb, sql);
+	print(string.format("taskRecord ret:%d sql:%s",ret,sql));
+end
 
+--更新操作状态
+function _updateTask( code, ret, desc )
+	local sql = string.format("update reinforce set result='%d',context='%s' where code ='%s'",ret,desc,code);
+	print( sql );
+	local ret = xSQL.execute(mydb, sql);
+	print(string.format("updateTask ret:%d sql:%s",ret,sql));
+end
+
+--local jsondata = GMSSL.getPeerCert("39.156.66.10",443);
+--print( jsondata )
+
+--查询历史记录
+function queryHistory( jsonstr )
+	local obj = JSON:decode( jsonstr );
+	local condition1 = "";
+	local condition2 = "";
+	if obj.name ~= "不限" then 
+		condition1 = string.format("where B.type='%s'",obj.name);
+		condition2 = string.format("as A join reinforce as B on a.code = b.code where B.type='%s'", obj.name);
+	end
+	
+	local vcnt = {};
+	vcnt.listcount = xSQL.table_count(mydb,"OPERATREC",condition2);
+	vcnt.pagecount = math.ceil( vcnt.listcount / 10 );
+	vcnt.currentPage = obj.page;
+	vcnt.datalist = {};
+	local sql = string.format("select A.code, B.type, B.title, A.context, A.user, a.result, a.optime from operatrec as A \
+							join reinforce as B on a.code = b.code %s order by a.optime desc LIMIT 10 OFFSET %d",
+							condition1,
+							obj.page * 10);						
+	local mt = xSQL.prepare(mydb,sql);
+	while xSQL.setup( mt ) == 0 do
+		local item = {};
+		item.code = xSQL.column_text(mt, 0);
+		item.type = xSQL.column_text(mt, 1);
+		item.title = xSQL.column_text(mt, 2);
+		item.context = xSQL.column_text(mt, 3);
+		item.user = xSQL.column_text(mt,4);
+		item.result = xSQL.column_int(mt, 5);
+		item.opttime = xSQL.column_text(mt, 6);
+		table.insert(vcnt.datalist, item);
+	end
+	xSQL.finalize(mt);
+	return JSON:encode(vcnt);
+end
+
+--获取初始设备数据并保存
+function collectPrimitive()
+	print("collectPrimitive")
+	local codeList = {};
+	local mt = xSQL.prepare( mydb, "SELECT CODE FROM REINFORCE");
+	while xSQL.setup( mt ) == 0 do
+		local code = xSQL.column_text(mt,0);
+		table.insert( codeList, code );
+	end
+	xSQL.finalize(mt);
+	local primidata = {};
+	for _,v in pairs(codeList) do
+		local data = TaskA:query( v );
+		primidata[v] = data;
+		local sql = string.format("UPDATE REINFORCE SET PRIMITIVE='%s' WHERE CODE='%s'",JSON:encode(data),v);
+		local ret = xSQL.execute(mydb, sql);		
+	end
+	local filename = "primitive.json"
+	if io.open(filename,"r") == nil then
+		local file = io.open(filename, "a");
+		io.output(file);
+		io.write(JSON:encode(primidata));
+		io.close(file);
+	end
+end
+
+--执行任务
+function executeTask( jsonstr )
+	local obj  = JSON:decode( jsonstr );
+	local data = getPrimitive(obj.code);
+	local ret,ctx = TaskA:execute(obj.code,data);
+	local sctx = JSON:encode( ctx );
+	_taskRecord( obj.code,ret,sctx,2 );
+	_updateTask( obj.code,ret,sctx );
+	return string.format("{'result':%d,'code':'%s','context':'%s'}",ret,obj.code,sctx);
+end
+
+--查询任务
+function queryTask( jsonstr )
+	local obj  = JSON:decode( jsonstr );
+	local ctx  = TaskA:query( obj.code );
+	local sctx = JSON:encode( ctx );
+	return string.format("{'code':'%s','context':'%s'}",obj.code,sctx);
+end
+
+--恢复任务
+function revertTask( jsonstr )
+	print( "revertTask:" .. jsonstr );
+	local obj  = JSON:decode( jsonstr );
+	local data = getPrimitive( obj.code );
+	local ret  = TaskA:revert( obj.code, data);
+	return string.format("{'result':%d,'code':'%s'}",ret,obj.code);
+end
+
+--启动
+function startup()
+	mydb = xSQL.open("./Reinforce.db","czy20101204");
+	collectPrimitive();
+	print( mydb );
+end
+
+--关闭
+function shutdown()
+	xSQL.close( mydb );
 end
 
 --LUA脚本宿主,安装事件处理函数
@@ -107,147 +285,12 @@ mainProc = coroutine.create(function(t)install(t,
 	end)
 end)
 
---local jsondata = GMSSL.getPeerCert("39.156.66.10",443);
---print( jsondata )
-
---状态查询
-function _queryStatus( code )
-	local ret = 0;
-	local context = "";
-	if     code == "A1"  then ret,context = A1(0)
-	elseif code == "A2"  then ret,context = A2(0);
-	elseif code == "A3"  then ret,context = A3(0);
-	elseif code == "A4"  then ret,context = A4(0);
-	elseif code == "A5"  then ret,context = A5(0);
-	elseif code == "A6"  then ret,context = A6(0);	
-	elseif code == "A7"  then ret,context = A7(0);
-	elseif code == "A8"  then ret,context = A8(0);
-	elseif code == "A9"  then ret,context = A9(0);
-	elseif code == "A10" then ret,context = A10(0);
-	elseif code == "A11" then ret,context = A11(0);
-	elseif code == "A12" then ret,context = A12(0);
-	elseif code == "A13" then ret,context = A13(0);
-	elseif code == "A14" then ret,context = A14(0);
-	elseif code == "A15" then ret,context = A15(0);
-	elseif code == "A16" then ret,context = A16(0);	
-	elseif code == "A17" then ret,context = A17(0);
-	elseif code == "A18" then ret,context = A18(0);
-	elseif code == "A19" then ret,context = A19(0);
-	elseif code == "A20" then ret,context = A20(0);
-	elseif code == "A21" then ret,context = A21(0);
-	elseif code == "A22" then ret,context = A22(0);
-	elseif code == "A23" then ret,context = A23(0);
-	elseif code == "A24" then ret,context = A24(0);
-	elseif code == "A25" then ret,context = A25(0);	
-	elseif code == "A26" then ret,context = A26(0);
-	elseif code == "A27" then ret,context = A27(0);
-	end
-	return context;
-end
-
---执行任务
-function startTask( jsonstr )
-	local retObj = "{'retcode':-1}";
-	local obj = JSON:decode( jsonstr );
-	XAPI:PrintTable( obj );
-	local result, context;
-	if obj.code == "A1"      then result,context = A1(2);
-	elseif obj.code == "A2"  then result,context = A2(2);
-	elseif obj.code == "A3"  then result,context = A3(2);
-	elseif obj.code == "A4"  then result,context = A4(2);
-	elseif obj.code == "A5"  then result,context = A5(2);
-	elseif obj.code == "A6"  then result,context = A6(2);
-	elseif obj.code == "A7"  then result,context = A7(2);
-	elseif obj.code == "A8"  then result,context = A8(2);
-	elseif obj.code == "A9"  then result,context = A9(2);
-	elseif obj.code == "A10" then result,context = A10(2);
-	elseif obj.code == "A11" then result,context = A11(2);
-	elseif obj.code == "A12" then result,context = A12(2);
-	elseif obj.code == "A13" then result,context = A13(2);
-	elseif obj.code == "A14" then result,context = A14(2);
-	elseif obj.code == "A15" then result,context = A15(2);
-	elseif obj.code == "A16" then result,context = A16(2);
-	elseif obj.code == "A17" then result,context = A17(2);
-	elseif obj.code == "A18" then result,context = A18(2);
-	elseif obj.code == "A19" then result,context = A19(2);
-	elseif obj.code == "A20" then result,context = A20(2);
-	elseif obj.code == "A21" then result,context = A21(2);
-	elseif obj.code == "A22" then result,context = A22(2);
-	elseif obj.code == "A23" then result,context = A23(2);
-	elseif obj.code == "A24" then result,context = A24(2);
-	elseif obj.code == "A25" then result,context = A25(2);
-	elseif obj.code == "A26" then result,context = A26(2);
-	elseif obj.code == "A27" then result,context = A27(2);
-	end
-	return string.format("{'result':%d,'code':'%s','context':'%s'}", result, obj.code, context);
-end
-
-function A100()
-	return 0,"ok"
-end
-
---恢复所有任务
-function revertTask()
-	A1( 1 );
-	A2( 1 );
-	A3( 1 );
-	A4( 1 );
-	A5( 1 );
-	A6( 1 );
-	A7( 1 );
-	A8( 1 );
-	A9( 1 );
-	A10( 1 );
-	A11( 1 );
-	A12( 1 );
-	A13( true );
-	A14( true );
-	A15( true );
-	A16( true );
-	A17( true );
-	A18( true );
-	A19( true );
-	A20( true );
-end
-
-
-
---启动
-function startup()
-	mydb = SQLITE.open("Reinforce.db","czy20101204");
-	--载入信息
-	local mt = SQLITE.prepare( mydb, string.format("select name, driver, user, password from dnsinfo"));
-	while SQLITE.setup( mt ) == 0 do
-		local dnsobj = {};
-		local name = SQLITE.column_text(mt,0);
-		dnsobj.driver  = SQLITE.column_text(mt,1);
-		dnsobj.user = SQLITE.column_text(mt,2);
-		dnsobj.password  = SQLITE.column_text(mt,3);
-		dnsobj.handle = nil;
-		mydns[name] = dnsobj;
-	end
-	SQLITE.finalize(mt);
-end
-
-
+startup();
 coroutine.resume(mainProc,1000);
 print("start infinalize")
 
 
---A2(2);
---A2(0);
 
---local retStr = REGEDIT.cmdPopen("dir");
---print( retStr )
-
---doMainTask();
-
---OPENCV.screenshot("./now.jpg")
-
---startup();
-
-
-print("start infinalize")
 
 
 
