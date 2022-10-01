@@ -8,7 +8,7 @@
 #include <map>
 #include <string>
 #include <vector>
- 
+
 bool DisableService(const char* service) {
 	SC_HANDLE hSC = OpenSCManager(NULL, NULL, SC_MANAGER_ALL_ACCESS);
 	if (hSC == NULL) {
@@ -16,14 +16,16 @@ bool DisableService(const char* service) {
 		return false;
 	}
 	// open service
-	SC_HANDLE hSvc = ::OpenService(hSC, service, SERVICE_START | SERVICE_QUERY_STATUS | SERVICE_STOP);
+	SC_HANDLE hSvc = ::OpenService(hSC, service, SERVICE_ALL_ACCESS);
 	if (hSvc == NULL) {
+		printf("OpenService name:%s fail(%ld)", service, GetLastError());
 		::CloseServiceHandle(hSC);
 		return false;
 	}
 	// get service status
 	SERVICE_STATUS status;
 	if (::QueryServiceStatus(hSvc, &status) == FALSE) {
+		printf("QueryServiceStatus fail(%ld)", GetLastError());
 		::CloseServiceHandle(hSvc);
 		::CloseServiceHandle(hSC);
 		return false;
@@ -31,6 +33,7 @@ bool DisableService(const char* service) {
 	//if status == running, stop the service
 	if (status.dwCurrentState == SERVICE_RUNNING) {
 		if (::ControlService(hSvc, SERVICE_CONTROL_SHUTDOWN, &status) == FALSE) {
+			printf("ControlService fail(%ld)", GetLastError());
 			::CloseServiceHandle(hSvc);
 			::CloseServiceHandle(hSC);
 			return false;
@@ -57,7 +60,7 @@ bool CloseService(const char* service) {
 		return false;
 	}
 	// open service
-	SC_HANDLE hSvc = ::OpenService(hSC, service,SERVICE_START | SERVICE_QUERY_STATUS | SERVICE_STOP);
+	SC_HANDLE hSvc = ::OpenService(hSC, service, SERVICE_ALL_ACCESS);
 	if (hSvc == NULL){
 		::CloseServiceHandle(hSC);
 		return false;
@@ -71,16 +74,15 @@ bool CloseService(const char* service) {
 	}
 	//if status == running, stop the service
 	if (status.dwCurrentState == SERVICE_RUNNING){
-		if (::ControlService(hSvc,SERVICE_CONTROL_STOP, &status) == FALSE)
-		{
+		if (::ControlService(hSvc,SERVICE_CONTROL_STOP, &status) == FALSE){
 			::CloseServiceHandle(hSvc);
 			::CloseServiceHandle(hSC);
 			return false;
 		}
 		//wait the stop operation
-		while (::QueryServiceStatus(hSvc, &status) == TRUE)
-		{
-			::Sleep(status.dwWaitHint);
+		while (::QueryServiceStatus(hSvc, &status) == TRUE){
+			::Sleep(1000);
+			//::Sleep(status.dwWaitHint);
 			if (status.dwCurrentState == SERVICE_STOPPED){
 				::CloseServiceHandle(hSvc);
 				::CloseServiceHandle(hSC);
@@ -101,28 +103,32 @@ bool StartService(const char* service) {
 		return false;
 	}
 	// open service
-	SC_HANDLE hSvc = ::OpenService(hSC, service, SERVICE_START | SERVICE_QUERY_STATUS | SERVICE_STOP);
+	SC_HANDLE hSvc = ::OpenService(hSC, service, SERVICE_ALL_ACCESS);
 	if (hSvc == NULL) {
+		printf("OpenService name:%s fail(%ld)", service, GetLastError());
 		::CloseServiceHandle(hSC);
 		return false;
 	}
 	// get service status
 	SERVICE_STATUS status;
 	if (::QueryServiceStatus(hSvc, &status) == FALSE) {
+		printf("QueryServiceStatus name:%s fail(%ld)", service, GetLastError());
 		::CloseServiceHandle(hSvc);
 		::CloseServiceHandle(hSC);
 		return false;
 	}
 	//if status == running, stop the service
 	if (status.dwCurrentState != SERVICE_RUNNING) {
-		if (::ControlService(hSvc, SERVICE_CONTROL_CONTINUE, &status) == FALSE){
+		if (::StartService(hSvc, NULL, NULL) == FALSE){
+			printf("ControlService name:%s fail(%ld)", service, GetLastError());
 			::CloseServiceHandle(hSvc);
 			::CloseServiceHandle(hSC);
 			return false;
 		}
 		//wait the start operation
 		while (::QueryServiceStatus(hSvc, &status) == TRUE){
-			::Sleep(status.dwWaitHint);
+			::Sleep(1000);
+			//::Sleep(status.dwWaitHint);
 			if (status.dwCurrentState == SERVICE_RUNNING) {
 				::CloseServiceHandle(hSvc);
 				::CloseServiceHandle(hSC);
@@ -134,6 +140,61 @@ bool StartService(const char* service) {
 	::CloseServiceHandle(hSC);
 	return true;
 }
+
+int EnumService(std::vector<serviceInfo> & services ) {
+	SC_HANDLE scHandle = OpenSCManager(NULL, NULL, SC_MANAGER_ENUMERATE_SERVICE);
+	if ( scHandle ) {
+		//printf("OpenSCManager -> scHandle=%p\n", scHandle);
+		SC_ENUM_TYPE infoLevel = SC_ENUM_PROCESS_INFO;
+		DWORD dwServiceType = SERVICE_WIN32_SHARE_PROCESS;
+		DWORD dwServiceState = SERVICE_STATE_ALL;
+		LPBYTE lpServices = NULL;
+		DWORD cbBufSize = 0;
+		DWORD pcbBytesNeeded;
+		DWORD servicesReturned;
+		LPDWORD lpResumeHandle = NULL;
+		LPCSTR pszGroupName = NULL;
+		//·ÖÁ½²½×ß£ºÏÈ»ñÈ¡·þÎñµÄ¸öÊý£¬ÔÙ»ñÈ¡¾ßÌå·þÎñµÄÐÅÏ¢
+		BOOL ret = EnumServicesStatusEx(scHandle, infoLevel, dwServiceType, dwServiceState, lpServices, cbBufSize, &pcbBytesNeeded, &servicesReturned, lpResumeHandle, pszGroupName);
+		//ÓÉÓÚ´ËÊ±¿Õ¼ä²»×ã£¬Òò´ËÊµ¼Ê·µ»ØµÄ·þÎñÊýÎª0£¨¼´servicesReturned=0£©
+		//printf("EnumServicesStatusEx scHandle=%p -> ret=%d, pcbBytesNeeded=%ld, servicesReturned=%ld\n", scHandle, ret, pcbBytesNeeded, servicesReturned);
+		cbBufSize = pcbBytesNeeded;
+		lpServices = new BYTE[cbBufSize];
+		if (NULL != lpServices){
+			ret = EnumServicesStatusEx(scHandle, infoLevel, dwServiceType, dwServiceState, lpServices, cbBufSize, &pcbBytesNeeded, &servicesReturned, lpResumeHandle, pszGroupName);
+			//printf("EnumServicesStatusEx scHandle=%p, cbBufSize=%ld -> ret=%d, pcbBytesNeeded=%ld, servicesReturned=%ld\n", scHandle, cbBufSize, ret, pcbBytesNeeded, servicesReturned);
+			LPENUM_SERVICE_STATUS_PROCESS lpServiceStatusProcess = (LPENUM_SERVICE_STATUS_PROCESS)lpServices;
+			for (DWORD i = 0; i < servicesReturned; i++) {
+				if (lpServiceStatusProcess[i].ServiceStatusProcess.dwCurrentState == 4 || lpServiceStatusProcess[i].ServiceStatusProcess.dwCurrentState == 1) {
+					/*
+					printf("service.lpServiceName=%s, lpDisplayName=%s\nservice.ServiceStatusProcess.dwServiceType=%ld, dwCurrentState=%ld, dwControlsAccepted=%ld, dwWin32ExitCode=%ld, dwServiceSpecificExitCode=%ld, dwCheckPoint=%ld, dwWaitHint=%ld, dwProcessId=%ld, dwServiceFlags=%ld\n",
+							lpServiceStatusProcess[i].lpServiceName,
+							lpServiceStatusProcess[i].lpDisplayName,
+							lpServiceStatusProcess[i].ServiceStatusProcess.dwServiceType,
+							lpServiceStatusProcess[i].ServiceStatusProcess.dwCurrentState,
+							lpServiceStatusProcess[i].ServiceStatusProcess.dwControlsAccepted,
+							lpServiceStatusProcess[i].ServiceStatusProcess.dwWin32ExitCode,
+							lpServiceStatusProcess[i].ServiceStatusProcess.dwServiceSpecificExitCode,
+							lpServiceStatusProcess[i].ServiceStatusProcess.dwCheckPoint,
+							lpServiceStatusProcess[i].ServiceStatusProcess.dwWaitHint,
+							lpServiceStatusProcess[i].ServiceStatusProcess.dwProcessId,
+							lpServiceStatusProcess[i].ServiceStatusProcess.dwServiceFlags);
+							*/
+					serviceInfo info;
+					info.name   = lpServiceStatusProcess[i].lpServiceName;
+					info.display = lpServiceStatusProcess[i].lpDisplayName;
+					info.status  = lpServiceStatusProcess[i].ServiceStatusProcess.dwCurrentState;
+					services.push_back(info);
+				}
+			}
+			delete[] lpServices;
+		}
+		CloseServiceHandle(scHandle);
+	}
+	return services.size();
+}
+
+
 
 /*************************************
 * AddUser
@@ -441,7 +502,7 @@ int ShowUsersInfo(LPWSTR pszServerName, LPWSTR pszUserName){
 *²ÎÊý     szServerName£¬Ö÷»úÃû£¬Èç¹ûÎª±¾»ú£¬ÉèÖÃÎªNULL
 pass ÐÞ¸ÄµÄÃÜÂë
 *************************************/
-void MondPass(LPWSTR strName, LPWSTR pass) {
+bool MondPass(LPWSTR strName, LPWSTR pass) {
 	//TCHAR strName[10] = { 0 };
 	//DWORD he;
 	//::GetUserNameW(strName, &he);
@@ -451,10 +512,12 @@ void MondPass(LPWSTR strName, LPWSTR pass) {
 	int a = GetLastError();
 	if (NERR_Success == dwResult){
 		MessageBox(NULL, "ÐÞ¸Ä³É¹¦", NULL, 0);
+		return true;
 	}else{
 		char buf[100] = { 0 };
 		sprintf_s(buf, "´íÎó´úÂëÊÇ:%d", GetLastError());
 		MessageBoxA(NULL, buf, NULL, 0);
+		return false;
 	}
 }
 
@@ -467,7 +530,7 @@ userName      ¸ÃNetUserChangePasswordº¯Êý¸Ä±äÖ¸¶¨ÓÃ»§µÄÃÜÂë¡£Èç¹û´Ë²ÎÊýÎªNULL£¬Ô
 oldPassword   ÓÃ»§µÄ¾ÉÃÜÂë
 newpassword   ÓÃ»§µÄÐÂÃÜÂë
 *************************************/
-void MondifyPassword(LPWSTR szServerName, LPWSTR userName, LPWSTR oldPassword, LPWSTR newpassword){
+bool MondifyPassword(LPWSTR szServerName, LPWSTR userName, LPWSTR oldPassword, LPWSTR newpassword){
 	DWORD dwError = 0;
 	DWORD dwLevel = 5;
 	NET_API_STATUS nStatus;
@@ -478,8 +541,10 @@ void MondifyPassword(LPWSTR szServerName, LPWSTR userName, LPWSTR oldPassword, L
 	nStatus = NetUserChangePassword(szServerName, userName, oldPassword, newpassword);
 	if (nStatus == NERR_Success) {//µ÷ÓÃ³É¹¦£¬ÇëÍ¨ÖªÓÃ»§
 		fwprintf(stderr, L"User password has been changed successfully\n");
+		return true;
 	}else{
 		fprintf(stderr, "A system error has occurred: %d\n", nStatus);
+		return false;
 	}
 }
 
@@ -558,3 +623,28 @@ int RemoveUser(const char * userName) {
 	wcName[len] = '\0';
 	return NetUserDel(NULL, wcName);
 }
+
+bool CheckWinUser(const char * name, const char* pwd) {
+	HANDLE hUser;
+	if (LogonUser(name, ".", pwd, LOGON32_LOGON_INTERACTIVE, LOGON32_PROVIDER_DEFAULT, &hUser) || GetLastError() == 1327)
+		return true;
+	return false;
+}
+
+bool MondPass(const char * name, const char * opwd, const char * npwd) {
+	wchar_t wcName[128] = { 0 };
+	wchar_t wcOPwd[128] = { 0 };
+	wchar_t wcNPwd[128] = { 0 };
+	int len1 = MultiByteToWideChar(CP_ACP, 0, name, strlen(name), NULL, 0);
+	MultiByteToWideChar(CP_ACP, 0, name, strlen(name), wcName, len1);
+	wcName[len1] = '\0';
+	int len2 = MultiByteToWideChar(CP_ACP, 0, opwd, strlen(opwd), NULL, 0);
+	MultiByteToWideChar(CP_ACP, 0, opwd, strlen(opwd), wcOPwd, len2);
+	wcOPwd[len2] = '\0';
+	int len3 = MultiByteToWideChar(CP_ACP, 0, npwd, strlen(npwd), NULL, 0);
+	MultiByteToWideChar(CP_ACP, 0, npwd, strlen(npwd), wcNPwd, len3);
+	wcNPwd[len3] = '\0';
+	return MondifyPassword(L".", wcName, wcOPwd, wcNPwd);
+	//return MondPass(wcName, wcPwd);
+}
+

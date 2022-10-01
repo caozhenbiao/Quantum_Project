@@ -22,7 +22,6 @@ static int openKey(lua_State * L) {
 }
 
 static int createKey(lua_State * L) {
-	printf("lua createKey\n");
 	HKEY hMaster = (HKEY)luaL_checkinteger(L, 1);
 	const char *path = luaL_checkstring(L, 2);
 	HKEY hKey = 0;
@@ -60,10 +59,9 @@ static int writeStrValue(lua_State * L) {
 }
 
 static int readIntValue(lua_State * L) {
-	int value = 0;
+	int value = -1;
 	HKEY hKey = (HKEY)luaL_checkinteger(L, 1);
 	const char *name = luaL_checkstring(L, 2);
-	memset(&value, 0x00, sizeof(value));
 	int ret = theRegedit->readValue(hKey, name, value);
 	lua_pushinteger(L, ret);
 	lua_pushinteger(L, value);
@@ -74,8 +72,23 @@ static int writeIntValue(lua_State * L) {
 	HKEY hKey = (HKEY)luaL_checkinteger(L, 1);
 	const char *name = luaL_checkstring(L, 2);
 	int value = (int)luaL_checkinteger(L, 3);
-	memset(&value, 0x00, sizeof(value));
 	int ret = theRegedit->writeValue( hKey, name, value);
+	lua_pushinteger(L, ret);
+	return 1;
+}
+
+static int deleteKey(lua_State * L) {
+	HKEY hKey = (HKEY)luaL_checkinteger(L, 1);
+	const char *name = luaL_checkstring(L, 2);
+	int ret = theRegedit->deleteKey(hKey, name);
+	lua_pushinteger(L, ret);
+	return 1;
+}
+
+static int deleteValue(lua_State * L) {
+	HKEY hKey = (HKEY)luaL_checkinteger(L, 1);
+	const char *name = luaL_checkstring(L, 2);
+	int ret = theRegedit->deleteValue(hKey, name);
 	lua_pushinteger(L, ret);
 	return 1;
 }
@@ -97,6 +110,8 @@ static const struct luaL_Reg myLib[]={
 	{"writeStrValue",writeStrValue},
 	{"readIntValue",readIntValue},
 	{"writeIntValue",writeIntValue},
+	{"deleteKey",deleteKey},
+	{"deleteValue",deleteValue},
 	{NULL,NULL}
 };
 

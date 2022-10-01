@@ -20,6 +20,14 @@ public:
 	int closeKey(HKEY hKey);
 
 
+
+
+
+	int deleteKey(HKEY hKey, const char* name);
+	int deleteValue(HKEY hKey, const char* name);
+
+
+
  
 
 

@@ -10,6 +10,7 @@ extern "C" {
 #include "filesys.h"
 #include "mainbroad.h"
 #include "winos.h"
+#include "monitor.h"
 
 #include "base/at_exit.h"
 #include "base/bind.h"
@@ -29,7 +30,54 @@ std::vector<std::string> gOutput;
 cnetcard * theNetCard = NULL;
 scoped_ptr<base::Thread> g_thread_;
 
-static int cmdExecute(lua_State * L) {
+//callback function must lock and unlock.
+void monitor_callback(int cb, int event, const  char * name) {
+	luaL_lock(theState);
+	lua_rawgeti(theState, LUA_REGISTRYINDEX, cb);
+	lua_pushinteger(theState, event);
+	lua_pushstring(theState, name);
+	lua_pcall(theState, 2, 0, 0);
+	luaL_unlock(theState);
+}
+
+static char* xreplace( const char *  str ) {
+	static char ret[1024] = { 0 };
+	memset(ret, 0x00, 1024);
+	int nlen = strlen(str);
+	for (int j = 0; j < nlen && nlen < 1024 ; j++) {
+		if (str[j] != '\'') {
+			ret[j] = str[j];
+		}
+		else {
+			ret[j] = ' ';
+		}
+	}
+	return ret;
+}
+
+static char* yreplace(const char *  str) {
+	static char ret[1024] = { 0 };
+	memset(ret, 0x00, 1024);
+	int nlen = strlen(str);
+	for (int j = 0; j < nlen && nlen < 1024; j++) {
+		if (str[j] != '\'') {
+			ret[j] = str[j];
+		}
+		else {
+			ret[j] = ' ';
+		}
+	}
+	return ret;
+}
+
+//¼à¿ØUSBÉè±¸
+static int monitorUsb(lua_State *L) {
+	int cb = luaL_ref(L, LUA_REGISTRYINDEX);
+	StartMonitor( cb );
+	return 1;
+}
+
+ static int cmdExecute(lua_State * L) {
 	const char *cmd = luaL_checkstring(L, 1);
 	printf("lua cmd execute:%s\n", cmd);
 	FILE* pf = NULL;
@@ -57,7 +105,7 @@ static int getnetcards(lua_State * L){
 	lua_rawseti(L,-2,0);
 	for( size_t i=0; i<v.size(); i++ ){
 		char szinfo[1024] = { 0 };
-		sprintf(szinfo, "%s;%s;%s;%s", v[i].name, v[i].ip, v[i].mask, v[i].gate);
+		sprintf_s(szinfo, "%s;%s;%s;%s", v[i].name, v[i].ip, v[i].mask, v[i].gate);
 		printf("cardinfo:%s\n",szinfo);
 		lua_pushstring( L,szinfo );
 		lua_rawseti(L,-2,i);
@@ -215,6 +263,39 @@ static int startService(lua_State * L) {
 	return 1;
 }
 
+static int enumService(lua_State * L) {
+	std::vector<serviceInfo> services;
+	int  sizes = EnumService( services );
+	lua_newtable(L);
+	for( unsigned int i = 0; i<services.size(); i++ ){
+		static char szbuf[1024] = { 0 };
+		memset(szbuf, 0x00, 1024);
+		int nlen =sprintf_s(szbuf, "{'name':'%s','display':'%s','status':%d}",
+			xreplace( services[i].name.c_str() ),
+			yreplace( services[i].display.c_str() ),
+			services[i].status);
+		lua_pushlstring(L, szbuf , nlen );
+		lua_rawseti(L, -2, i+1);
+	}
+	return 1;
+}
+
+static int checkWinUser(lua_State * L) {
+	const char * name = luaL_checkstring(L, 1);
+	const char * pwd = luaL_checkstring(L, 2);
+	bool ret = CheckWinUser( name, pwd );
+	lua_pushboolean(L, ret);
+	return 1;
+}
+
+static int mondUserPass(lua_State * L) {
+	const char * name = luaL_checkstring(L, 1);
+	const char * opwd = luaL_checkstring(L, 2);
+	const char * npwd = luaL_checkstring(L, 3);
+	bool ret = MondPass(name, opwd,npwd);
+	lua_pushboolean(L, ret);
+	return 1;
+}
 
 static int destory(lua_State * L){
 	if( theNetCard ){
@@ -266,11 +347,14 @@ static const struct luaL_Reg myLib[]={
 	{"disableService",disableService},
 	{"closeService",closeService},
 	{"startService",startService},
-
+	{"enumService",enumService},
 	{"netConnected",netConnected },
 	{"callback_test",callback_test },
 	{"ListUserInfo",ListUserInfo},
 	{"RemoveUser",RemoveUser},
+	{"monitorUsb",monitorUsb},
+	{"checkWinUser", checkWinUser},
+	{"mondUserPass",mondUserPass},
 	{NULL,NULL}
 };
 

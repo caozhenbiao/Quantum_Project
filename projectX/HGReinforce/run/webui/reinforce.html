@@ -76,7 +76,11 @@
 		</td>
 	</tr>
 	<tr height="22">
-		<td align="center">&lt;&lt; 1,2,3 &gt;&gt;</td>
+		<td align="center">
+			<div id="pageNum">
+
+			</div>
+		</td>
 	</tr>
 	<tr height="30">
 		<td>
@@ -183,6 +187,21 @@ function show_datalist( subject, page ){
 		viewOjb["time"] = td5;
 		curViewitem[showdata[v].code] =	viewOjb;	
 	}
+	var f = document.getElementById("pageNum"); 
+	var childs = f.childNodes; 
+	for(var i = childs.length - 1; i >= 0; i--) { 
+		f.removeChild(childs[i]); 
+	}
+	if( showdata.length > 10 ){
+		for( var p = 0; p < Math.ceil(showdata.length / 10); p++ ){
+			var a = document.createElement('a');
+			a.setAttribute('href', "#");
+			a.setAttribute('onclick', "show_datalist('" + subject + "'," + p +");");
+			a.setAttribute('style', "margin:10px 10px 10px 10px;");
+			a.innerText = (p + 1).toString();
+			document.getElementById("pageNum").appendChild( a );
+		}
+	}
 }
 
 function onTaskItemClick( item, code ){
@@ -275,7 +294,7 @@ function scanTask(){
 		document.getElementById("scanRunbutton").style = "display:none;"
 		document.getElementById("scanProgress").style = "display:block;"
 		var xhr = GetXmlHttpObject();     
-		xhr.open("LUAPOST","main.startTask" ,true);  
+		xhr.open("LUAPOST","main.executeTask" ,true);  
 		xhr.setRequestHeader('Content-Type', 'application/json');	  
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState==4 && xhr.status==200){

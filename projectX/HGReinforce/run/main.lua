@@ -9,15 +9,17 @@ local BITX   = require "luabit"
 --local OPENCV = require "opencv"
 local SYS    = require "system"
 local xSQL   = require "sqlite"
-local TaskA  = require("main_alc")
-require("main_sec")
-require("main_ips")
+local TASK   = require("mytask")
 local currentModel = {};
 local currentTable = {};
 local currentUser = "KEVIN";
 local scanPos = 0;
 local scanStatus = 0;
 local mydb = 0;
+
+
+local event_task    = 2;
+local event_monitor = 3;
 
 ------------------------------------------------------管理操作-------------------------------------------------------------------------------
 --初始数据库存
@@ -35,7 +37,7 @@ function factorysetup()
 	sqls[3] = "DROP TABLE reinforce";
 	sqls[4] = "CREATE TABLE operatrec(autoid INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR(20) NOT NULL, code VARCHAR(4) NOT NULL,type INT(4) NOT NULL,result INT(4) NOT NULL, context TEXT(500), optime TIMESTAMP DEFAULT (datetime('now','localtime')))";
 	sqls[5] = "CREATE TABLE users(autoid INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,account VARCHAR(30) NOT NULL,pwdmd5 VARCHAR(42),name VARCHAR(20),sex BOOL,telphone CHAR(15), email CHAR(50), authority INTEGER,address VARCHAR(200), endtime TIMESTAMP, context CHAR(100))";
-	sqls[6] = "CREATE TABLE reinforce(autoid INTEGER PRIMARY KEY AUTOINCREMENT,code VARCHAR(4) NOT NULL,type VARCHAR(50) NOT NULL,title VARCHAR[100] NOT NULL,status INT(4) NOT NULL DEFAULT(0), primitive TEXT(2048),result INT(4) NOT NULL DEFAULT(0), context TEXT(2048), optime TIMESTAMP DEFAULT (datetime('now','localtime')))";
+	sqls[6] = "CREATE TABLE reinforce(autoid INTEGER PRIMARY KEY AUTOINCREMENT,code VARCHAR(4) NOT NULL,type VARCHAR(20) NOT NULL,subtype VARCHAR(50) NOT NULL,title VARCHAR[100] NOT NULL,status INT(4) NOT NULL DEFAULT(0), primitive TEXT(2048),result INT(4) NOT NULL DEFAULT(0), context TEXT(2048), optime TIMESTAMP DEFAULT (datetime('now','localtime')))";
 	for k, v in pairs( sqls ) do
 		local dbret = xSQL.execute(mydb,v);
 	end
@@ -53,12 +55,11 @@ function importModel( jsonstr )
 	for k,v in pairs(model) do
 		local priobj = priData[v[3]];
 		local pristr = JSON:encode(priobj) or "";
-		local sqlstr = string.format("insert into reinforce(type,code,title,primitive) VALUES('%s','%s','%s','%s')",v[2],v[3],v[4],pristr);
+		local sqlstr = string.format("insert into reinforce(type,subtype,code,title,primitive) VALUES('%s','%s','%s','%s','%s')",v[2],v[3],v[4],v[5],pristr);
 		local sqlret = xSQL.execute(mydb, sqlstr );
 	end
 	return string.format("{'action':'importModel','result':%d}",0);
 end
-
 
 --恢复所有任务
 function revertTask()
@@ -71,12 +72,11 @@ function revertTask()
 	end
 	xSQL.finalize(mt);
 	for k,v in pairs(taskList) do
-		TaskA:revert(k,v);
+		TASK:revert(k,v);
 	end
 	resetTask()
 	return string.format("{'action':'revertTask','result':%d}",0);
 end
-
 
 --重置任务
 function resetTask()
@@ -108,14 +108,12 @@ function onUserLogin( josnstr )
 	currentUser = "";
 end
 
-
-
 --------------------------------------------------------启动加及初始信息-----------------------------------------
 --网页加载
 function onload()
 	print("lua onload")
 	currentModel = {};
-	local mt = xSQL.prepare( mydb, "SELECT TYPE,CODE,TITLE,PRIMITIVE,CONTEXT FROM reinforce");
+	local mt = xSQL.prepare( mydb, "SELECT SUBTYPE,CODE,TITLE,PRIMITIVE,CONTEXT FROM reinforce WHERE TYPE='TASK'");
 	while xSQL.setup( mt ) == 0 do
 		local worktype = xSQL.column_text(mt,0);;
 		if currentModel[worktype] == nil then
@@ -174,16 +172,15 @@ function queryHistory( jsonstr )
 	local condition1 = "";
 	local condition2 = "";
 	if obj.name ~= "不限" then 
-		condition1 = string.format("where B.type='%s'",obj.name);
-		condition2 = string.format("as A join reinforce as B on a.code = b.code where B.type='%s'", obj.name);
+		condition1 = string.format("where B.subtype='%s'",obj.name);
+		condition2 = string.format("as A join reinforce as B on a.code = b.code where B.subtype='%s'", obj.name);
 	end
-	
 	local vcnt = {};
 	vcnt.listcount = xSQL.table_count(mydb,"OPERATREC",condition2);
 	vcnt.pagecount = math.ceil( vcnt.listcount / 10 );
 	vcnt.currentPage = obj.page;
 	vcnt.datalist = {};
-	local sql = string.format("select A.code, B.type, B.title, A.context, A.user, a.result, a.optime from operatrec as A \
+	local sql = string.format("select A.code, B.subtype, B.title, A.context, A.user, a.result, a.optime from operatrec as A \
 							join reinforce as B on a.code = b.code %s order by a.optime desc LIMIT 10 OFFSET %d",
 							condition1,
 							obj.page * 10);						
@@ -207,7 +204,7 @@ end
 function collectPrimitive()
 	print("collectPrimitive")
 	local codeList = {};
-	local mt = xSQL.prepare( mydb, "SELECT CODE FROM REINFORCE");
+	local mt = xSQL.prepare( mydb, "SELECT CODE FROM REINFORCE WHERE TYPE='TASK'");
 	while xSQL.setup( mt ) == 0 do
 		local code = xSQL.column_text(mt,0);
 		table.insert( codeList, code );
@@ -215,7 +212,7 @@ function collectPrimitive()
 	xSQL.finalize(mt);
 	local primidata = {};
 	for _,v in pairs(codeList) do
-		local data = TaskA:query( v );
+		local data = TASK:query( v );
 		primidata[v] = data;
 		local sql = string.format("UPDATE REINFORCE SET PRIMITIVE='%s' WHERE CODE='%s'",JSON:encode(data),v);
 		local ret = xSQL.execute(mydb, sql);		
@@ -233,9 +230,9 @@ end
 function executeTask( jsonstr )
 	local obj  = JSON:decode( jsonstr );
 	local data = getPrimitive(obj.code);
-	local ret,ctx = TaskA:execute(obj.code,data);
+	local ret,ctx = TASK:execute(obj.code,data);
 	local sctx = JSON:encode( ctx );
-	_taskRecord( obj.code,ret,sctx,2 );
+	_taskRecord( obj.code,ret,sctx, event_task );
 	_updateTask( obj.code,ret,sctx );
 	return string.format("{'result':%d,'code':'%s','context':'%s'}",ret,obj.code,sctx);
 end
@@ -243,7 +240,7 @@ end
 --查询任务
 function queryTask( jsonstr )
 	local obj  = JSON:decode( jsonstr );
-	local ctx  = TaskA:query( obj.code );
+	local ctx  = TASK:query( obj.code );
 	local sctx = JSON:encode( ctx );
 	return string.format("{'code':'%s','context':'%s'}",obj.code,sctx);
 end
@@ -253,7 +250,7 @@ function revertTask( jsonstr )
 	print( "revertTask:" .. jsonstr );
 	local obj  = JSON:decode( jsonstr );
 	local data = getPrimitive( obj.code );
-	local ret  = TaskA:revert( obj.code, data);
+	local ret  = TASK:revert( obj.code, data);
 	return string.format("{'result':%d,'code':'%s'}",ret,obj.code);
 end
 
@@ -267,6 +264,20 @@ end
 --关闭
 function shutdown()
 	xSQL.close( mydb );
+end
+
+--USB设备监控
+function setMonitor()
+	SYS.monitorUsb( function( event, name)
+		local evt = {};
+		evt.type = event;
+		evt.device = name;
+		if event == 0x8000 then --new: 0x8000  remove:0x8004
+			_taskRecord("X1",0,JSON:encode(evt),0);
+		else
+			_taskRecord("X2",0,JSON:encode(evt),0);
+		end
+	end)	
 end
 
 --LUA脚本宿主,安装事件处理函数
@@ -286,11 +297,6 @@ mainProc = coroutine.create(function(t)install(t,
 end)
 
 startup();
+setMonitor();
 coroutine.resume(mainProc,1000);
 print("start infinalize")
-
-
-
-
-
-

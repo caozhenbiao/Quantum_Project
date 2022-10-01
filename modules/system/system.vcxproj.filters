@@ -29,6 +29,9 @@
     <ClCompile Include="winos.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="monitor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="netcard.h">
@@ -44,6 +47,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="winos.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="monitor.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
