@@ -38,6 +38,24 @@ int cregedit::readValue(HKEY hKey, const char* name, char* value, int len) {
 	return ret;
 }
 
+int cregedit::writeMulti(HKEY hKey, const char * name, const char* value) {
+	int ret = RegSetValueEx(hKey, name, 0, REG_MULTI_SZ, (LPBYTE)value, strlen(value));
+	if (ERROR_SUCCESS != ret) {
+		printf("writeValue failed, return:%d lasterror:%d\n", ret, GetLastError());
+	}
+	return ret;
+}
+
+int cregedit::readMulti(HKEY hKey, const char* name, char* value, int len) {
+	DWORD dwType = REG_MULTI_SZ;
+	DWORD dwSize = len;
+	int ret = RegQueryValueEx(hKey, name, 0, &dwType, (LPBYTE)value, &dwSize);
+	if (ERROR_SUCCESS != ret) {
+		printf("readValue failed, return:%d lasterror:%d\n", ret, GetLastError());
+	}
+	return ret;
+}
+
 int cregedit::writeValue(HKEY hKey, const char * name, int value) {
 	int ret = RegSetValueEx(hKey, name, 0, REG_DWORD, (LPBYTE)&value, sizeof(DWORD));
 	if (ERROR_SUCCESS != ret) {

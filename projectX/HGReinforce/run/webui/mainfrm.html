@@ -61,7 +61,7 @@
 	/*style the main menu*/
 	.myMenu { margin: 0; padding: 0px 0px; height:50px; margin-top:12px }
 	.myMenu li { list-style: none; float: left; font: 12px Arial, Helvetica, sans-serif #111;}
-	.myMenu li a:link, .myMenu li a:visited { display: block; text-decoration: none; padding: 0.5em 2em; margin: 0; border-right: 1px solid #fff; color: #111; }
+	.myMenu li a:link, .myMenu li a:visited { display: block; text-decoration: none; padding: 0.5em 2em; margin: 0; border-right: 1px solid #fff; color: #111; border: 1px solid #FFF;}
 	.myMenu li a:hover { background-color: #fff; border: 1px solid #000;} 
 	/*style the sub menu*/
 	.myMenu li ul { position: absolute; visibility: hidden; border-top: 1px solid #fff; margin: 0; padding: 0; z-index:9999}
@@ -72,6 +72,14 @@
 		position:absolute;
 	}
 </style>
+<style>
+	a.disabled {
+		pointer-events: none;
+		filter: alpha(opacity=50);
+		-moz-opacity: 0.5;
+		opacity: 0.5;
+	}
+	</style>
 </head>
 
 <body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0">
@@ -95,9 +103,9 @@
 									    </li>
 									    <li><a href="javascript:void(0)">编辑(<u>E</u>)</a>
 									        <ul>
-									            <li><a href="javascript:void(0)" onclick="javascript:onCurrentTaskQuery();">查询</a></li>
-									            <li><a href="javascript:void(0)" onclick="javascript:onCurrentTaskExecute();">执行</a></li>
-												<li><a href="javascript:void(0)" onclick="javascript:onCurrentTaskRevert();">恢复</a></li>
+									            <li><a id="query" href="javascript:void(0)" onclick="javascript:onCurrentTaskQuery();">查询</a></li>
+									            <li><a id="execute" href="javascript:void(0)" onclick="javascript:onCurrentTaskExecute();">执行</a></li>
+												<li><a id="revert" href="javascript:void(0)" onclick="javascript:onCurrentTaskRevert();">恢复</a></li>
 									        </ul>
 									    </li>
 									    <li><a href="javascript:void(0)">视图(<u>E</u>)</a>
@@ -204,10 +212,10 @@ $('a[data-toggle="tab"],#opt_list').on('click', function (e) {
 		$(activeName).load( $(e.target).attr('url'));
 		mytabObj[activeTab] = activeName;
 	}
+	disableFeinforce((activeName=='#reinforce')?false:true);
 	lastnav = e.target;
 	lasttab = activeName;
 });
-//});
 
 function onShowTabView( name ){
 	var currtab  = "#" + name;
@@ -267,8 +275,25 @@ function GetXmlHttpObject() {
 	return xmlHttp; 
 }
 
-//onload
+function disableMenu( name, disable ){
+	if( disable ){
+		$("#" + name).attr("disabled",true).css("pointer-events","none");
+		$("#" + name).css("color","#a0a0a0");
+	}else{
+		$("#" + name).attr("disabled",false).css("pointer-events","auto");
+		$("#" + name).css("color","#000000");
+	}
+}
+
+function disableFeinforce( able ){
+	disableMenu( "query", able );
+	disableMenu( "execute", able );
+	disableMenu( "revert", able );
+}
+
+//onloadv
 window.onload = function(){
+	disableFeinforce(true);
 	$('#home').load('home.html');
 	var xhr = GetXmlHttpObject();     
 	xhr.open("LUAPOST","main.onload" ,true);  

@@ -88,7 +88,9 @@ int main(int argc, char* argv[]) {
 	int c = 0;
 	while ((c = getopt(argc, argv, "i:k:s:u:w:m:n:x:y:c")) != -1) {
 		switch (c) {
+#ifdef _WIN32
 		case 'i': ShowWindow(GetForegroundWindow(), SW_HIDE); break;
+#endif
 		case 'k':memset(opt.runkey, 0x00, 40); strncpy(opt.runkey, optarg, 40); break;
 		case 's':memset(opt.script, 0x00, 256); strncpy(opt.script, optarg, 256); break;
 		case 'u':memset(opt.option, 0x00, 256); strncpy(opt.option, optarg, 256); break;

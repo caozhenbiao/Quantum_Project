@@ -58,6 +58,27 @@ static int writeStrValue(lua_State * L) {
 	return 1;
 }
 
+static int readMStrValue(lua_State * L) {
+	static char value[1024];
+	HKEY hKey = (HKEY)luaL_checkinteger(L, 1);
+	const char *name = luaL_checkstring(L, 2);
+	memset(&value, 0x00, sizeof(value));
+	int ret = theRegedit->readMulti(hKey, name, value, 1024);
+	lua_pushinteger(L, ret);
+	lua_pushstring(L, value);
+	return 2;
+}
+
+static int writeMStrValue(lua_State * L) {
+	HKEY hKey = (HKEY)luaL_checkinteger(L, 1);
+	const char *name = luaL_checkstring(L, 2);
+	const char *value = luaL_checkstring(L, 3);
+	int ret = theRegedit->writeMulti(hKey, name, value);
+	lua_pushinteger(L, ret);
+	return 1;
+}
+
+
 static int readIntValue(lua_State * L) {
 	int value = -1;
 	HKEY hKey = (HKEY)luaL_checkinteger(L, 1);
@@ -108,6 +129,10 @@ static const struct luaL_Reg myLib[]={
 	{"closeKey",closeKey},
 	{"readStrValue",readStrValue},
 	{"writeStrValue",writeStrValue},
+
+	{"readMStrValue",readMStrValue},
+	{"writeMStrValue",writeMStrValue},
+
 	{"readIntValue",readIntValue},
 	{"writeIntValue",writeIntValue},
 	{"deleteKey",deleteKey},

@@ -13,6 +13,10 @@ public:
 	int writeValue(HKEY hKey, const char * name, const char* value);
 	int readValue(HKEY hKey, const char* name, char* value, int len);
 
+	int writeMulti(HKEY hKey, const char * name, const char* value);
+	int readMulti(HKEY hKey, const char* name, char* value, int len);
+
+
 	int writeValue(HKEY hKey, const char * name, int value);
 	int readValue(HKEY hKey, const char* name, int& value);
 
