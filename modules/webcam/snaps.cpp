@@ -79,7 +79,6 @@ void csnaps::work(){
 		m_bConn = false;
 		return;
 	}
-	printf("frame Size:%d   ", nsize);
 	std::string newframe;
 	while(nsize > 0  ){
 		char buf[0x8F] = { 0 };
