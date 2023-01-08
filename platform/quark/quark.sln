@@ -1,25 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.28307.1433
+VisualStudioVersion = 15.0.28307.1831
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "quark", "quark.vcxproj", "{5B81CD5C-8E82-4D17-A89F-DC9EADA3311C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "quark", "quark.vcxproj", "{06CCD78E-4ED7-44B9-B206-F9BBEED2522F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Win32 = Debug|Win32
-		Release|Win32 = Release|Win32
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5B81CD5C-8E82-4D17-A89F-DC9EADA3311C}.Debug|Win32.ActiveCfg = Debug|Win32
-		{5B81CD5C-8E82-4D17-A89F-DC9EADA3311C}.Debug|Win32.Build.0 = Debug|Win32
-		{5B81CD5C-8E82-4D17-A89F-DC9EADA3311C}.Release|Win32.ActiveCfg = Release|Win32
-		{5B81CD5C-8E82-4D17-A89F-DC9EADA3311C}.Release|Win32.Build.0 = Release|Win32
+		{06CCD78E-4ED7-44B9-B206-F9BBEED2522F}.Debug|x64.ActiveCfg = Debug|x64
+		{06CCD78E-4ED7-44B9-B206-F9BBEED2522F}.Debug|x64.Build.0 = Debug|x64
+		{06CCD78E-4ED7-44B9-B206-F9BBEED2522F}.Debug|x86.ActiveCfg = Debug|Win32
+		{06CCD78E-4ED7-44B9-B206-F9BBEED2522F}.Debug|x86.Build.0 = Debug|Win32
+		{06CCD78E-4ED7-44B9-B206-F9BBEED2522F}.Release|x64.ActiveCfg = Release|x64
+		{06CCD78E-4ED7-44B9-B206-F9BBEED2522F}.Release|x64.Build.0 = Release|x64
+		{06CCD78E-4ED7-44B9-B206-F9BBEED2522F}.Release|x86.ActiveCfg = Release|Win32
+		{06CCD78E-4ED7-44B9-B206-F9BBEED2522F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {CEBAAE30-5C69-49DA-BAE0-BAEC414A1E98}
+		SolutionGuid = {1F8A6421-E96F-40AD-9ECA-DA2AE5861830}
 	EndGlobalSection
 EndGlobal

@@ -1,33 +1,32 @@
+ //thread pool
+// https://github.com/sysprog21/mapreduce
+// https://github.com/Pithikos/C-Thread-Pool
+// https://github.com/mbrossard/threadpool
+
 #ifndef _MACHINE_H_
 #define _MACHINE_H_
-#include "websvr.h"
-#include "business.h"
-#include "commsvr.h"
-#include <string>
 
-struct macopt{
+struct macopt {
 	char runkey[41];
 	char script[256];
-	char commsvrip[32];
-	unsigned short commsvrport;
-	char webpath[256];
-	char websvrip[32];
-	unsigned short websvrport;
+	char webs_path[256];
+	char webs_ip[32];
+	unsigned short webs_port;
 	char option[256];
-	bool console;
+	int console;
 };
 
-class cmachine : public ccommsvr, public cwebsvr, public cbusiness {
-public:
-	bool poweron(macopt& opt);
-	bool poweroff();
-public:
-	virtual void oncomtask(sockaddr* addr, std::string data); 
-	virtual void onluatrans(sockaddr* addr, std::string data); 
-	virtual void onwebtask(int sock, std::string ifunc, std::string data);
-};
+#ifdef __cplusplus
+extern "C" {
 #endif
 
+void machine_start(struct macopt* opt);
+void machine_stop();
+void machine_console_dispath(char* data);
+int    machine_request_dispath(int cs, char* data, unsigned len);
 
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
-
+#endif /* _MACHINE_H_ */

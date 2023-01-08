@@ -1,8 +1,8 @@
 
 mkdir .\run
-copy /Y ..\..\platform\quark\output\quark.exe .\run\
-copy /Y ..\..\platform\quark\lib3th\output\pthread.dll .\run\
-copy /Y ..\..\platform\quark\liblua\output\luadll.dll .\run\
+copy /Y ..\..\platform\quark2\output\quark.exe .\run\
+copy /Y ..\..\platform\quark2\lib3th\output\pthread.dll .\run\
+copy /Y ..\..\platform\quark2\liblua\output\luadll.dll .\run\
 copy /Y ..\..\modules\gmssl\output\gmssl.dll .\run\
 copy /Y ..\..\modules\gmssl\libs\GmSSL\bin\libcrypto-1_1.dll .\run\
 copy /Y ..\..\modules\gmssl\libs\GmSSL\bin\libssl_1_1.dll .\run\

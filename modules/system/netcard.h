@@ -25,7 +25,6 @@
 #endif
 #include <iostream>
 
-
 typedef struct _netcardinfo {
 	char name[256];
 	char desc[256];
@@ -34,8 +33,6 @@ typedef struct _netcardinfo {
 	char mask[50];
 	char gate[50];
 }netcardinfo;
-
-
 
 class cnetcard
 {

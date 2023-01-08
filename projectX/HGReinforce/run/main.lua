@@ -282,13 +282,13 @@ end
 
 --LUA脚本宿主,安装事件处理函数
 mainProc = coroutine.create(function(t)install(t,
-	function( addr, data, len )
-		print("trans...\n");
-		funcode = string.byte(string.sub(data,1,1));
-		tagname = string.sub(data,2,len);
-	end,
+--	function( addr, data, len )
+--   	print("trans...\n");
+--		funcode = string.byte(string.sub(data,1,1));
+--		tagname = string.sub(data,2,len);
+--	end,
     function( sn )
-		--print("timer...\n");
+		print("timer:" .. sn .. "\n");
 	end,
 	function()
 		print("close...\n");
@@ -297,6 +297,6 @@ mainProc = coroutine.create(function(t)install(t,
 end)
 
 startup();
-setMonitor();
+--setMonitor();
 coroutine.resume(mainProc,1000);
 print("start infinalize")

@@ -53,3 +53,36 @@ Make
 Make install
 
 
+1：安装samba
+sudo apt-get update
+sudo apt-get install samba
+
+2：创建一个目录并给权限
+创建目录：sudo mkdir /home/test/share
+给创建的这个目录设置权限
+sudo chmod 777 /home/test/share
+
+3：修改samba配置文件，设置为共享目录
+sudo nano /etc/samba/smb.conf
+
+在配置文件smb.conf的最后添加下面的内容：
+[share]
+comment = share folder
+browseable = yes
+path = /home/test/share
+create mask = 0700
+directory mask = 0700
+valid users = test
+force user = test
+force group = test
+public = yes
+available = yes
+writable = yes
+
+4：重启samba服务器
+sudo service smbd restart
+
+5：在win10电脑上打开文件资源管理器输入
+\\ + Ubuntu电脑的IP地址访问共享文件夹
+
+

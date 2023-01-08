@@ -43,13 +43,13 @@
     <ClInclude Include="mainbroad.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="md5.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="winos.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="monitor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="md5.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

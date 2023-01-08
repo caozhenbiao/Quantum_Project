@@ -12,23 +12,9 @@ extern "C" {
 #include "winos.h"
 #include "monitor.h"
 
-#include "base/at_exit.h"
-#include "base/bind.h"
-#include "base/bind_helpers.h"
-#include "base/callback.h"
-#include "base/location.h"
-#include "base/message_loop/message_loop.h"
-#include "base/run_loop.h"
-#include "base/strings/string_number_conversions.h"
-#include "base/task_runner.h"
-#include "base/threading/thread.h"
-#include "base/time/time.h"
-#include "base/process/process.h"
-
 lua_State * theState = NULL;
 std::vector<std::string> gOutput;
 cnetcard * theNetCard = NULL;
-scoped_ptr<base::Thread> g_thread_;
 
 //callback function must lock and unlock.
 void monitor_callback(int cb, int event, const  char * name) {
@@ -301,8 +287,6 @@ static int destory(lua_State * L){
 	if( theNetCard ){
 		delete theNetCard;
 		theNetCard = NULL;
-		g_thread_->Stop();
-		g_thread_.reset();
 	}
 	return 0;
 }
@@ -315,17 +299,6 @@ void callback(int cb, int n) {
 	lua_pcall(theState, 1, 0, 0);
 	luaL_unref(theState, LUA_REGISTRYINDEX, cb);
 	luaL_unlock(theState);
-}
-
-static int callback_test(lua_State *L) {
-	int nx = (int)lua_tointeger(L, 1);
-	int dl = (int)lua_tointeger(L, 2);
-	int cb = luaL_ref(L, LUA_REGISTRYINDEX);
-	//g_thread_->message_loop_proxy()->PostTask(FROM_HERE,base::Bind(&callback, cb, nx));
-	g_thread_->message_loop_proxy()->PostDelayedTask(FROM_HERE,
-		base::Bind(&callback, cb, nx),
-		base::TimeDelta::FromMilliseconds(dl));
-	return 0;
 }
 
 static const struct luaL_Reg myLib[]={
@@ -349,7 +322,6 @@ static const struct luaL_Reg myLib[]={
 	{"startService",startService},
 	{"enumService",enumService},
 	{"netConnected",netConnected },
-	{"callback_test",callback_test },
 	{"ListUserInfo",ListUserInfo},
 	{"RemoveUser",RemoveUser},
 	{"monitorUsb",monitorUsb},
@@ -381,10 +353,5 @@ extern "C" int luaopen_system(lua_State *L){
 		lua_setfield(L,-2,la->name);
 	}
 	lua_pop(L,0);
-	base::AtExitManager exit_manager;
-	base::Thread::Options options;
-	options.message_loop_type = base::MessageLoop::TYPE_IO;
-	g_thread_.reset(new base::Thread("Thread"));
-	g_thread_->StartWithOptions(options);
 	return 1;
 }

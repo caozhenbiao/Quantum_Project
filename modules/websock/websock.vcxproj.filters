@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="websock.cpp">
+    <ClCompile Include="interface.c">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="interface.cpp">
+    <ClCompile Include="websock.c">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="sha1.cpp">
+    <ClCompile Include="sha1.c">
       <Filter>include</Filter>
     </ClCompile>
-    <ClCompile Include="event.cpp">
+    <ClCompile Include="tcps.c">
       <Filter>include</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,7 +32,7 @@
     <ClInclude Include="sha1.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="event.h">
+    <ClInclude Include="tcps.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
