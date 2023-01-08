@@ -113,7 +113,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_HAS_EXCEPTIONS=1;_CRT_SECURE_NO_WARNINGS;NOMINMAX;HAVE_STRUCT_TIMESPEC;ENOSYS=1;ETIMEDOUT = 10000;NULL = 0;_X86_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>.\libpthread\pthread</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\lib3th\pthread</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -150,7 +150,7 @@
       </SDLCheck>
       <PreprocessorDefinitions>_WIN32;NDEBUG;_CONSOLE;_HAS_EXCEPTIONS=0;_CRT_SECURE_NO_WARNINGS;NOMINMAX;HAVE_STRUCT_TIMESPEC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>.\libpthread\pthread</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\lib3th\pthread</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
