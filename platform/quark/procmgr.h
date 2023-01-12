@@ -8,6 +8,7 @@ void procmgr_stop();
 void procmgr_poll (int milliseconds);
 int process_add(const char* argc);
 int process_remove(char* name);
+void procmgr_execute(const char* mod, char * json);
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

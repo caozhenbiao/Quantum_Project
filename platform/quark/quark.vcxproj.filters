@@ -39,6 +39,9 @@
     <ClCompile Include="webui.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="include\http.c">
+      <Filter>include</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="luadisp.h">
@@ -61,6 +64,9 @@
     </ClInclude>
     <ClInclude Include="webui.h">
       <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\http.h">
+      <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

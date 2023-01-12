@@ -8,7 +8,6 @@
 
 struct tcps_t {
 	int(*dispath)(int, char*,unsigned int);
-	void *argument;
 	int exit_mark;
 	int fdarray[MAX_CLIENT];
 #ifdef _WIN32
@@ -140,7 +139,6 @@ void* tcps_workthread(void* param) {
 					fcntl(aptclt, F_SETFL, O_NONBLOCK);
 #endif
 					FD_SET(svr->fdarray[nLoopi], &fdRead);
-					//if (maxfd < aptclt)maxfd = aptclt;
 					bAccept = 1;
 					break;
 				}

@@ -22,6 +22,7 @@
     <ClCompile Include="include\map.c" />
     <ClCompile Include="include\tcps.c" />
     <ClCompile Include="include\threadpool.c" />
+    <ClCompile Include="include\http.c" />
     <ClCompile Include="luadisp.c" />
     <ClCompile Include="machine.c" />
     <ClCompile Include="procmgr.c" />
@@ -32,6 +33,7 @@
     <ClInclude Include="include\map.h" />
     <ClInclude Include="include\tcps.h" />
     <ClInclude Include="include\threadpool.h" />
+    <ClInclude Include="include\http.h" />
     <ClInclude Include="luadisp.h" />
     <ClInclude Include="machine.h" />
     <ClInclude Include="procmgr.h" />

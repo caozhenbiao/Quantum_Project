@@ -5,18 +5,35 @@
 #include <winsock.h>
 #define WIN32_LEAN_AND_MEAN  //这很重要，解决winsock.h winsock2.h冲突
 #include "include/map.h"
+#include "include/http.h"
  
 static int luatimer = LUA_REFNIL;
 static int luaclose = LUA_REFNIL;
 map_t(lua_State*) luastates;
 static lua_State * main_state=NULL;
+char*(*remote_dispath)(char*, char*, unsigned);
+int timer_delay = 1000;
 
 //Luascript to quark;
 extern  int install(lua_State* L) {
-	unsigned n = (unsigned)lua_tointeger(L, 1);
+	timer_delay = (unsigned)lua_tointeger(L, 1);
 	luaclose = luaL_ref(L, LUA_REGISTRYINDEX); 
 	luatimer = luaL_ref(L, LUA_REGISTRYINDEX);
 	return 0;
+}
+
+//远程调用
+extern int remote_execute(lua_State* L) {
+	const char* uri = luaL_checkstring(L, 1);
+	const char* data = luaL_checkstring(L, 2);
+	unsigned len = (unsigned)lua_tointeger(L, 3);
+	char * data_out = (char*)malloc(sizeof(char*));
+	memset(data_out, 0x00, sizeof(char*));
+	int data_out_len = http_post_request(uri, data, len, &data_out);
+	lua_pushinteger(L,data_out_len);
+	lua_pushstring(L, data_out);
+	free( data_out );
+	return 2;
 }
 
 int panic(lua_State *L) {
@@ -38,6 +55,7 @@ int luadisp_start(const char* script) {
 	map_init(&luastates);
 	map_set(&luastates, script, main_state);
 	lua_register(main_state, "install", install);
+	lua_register(main_state, "remote_execute", remote_execute);
 	lua_pcall(main_state, 0, 0, 0);
 	return 1;
 }
@@ -118,3 +136,10 @@ void luadisp_doclose(void) {
 	}
 }
 
+//获取LUA定时器时间
+int luadisp_ticktime() {
+	if (timer_delay < 10) {
+		timer_delay = 10;
+	}	
+	return timer_delay;
+}

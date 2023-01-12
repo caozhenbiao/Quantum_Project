@@ -7,6 +7,7 @@ void luadisp_dotimer(void*);
 char* luadisp_execute(char* iface, char* data, unsigned len);
 int luadisp_start(const char* file);
 int luadisp_stop(void);
+int luadisp_ticktime();
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

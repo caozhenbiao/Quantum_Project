@@ -249,6 +249,7 @@
     <ClCompile Include=".\src\yolo.c" />
     <ClCompile Include=".\src\yolo_layer.c" />
     <ClCompile Include="interface.c" />
+    <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include=".\include\darknet.h" />

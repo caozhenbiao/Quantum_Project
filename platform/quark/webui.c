@@ -81,12 +81,6 @@ Server: smartx\r\n \
 Content-Type: %s\r\n \
 Content - Length: %ld\r\n\r\n";
 
-typedef enum METHORD{
-	METHORD_GET,
-	METHORD_POST,
-	LUA
-}METHORD;
-
 struct vec{
 	const char  *ptr;
 	int     len;
