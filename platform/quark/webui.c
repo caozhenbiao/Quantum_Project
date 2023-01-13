@@ -157,15 +157,13 @@ void webui_request_handle(int cs, char* data, unsigned len) {
 	sscanf(data, "%[^ ] %[^( |?)]?%[^ ]*", methord, uri, args);
 	char * data_ptr = NULL;
 	size_t data_len = 0;
-	size_t head_len = 200;
-	while( head_len < len ){
-		size_t count = strspn(data + head_len, "\r\n\r\n");
-		if (4 == count) {
-			data_ptr = data + head_len + 4;
-			data_len = len - head_len - 3;
+	for (unsigned hdr_len = 4; hdr_len < len; hdr_len++) {
+		if (data[hdr_len - 4] == 0x0D && data[hdr_len - 3] == 0x0A &&
+			data[hdr_len - 2] == 0x0D && data[hdr_len - 1] == 0x0A) {
+			data_ptr = data + hdr_len;
+			data_len = len - hdr_len;
 			break;
 		}
-		head_len += (count + 1);
 	}
 	if ( get_request_method(methord) == 2 ) {
 		char * rdata = webui_cgi(&uri[1], data_ptr, data_len);

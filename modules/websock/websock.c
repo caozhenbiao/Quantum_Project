@@ -254,13 +254,13 @@ int websock_getip(const char* nc, char* ip){
 #ifdef WIN32
 	char host_name[255]={0};
     if(gethostname(host_name,sizeof(host_name))==SOCKET_ERROR){  
-        printf("Error %d when getting local host name\n",WSAGetLastError());  
+        fprintf(stderr,"Error %d when getting local host name\n",WSAGetLastError());  
         return -1;  
     }  
     printf("host name:%s\n",host_name);  
     struct hostent *phe=gethostbyname(host_name);  
     if(phe==0){  
-        printf("Error host lookup\n");  
+        fprintf(stderr,"Error host lookup\n");  
         return -1;  
     }  
     struct in_addr addr;  

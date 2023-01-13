@@ -1,7 +1,7 @@
 #include "../../platform/quark/liblua/src/lua.h"
 #include "../../platform/quark/liblua/src/lualib.h"
 #include "../../platform/quark/liblua/src/lauxlib.h"
-#include "mysqlite.h"
+#include "sqlite.h"
 
 //
 static int open( lua_State *L ){

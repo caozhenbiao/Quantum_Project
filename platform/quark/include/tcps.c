@@ -19,8 +19,19 @@ struct tcps_t {
 #endif
 };
 
-tcps_t *  tcps_start(const char* ip, short port, int(*function)(int, char*,unsigned)) {
-	printf("start web service,ip:%s port:%d\n", ip, port);
+int tcps_close(int sock) {
+	if ( sock ) {
+#ifdef _WIN32
+		closesocket(sock);
+#else
+		close(sock);
+#endif
+	}
+	return 0;
+}
+
+tcps_t *  tcps_start(const char* ip, unsigned short port, int(*function)(int, char*,unsigned)) {
+	fprintf(stderr, "start web service,ip:%s port:%d\n", ip, port);
 #ifdef _WIN32
 	WSADATA wsdata;
 	WSAStartup(0x0202, &wsdata);
@@ -50,13 +61,13 @@ tcps_t *  tcps_start(const char* ip, short port, int(*function)(int, char*,unsig
 	//bind
 	int ibind = bind(tcps->mysocket, (struct sockaddr*)&myaddr, sizeof(struct sockaddr));
 	if (ibind != 0) {
-		printf("websvr bind socket error! addr=%s:%d\n", ip, port);
+		fprintf(stderr, "websvr bind socket error! addr=%s:%d\n", ip, port);
 		goto err;
 	}
 	//listen
 	int ilisten = listen(tcps->mysocket, MAX_CLIENT);
 	if (ilisten != 0) {
-		printf("websvr listen error!\n");
+		fprintf(stderr, "websvr listen error!\n");
 		goto err;
 	}
 #ifdef _WIN32
@@ -66,12 +77,12 @@ tcps_t *  tcps_start(const char* ip, short port, int(*function)(int, char*,unsig
 #else
 	fcntl(mysocket, F_SETFL, O_NONBLOCK);
 	if (pthread_create(&tcps->threadid, NULL, tcps_workthread, tcps) != 0)
-		printf("pthread_create failed! \n");
+		printf(stderr, "pthread_create failed! \n");
 #endif
 	return tcps;
 err:
 	if (tcps) {
-		closesocket(tcps->mysocket);
+		tcps_close(tcps->mysocket);
 		free(tcps);
 		WSACleanup();
 	}
@@ -81,19 +92,12 @@ err:
 //tcp server stop
 void tcps_stop( tcps_t * s ) {
 	s->exit_mark = 1;
-#ifdef _WIN32
-	closesocket(s->mysocket);
+	tcps_close(s->mysocket);
 	for (unsigned int i = 0; i < MAX_CLIENT; i++) {
-		if (s->fdarray[i])closesocket(s->fdarray[i]);
+		if (s->fdarray[i])tcps_close(s->fdarray[i]);
 	}
-	WSACleanup();
-#else
-	close(s->mysocket);
-	for (unsigned int i = 0; i < MAX_CLIENT; i++) {
-		if (s->fdarray[i])close(s->fdarray[i]);
-	}
-#endif
 }
+
 
 #ifdef _WIN32
 unsigned __stdcall tcps_workthread(void* param) {
@@ -144,11 +148,7 @@ void* tcps_workthread(void* param) {
 				}
 			}
 			if (!bAccept) {
-#ifdef _WIN32
-				closesocket(aptclt);
-#else
-				close(aptclt);
-#endif
+				tcps_close(aptclt);
 			}
 			continue;
 		}
@@ -163,13 +163,8 @@ void* tcps_workthread(void* param) {
 					cnt = recv(svr->fdarray[nLoopi], &data[tln], MAX_BUF_SIZE - tln, 0);
 					tln += cnt;
 				} while (cnt > 0);
-				if (tln < 0 || svr->dispath(svr->fdarray[nLoopi],data,tln)==0) {
-					printf("close\n");
-#ifdef _WIN32
-					closesocket(svr->fdarray[nLoopi]);
-#else
-					close(svr->fdarray[nLoopi]);
-#endif
+				if (tln < 0 || svr->dispath(svr->fdarray[nLoopi],data,tln)==-1) {
+					tcps_close(svr->fdarray[nLoopi]);
 				}
 				FD_CLR(svr->fdarray[nLoopi], &fdRead);
 				svr->fdarray[nLoopi] = 0;
@@ -189,13 +184,4 @@ int tcps_sends(int sock, void* buf, int size) {
 			break;
 	}
 	return sent_len;
-}
-
-int tcps_close(int sock) {
-#ifdef _WIN32
-	closesocket(sock);
-#else
-	close(sock);
-#endif
-	return 0;
 }

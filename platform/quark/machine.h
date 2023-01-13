@@ -22,8 +22,8 @@ extern "C" {
 
 void machine_start(struct macopt* opt);
 void machine_stop();
-void machine_console_dispath(char* data);
-int    machine_request_dispath(int cs, char* data, unsigned len);
+void console_request_dispath(char* data);
+int    webui_request_dispath(int cs, char* data, unsigned len);
 
 #ifdef __cplusplus
 }

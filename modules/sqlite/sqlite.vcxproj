@@ -199,7 +199,7 @@ copy ..\..\platform\quark\lib3th\output\pthread.dll .\output\pthread.dll</Comman
   <ItemGroup>
     <ClCompile Include="interface.c" />
     <ClCompile Include="map.c" />
-    <ClCompile Include="mysqlite.c" />
+    <ClCompile Include="sqlite.c" />
     <ClCompile Include="sqlite3.c" />
   </ItemGroup>
   <ItemGroup>
@@ -207,7 +207,7 @@ copy ..\..\platform\quark\lib3th\output\pthread.dll .\output\pthread.dll</Comman
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="map.h" />
-    <ClInclude Include="mysqlite.h" />
+    <ClInclude Include="sqlite.h" />
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="sqlite3ext.h" />
   </ItemGroup>

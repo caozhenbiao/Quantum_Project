@@ -5,8 +5,8 @@
       <Filter>sqlite3</Filter>
     </ClCompile>
     <ClCompile Include="interface.c" />
-    <ClCompile Include="mysqlite.c" />
     <ClCompile Include="map.c" />
+    <ClCompile Include="sqlite.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -23,7 +23,7 @@
     <ClInclude Include="sqlite3ext.h">
       <Filter>sqlite3</Filter>
     </ClInclude>
-    <ClInclude Include="mysqlite.h" />
     <ClInclude Include="map.h" />
+    <ClInclude Include="sqlite.h" />
   </ItemGroup>
 </Project>

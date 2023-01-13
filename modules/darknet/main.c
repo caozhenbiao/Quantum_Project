@@ -23,22 +23,6 @@
 network mynet;
 char**    mynames;
 
-// compare to sort detection** by bbox.x
-int compare_by_lefts_1(const void *a_ptr, const void *b_ptr) {
-	const detection_with_class* a = (detection_with_class*)a_ptr;
-	const detection_with_class* b = (detection_with_class*)b_ptr;
-	const float delta = (a->det.bbox.x - a->det.bbox.w / 2) - (b->det.bbox.x - b->det.bbox.w / 2);
-	return delta < 0 ? -1 : delta > 0 ? 1 : 0;
-}
-
-// compare to sort detection** by best_class probability
-int compare_by_probs_1(const void *a_ptr, const void *b_ptr) {
-	const detection_with_class* a = (detection_with_class*)a_ptr;
-	const detection_with_class* b = (detection_with_class*)b_ptr;
-	float delta = a->det.prob[a->best_class] - b->det.prob[b->best_class];
-	return delta < 0 ? -1 : delta > 0 ? 1 : 0;
-}
-
 //yolo
 static int yolo_setup(const char* nf, const char* cf, const char* wf){
    //const char *  nf = luaL_checkstring(L, 1); //labelÎÄ¼þ
@@ -127,7 +111,7 @@ int dispath(char* uri, char* data, unsigned data_len, char** data_out) {
 
 #ifdef _WIN32
 char *optarg = NULL;
-int getopt(int argc, char **argv, const char *opts) {
+int getopt2(int argc, char **argv, const char *opts) {
 	static int sp = 1;
 	static int opterr = 1;
 	static int optind = 1;
@@ -172,7 +156,6 @@ int getopt(int argc, char **argv, const char *opts) {
 	return(c);
 }
 #endif
-
 
 #undef main
 int main(int argc, char* argv[]) {

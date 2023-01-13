@@ -99,8 +99,8 @@ int main(int argc, char *argv[]){
 			continue;
 		if (strcmp(sz, "exit\n") == 0)
 			break;
-		machine_console_dispath(sz);
+		console_request_dispath(sz);
     }
 	machine_stop();
-    return (0);
+    return 0;
 }

@@ -5,9 +5,8 @@
  * under the terms of the MIT license. See LICENSE for details.
  */
 
+#include <stdlib.h>
 #include "map.h"
-
-#define NULL 0
 
 struct map_node_t {
   unsigned hash;
@@ -29,7 +28,7 @@ static map_node_t *map_newnode(const char *key, void *value, int vsize) {
   map_node_t *node;
   int ksize = strlen(key) + 1;
   int voffset = ksize + ((sizeof(void*) - ksize) % sizeof(void*));
-  node = malloc(sizeof(*node) + voffset + vsize);
+  node = (map_node_t *)malloc(sizeof(*node) + voffset + vsize);
   if (!node) return 0;
   memcpy(node + 1, key, ksize);
   node->hash = map_hash(key);
@@ -42,7 +41,7 @@ static map_node_t *map_newnode2( unsigned key, void *value, int vsize) {
 	map_node_t *node;
 	int ksize = sizeof(key);
 	int voffset = ksize + ((sizeof(void*) - ksize) % sizeof(void*));
-	node = malloc(sizeof(*node) + voffset + vsize);
+	node = (map_node_t *)malloc(sizeof(*node) + voffset + vsize);
 	if (!node) return 0;
 	memcpy(node + 1, &key, ksize);
 	node->hash = key;
@@ -80,7 +79,7 @@ static int map_resize(map_base_t *m, int nbuckets) {
     }
   }
   /* Reset buckets */
-  buckets = realloc(m->buckets, sizeof(*m->buckets) * nbuckets);
+  buckets = (map_node_t **)realloc(m->buckets, sizeof(*m->buckets) * nbuckets);
   if (buckets != NULL) {
     m->buckets = buckets;
     m->nbuckets = nbuckets;

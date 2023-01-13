@@ -12,7 +12,7 @@ static int luaclose = LUA_REFNIL;
 map_t(lua_State*) luastates;
 static lua_State * main_state=NULL;
 char*(*remote_dispath)(char*, char*, unsigned);
-int timer_delay = 1000;
+static int timer_delay = 1000;
 
 //Luascript to quark;
 extern  int install(lua_State* L) {
@@ -26,12 +26,12 @@ extern  int install(lua_State* L) {
 extern int remote_execute(lua_State* L) {
 	const char* uri = luaL_checkstring(L, 1);
 	const char* data = luaL_checkstring(L, 2);
-	unsigned len = (unsigned)lua_tointeger(L, 3);
+	unsigned data_len = (unsigned)lua_tointeger(L, 3);
 	char * data_out = (char*)malloc(sizeof(char*));
 	memset(data_out, 0x00, sizeof(char*));
-	int data_out_len = http_post_request(uri, data, len, &data_out);
-	lua_pushinteger(L,data_out_len);
-	lua_pushstring(L, data_out);
+	int out_len = http_post_request(uri, data, data_len, &data_out);
+	lua_pushinteger(L,out_len);
+	lua_pushstring(L,data_out);
 	free( data_out );
 	return 2;
 }
@@ -42,12 +42,12 @@ int panic(lua_State *L) {
 }
 
 int luadisp_start(const char* script) {
-	printf("start business service, script:%s\n", script);
+	fprintf(stderr, "start business service, script:%s\n", script);
 	main_state = luaL_newstate();
 	luaL_openlibs(main_state);
 	if (main_state && luaL_loadfile(main_state, script)) {
 		if (main_state) lua_atpanic(main_state, &panic);
-		printf("script error or file:%s  error:%d mission!\n", script, lua_error(main_state));
+		fprintf(stderr, "script error or file:%s  error:%d mission!\n", script, lua_error(main_state));
 		lua_close(main_state);
 		main_state = NULL;
 		return 0;
@@ -101,7 +101,7 @@ char*  luadisp_execute(char* iface, char* data, unsigned len) {
 	lua_State * lua = luaL_newstate();
 	luaL_openlibs(lua);
 	if (luaL_dofile(lua, script)) {
-		printf("%s,script error or file mission!\n", script);
+		fprintf(stderr, "%s,script error or file mission!\n", script);
 		lua_close(lua);
 		return retval;
 	}

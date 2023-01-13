@@ -14,7 +14,7 @@ int ccamera::play(bool store){
 	m_playevt = event_create( false, false );
 	m_frmevt  = event_create( false, true );
 	if (!myVideoCapture.open(cv::CAP_ANY + camid)) {
-		printf("cvVideoCapture open ID:%d Fail!\n", camid);
+		fprintf(stderr,"cvVideoCapture open ID:%d Fail!\n", camid);
 		return -1;
 	}
 	if (  store ){

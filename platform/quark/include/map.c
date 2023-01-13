@@ -5,7 +5,6 @@
  * under the terms of the MIT license. See LICENSE for details.
  */
 #include <stdlib.h>
-#include <string.h>
 #include "map.h"
 
 struct map_node_t {
