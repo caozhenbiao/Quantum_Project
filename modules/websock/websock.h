@@ -14,6 +14,7 @@ enum WS_FrameType{
     WS_OPENING_FRAME = 0xF3,
     WS_CLOSING_FRAME = 0x08
 };
+int last_conn_sock;
 void websock_start(const char* ip, unsigned short port);
 void websock_stop();
 int websock_send_text(SOCKET cs, const char* text);

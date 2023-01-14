@@ -11,9 +11,9 @@
     </LocalDebuggerEnvironment>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LocalDebuggerCommandArguments>-l webcam</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>-s main.lua -y 8080</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommand>lua</LocalDebuggerCommand>
+    <LocalDebuggerCommand>quark.exe </LocalDebuggerCommand>
     <LocalDebuggerWorkingDirectory>$(OutDir)</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
 </Project>

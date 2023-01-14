@@ -80,7 +80,7 @@ static int stop(lua_State *L){
 static int sendfrm(lua_State *L){
 	unsigned  size   = (unsigned)luaL_checkinteger(L,2);
 	const char* buf = luaL_checklstring(L,1, &size);
-	int nsnd = websock_send_bin(0,(unsigned char*)buf,size);
+	int nsnd = websock_send_bin(last_conn_sock,(unsigned char*)buf,size);
 	lua_pushnumber(L, nsnd );
 	return 1;
 }

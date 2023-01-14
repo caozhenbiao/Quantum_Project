@@ -5,7 +5,7 @@
     <LocalDebuggerWorkingDirectory>$(OutDir)</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     <LocalDebuggerAttach>false</LocalDebuggerAttach>
-    <LocalDebuggerCommand>quarkD.exe</LocalDebuggerCommand>
+    <LocalDebuggerCommand>quark.exe</LocalDebuggerCommand>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LocalDebuggerCommandArguments>-s main.lua -y 8006</LocalDebuggerCommandArguments>

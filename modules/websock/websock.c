@@ -185,6 +185,7 @@ int websock_dispath(int sock, char* data, int len) {
 		char send_buf[1024] = { 0 };
 		int buflen = websock_handshake(web_key, send_buf);
 		if (tcps_sends(sock, (void*)send_buf, buflen) == buflen) {
+			last_conn_sock = sock;
 			disconn = 0;
 		}
 	}
