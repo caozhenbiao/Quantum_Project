@@ -24,9 +24,11 @@ extern  int install(lua_State* L) {
 
 //Ô¶³Ìµ÷ÓÃ
 extern int remote_execute(lua_State* L) {
+	printf("remote_execute start\n");
 	const char* uri = luaL_checkstring(L, 1);
-	const char* data = luaL_checkstring(L, 2);
-	unsigned data_len = (unsigned)lua_tointeger(L, 3);
+	unsigned data_len = (unsigned)lua_tointeger(L, 2);
+	const char* data = luaL_checklstring(L, 3, &data_len);
+	printf("remote_execute:%s len:%d\n", uri, data_len);
 	char * data_out = (char*)malloc(sizeof(char*));
 	memset(data_out, 0x00, sizeof(char*));
 	int out_len = http_post_request(uri, data, data_len, &data_out);
