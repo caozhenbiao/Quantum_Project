@@ -19,6 +19,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_STATIC
 #include "stb_image.h"
+#include "http.h"
 
 network mynet;
 char**    mynames;
@@ -103,7 +104,7 @@ static int framedetect(char*jpgdata, __int64 jpgsize, char** boxlist){
 
 int dispath(char* uri, char* data, unsigned data_len, char** data_out) {
 	printf("dispath  uri:%s   data:%s len:%d\n", uri, data, data_len);
-	*data_out = (char*)malloc(*data_out, 1024);
+	*data_out = (char*)malloc(1024);
 	memset(*data_out, 0x00, 1024);
 	framedetect(data, data_len, data_out);
 	return strlen(*data_out);

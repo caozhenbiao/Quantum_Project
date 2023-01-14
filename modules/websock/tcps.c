@@ -155,6 +155,7 @@ void* tcps_workthread(void* param) {
 		//RECV
 		for (int nLoopi = 0; nLoopi < MAX_CLIENT; nLoopi++) {
 			if (FD_ISSET(svr->fdarray[nLoopi], &fdRead)) {
+				FD_CLR(svr->fdarray[nLoopi], &fdRead);
 				static char data[MAX_BUF_SIZE] = { 0 };
 				memset(data, 0x00, MAX_BUF_SIZE);
 				int cnt = 0;
@@ -165,9 +166,8 @@ void* tcps_workthread(void* param) {
 				} while (cnt > 0);
 				if (tln < 0 || svr->dispath(svr->fdarray[nLoopi],data,tln)==-1) {
 					tcps_close(svr->fdarray[nLoopi]);
+					svr->fdarray[nLoopi] = 0;
 				}
-				FD_CLR(svr->fdarray[nLoopi], &fdRead);
-				svr->fdarray[nLoopi] = 0;
 			}
 		}
 	}

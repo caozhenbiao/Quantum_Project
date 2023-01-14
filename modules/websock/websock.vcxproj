@@ -107,7 +107,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>luaLibD.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\platform\quark\liblua\output\</AdditionalLibraryDirectories>
-      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)D$(TargetExt)</OutputFile>
     </Link>
     <PostBuildEvent>
       <Command>copy ..\..\platform\quark\liblua\output\luadllD.dll .\output\luadllD.dll
@@ -147,7 +147,7 @@ copy ..\..\platform\quark\lib3th\output\pthreadD.dll .\output\pthreadD.dll</Comm
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;WEBCAM_EXPORTS;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

@@ -1,6 +1,5 @@
 --*****LUA SERMON SCRIPT*****--
 print("this is websock test script. start at " .. os.date("%Y-%m-%d %H:%M:%S", os.time()))
-local JSON   = require "luajson"
 local websockobj;
  
 --websocket模块

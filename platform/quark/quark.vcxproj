@@ -95,6 +95,7 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)output\</OutDir>
     <IntDir>$(SolutionDir)output\.Debug\</IntDir>
+    <TargetName>$(ProjectName)D</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>

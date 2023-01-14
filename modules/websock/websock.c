@@ -153,7 +153,7 @@ static int decodeframe(const char * frm, unsigned len, char** payload){
 
 //web ÇëÇó´¦Àí
 int websock_dispath(int sock, char* data, int len) {
-	int disconn = 0;
+	int disconn = -1;
 	//0:disconnect
 	if ( len == 0 ) {
 		responsetolua(0,"{}", 2);
@@ -181,10 +181,12 @@ int websock_dispath(int sock, char* data, int len) {
 		}
 		web_key_len += (count + 1);
 	}
-	char send_buf[1024] = { 0 };
-	int buflen = websock_handshake(web_key, send_buf);
-	if (tcps_sends(sock, (void*)send_buf, buflen) == buflen) {
-		disconn = 1;
+	if (strlen(web_key) > 0) {
+		char send_buf[1024] = { 0 };
+		int buflen = websock_handshake(web_key, send_buf);
+		if (tcps_sends(sock, (void*)send_buf, buflen) == buflen) {
+			disconn = 0;
+		}
 	}
 	return disconn;
 }

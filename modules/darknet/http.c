@@ -1,6 +1,18 @@
 #include <stdio.h>
 #include <assert.h>
+#ifdef WIN32
 #include <winsock.h>
+#else
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <arpa/inet.h>
+#include <sys/unistd.h>
+#include <sys/ioctl.h>
+#include <sys/fcntl.h>
+#endif
+
+
 #include <string.h>
 #include "http.h"
 #define MAX_CLIENT 64
