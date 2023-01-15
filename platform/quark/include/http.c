@@ -53,7 +53,7 @@ int http_get_request(const char* uri, const char * data, char ** payload) {
 #endif
 	//发送请求数据
 	char post_header[2048] = { 0 };
-	int nsend = sprintf(post_header, "GET /%s?%s HTTP/1.1\r\nHost: %s:%d\r\nConnection: close\r\n\r\n", path, data, host_name, port);
+	int nsend = sprintf(post_header, "GET /%s?%s HTTP/1.1\r\nHost: %s:%d\r\nConnection: close\r\nContent-Length: 0\r\n\r\n", path, data, host_name, port);
 	if (tcp_sends(sockfd, post_header, nsend) != nsend) {
 		goto err;
 	}
@@ -132,27 +132,36 @@ int http_post_request(const char* uri, const char * data, int data_len, char ** 
 			*p_colon = '\0';
 		}
 	}
+
 	//HTTP 连接
 	int sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	struct sockaddr_in sin = { 0 };
 	sin.sin_family = AF_INET;
 	sin.sin_port = htons(port);
 	sin.sin_addr.s_addr = inet_addr(host_name);
-	if (0 != connect(sockfd, (struct sockaddr*)&sin, sizeof(struct sockaddr_in))) {
-		goto err;
-	}
+	/*
 #ifdef _WIN32
 	unsigned long nMode = 1;
 	ioctlsocket(sockfd, FIONBIO, &nMode);
 #else
 	fcntl(sockfd, F_SETFL, O_NONBLOCK);
 #endif
+	*/
+
+	unsigned long nMode = 1;
+	//ioctlsocket(sockfd, FIONBIO, &nMode);
+
+	if (-1 == connect(sockfd, (struct sockaddr*)&sin, sizeof(struct sockaddr_in))) {
+		goto err;
+	}
+
 	//发送请求数据
 	char post_header[1024] = { 0 };
-	int nsend = sprintf(post_header, "POST /%s HTTP/1.1\r\nHost: %s:%d\r\nConnection: close\r\n\r\n", path, host_name, port);
+	int nsend = sprintf(post_header, "POST /%s HTTP/1.1\r\nHost: %s:%d\r\nConnection: close\r\nContent-Length: %ld\r\n\r\n", path, host_name, port,data_len);
 	if (tcp_sends(sockfd, post_header, nsend) != nsend || tcp_sends(sockfd, data, data_len) != data_len) {
 		goto err;
 	}
+
 	//select 模式接收数据
 	int recv_status = 1;
 	char header[1024] = { 0 };

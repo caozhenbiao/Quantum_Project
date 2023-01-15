@@ -8,17 +8,17 @@ lua_State * theState = NULL;
 static int lua_callback = LUA_REFNIL;
 
 #ifdef WIN32
-static void GB2312ToUTF8(char* rst, const char *pText, int pLen) {
+static void GB2312ToUTF8(char** rst, const char *pText, int pLen) {
 	char buf[4];
 	int nLength = pLen * 3;
-	rst = (char*)malloc(nLength);
+	(*rst) = (char*)malloc(nLength);
 	memset(buf, 0, 4);
-	memset(rst, 0, nLength);
+	memset((*rst), 0, nLength);
 	int i = 0;
 	int j = 0;
 	while (i < pLen) {
 		if (*(pText + i) >= 0)
-			rst[j++] = pText[i++];
+			(*rst)[j++] = pText[i++];
 		else {
 			wchar_t pbuffer;
 			MultiByteToWideChar(CP_ACP, MB_PRECOMPOSED, pText + i, 2, &pbuffer, 1);
@@ -27,14 +27,14 @@ static void GB2312ToUTF8(char* rst, const char *pText, int pLen) {
 			buf[1] = (0x80 | ((pchar[1] & 0x0F) << 2)) + ((pchar[0] & 0xC0) >> 6);
 			buf[2] = (0x80 | (pchar[0] & 0x3F));
 			unsigned short int tmp = 0;
-			tmp = rst[j] = buf[0];
-			tmp = rst[j + 1] = buf[1];
-			tmp = rst[j + 2] = buf[2];
+			tmp = (*rst)[j] = buf[0];
+			tmp = (*rst)[j + 1] = buf[1];
+			tmp = (*rst)[j + 2] = buf[2];
 			j += 3;
 			i += 2;
 		}
 	}
-	rst[j] = 0;
+	(*rst)[j] = 0;
 	//delete[]rst;
 	return;
 }
@@ -88,7 +88,7 @@ static int sendfrm(lua_State *L){
 static int sendutf8(lua_State *L) {
 	const char* str = luaL_checkstring(L, 1);
 	char* utfstr = NULL;
-	GB2312ToUTF8(utfstr, str, strlen(str));
+	GB2312ToUTF8(&utfstr, str, strlen(str));
 	int nsnd = websock_send_text(0, utfstr);
 	lua_pushnumber(L, nsnd);
 	free(utfstr);
