@@ -6,6 +6,7 @@ extern "C" {
 
 int http_get_request(const char* uri, const char * data, char ** payload);
 int http_post_request(const char* uri, const char * data, int len, char ** payload );
+int tcp_post_request(const char* uri, const char * data, int data_len, char ** payload);
 
 #ifdef __cplusplus
 }

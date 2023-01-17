@@ -89,7 +89,7 @@ static int sendutf8(lua_State *L) {
 	const char* str = luaL_checkstring(L, 1);
 	char* utfstr = NULL;
 	GB2312ToUTF8(&utfstr, str, strlen(str));
-	int nsnd = websock_send_text(0, utfstr);
+	int nsnd = websock_send_text(last_conn_sock, utfstr);
 	lua_pushnumber(L, nsnd);
 	free(utfstr);
 	return 1;
@@ -97,7 +97,7 @@ static int sendutf8(lua_State *L) {
 
 static int sendstr(lua_State *L){
 	const char* str = luaL_checkstring(L,1);
-	int nsnd = websock_send_text(0,str);
+	int nsnd = websock_send_text(last_conn_sock,str);
 	lua_pushnumber(L, nsnd );
 	return 1;
 }

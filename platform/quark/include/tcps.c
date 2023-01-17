@@ -12,7 +12,7 @@ struct tcps_t {
 	int fdarray[MAX_CLIENT];
 #ifdef _WIN32
 	unsigned threadid;
-	SOCKET mysocket;
+	unsigned int mysocket;
 #else
 	pthread_t threadid;
 	int mysocket;
@@ -115,24 +115,15 @@ void* tcps_workthread(void* param) {
 		}
 		//select
 		struct timeval tv = { 0,10000 };
-#ifdef _WIN32
-		SOCKET maxfd = svr->mysocket;
-#else
 		int maxfd = svr->mysocket;
-#endif
 		if (select(FD_SETSIZE, &fdRead, NULL, NULL, &tv) <= 0)
 			continue;
 		//ACCEPT CONNECT
 		if (FD_ISSET(svr->mysocket, &fdRead)) {
 			struct sockaddr addrclt;
 			int bAccept = 0;
-#ifdef _WIN32
 			int  addlen = sizeof(addrclt);
-			SOCKET aptclt = accept(svr->mysocket, (struct sockaddr*)&addrclt, &addlen);
-#else
-			socklen_t addlen = sizeof(addrclt);
 			int aptclt = accept(svr->mysocket, (struct sockaddr*)&addrclt, &addlen);
-#endif	
 			for (int nLoopi = 0; aptclt > 0 && nLoopi < MAX_CLIENT; nLoopi++) {
 				if (svr->fdarray[nLoopi] == 0) {
 					svr->fdarray[nLoopi] = aptclt;

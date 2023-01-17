@@ -1,5 +1,7 @@
 ﻿#ifdef WIN32
-#include <winsock.h>
+//#define WIN32_LEAN_AND_MEAN  //这很重要，解决winsock.h winsock2.h冲突
+#define _WINSOCK_DEPRECATED_NO_WARNINGS
+#include <winsock2.h>
 #else
 #include <process.h>
 #include <sys/socket.h>
@@ -30,7 +32,7 @@ char**    mynames;
 
 //http
 #define MAX_CLIENT 64
-#define MAX_BUF_SIZE  655350
+#define MAX_BUF_SIZE  1024*20
 
 int exit_mark;
 int(*business_dispath)(char*, char*, unsigned, char*);
@@ -66,7 +68,7 @@ int tcps_sends(int sock, void* buf, int size) {
 	return sent_len;
 }
 
-//http ������
+//http
 int http_request_handle(int cs, char* uri, char* data, unsigned len) {
 	char* out_data = (char*)malloc(sizeof(char*) * 1024);
 	int out_data_len = business_dispath(uri, data, len, &out_data);
@@ -96,24 +98,15 @@ unsigned  tcps_workthread(void* param) {
 		}
 		//select
 		struct timeval tv = { 0,10000 };
-#ifdef _WIN32
-		SOCKET maxfd = mysocket;
-#else
 		int maxfd = mysocket;
-#endif
 		if (select(FD_SETSIZE, &fdRead, NULL, NULL, &tv) <= 0)
 			continue;
 		//ACCEPT CONNECT
 		if (FD_ISSET(mysocket, &fdRead)) {
 			struct sockaddr addrclt;
 			int bAccept = 0;
-#ifdef _WIN32
 			int  addlen = sizeof(addrclt);
-			SOCKET aptclt = accept(mysocket, (struct sockaddr*)&addrclt, &addlen);
-#else
-			socklen_t addlen = sizeof(addrclt);
 			int aptclt = accept(mysocket, (struct sockaddr*)&addrclt, &addlen);
-#endif	
 			for (int nLoopi = 0; aptclt > 0 && nLoopi < MAX_CLIENT; nLoopi++) {
 				if (fdarray[nLoopi] == 0) {
 					fdarray[nLoopi] = aptclt;
@@ -123,7 +116,6 @@ unsigned  tcps_workthread(void* param) {
 #else
 					fcntl(mysocket, F_SETFL, O_NONBLOCK);
 #endif
-
 					FD_SET(fdarray[nLoopi], &fdRead);
 					bAccept = 1;
 					break;
@@ -137,8 +129,7 @@ unsigned  tcps_workthread(void* param) {
 		//RECV
 		for (int nLoopi = 0; nLoopi < MAX_CLIENT; nLoopi++) {
 
-
-			//******************************************
+			/********************************************************************************************************************/
 			memset(global_data, 0x00, MAX_BUF_SIZE);
 			char header[2048] = { 0 };
 			int header_len = 0;
@@ -150,7 +141,6 @@ unsigned  tcps_workthread(void* param) {
 			char uri[256] = { 0 };
 			char args[256] = { 0 };
 			char methord[32] = { 0 };
-
 			while (FD_ISSET(fdarray[nLoopi], &fdRead)) {
 				if (header_recving) {
 					int cnt = recv(fdarray[nLoopi], &header[header_len], 1, 0);
@@ -159,7 +149,8 @@ unsigned  tcps_workthread(void* param) {
 						break;
 					}
 					header_len += cnt;
-					if (header[header_len - 4] == 0x0D && header[header_len - 3] == 0x0A && header[header_len - 2] == 0x0D && header[header_len - 1] == 0x0A) {
+					if (header[header_len - 4] == 0x0D && header[header_len - 3] == 0x0A && 
+						header[header_len - 2] == 0x0D && header[header_len - 1] == 0x0A) {
 						header_recving = 0;
 						int i = 0;
 						for (i = 0; i < header_len; i++) {

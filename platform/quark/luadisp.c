@@ -29,7 +29,15 @@ extern int remote_execute(lua_State* L) {
 	const char* data = luaL_checklstring(L, 3, &data_len);
 	char * data_out = (char*)malloc(sizeof(char*));
 	memset(data_out, 0x00, sizeof(char*));
-	int out_len = http_post_request(uri, data, data_len, &data_out);
+	int out_len = 0;
+	char methord[32] = { 0 };
+	sscanf(uri, "%[^:]", methord);
+	if ( strcmp(methord, "http") == 0 ) {
+		out_len = http_post_request(uri, data, data_len, &data_out);
+	}
+else if( strcmp(methord, "tcp") == 0) {
+		out_len = tcp_post_request(uri, data, data_len, &data_out);
+	}
 	lua_pushinteger(L,out_len);
 	lua_pushstring(L,data_out);
 	free( data_out );
