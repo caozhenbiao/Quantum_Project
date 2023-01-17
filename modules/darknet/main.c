@@ -2,8 +2,8 @@
 //#define WIN32_LEAN_AND_MEAN  //这很重要，解决winsock.h winsock2.h冲突
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include <winsock2.h>
-#else
 #include <process.h>
+#else
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include  <sys/unistd.h>
@@ -25,7 +25,6 @@
 #define STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_STATIC
 #include "stb_image.h"
-#include "http.h"
 
 network mynet;
 char**    mynames;
@@ -103,6 +102,7 @@ unsigned  tcps_workthread(void* param) {
 			continue;
 		//ACCEPT CONNECT
 		if (FD_ISSET(mysocket, &fdRead)) {
+			printf("accept new client.\n");
 			struct sockaddr addrclt;
 			int bAccept = 0;
 			int  addlen = sizeof(addrclt);
@@ -164,6 +164,7 @@ unsigned  tcps_workthread(void* param) {
 					}
 				}
 				else {
+					printf("http recv data\n");
 					while (1) {
 						int cnt = recv(fdarray[nLoopi], &global_data[data_recv_len], 1024, 0);
 						data_recv_len += cnt;
@@ -171,6 +172,7 @@ unsigned  tcps_workthread(void* param) {
 							break;
 						}
 					}
+					printf("http request handle\n");
 					if (http_request_handle(fdarray[nLoopi], uri, global_data, data_recv_len) == 0) {
 						close(fdarray[nLoopi]);
 					}
@@ -352,7 +354,6 @@ int main(int argc, char* argv[]) {
 	char wf[256] = { 0 };
 	unsigned short server_port = 9000;
 	int c = 0;
-	char *optarg = NULL;
 	while ((c = getopt(argc, argv, "n:c:w:p")) != -1) {
 		switch (c) {
 		case 'n': strncpy(nf, optarg, 256); break;
