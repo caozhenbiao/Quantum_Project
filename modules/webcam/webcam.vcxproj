@@ -103,7 +103,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>luaLibD.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;opencv_ml3416d.lib;opencv_calib3d3416d.lib;opencv_core3416d.lib;opencv_features2d3416d.lib;opencv_flann3416d.lib;opencv_highgui3416d.lib;opencv_imgproc3416d.lib;opencv_video3416d.lib;opencv_videoio3416d.lib;opencv_videostab3416d.lib;opencv_imgcodecs3416d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>../../thirdlibs/opencv-3.4.16/build/lib/Debug;../../platform/quark/liblua/output</AdditionalLibraryDirectories>
-      <OutputFile>$(OutDir)$(ProjectName)D$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
       <IgnoreAllDefaultLibraries>
@@ -140,7 +140,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;WEBCAM_EXPORTS;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\..\thirdlibs\opencv-3.4.16\build;..\..\thirdlibs\opencv-3.4.16\include;..\..\thirdlibs\opencv-3.4.16\build\include\opencv2\highgui;..\..\thirdlibs\opencv-3.4.16\modules\core\include;..\..\thirdlibs\opencv-3.4.16\modules\flann\include;..\..\thirdlibs\opencv-3.4.16\modules\imgproc\include;..\..\thirdlibs\opencv-3.4.16\modules\photo\include;..\..\thirdlibs\opencv-3.4.16\modules\video\include;..\..\thirdlibs\opencv-3.4.16\modules\nonfree\include;..\..\thirdlibs\opencv-3.4.16\modules\features2d\include;..\..\thirdlibs\opencv-3.4.16\modules\objdetect\include;..\..\thirdlibs\opencv-3.4.16\modules\calib3d\include;..\..\thirdlibs\opencv-3.4.16\modules\ml\include;..\..\thirdlibs\opencv-3.4.16\modules\highgui\include;..\..\thirdlibs\opencv-3.4.16\modules\contrib\include;..\..\thirdlibs\opencv-3.4.16\modules\dnn\include;..\..\thirdlibs\opencv-3.4.16\modules\imgcodecs\include;..\..\thirdlibs\opencv-3.4.16\modules\videoio\include;..\..\thirdlibs\opencv-3.4.16\modules\shape\include;..\..\thirdlibs\opencv-3.4.16\modules\stitching\include;..\..\thirdlibs\opencv-3.4.16\modules\superres\include;..\..\thirdlibs\opencv-3.4.16\modules\videostab\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

@@ -1,11 +1,13 @@
 #include "onvifpr.h"
 #include <vector>
 
+char rtpurl[256] = { 0 };
+
 //监控线程启动
 int convifpr::play(bool store) {
 	m_bExit = false;
 	m_status = 0;
-	char rtpurl[256] = {0};
+	//char rtpurl[256] = {0};
 	int quality = 50;
 	sscanf(m_source, "%[^;];%d", &rtpurl, &quality);
 	myparam.clear();
@@ -13,10 +15,7 @@ int convifpr::play(bool store) {
 	myparam.push_back(quality);
 	m_playevt = event_create(false, false);
 	m_frmevt = event_create(false, true);
-
 	myVideoCapture.release();
-
-
 	if (!myVideoCapture.open(rtpurl)) {
 		printf("cvCaptureFromFile open Url:%s Fail!\n", rtpurl);
 		return -1;
@@ -49,16 +48,20 @@ int convifpr::stop() {
 //接收处理线
 winapi  convifpr::playthread(void* lpParam) {
 	convifpr * fpr = (convifpr*)lpParam;
-	while (!fpr->m_bExit && 0 != event_timedwait(fpr->m_playevt, 30)) {
+	while (!fpr->m_bExit && 0 != event_timedwait(fpr->m_playevt, 50)) {
 		if (0 == event_wait(fpr->m_frmevt)) {
 			event_reset(fpr->m_frmevt);
 			if (fpr->myVideoCapture.isOpened()) {
-				fpr->myVideoCapture.read(fpr->myMat);
+				if (!fpr->myVideoCapture.read(fpr->myMat)) {
+					fpr->myVideoCapture.release();
+					fpr->myVideoCapture.open(rtpurl);
+				}
+				printf("playthread read\n");
 				fpr->storage();
 			}
 			event_set(fpr->m_frmevt);
 		}
-	}
+	} 
 	event_set(fpr->m_playevt);
 	printf("pthread exist\r\n");
 	return   0;
@@ -73,8 +76,15 @@ size_t convifpr::getframe(ftype type, std::string & frm) {
 	case JPG: {
 		static std::vector<unsigned char> buff;
 		buff.clear();
-		cv::imencode(".jpg", myMat, buff, myparam);
-		frm.insert(frm.end(), buff.begin(), buff.end());
+		try {
+			cv::imencode(".jpg", myMat, buff, myparam);
+			frm.insert(frm.end(), buff.begin(), buff.end());
+			printf("getframe\n");
+		}
+		catch (cv::Exception & cv) {
+
+		}
+
 		break; }
 	case BMP: break;
 	default: break;

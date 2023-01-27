@@ -211,6 +211,7 @@ function onTaskItemClick( item, code ){
 	item.setAttribute("style","background-color:#ccc;");
 	curListItem = item;
 	curTaskCode = code;
+	onCurrentTaskQuery();
 	return;
 }
 
@@ -319,7 +320,8 @@ function onCurrentTaskQuery(){
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState==4 && xhr.status==200){
 			var rsp = eval('(' + xhr.responseText + ')');
-			alert( xhr.responseText );
+			updateItem( rsp.code, 1 , rsp.context);
+			alert( xhr.responseText);
 		}
 	}	
 	xhr.send("{'code':'"+ curTaskCode +"'}");

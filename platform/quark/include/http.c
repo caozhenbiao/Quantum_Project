@@ -174,7 +174,7 @@ int http_post_request(const char* uri, const char * data, int data_len, char ** 
 
 	//发送请求数据
 	char post_header[1024] = { 0 };
-	int nsend = sprintf(post_header, "POST /%s HTTP/1.1\r\nHost: %s:%d\r\nConnection: close\r\nContent-Length: %ld\r\n\r\n", path, host_name, port, data_len);
+	int nsend = sprintf(post_header, "POST /%s HTTP/1.1\r\nHost: %s:%d\r\nConnection: close\r\nContent-Length: %d\r\n\r\n", path, host_name, port, data_len);
 
 	print_time_stamp("send start");
 	if (tcp_sends(sockfd, post_header, nsend) != nsend || tcp_sends(sockfd, data, data_len) != data_len) {

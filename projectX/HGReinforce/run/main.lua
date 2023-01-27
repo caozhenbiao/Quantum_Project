@@ -57,6 +57,7 @@ function importModel( jsonstr )
 		local pristr = JSON:encode(priobj) or "";
 		local sqlstr = string.format("insert into reinforce(type,subtype,code,title,primitive) VALUES('%s','%s','%s','%s','%s')",v[2],v[3],v[4],v[5],pristr);
 		local sqlret = xSQL.execute(mydb, sqlstr );
+		print( sqlstr );
 	end
 	return string.format("{'action':'importModel','result':%d}",0);
 end
@@ -239,6 +240,7 @@ end
 
 --查询任务
 function queryTask( jsonstr )
+	print("queryTask" .. jsonstr )
 	local obj  = JSON:decode( jsonstr );
 	local ctx  = TASK:query( obj.code );
 	local sctx = JSON:encode( ctx );
@@ -282,13 +284,8 @@ end
 
 --LUA脚本宿主,安装事件处理函数
 mainProc = coroutine.create(function(t)install(t,
---	function( addr, data, len )
---   	print("trans...\n");
---		funcode = string.byte(string.sub(data,1,1));
---		tagname = string.sub(data,2,len);
---	end,
-    function( sn )
-		print("timer:" .. sn .. "\n");
+    	function( sn )
+		--print("timer:" .. sn .. "\n");
 	end,
 	function()
 		print("close...\n");
