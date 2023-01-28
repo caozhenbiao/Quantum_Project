@@ -1,8 +1,20 @@
 #include <stdio.h>
-#include <process.h>
 #include "tcps.h"
 #include <assert.h>
+#include <string.h>
+#include <stdlib.h>
+#ifdef _WIN32
 #include <winsock.h>
+#include <process.h>
+#else
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <arpa/inet.h>
+#include <sys/unistd.h>
+#include <sys/ioctl.h>
+#include <sys/fcntl.h>
+#endif
 #define MAX_BUF_SIZE 1024*512*2
 #define MAX_CLIENT 16
 
@@ -75,16 +87,15 @@ tcps_t *  tcps_start(const char* ip, unsigned short port, int(*function)(int, ch
 	ioctlsocket(tcps->mysocket, FIONBIO, &nMode);
 	tcps->threadid = _beginthreadex(NULL, 0, tcps_workthread, tcps, 0, NULL);
 #else
-	fcntl(mysocket, F_SETFL, O_NONBLOCK);
-	if (pthread_create(&tcps->threadid, NULL, tcps_workthread, tcps) != 0)
-		printf(stderr, "pthread_create failed! \n");
+	fcntl(tcps->mysocket, F_SETFL, O_NONBLOCK);
+	pthread_create(&tcps->threadid, NULL, tcps_workthread, tcps);
+	//printf(stderr, "pthread_create failed! \n");
 #endif
 	return tcps;
 err:
 	if (tcps) {
 		tcps_close(tcps->mysocket);
 		free(tcps);
-		WSACleanup();
 	}
 	return NULL;
 }
@@ -115,14 +126,14 @@ void* tcps_workthread(void* param) {
 		}
 		//select
 		struct timeval tv = { 0,10000 };
-		int maxfd = svr->mysocket;
+		//int maxfd = svr->mysocket;
 		if (select(FD_SETSIZE, &fdRead, NULL, NULL, &tv) <= 0)
 			continue;
 		//ACCEPT CONNECT
 		if (FD_ISSET(svr->mysocket, &fdRead)) {
 			struct sockaddr addrclt;
 			int bAccept = 0;
-			int  addlen = sizeof(addrclt);
+			int addlen = sizeof(addrclt);
 			int aptclt = accept(svr->mysocket, (struct sockaddr*)&addrclt, &addlen);
 			for (int nLoopi = 0; aptclt > 0 && nLoopi < MAX_CLIENT; nLoopi++) {
 				if (svr->fdarray[nLoopi] == 0) {
@@ -166,7 +177,7 @@ void* tcps_workthread(void* param) {
 }
 
 //send the buffer
-int tcps_sends(int sock, void* buf, int size) {
+int tcps_sends(int sock, const void* buf, int size) {
 	int send_len = 0;
 	int sent_len = 0;
 	for (sent_len = 0, send_len = 0; send_len < size; send_len += sent_len) {

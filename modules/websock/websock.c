@@ -1,7 +1,24 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "sha1.h"
 #include "tcps.h"
 #include "websock.h"
+
+#ifdef _WIN32
+#include <process.h>
+#include <winsock2.h>
+#include <time.h>
+#else
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <arpa/inet.h>
+#include <sys/unistd.h>
+#include <sys/ioctl.h>
+#include <sys/fcntl.h>
+#endif
+
 
 extern int responsetolua( unsigned int act, char* data, int len );
 #define MAX_CLIENT 256
@@ -85,7 +102,7 @@ static char* base64_encode(unsigned char* data, unsigned int in_len) {
 }
 
 //websocket握手
-static int websock_handshake(const char* key, char* rsp){
+int websock_handshake(const char* key, char* rsp){
 	char keys[1024]={0};
 	unsigned char RetDigest[20];
 	int n = sprintf(keys,"%s%s",key,"258EAFA5-E914-47DA-95CA-C5AB0DC85B11");
@@ -206,7 +223,7 @@ void websock_stop() {
 }
 
 //发送文本数据
-int websock_send_text(SOCKET cs, const char* text){
+int websock_send_text(int cs, const char* text){
 	int nsent = 0;
 	unsigned int   len = strlen(text);
 	unsigned char szhead[4] = {0}; 
@@ -225,7 +242,7 @@ int websock_send_text(SOCKET cs, const char* text){
 }
 
 //发送二进制数据
-int websock_send_bin(SOCKET cs, unsigned char* buf, unsigned int len ){
+int websock_send_bin(int cs, unsigned char* buf, unsigned int len ){
 	int nsent = 0;
 	unsigned char szhead[10] = {0};
 	szhead[0] = (unsigned char)(0x80|WS_BINARY_FRAME);
@@ -270,6 +287,7 @@ int websock_getip(const char* nc, char* ip){
     memcpy(&addr,phe->h_addr_list[0],sizeof(struct in_addr));  
 	sprintf(ip,"%s",inet_ntoa(addr)); 
 #else
+	/*
 	int sockfd;
 	struct ifconf ifconf;
 	char buf[512]={0};
@@ -289,6 +307,7 @@ int websock_getip(const char* nc, char* ip){
 		ifreq++;
 	}
 	close(sockfd);
+	*/
 #endif
     return 0;  
 } 

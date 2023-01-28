@@ -1,16 +1,7 @@
---*****LUA SERMON SCRIPT*****--
+--*****LUA SQLITE SCRIPT*****--
 print("this is websock test script. start at " .. os.date("%Y-%m-%d %H:%M:%S", os.time()))
-local websockobj = require "websock"
-
-print("load websock finish");
- 
---websocket模块
-websockproc = coroutine.create(function()
-	websockobj.start("0.0.0.0",2980,function(evt,len,data)
-		print( data );
-		return 1;
-	end);
-end)
+local sqliteobj = require "sqlite"
+print("load sqliteobj finish");
  
 --LUA脚本宿主,安装事件处理函数
 mainProc = coroutine.create(function(t)install(t,
@@ -23,6 +14,5 @@ mainProc = coroutine.create(function(t)install(t,
 	end)
 end)
 
---coroutine.resume(websockproc);
 coroutine.resume(mainProc,1000);
 print("start infinalize")

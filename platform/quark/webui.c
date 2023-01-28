@@ -1,21 +1,9 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "webui.h"
 #include "include/tcps.h"
-#include <winsock.h>
-#include <assert.h>
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <time.h>
-#include <errno.h>
-#include <signal.h>
-#include <fcntl.h>
-
-#include <stdlib.h>
-#include <stdarg.h>
-#include <string.h>
-#include <ctype.h>
-#include <limits.h>
-#include <stddef.h>
-#include <stdio.h>
 
 #define MAX_BUF_SIZE 10240
 static tcps_t * tcps = NULL;

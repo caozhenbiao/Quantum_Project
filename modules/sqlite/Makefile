@@ -1,6 +1,6 @@
 CC = gcc
 XX = g++
-TARGET = ./bin/sqlite.so
+TARGET = ./output/sqlite.so
 MYLIB  = 
 CFLAGS = -I$(MYLIB) -Wall -O -g -I. -I../libs/lua/src -Wall -Wno-unknown-pragmas -Wno-format -O3 -fPIC
 LIBS = -lpthread -lrt -ldl ../../platform/quark/liblua/output/libLua.a

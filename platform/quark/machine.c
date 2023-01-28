@@ -1,13 +1,19 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "machine.h"
 #include "./include/threadpool.h"
 #include <pthread.h>
 #include <assert.h>
-#include <time.h>
 #include "luadisp.h"
 #include "procmgr.h"
 #include "webui.h"
+
+#ifdef _WIN32
 #include <Windows.h>
+#else
+#include <sys/time.h>
+#endif
 
 pthread_mutex_t lock;
 threadpool_t* pool_lua;
@@ -37,7 +43,7 @@ int webui_request_dispath(int cs,  char* data,  unsigned len) {
 	tsk->data = (char*)malloc(len+4);
 	memset(tsk->data, 0x00, len+4);
 	memcpy(tsk->data, data, len+1);
-	threadpool_add(pool_webui, &process_webui_request, (void*)tsk, 0);
+	threadpool_add(pool_webui, (void*)&process_webui_request, (void*)tsk, 0);
 	return 0; // -1：立即断开 0:须在处理函数中断开
 }
 
@@ -55,7 +61,7 @@ void process_console_request(char *data) {
 
 //从命令行直接请求
 void console_request_dispath(char* data) {
-	threadpool_add(pool_lua, &process_console_request, (void*)data, 0);
+	threadpool_add(pool_lua, (void*)&process_console_request, (void*)&data[0], 0);
 }
 
 //LUA脚本定时器
@@ -65,7 +71,11 @@ void machine_poll(void * delay ) {
 		threadpool_add(pool_mac, &machine_poll, (void*)&tms , 0);
 		return;
 	}
+#ifdef _WIN32
 	Sleep( tms );
+#else
+	sleep(tms);
+#endif
 	threadpool_add(pool_mac, &luadisp_dotimer, NULL, 0);
 	threadpool_add(pool_mac, &machine_poll, (void*)&tms, 0);
 }

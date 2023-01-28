@@ -1,15 +1,31 @@
 #include <stdio.h>
 #include <assert.h>
+#include <string.h>
+#include <stdlib.h>
+#ifdef _WIN32
 #include <winsock.h>
+#else
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <arpa/inet.h>
+#include <sys/unistd.h>
+#include <sys/ioctl.h>
+#include <sys/fcntl.h>
+#endif
+
 #include "http.h"
 #include <time.h>
 #include "map.h"
-//#include <string.h>
 #define BUFFER_SIZE 1024*8
 
 static int last_time_stamp = 0;
 void print_time_stamp( const char* mark ) {
+#ifdef _WIN32
 	int now = GetTickCount(); // time(NULL);
+#else
+	int now = time(NULL);
+#endif
 	fprintf(stderr, "%s def:(%d) now:%d\n", mark, now - last_time_stamp, now);
 	last_time_stamp = now;
 }
@@ -251,7 +267,7 @@ int tcp_post_request(const char* uri, const char * data, int data_len, char ** p
 	}
 	
 	int sockfd = 0;
-	int * fd = map_get(&tcp_clients, host_desc);
+	int * fd = (int*)map_get(&tcp_clients, host_desc);
 	if ( !fd ) {
 		char ip[15] = { 0 };
 		unsigned int port = 0;
@@ -265,7 +281,7 @@ int tcp_post_request(const char* uri, const char * data, int data_len, char ** p
 			tcp_close(sockfd);
 			return -1;
 		}
-		map_set(&tcp_clients, host_desc, sockfd );
+		map_set(&tcp_clients, host_desc, &sockfd );
 	}
 	else {
 		sockfd = *fd;

@@ -4,6 +4,10 @@
 #include "../../platform/quark/liblua/src/lauxlib.h"
 #include "./websock.h"
 
+#ifdef _WIN32
+#include <winsock2.h>
+#endif
+
 lua_State * theState = NULL;
 static int lua_callback = LUA_REFNIL;
 
@@ -39,8 +43,8 @@ static void GB2312ToUTF8(char** rst, const char *pText, int pLen) {
 	return;
 }
 #else
-static void GB2312ToUTF8(std::string& pOut, const char *pText, int pLen) {
-	pOut = pText;
+static void GB2312ToUTF8(char** pOut, const char *pText, int pLen) {
+	pOut = *pText;
 }
 
 #endif
@@ -131,7 +135,7 @@ static const struct luaL_Reg mylib[]={
 #ifdef WIN32
 	__declspec(dllexport) int luaopen_websock(lua_State *L){
 #else
-	extern "C" int luaopen_websock(lua_State *L){
+	int luaopen_websock(lua_State *L){
 #endif
 	printf("luaopen_websock\n");
 	if( !theState ){
@@ -146,8 +150,4 @@ static const struct luaL_Reg mylib[]={
 	lua_pop(L,0);
 	return 1;
 }
-
-
-
-
 

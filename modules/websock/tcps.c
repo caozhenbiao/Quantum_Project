@@ -1,8 +1,11 @@
 #include <stdio.h>
-#include <process.h>
-#include "tcps.h"
 #include <assert.h>
+#include "tcps.h"
+#ifdef _WIN32
+#include <process.h>
 #include <winsock.h>
+#endif
+
 #define MAX_BUF_SIZE 1024*512*2
 #define MAX_CLIENT 16
 

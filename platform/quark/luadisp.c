@@ -1,9 +1,9 @@
+#include <string.h>
+#include <stdlib.h>
 #include "luadisp.h"
 #include "./liblua/src/lua.h"
 #include "./liblua/src/lauxlib.h"
 #include "./liblua/src/lualib.h"
-#include <winsock.h>
-#define WIN32_LEAN_AND_MEAN  //这很重要，解决winsock.h winsock2.h冲突
 #include "include/map.h"
 #include "include/http.h"
  
@@ -25,7 +25,7 @@ extern  int install(lua_State* L) {
 //远程调用
 extern int remote_execute(lua_State* L) {
 	const char* uri = luaL_checkstring(L, 1);
-	unsigned data_len = (unsigned)lua_tointeger(L, 2);
+	unsigned int data_len = (unsigned int)lua_tointeger(L, 2);
 	const char* data = luaL_checklstring(L, 3, &data_len);
 	char * data_out = (char*)malloc(sizeof(char*));
 	memset(data_out, 0x00, sizeof(char*));

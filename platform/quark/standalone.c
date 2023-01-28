@@ -5,8 +5,8 @@
 #include "machine.h"
 
 static int  exit_flag;  /* Program termination flag */
-#ifdef _WIN32
 char *optarg = NULL;
+#ifdef _WIN32
 int getopt(int argc, char **argv, const char *opts) {
 	static int sp = 1;
 	static int opterr = 1;
