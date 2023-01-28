@@ -91,7 +91,7 @@ void machine_start(struct macopt* opt ){
 	webui_add_cgi(luadisp_execute, "LUA");
 	luadisp_start(opt->script);
 	int tms = -1;
-	machine_poll( (void*)&tms);
+	//machine_poll( (void*)&tms);
 }
 
 //»úÆ÷¹Ø±Õ

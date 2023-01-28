@@ -135,7 +135,7 @@ static const struct luaL_Reg mylib[]={
 #ifdef WIN32
 	__declspec(dllexport) int luaopen_websock(lua_State *L){
 #else
-	int luaopen_websock(lua_State *L){
+	extern int luaopen_websock(lua_State *L){
 #endif
 	printf("luaopen_websock\n");
 	if( !theState ){

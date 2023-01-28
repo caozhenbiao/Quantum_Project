@@ -3,8 +3,17 @@
 #include "tcps.h"
 #ifdef _WIN32
 #include <process.h>
-#include <winsock.h>
+#include <winsock2.h>
+#else
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <arpa/inet.h>
+#include <sys/unistd.h>
+#include <sys/ioctl.h>
+#include <sys/fcntl.h>
 #endif
+
 
 #define MAX_BUF_SIZE 1024*512*2
 #define MAX_CLIENT 16
@@ -78,7 +87,7 @@ tcps_t *  tcps_start(const char* ip, unsigned short port, int(*function)(int, ch
 	ioctlsocket(tcps->mysocket, FIONBIO, &nMode);
 	tcps->threadid = _beginthreadex(NULL, 0, tcps_workthread, tcps, 0, NULL);
 #else
-	fcntl(mysocket, F_SETFL, O_NONBLOCK);
+	fcntl(tcps->mysocket, F_SETFL, O_NONBLOCK);
 	if (pthread_create(&tcps->threadid, NULL, tcps_workthread, tcps) != 0)
 		printf(stderr, "pthread_create failed! \n");
 #endif
@@ -87,7 +96,6 @@ err:
 	if (tcps) {
 		tcps_close(tcps->mysocket);
 		free(tcps);
-		WSACleanup();
 	}
 	return NULL;
 }

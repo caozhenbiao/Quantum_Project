@@ -11,7 +11,7 @@ SHARED := --shared
 %.o:%.cpp
 	$(XX) $(CFLAGS) -c $< -o $@
 
-SOURCES = $(wildcard ./include/sha1.c ./include/tcps.c websock.c interface.c)
+SOURCES = $(wildcard sha1.c tcps.c websock.c interface.c)
 OBJS = $(patsubst %.c,%.o,$(patsubst %.cpp,%.o,$(SOURCES)))  
 
 $(TARGET) : $(OBJS)

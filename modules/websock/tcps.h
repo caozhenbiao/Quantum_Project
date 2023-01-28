@@ -7,7 +7,7 @@ extern "C" {
 typedef struct tcps_t tcps_t;
 tcps_t *  tcps_start(const char* ip, unsigned short port, int(*function)(int, char*,unsigned));
 void tcps_stop(tcps_t * s);
-int tcps_sends(int sock, const void* buf, int size);
+int tcps_sends(int sock, void* buf, int size);
 int tcps_close(int sock);
 
 #ifdef _WIN32

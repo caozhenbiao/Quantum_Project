@@ -151,7 +151,7 @@ static const struct luaL_Reg mylib[]={
 #ifdef WIN32
 	 __declspec(dllexport) int luaopen_sqlite(lua_State *L){
 #else
-	int luaopen_sqlite(lua_State *L){
+	extern int luaopen_sqlite(lua_State *L){
 #endif
 	printf("luaopen_sqlite\n");
 	sqlite_init();

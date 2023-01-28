@@ -12,7 +12,7 @@ SHARED := --shared
 %.o:%.cpp
 	$(XX) $(CFLAGS) -c $< -o $@
 
-SOURCES = $(wildcard interface.cpp mysqlite.cpp sqlite3.c )
+SOURCES = $(wildcard map.c sqlite3.c sqlite3.c interface.c )
 OBJS = $(patsubst %.c,%.o,$(patsubst %.cpp,%.o,$(SOURCES)))  
 
 $(TARGET) : $(OBJS)
