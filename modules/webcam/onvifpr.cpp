@@ -29,6 +29,7 @@ int convifpr::play(bool store) {
 	if (pthread_create(&threadid, NULL, playthread, this) != 0)
 		printf("pthread_create failed! \n");
 #endif
+	printf("convifpr play start\n");
 	return 0;
 }
 

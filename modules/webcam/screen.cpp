@@ -82,7 +82,7 @@ winapi  cscreen::playthread(void* lpParam){
 		int fb = open("/dev/fb0", O_RDONLY);
 		printf("open screen:%d\n", fb);
 		if ( fb > 0 ){
-			int bufsize = sc->myfrmwidth * sc->myfrmheight * 4;
+			unsigned int bufsize = sc->myfrmwidth * sc->myfrmheight * 4;
 			static unsigned char* buf = (unsigned char*)malloc(bufsize);
 			memset(buf, 0x00, bufsize);
 			read(fb, buf, bufsize);

@@ -26,7 +26,6 @@ static winapi watching(void* param){
 			std::string frm;
 			if (--theWatchList[it->first] != 0 && theCameras->getfrm(it->first.c_str(), JPG, frm) > 100) {
 				if (0 == luaL_lock(theState)) {
-					unsigned char * fr = (unsigned char *)&frm[0];
 					lua_rawgeti(theState, LUA_REGISTRYINDEX, lua_callback);
 					lua_pushstring(theState, &it->first[0]);
 					lua_pushlstring(theState, &frm[0], frm.size());
@@ -47,7 +46,7 @@ static int addcam(lua_State *L ){
 	const char* mark  = luaL_checkstring(L,1);
 	int type  = (int)luaL_checkinteger(L,2);
 	const char* url   = luaL_checkstring(L,3);
-	printf("addcammer %s:%d,%s\n",mark,type,url);
+	printf("addcammer %s[%d],%s\n",mark,type,url);
 	theCameras->add(mark,url,type);
 	lua_pushinteger(L, theCameras->play(mark, false));
 	return 1;

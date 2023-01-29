@@ -65,7 +65,6 @@ int luadisp_start(const char* script) {
 	lua_register(main_state, "install", install);
 	lua_register(main_state, "remote_execute", remote_execute);
 	lua_pcall(main_state, 0, 0, 0);
-	fprintf(stderr, "luadisp_start finish\n");
 	return 1;
 }
 
