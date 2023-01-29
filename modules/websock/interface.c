@@ -1,8 +1,11 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "./websock.h"
 
 #include "../../platform/quark/liblua/src/lua.h"
 #include "../../platform/quark/liblua/src/lualib.h"
 #include "../../platform/quark/liblua/src/lauxlib.h"
-#include "./websock.h"
 
 #ifdef _WIN32
 #include <winsock2.h>
@@ -44,9 +47,8 @@ static void GB2312ToUTF8(char** rst, const char *pText, int pLen) {
 }
 #else
 static void GB2312ToUTF8(char** pOut, const char *pText, int pLen) {
-	pOut = *pText;
+	*pOut = (char*)pText;
 }
-
 #endif
 
 //lua script
@@ -82,8 +84,8 @@ static int stop(lua_State *L){
 }
 
 static int sendfrm(lua_State *L){
-	unsigned  size   = (unsigned)luaL_checkinteger(L,2);
-	const char* buf = luaL_checklstring(L,1, &size);
+	long unsigned int  size   = (long unsigned int)luaL_checkinteger(L,2);
+	const char* buf = luaL_checklstring(L,1, (size_t*)&size);
 	int nsnd = websock_send_bin(last_conn_sock,(unsigned char*)buf,size);
 	lua_pushnumber(L, nsnd );
 	return 1;

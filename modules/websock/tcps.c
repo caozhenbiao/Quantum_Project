@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
+#include <string.h>
+#include <stdlib.h>
 #include "tcps.h"
 #ifdef _WIN32
 #include <process.h>
@@ -12,8 +14,8 @@
 #include <sys/unistd.h>
 #include <sys/ioctl.h>
 #include <sys/fcntl.h>
+#include <pthread.h>
 #endif
-
 
 #define MAX_BUF_SIZE 1024*512*2
 #define MAX_CLIENT 16
@@ -42,7 +44,7 @@ int tcps_close(int sock) {
 	return 0;
 }
 
-tcps_t *  tcps_start(const char* ip, unsigned short port, int(*function)(int, char*,unsigned)) {
+tcps_t *  tcps_start(const char* ip, unsigned short port, int(*function)(int, char*, unsigned int)) {
 	fprintf(stderr, "start web service,ip:%s port:%d\n", ip, port);
 #ifdef _WIN32
 	WSADATA wsdata;
@@ -88,8 +90,9 @@ tcps_t *  tcps_start(const char* ip, unsigned short port, int(*function)(int, ch
 	tcps->threadid = _beginthreadex(NULL, 0, tcps_workthread, tcps, 0, NULL);
 #else
 	fcntl(tcps->mysocket, F_SETFL, O_NONBLOCK);
-	if (pthread_create(&tcps->threadid, NULL, tcps_workthread, tcps) != 0)
-		printf(stderr, "pthread_create failed! \n");
+	if (pthread_create(&tcps->threadid, NULL, tcps_workthread, tcps) != 0) {
+		fprintf(stderr, "pthread_create failed! \n");
+	}
 #endif
 	return tcps;
 err:
@@ -109,7 +112,6 @@ void tcps_stop( tcps_t * s ) {
 	}
 }
 
-
 #ifdef _WIN32
 unsigned __stdcall tcps_workthread(void* param) {
 #else
@@ -127,9 +129,9 @@ void* tcps_workthread(void* param) {
 		//select
 		struct timeval tv = { 0,10000 };
 #ifdef _WIN32
-		SOCKET maxfd = svr->mysocket;
+		//SOCKET maxfd = svr->mysocket;
 #else
-		int maxfd = svr->mysocket;
+		//int maxfd = svr->mysocket;
 #endif
 		if (select(FD_SETSIZE, &fdRead, NULL, NULL, &tv) <= 0)
 			continue;

@@ -25,7 +25,7 @@ extern int responsetolua( unsigned int act, char* data, int len );
 static tcps_t * tcps = NULL;
 
 //base64_decode
-static int base64_decode(char *indata, unsigned inlen, char *outdata, unsigned *outlen){
+static int base64_decode(char *indata, unsigned int inlen, char *outdata, unsigned int *outlen){
 	static const unsigned char base64_suffix_map[] = {
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -169,7 +169,7 @@ static int decodeframe(const char * frm, unsigned len, char** payload){
  }
 
 //web ÇëÇó´¦Àí
-int websock_dispath(int sock, char* data, int len) {
+int websock_dispath(int sock, char* data, int unsigned len) {
 	int disconn = -1;
 	//0:disconnect
 	if ( len == 0 ) {
@@ -188,7 +188,7 @@ int websock_dispath(int sock, char* data, int len) {
 
 	//1:handsake
 	char web_key[64] = { 0 };
-	int web_key_len = 200;
+	unsigned int web_key_len = 200;
 	while (web_key_len < len) {
 		unsigned  count = strspn(data + web_key_len, "Sec-WebSocket-Key:");
 		if ( 18 == count ) {
