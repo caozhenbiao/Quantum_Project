@@ -5,9 +5,9 @@
 #include <QMap>
 
 extern "C" {
-#include "../quark/liblua/src/lua.h"
-#include "../quark/liblua/src/lauxlib.h"
-#include "../quark/liblua/src/lualib.h"
+#include "../../quark/liblua/src/lua.h"
+#include "../../quark/liblua/src/lauxlib.h"
+#include "../../quark/liblua/src/lualib.h"
 }
 
 class CLua : public QObject{

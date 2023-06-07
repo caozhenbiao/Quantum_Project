@@ -6,3 +6,10 @@ C:\Windows\System32\cmd
 
 windeployqt webui.exe
 
+
+
+new QWebChannel(qt.webChannelTransport, function(channel) {
+	var cmd = channel.objects.command;
+	cmd.show( true );
+});
+

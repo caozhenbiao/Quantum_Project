@@ -1,5 +1,5 @@
 #include "attestor.h"
-#include "../quark/include/sha1.h"
+#include "./sha1.h"
 #include "./define.h"
 
 int key[] = { 125,18,29,30,52,155,38,239,20,222,35,28,9,10,22,45,138,29,36,25 };//�����ַ�
