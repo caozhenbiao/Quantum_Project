@@ -11,25 +11,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="http.c" />
     <ClCompile Include="include\map.c" />
-    <ClCompile Include="include\tcps.c" />
     <ClCompile Include="include\threadpool.c" />
-    <ClCompile Include="include\http.c" />
     <ClCompile Include="luadisp.c" />
     <ClCompile Include="machine.c" />
     <ClCompile Include="procmgr.c" />
+    <ClCompile Include="ssls.c" />
     <ClCompile Include="standalone.c" />
+    <ClCompile Include="tcps.c" />
     <ClCompile Include="webui.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="http.h" />
     <ClInclude Include="include\map.h" />
-    <ClInclude Include="include\tcps.h" />
     <ClInclude Include="include\threadpool.h" />
-    <ClInclude Include="include\http.h" />
     <ClInclude Include="luadisp.h" />
     <ClInclude Include="machine.h" />
     <ClInclude Include="procmgr.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="ssls.h" />
+    <ClInclude Include="tcps.h" />
     <ClInclude Include="webui.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="quark.rc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -83,14 +89,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_HAS_EXCEPTIONS=1;_CRT_SECURE_NO_WARNINGS;NOMINMAX;HAVE_STRUCT_TIMESPEC;ENOSYS=1;ETIMEDOUT = 10000;NULL = 0;_X86_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>.\lib3th\pthread</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\lib3th\pthread\;D:\Quantum\thirdlibs\openssl-1.0.2p\inc32\</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>.\liblua\output</AdditionalLibraryDirectories>
-      <AdditionalDependencies>ws2_32.lib;luaLibD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\liblua\output;D:\Quantum\thirdlibs\openssl-1.0.2p\out32dll</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ws2_32.lib;luaLibD.lib;libeay32.lib;ssleay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
@@ -105,7 +111,7 @@
       </SDLCheck>
       <PreprocessorDefinitions>_WIN32;NDEBUG;_CONSOLE;_HAS_EXCEPTIONS=0;_CRT_SECURE_NO_WARNINGS;NOMINMAX;HAVE_STRUCT_TIMESPEC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>.\lib3th\pthread</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\lib3th\pthread\;D:\Quantum\thirdlibs\openssl-1.0.2p\inc32\</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -113,8 +119,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ws2_32.lib;luaLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>.\liblua\output</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ws2_32.lib;luaLib.lib;libeay32.lib;ssleay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\liblua\output;D:\Quantum\thirdlibs\openssl-1.0.2p\out32dll</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

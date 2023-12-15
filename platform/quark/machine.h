@@ -7,13 +7,11 @@
 #define _MACHINE_H_
 
 struct macopt {
-	char runkey[41];
 	char script[256];
 	char webs_path[256];
-	char webs_ip[32];
-	unsigned short webs_port;
-	char option[256];
 	int console;
+	char tcps[256]; //127.0.0.1:80
+	char ssls[256]; //192.168.1.1:12313;ca.crt;server.crt;server.key
 };
 
 #ifdef __cplusplus

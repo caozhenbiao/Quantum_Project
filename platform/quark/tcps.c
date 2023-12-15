@@ -15,11 +15,12 @@
 #include <sys/ioctl.h>
 #include <sys/fcntl.h>
 #endif
+
 #define MAX_BUF_SIZE 1024*512*2
 #define MAX_CLIENT 16
 
 struct tcps_t {
-	int(*dispath)(int, char*,unsigned int);
+	int(*dispath)(int,int, char*,unsigned int);
 	int exit_mark;
 	int fdarray[MAX_CLIENT];
 #ifdef _WIN32
@@ -165,10 +166,11 @@ void* tcps_workthread(void* param) {
 					cnt = recv(svr->fdarray[nLoopi], &data[tln], MAX_BUF_SIZE - tln, 0);
 					tln += cnt;
 				} while (cnt > 0);
-				if (tln < 0 || svr->dispath(svr->fdarray[nLoopi],data,tln)==-1) {
+				if (tln <= 0 || svr->dispath(svr, svr->fdarray[nLoopi],data,tln)==-1) {
 					tcps_close(svr->fdarray[nLoopi]);
 				}
 				FD_CLR(svr->fdarray[nLoopi], &fdRead);
+				tcps_close(svr->fdarray[nLoopi]);
 				svr->fdarray[nLoopi] = 0;
 			}
 		}
@@ -186,4 +188,16 @@ int tcps_sends(int sock, const void* buf, int size) {
 			break;
 	}
 	return sent_len;
+}
+
+//tcps_shutdown
+int tcps_shutdown(tcps_t * s, int  cs) {
+	for (unsigned int i = 0; i < MAX_CLIENT && cs > 0; i++) {
+		if (s->fdarray[i] == cs) {
+			if (s->fdarray[i])tcps_close(s->fdarray[i]);
+			s->fdarray[i] = 0;
+			break;
+		}
+	}
+	return 0;
 }

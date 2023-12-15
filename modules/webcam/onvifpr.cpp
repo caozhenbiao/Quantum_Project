@@ -20,8 +20,9 @@ int convifpr::play(bool store) {
 		printf("cvCaptureFromFile open Url:%s Fail!\n", rtpurl);
 		return -1;
 	}
+	store = false;
 	if (store) {
-		myVideoWriter.open("cammer_video.mpg", CV_FOURCC('D', 'I', 'V', 'X'), 30.0, cv::Size(640, 480));
+		myVideoWriter.open("cammer_video.mpg", CV_FOURCC('D', 'I', 'V', 'X'), 25.0, cv::Size(640, 480));
 	}
 #ifdef WIN32
 	threadid = (unsigned int)_beginthreadex(NULL, 0, playthread, this, 0, NULL);
@@ -49,15 +50,19 @@ int convifpr::stop() {
 //接收处理线
 winapi  convifpr::playthread(void* lpParam) {
 	convifpr * fpr = (convifpr*)lpParam;
-	while (!fpr->m_bExit && 0 != event_timedwait(fpr->m_playevt, 50)) {
+	while (!fpr->m_bExit && 0 != event_timedwait(fpr->m_playevt, 30)) {
 		if (0 == event_wait(fpr->m_frmevt)) {
 			event_reset(fpr->m_frmevt);
 			if (fpr->myVideoCapture.isOpened()) {
+
+				fpr->myVideoCapture >> fpr->myMat;
+
+
+
 				if (!fpr->myVideoCapture.read(fpr->myMat)) {
 					fpr->myVideoCapture.release();
 					fpr->myVideoCapture.open(rtpurl);
 				}
-				printf("playthread read\n");
 				fpr->storage();
 			}
 			event_set(fpr->m_frmevt);
@@ -111,7 +116,8 @@ int convifpr::query() {
 
 //视频存储
 void convifpr::storage() {
-	if (myVideoWriter.isOpened()) {
+	return;
+	if ( myVideoWriter.isOpened()) {
 		myVideoWriter.write(myMat);
 	}
 }

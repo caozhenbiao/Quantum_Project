@@ -94,7 +94,7 @@ winapi  cscreen::playthread(void* lpParam){
 			tempMat.create(cvSize(sc->myfrmwidth, sc->myfrmheight), CV_MAKETYPE(CV_8U, 4));
 			tempMat.data = buf;
 			sc->myimgbuf.clear();
-			imwrite("./xxx.png", tempMat, param);
+			//imwrite("./xxx.png", tempMat, param);
 			cv::imencode(".jpg", tempMat, sc->myimgbuf, param);	
 			tempMat.release();
 		}

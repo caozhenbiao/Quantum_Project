@@ -1,0 +1,194 @@
+<html>
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<title>webcamer manager - smartx</title> 
+</head> 
+<body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" scroll=no>
+<canvas id="myCanvas" style="width: 100%; height:100%; background:#ffeeee" >
+</canvas> 	
+<div style=" position:absolute; float:right; right:10px; top:10px; width:300px" id="layer1">
+<table border="0" width="100%" height="76">
+	<tr>
+		<td width="82">
+		<select size="1" id="device" name="camer">
+		</select></td>
+		<td width="53"><button onclick="actions();" id="actionbtn">开始</button> </td>
+		<td width="*"></td>
+		<td width="27"></td>
+		<td width="27"><input type="button" value="上" onclick="cammove(0);"></td>
+		<td width="27"></td>
+	</tr>
+	<tr>
+		<td width="82"></td>
+		<td width="53"></td>
+		<td width="*"></td>
+		<td width="27"><input type="button" value="左" onclick="cammove(4);" ></td>
+		<td width="27"><input type="button" value="适" onclick="fixfrm();" id="fixbtn"></td>
+		<td width="27"><input type="button" value="右" onclick="cammove(6);"></td>
+	</tr>
+	<tr>
+		<td width="82"></td>
+		<td width="53"></td>
+		<td width="*"></td>
+		<td width="27"></td>
+		<td width="27"><input type="button" value="下" onclick="cammove(2);"></td>
+		<td width="27"></td>
+	</tr>
+</table>		
+</div>		
+<div id="main" style="position: absolute; left:0px; top:0px; width:0px; height:0px; border:2px solid #00FF00; ; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px"></div>
+<table border="0" id="traceTable" width="100%" style="color: #00FF00; font-size: 8pt">
+	<tr></tr>
+</table>
+</body> 
+</html> 
+
+<script type="text/javascript"> 
+var websocket;
+function GetXmlHttpObject() {   
+	var xmlHttp=null;   
+	try{xmlHttp=new XMLHttpRequest();}
+	catch(e){ 
+		try{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+		catch(e){xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}     
+	}
+	return xmlHttp; 
+}
+
+//打开页面后加载，获取相关信息
+window.onload = function(){
+	var xhr = GetXmlHttpObject();     
+	xhr.open("LUAPOST","main.init" ,true);  
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");     
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4 && xhr.status==200){
+			//alert( xhr.responseText );
+			var objResults = eval('(' + xhr.responseText + ')');	
+			var proj = document.getElementById("device");
+/*
+			for( var i = 0 ; i< objResults.webcam.length; i++ ){
+				var op = document.createElement("option");
+				proj.appendChild( op );
+				op.text = objResults.webcam[i];
+				op.value = objResults.webcam[i];
+			}
+			wsstart(objResults.svrip);
+*/
+		}
+	}
+	xhr.send(null);  
+}
+
+//启动websocket
+function wsstart( svrip ){
+    var canvas  = document.getElementById("myCanvas");  
+    var context = canvas.getContext("2d");  
+    websocket = new WebSocket("ws://" + svrip + ":2980"); 
+    websocket.onopen = function (evt) { writeToScreen(evt.message); };  
+    websocket.onclose = function (evt) { writeToScreen(evt.message); };  
+    websocket.onerror = function (evt) { writeToScreen(evt.message); };          
+    websocket.onmessage = function (evt) { 
+		if( typeof(evt.data) == "string" ){
+			return;
+		}
+		var image = new Image();
+		image.onload = function() {  
+			context.clearRect(0, 0, canvas.width, canvas.height);  
+			context.drawImage(image, 0, 0, canvas.width, canvas.height);  
+		}  
+		image.src = URL.createObjectURL(evt.data);
+    };  
+}
+
+//退出时自动关闭websocket
+window.onbeforeunload = function(){
+	websocket.close();
+}
+
+//开启停止按钮处理
+var m_timerid = 0;
+function actions(){
+	var btn = document.getElementById("actionbtn");
+	if( btn.innerText == "开始" &&  startwork() ){
+		btn.innerText = "停止";
+		document.getElementById('device').disabled = true;
+		//m_timerid = setInterval(heartbeatcommand,10000);
+	}else{
+		stopwork();
+		btn.innerText = "开始"; 
+		document.getElementById('device').disabled = false;
+		//clearInterval( m_timerid );
+	}
+}
+
+function heartbeatcommand(){
+	var obj = document.getElementById("device");
+	var value = obj.options[obj.selectedIndex].value;
+    if (websocket.readyState == websocket.OPEN) {
+    	websocket.send( "{\"action\":\"start\",\"target\":\"" + value +"\"}");  
+        return true;
+    } 
+}
+
+//发送按钮处理
+function startwork() {  
+	var obj = document.getElementById("device");
+	var value = obj.options[obj.selectedIndex].value;
+    if (websocket.readyState == websocket.OPEN) {
+    	websocket.send( "{\"action\":\"start\",\"target\":\"" + value +"\"}");  
+        writeToScreen("start");
+        return true;
+    } 
+    writeToScreen("connect error"); 
+    return false;   
+}
+
+//关闭按钮处理
+function stopwork(){
+	var obj = document.getElementById("device");
+	var value = obj.options[obj.selectedIndex].value;
+	websocket.send( "{\"action\":\"stop\",\"target\":\"" + value +"\"}");  
+	writeToScreen("stop");  
+}
+
+//获取当前时间
+function getNowFormatDate() {
+    var date = new Date();
+    var month = date.getMonth()+1;
+    var strDate = date.getDate();
+    if(month >= 1 && month <= 9) {month = "0" + month;}
+    if(strDate >= 0 && strDate <= 9) {strDate = "0" + strDate;}
+    return month + "-" + strDate + " " + date.getHours() + ":"+ date.getMinutes() + ":"+ date.getSeconds();
+} 
+
+//接收消息显示
+function writeToScreen(message) {  
+	var mtable = document.getElementById("traceTable");  
+	if( mtable.rows.length > 20 ) mtable.deleteRow( 20 );
+	var mrow   = mtable.insertRow(1);
+	var tdNode = mrow.insertCell(-1); 
+	tdNode.innerHTML = getNowFormatDate() + " " + message;			
+}
+
+ //摄像头移动
+function cammove( direct ){
+    if (websocket.readyState == websocket.OPEN) {
+    	websocket.send( "{'action':'move','direct':'" + direct+"'}");  
+    }
+}
+
+//大小切换
+function fixfrm(){
+	var cas = document.getElementById("myCanvas");  
+	var btn = document.getElementById("fixbtn");
+	if( btn.value == "适" ){
+		btn.value = "全";
+		cas.style.width = "640px";
+		cas.style.height = "480px"; 
+	}else{
+		btn.value = "适"; 
+		cas.style.width = "100%";
+		cas.style.height = "100%";
+	}
+}
+</script>

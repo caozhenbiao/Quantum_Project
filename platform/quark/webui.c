@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "webui.h"
-#include "include/tcps.h"
 #include <time.h>
+#include "webui.h"
+#include "tcps.h"
+#include "ssls.h"
 
 #define MAX_BUF_SIZE 10240
 static tcps_t * tcps = NULL;
+static ssls_t  * ssls = NULL;
 char*(*webui_cgi)(char*, char*,unsigned);
 char wwwroot[256] = "/webui";
 
@@ -93,7 +95,7 @@ static int get_request_method(const char *c){
 	return -1;
 }
 
-void webui_lua_response(int cs, char* data, unsigned len ) {
+void webui_lua_response(int ins, int cs, char* data, unsigned len ) {
 	char response_header[1024];
 	memset(response_header, 0x00, sizeof(response_header));
 	char inspire[128] = { 0 };
@@ -101,11 +103,17 @@ void webui_lua_response(int cs, char* data, unsigned len ) {
 	get_gmtime(inspire, 0);
 	get_gmtime(expires, 3600);
 	int hdr_len = sprintf(response_header, response_header_style, inspire, expires,"LUA", len);
-	tcps_sends(cs, response_header, hdr_len);
-	tcps_sends(cs, data, len);
+	if (tcps == ins) {
+		tcps_sends(cs, response_header, hdr_len);
+		tcps_sends(cs, data, len);
+	}
+	else {
+		ssls_sends(cs, response_header, hdr_len);
+		ssls_sends(cs, data, len);
+	}
 }
 
-void webui_uri_response(int cs, char* uri, char* args) {
+void webui_uri_response(int ins, int cs, char* uri, char* args) {
 	char resource[256] = { 0 };
 	sprintf(resource, "%s%s", wwwroot, uri);
 	char response_header[1024];
@@ -118,27 +126,40 @@ void webui_uri_response(int cs, char* uri, char* args) {
 	if (!f) {
 		static char * context = "<html><b><center>404 not find!</center></b></html>";
 		int hdr_len = sprintf(response_header, response_header_style, inspire, expires, "mime_type", 0);
-		tcps_sends(cs, response_header, hdr_len);
-		tcps_sends(cs, context, strlen(context));
+		if (tcps == ins) {
+			tcps_sends(cs, response_header, hdr_len);
+			tcps_sends(cs, context, strlen(context));
+		}
+		else {
+			ssls_sends(cs, response_header, hdr_len);
+			ssls_sends(cs, context, strlen(context));
+		}
 		return;
 	}
 	//返回文件数据
 	fseek(f, 0, SEEK_END);
 	int pos = ftell(f);
 	int header_length = sprintf(response_header, response_header_style, inspire, expires, "mime_type", pos);
-	tcps_sends(cs, response_header, header_length);
+	//tcps_sends(cs, response_header, header_length);
+	if (tcps == ins) 
+		tcps_sends(cs, response_header, header_length);
+	else 
+		ssls_sends(cs, response_header, header_length);
 	fseek(f, 0, SEEK_SET);
 	int nbs = MAX_BUF_SIZE;
 	int npieces = (pos + nbs - 1) / nbs;
 	for (int i = 0; i < npieces; i++) {
 		char piece_buf[MAX_BUF_SIZE] = { 0 };
 		int piece_length = fread(piece_buf, 1, nbs, f);
-		tcps_sends(cs, piece_buf, piece_length);
+		if (tcps == ins)
+			tcps_sends(cs, piece_buf, piece_length);
+		else
+			ssls_sends(cs, piece_buf, piece_length);
 	}
 	fclose(f);
 }
 
-void webui_request_handle(int cs, char* data, unsigned len) {
+void webui_request_handle(int ins, int cs, char* data, unsigned len) {
 	char uri[256] = { 0 };
 	char args[256] = { 0 };
 	char methord[32] = { 0 };
@@ -155,17 +176,23 @@ void webui_request_handle(int cs, char* data, unsigned len) {
 	}
 	if ( get_request_method(methord) == 2 ) {
 		char * rdata = webui_cgi(&uri[1], data_ptr, data_len);
-		webui_lua_response(cs, rdata, strlen(rdata));
+		webui_lua_response(ins, cs, rdata, strlen(rdata));
 	}else {
-		webui_uri_response(cs, uri, args);
+		webui_uri_response(ins, cs, uri, args);
 	}
-	tcps_close(cs);
 }
 
-void webui_start(int(*function)(int, char*, unsigned),char*dir, char* ip,unsigned short port) {
+void webui_start_http(int(*function)(int, char*, unsigned),char*dir, char* ip,unsigned short port) {
+	strcpy(wwwroot, dir);
 	if (!tcps) {
-		strcpy(wwwroot, dir);
 		tcps = tcps_start(ip, port, function);
+	}
+}
+
+void webui_start_https(int(*function)(int, char*, unsigned), char*dir, char* ip, unsigned short port,char* ca, char* sa, char* pk) {
+	strcpy(wwwroot, dir);
+	if (!ssls) {
+		ssls = ssls_start(ip, port, function,ca,sa,pk);
 	}
 }
 
@@ -173,6 +200,10 @@ void webui_stop() {
 	if (tcps) {
 		tcps_stop(tcps);
 		tcps = NULL;
+	}
+	if (ssls) {
+		ssls_stop(ssls);
+		ssls = NULL;
 	}
 }
 

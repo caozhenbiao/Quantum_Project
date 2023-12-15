@@ -13,6 +13,9 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
+    <Filter Include="module">
+      <UniqueIdentifier>{898157b8-1e7b-4623-96b1-a69d265236d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="standalone.c">
@@ -33,14 +36,17 @@
     <ClCompile Include="include\threadpool.c">
       <Filter>include</Filter>
     </ClCompile>
-    <ClCompile Include="include\tcps.c">
-      <Filter>include</Filter>
-    </ClCompile>
     <ClCompile Include="webui.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="include\http.c">
-      <Filter>include</Filter>
+    <ClCompile Include="http.c">
+      <Filter>module</Filter>
+    </ClCompile>
+    <ClCompile Include="ssls.c">
+      <Filter>module</Filter>
+    </ClCompile>
+    <ClCompile Include="tcps.c">
+      <Filter>module</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -59,14 +65,25 @@
     <ClInclude Include="include\threadpool.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\tcps.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="webui.h">
       <Filter>源文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\http.h">
+    <ClInclude Include="http.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="ssls.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="tcps.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
       <Filter>include</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="quark.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

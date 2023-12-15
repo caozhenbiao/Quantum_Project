@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <assert.h>
 #ifdef WIN32
-#include <unistd.h>
+//#include <unistd.h>
+#include <process.h>
 #include <winsock.h>
 #else
 #include <sys/socket.h>
@@ -74,7 +75,7 @@ static int yolo_setup(const char* nf, const char* cf, const char* wf){
 }
 
 //YOLO FRAM DETECT
-static int framedetect(char*jpgdata, __int64_t jpgsize, char** boxlist){
+static int framedetect(char*jpgdata, __int64 jpgsize, char** boxlist){
 	float thresh = 0.24;
 	float hier_thresh = 0.4;
 	float nms=.45;
@@ -311,7 +312,7 @@ int  tcps_start(const char* ip, short port, int(*function)(char*, char*, unsigne
 #ifdef _WIN32
 	unsigned long nMode = 1;
 	ioctlsocket(mysocket, FIONBIO, &nMode);
-	threadid = _beginthreadex(NULL, 0, tcps_workthread, 0, 0, NULL);
+	threadid = _beginthreadex(NULL, 0, http_workthread, 0, 0, NULL);
 #else
 	fcntl(mysocket, F_SETFL, O_NONBLOCK);
 	if (pthread_create(&threadid, NULL, http_workthread, 0) != 0)
@@ -342,6 +343,7 @@ int tcps_stop() {
 }
 
 #undef main
+char* optarg; /* argument associated with option */
 int main(int argc, char* argv[]) {
 	char nf[256] = { 0 };
 	char cf[256] = { 0 };

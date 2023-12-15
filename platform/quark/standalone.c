@@ -66,6 +66,15 @@ static void signal_handler(int sig_num){
     }
 }
 
+void usage() {
+	printf("circel core\n");
+	printf("-l <script file>\n");
+	printf("-w <web path>\n");
+	printf("-t <hostip:port>\n");
+	printf("-s <hostip:port;ca;sa;pk>\n");
+	printf("-h <uage>\n");
+}
+
 int main(int argc, char *argv[]){
 #ifndef _WIN32
     (void) signal(SIGCHLD, signal_handler);
@@ -77,17 +86,15 @@ int main(int argc, char *argv[]){
 	struct macopt opt;
 	memset(&opt, 0x00, sizeof(opt));
 	strcpy(opt.webs_path, "./webui");
-	strcpy(opt.webs_ip, "127.0.0.1");
-	opt.webs_port = 8080;
+	strcpy(opt.tcps, "127.0.0.1:8080");
 	int c = 0;
-	while ((c = getopt(argc, argv, "i:k:s:u:w:m:n:x:y:c")) != -1) {
+	while ((c = getopt(argc, argv, "h:l:w:t:s:c")) != -1) {
 		switch (c) {
-		case 'k':memset(opt.runkey, 0x00, 40); strncpy(opt.runkey, optarg, 40); break;
-		case 's':memset(opt.script, 0x00, 256); strncpy(opt.script, optarg, 256); break;
-		case 'u':memset(opt.option, 0x00, 256); strncpy(opt.option, optarg, 256); break;
+		case 'h':usage(); return 0;
+		case 'l':memset(opt.script, 0x00, 256); strncpy(opt.script, optarg, 256); break;
 		case 'w':memset(opt.webs_path, 0x00, 256); strncpy(opt.webs_path,optarg, 256); break;
-		case 'x':memset(opt.webs_ip, 0x00, 32); strncpy(opt.webs_ip, optarg, 32); break;
-		case 'y':opt.webs_port = atoi(optarg); break;
+		case 't':memset(opt.tcps, 0x00, 256); strncpy(opt.tcps, optarg, 256); break;
+		case 's':memset(opt.ssls, 0x00, 256); strncpy(opt.ssls, optarg, 256); break;
 		case 'c':opt.console = 1; break;
 		default:break;	
 		}

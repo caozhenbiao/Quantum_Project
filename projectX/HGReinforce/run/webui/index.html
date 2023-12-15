@@ -6,6 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache"> 
 <meta http-equiv="Expires" content="0"> 
 <script src="./js/md5.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/qwebchannel.js"></script>
 <title>登陆后台管理</title>
 <link href="css/login.css" rel="stylesheet" type="text/css" />
 </head>
@@ -99,5 +100,10 @@ window.onload = function(){
 	setCookie("account", "", 0);
 	setCookie("username", "", 0);
 	setCookie("authority", "", 0);
+
 }
+new QWebChannel(qt.webChannelTransport, function(channel) {
+	var cmd = channel.objects.command;
+	cmd.show( true );
+});
 </script>

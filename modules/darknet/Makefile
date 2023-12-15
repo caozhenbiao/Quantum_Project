@@ -190,7 +190,7 @@ $(EXEC): $(OBJS)
 $(OBJDIR)%.o: %.c $(DEPS)
 	$(CC) $(COMMON) $(CFLAGS) -c $< -o $@
 
-$(OBJDIR)%.o: %.cpp $(DEPS)\
+$(OBJDIR)%.o: %.cpp $(DEPS)
 	$(CPP) -std=c++11 $(COMMON) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR)%.o: %.cu $(DEPS)
